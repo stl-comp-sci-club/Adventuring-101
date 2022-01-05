@@ -1,0 +1,9 @@
+Godot Engine v3.4.2.stable.mono.official.45eaa2daf - https://godotengine.org
+OpenGL ES 3.0 Renderer: NVIDIA GeForce GTX 1650/PCIe/SSE2
+OpenGL ES Batching: ON
+ 
+Mono: Log file is: 'C:/Users/chris/AppData/Roaming/Godot/mono/mono_logs/2022-01-04_20.20.54_8072.log'
+Project is missing: C:/Users/chris/Desktop/GameDevGame/project.godot
+Project is missing: C:/Users/chris/Desktop/GameDev Project/GameDevGame/project.godot
+ERROR: Condition "default_certs != nullptr" is true.
+   at: load_default_certificates (modules/mbedtls/crypto_mbedtls.cpp:314) - Condition "default_certs != nullptr" is true.
