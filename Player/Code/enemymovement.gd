@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export (int) var speed = 100
+export (int) var speed = 35
 
 var velocity = Vector2()
 onready var player : KinematicBody2D = get_node("/root/World/Player")
