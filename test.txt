@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-i wonder if pushing stuff works
-=======
-:)))))
->>>>>>> parent of 29e1369 (test2)
