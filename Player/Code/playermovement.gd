@@ -6,38 +6,41 @@ export (int) var speed = 150
 var velocity = Vector2.ZERO
 
 var last_input
+var pressing = false
+var input_allowed = true
 
 func _process(delta):
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += speed
-		$player.flip_h = true
-		$player.play("walk_x")
-		last_input = "right"
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= speed
-		$player.flip_h = false		
-		$player.play("walk_x")
-		last_input = "left"
-	if Input.is_action_pressed("ui_down"):
-		velocity.y += speed
-		$player.play("walk_down")
-		last_input = "down"
-	if Input.is_action_pressed("ui_up"):
-		velocity.y -= speed
-		$player.play("walk_up")
-		last_input = "up"
-	
-	if not Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_down") and not Input.is_action_pressed("ui_up"):
-		if last_input == "down":
-			$player.play("down_resting")
-		if last_input == "up":
-			$player.play("up_resting")
-		if last_input == "right":
+	if input_allowed:
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += speed
 			$player.flip_h = true
-			$player.play("x_resting")
-		if last_input == "left":
-			$player.flip_h = false	
-			$player.play("x_resting")
+			$player.play("walk_x")
+			last_input = "right"
+		if Input.is_action_pressed("ui_left"):
+			velocity.x -= speed
+			$player.flip_h = false		
+			$player.play("walk_x")
+			last_input = "left"
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += speed
+			$player.play("walk_down")
+			last_input = "down"
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= speed
+			$player.play("walk_up")
+			last_input = "up"
+	
+		if not Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_down") and not Input.is_action_pressed("ui_up"):
+			if last_input == "down":
+				$player.play("down_resting")
+			if last_input == "up":
+				$player.play("up_resting")
+			if last_input == "right":
+				$player.flip_h = true
+				$player.play("x_resting")
+			if last_input == "left":
+				$player.flip_h = false	
+				$player.play("x_resting")
 			
 		
 		
@@ -48,3 +51,14 @@ func _process(delta):
 	if collision:
 		velocity *= -0.1
 		#velocity = velocity.bounce(collision.normal)
+
+
+func _on_Area2D_switch_downstairs():
+	#position = Vector2(48, 31)
+	input_allowed = false
+	$player.play("walk_down")
+	for i in range(position.y,105):
+		position.y = i
+		yield(VisualServer, 'frame_pre_draw')
+	$player.play("down_resting")
+	input_allowed = true
