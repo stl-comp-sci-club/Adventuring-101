@@ -23,6 +23,10 @@ _global_script_class_icons={
 config/name="Godot-game"
 run/main_scene="res://Scenes/X1.tscn"
 
+[autoload]
+
+GlobalVars="*res://Global_vars.gd"
+
 [display]
 
 window/size/width=640

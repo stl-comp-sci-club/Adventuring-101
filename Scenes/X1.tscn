@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player/Code/playermovement.gd" type="Script" id=1]
 [ext_resource path="res://TemporaryTileset/Animations/Left_1.png" type="Texture" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://TemporaryTileset/Animations/Up_1.png" type="Texture" id=10]
 [ext_resource path="res://TemporaryTileset/Animations/Left_3.png" type="Texture" id=11]
 [ext_resource path="res://TemporaryTileset/Animations/Down_2.png" type="Texture" id=12]
-[ext_resource path="res://Scenes/Staircase_swap_scene.gd" type="Script" id=13]
 [ext_resource path="res://TemporaryTileset/Animations/Down_4.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=4]
@@ -55,7 +54,7 @@ extents = Vector2( 13, 14 )
 extents = Vector2( 11, 22 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 13.5, 33 )
+extents = Vector2( 13.5, 31 )
 
 [node name="World" type="Node2D"]
 position = Vector2( -13, -25 )
@@ -116,12 +115,11 @@ __meta__ = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2( 160, 85 )
-script = ExtResource( 13 )
+position = Vector2( 160, 84 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -112.5, 10 )
+position = Vector2( -112.5, 13 )
 shape = SubResource( 5 )
 
+[connection signal="body_entered" from="Area2D" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
-[connection signal="switch_downstairs" from="Area2D" to="Player" method="_on_Area2D_switch_downstairs"]

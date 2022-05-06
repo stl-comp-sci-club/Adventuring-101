@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+onready var player : KinematicBody2D = get_node("/root/World/Player")
 
 export (int) var speed = 150
 
@@ -53,12 +54,68 @@ func _process(delta):
 		#velocity = velocity.bounce(collision.normal)
 
 
-func _on_Area2D_switch_downstairs():
-	#position = Vector2(48, 31)
-	input_allowed = false
-	$player.play("walk_down")
-	for i in range(position.y,105):
-		position.y = i
+# func _on_Area2D_switch_downstairs():
+# 	#position = Vector2(48, 31)
+# 	input_allowed = false
+# 	$player.play("walk_down")
+# 	for i in range(position.y,105):
+# 		position.y = i
+# 		yield(VisualServer, 'frame_pre_draw')
+# 	$player.play("down_resting")
+# 	get_tree().change_scene("res://Scenes/bottom of home.tscn")
+	
+# 	input_allowed = true
+
+
+# func _on_Area2D_switch_upstairs():
+# 	input_allowed = false
+# 	$player.play("walk_up")
+# 	for i in range(position.y, -5, -1):
+# 		position.y = i
+# 		yield(VisualServer, 'frame_pre_draw')
+# 	$player.play("up_resting")
+# 	get_tree().change_scene("res://Scenes/X1.tscn")
+	
+# 	input_allowed = true
+
+
+
+func switch_scene(s):
+	print("switching from " + GlobalVars.scene + " to: " + s) 
+	GlobalVars.scene = s
+	
+
+
+func _on_Area2D_body_entered(body):
+	if (GlobalVars.scene == "upstairs") and (body == player):
+		print("going down")
+		input_allowed = false
+		$player.play("walk_down")
+		last_input = "down"
+		for i in range(position.y,105):
+			position.y = i
+			yield(VisualServer, 'frame_pre_draw')
+		$player.play("down_resting")
+		get_tree().change_scene("res://Scenes/bottom of home.tscn")
+		
+		switch_scene("downstairs")
 		yield(VisualServer, 'frame_pre_draw')
-	$player.play("down_resting")
-	input_allowed = true
+		set_position(Vector2(49, 72))
+		input_allowed = true
+
+	elif (GlobalVars.scene == "downstairs") and (body == player):
+		print("going up")
+		input_allowed = false
+		$player.play("walk_up")
+		last_input = "up"
+		for i in range(position.y, -5, -1):
+			position.y = i
+			yield(VisualServer, 'frame_pre_draw')
+		$player.play("up_resting")
+		get_tree().change_scene("res://Scenes/X1.tscn")
+
+		switch_scene("upstairs")
+		yield(VisualServer, 'frame_pre_draw')
+		set_position(Vector2(48, 38))
+		input_allowed = true
+		
