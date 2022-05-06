@@ -1,9 +1,51 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player/Code/playermovement.gd" type="Script" id=1]
+[ext_resource path="res://TemporaryTileset/Animations/Left_1.png" type="Texture" id=2]
 [ext_resource path="res://Player/Code/enemymovement.gd" type="Script" id=3]
 [ext_resource path="res://tileset1.tres" type="TileSet" id=4]
 [ext_resource path="res://TemporaryTileset/default pplayer base.png" type="Texture" id=5]
+[ext_resource path="res://TemporaryTileset/Animations/Left_2.png" type="Texture" id=6]
+[ext_resource path="res://TemporaryTileset/Animations/Left_rest.png" type="Texture" id=7]
+[ext_resource path="res://TemporaryTileset/Animations/Up_2.png" type="Texture" id=8]
+[ext_resource path="res://TemporaryTileset/Animations/Up_rest.png" type="Texture" id=9]
+[ext_resource path="res://TemporaryTileset/Animations/Up_1.png" type="Texture" id=10]
+[ext_resource path="res://TemporaryTileset/Animations/Left_3.png" type="Texture" id=11]
+[ext_resource path="res://TemporaryTileset/Animations/Down_2.png" type="Texture" id=12]
+[ext_resource path="res://TemporaryTileset/Animations/Down_4.png" type="Texture" id=14]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk_x",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "down_resting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "x_resting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "up_resting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 13, 14 )
@@ -21,10 +63,11 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-speed = 100
+speed = 30
 
-[node name="player" type="Sprite" parent="Player"]
-texture = ExtResource( 5 )
+[node name="player" type="AnimatedSprite" parent="Player"]
+frames = SubResource( 4 )
+animation = "walk_down"
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
@@ -40,7 +83,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
-speed = 50
+speed = 0
 
 [node name="Sprite" type="Sprite" parent="enemy"]
 texture = ExtResource( 5 )
