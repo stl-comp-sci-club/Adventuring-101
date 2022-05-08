@@ -1,33 +1,83 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player/Code/playermovement.gd" type="Script" id=1]
+[ext_resource path="res://TemporaryTileset/Animations/Left_1.png" type="Texture" id=2]
 [ext_resource path="res://Player/Code/enemymovement.gd" type="Script" id=3]
 [ext_resource path="res://tileset1.tres" type="TileSet" id=4]
 [ext_resource path="res://TemporaryTileset/default pplayer base.png" type="Texture" id=5]
+[ext_resource path="res://TemporaryTileset/Animations/Left_2.png" type="Texture" id=6]
+[ext_resource path="res://TemporaryTileset/Animations/Left_rest.png" type="Texture" id=7]
+[ext_resource path="res://TemporaryTileset/Animations/Up_2.png" type="Texture" id=8]
+[ext_resource path="res://TemporaryTileset/Animations/Up_rest.png" type="Texture" id=9]
+[ext_resource path="res://TemporaryTileset/Animations/Up_1.png" type="Texture" id=10]
+[ext_resource path="res://TemporaryTileset/Animations/Left_3.png" type="Texture" id=11]
+[ext_resource path="res://TemporaryTileset/Animations/Down_2.png" type="Texture" id=12]
+[ext_resource path="res://TemporaryTileset/Animations/Down_4.png" type="Texture" id=14]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 5.5 )
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk_x",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "down_resting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "x_resting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "up_resting",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 13, 14 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 11, 22 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 13.5, 7.875 )
 
 [node name="World" type="Node2D"]
 position = Vector2( -13, -25 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 160, 86 )
+position = Vector2( 176, 87 )
 z_index = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+speed = 30
 
-[node name="player" type="Sprite" parent="Player"]
-texture = ExtResource( 5 )
+[node name="player" type="AnimatedSprite" parent="Player"]
+frames = SubResource( 4 )
+animation = "down_resting"
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( 0, 5.5 )
-shape = SubResource( 1 )
+position = Vector2( 0, 10 )
+shape = SubResource( 3 )
 
 [node name="enemy" type="KinematicBody2D" parent="."]
 position = Vector2( 221, 150 )
@@ -36,9 +86,14 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
+speed = 0
 
 [node name="Sprite" type="Sprite" parent="enemy"]
 texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+position = Vector2( 0, 2 )
+shape = SubResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )
@@ -58,3 +113,20 @@ tile_data = PoolIntArray( -65534, 90, 0, -65532, 93, 0, -65531, 95, 0, -65530, 9
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="infront of player" type="TileMap" parent="."]
+z_index = 1
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 160, 84 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -112.5, 13 )
+shape = SubResource( 5 )
+
+[connection signal="body_entered" from="Area2D" to="Player" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
