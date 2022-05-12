@@ -10,6 +10,12 @@ var last_input
 var pressing = false
 var input_allowed = true
 
+func _ready():
+	if Global.scene == "upstairs":
+		position = Vector2(48, 34)
+	elif Global.scene == "downstairs":
+		position = Vector2(47, 53)
+
 func _process(delta):
 	if input_allowed:
 		if Input.is_action_pressed("ui_right"):
@@ -80,14 +86,9 @@ func _process(delta):
 
 
 
-func switch_scene(s):
-	print("switching from " + GlobalVars.scene + " to: " + s) 
-	GlobalVars.scene = s
-	
-
 
 func _on_Area2D_body_entered(body):
-	if (GlobalVars.scene == "upstairs") and (body == player):
+	if (Global.scene == "upstairs" or Global.scene == "") and (body == player):
 		print("going down")
 		input_allowed = false
 		$player.play("walk_down")
@@ -96,14 +97,17 @@ func _on_Area2D_body_entered(body):
 			position.y = i
 			yield(VisualServer, 'frame_pre_draw')
 		$player.play("down_resting")
-		get_tree().change_scene("res://Scenes/bottom of home.tscn")
 		
-		switch_scene("downstairs")
+		Global.change_scene("res://Scenes/bottom of home.tscn", Vector2(49,72), player)
+		#get_tree().change_scene("res://Scenes/bottom of home.tscn")
+		
+		Global.scene = "downstairs"
 		yield(VisualServer, 'frame_pre_draw')
-		set_position(Vector2(49, 72))
+		#global_position = Vector2(49, 72)
+		#set_position(Vector2(49, 72))
 		input_allowed = true
 
-	elif (GlobalVars.scene == "downstairs") and (body == player):
+	elif (Global.scene == "downstairs") and (body == player):
 		print("going up")
 		input_allowed = false
 		$player.play("walk_up")
@@ -112,10 +116,12 @@ func _on_Area2D_body_entered(body):
 			position.y = i
 			yield(VisualServer, 'frame_pre_draw')
 		$player.play("up_resting")
-		get_tree().change_scene("res://Scenes/X1.tscn")
+		Global.change_scene("res://Scenes/X1.tscn", Vector2(48,38), player)
+		#get_tree().change_scene("res://Scenes/X1.tscn")
 
-		switch_scene("upstairs")
+		Global.scene = "upstairs"
 		yield(VisualServer, 'frame_pre_draw')
-		set_position(Vector2(48, 38))
+		
+		#set_position(Vector2(48, 38))
 		input_allowed = true
 		

@@ -19,7 +19,7 @@ animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "walk_x",
-"speed": 7.0
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 14 ) ],
 "loop": true,
@@ -60,7 +60,7 @@ extents = Vector2( 13.5, 31 )
 position = Vector2( -13, -25 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 176, 87 )
+position = Vector2( 165, 93 )
 z_index = 1
 script = ExtResource( 1 )
 __meta__ = {
