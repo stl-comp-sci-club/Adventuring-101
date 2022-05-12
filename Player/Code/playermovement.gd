@@ -116,7 +116,7 @@ func _on_Area2D_body_entered(body):
 			position.y = i
 			yield(VisualServer, 'frame_pre_draw')
 		$player.play("up_resting")
-		Global.change_scene("res://Scenes/X1.tscn", Vector2(48,38), player)
+		Global.change_scene("res://Scenes/Upstairs of house.tscn", Vector2(48,38), player)
 		#get_tree().change_scene("res://Scenes/X1.tscn")
 
 		Global.scene = "upstairs"
