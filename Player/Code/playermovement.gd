@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 onready var player : KinematicBody2D = get_node("/root/World/Player")
 
-export (int) var speed = 150
+export (int) var speed = 200
 
 var velocity = Vector2.ZERO
 
@@ -54,9 +54,9 @@ func _process(delta):
 	if velocity.length() > 0:
 		velocity *= 0.8
 		
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		velocity *= -0.1
+	move_and_slide(velocity)
+	#if collision:
+#		velocity *= -0.1
 		#velocity = velocity.bounce(collision.normal)
 
 
@@ -96,10 +96,10 @@ func _on_Area2D_body_entered(body):
 		for i in range(position.y,105):
 			position.y = i
 			yield(VisualServer, 'frame_pre_draw')
-		$player.play("down_resting")
 		
-		Global.change_scene("res://Scenes/bottom of home.tscn", Vector2(49,72), player)
-		#get_tree().change_scene("res://Scenes/bottom of home.tscn")
+		#Global.change_scene("res://Scenes/bottom of home.tscn", Vector2(49,72), player)
+		get_tree().change_scene("res://Scenes/bottom of home.tscn")
+		$player.play("down_resting")
 		
 		Global.scene = "downstairs"
 		yield(VisualServer, 'frame_pre_draw')
@@ -115,10 +115,10 @@ func _on_Area2D_body_entered(body):
 		for i in range(position.y, -5, -1):
 			position.y = i
 			yield(VisualServer, 'frame_pre_draw')
+		#Global.change_scene("res://Scenes/Upstairs of house.tscn", Vector2(48,38), player)
+		get_tree().change_scene("res://Scenes/Upstairs of house.tscn")
 		$player.play("up_resting")
-		Global.change_scene("res://Scenes/Upstairs of house.tscn", Vector2(48,38), player)
-		#get_tree().change_scene("res://Scenes/X1.tscn")
-
+		
 		Global.scene = "upstairs"
 		yield(VisualServer, 'frame_pre_draw')
 		
