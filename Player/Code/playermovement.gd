@@ -10,6 +10,11 @@ var last_input
 var pressing = false
 var input_allowed = true
 
+# Player stats 
+var health = 100 
+var healthMax = 100 
+var healthRegenaration = 1 
+
 func _process(delta):
 	if input_allowed:
 		if Input.is_action_pressed("ui_right"):

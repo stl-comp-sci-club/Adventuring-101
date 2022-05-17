@@ -21,14 +21,9 @@ animations = [ {
 "name": "walk_x",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "walk_up",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "x_resting",
+"name": "down_resting",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 14 ) ],
@@ -36,15 +31,20 @@ animations = [ {
 "name": "walk_down",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "down_resting",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
 "name": "up_resting",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "x_resting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 7.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -127,6 +127,13 @@ position = Vector2( 160, 84 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -112.5, 13 )
 shape = SubResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 347.0
+margin_top = 239.0
+margin_right = 421.0
+margin_bottom = 248.0
+color = Color( 0, 0, 0, 0.627451 )
 
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
