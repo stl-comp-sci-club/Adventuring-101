@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player/Code/playermovement.gd" type="Script" id=1]
 [ext_resource path="res://TemporaryTileset/Animations/Left_1.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://TemporaryTileset/Animations/Up_1.png" type="Texture" id=10]
 [ext_resource path="res://TemporaryTileset/Animations/Left_3.png" type="Texture" id=11]
 [ext_resource path="res://TemporaryTileset/Animations/Down_2.png" type="Texture" id=12]
+[ext_resource path="res://GUI/healthBar.gd" type="Script" id=13]
 [ext_resource path="res://TemporaryTileset/Animations/Down_4.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=4]
@@ -128,12 +129,23 @@ position = Vector2( 160, 84 )
 position = Vector2( -112.5, 13 )
 shape = SubResource( 5 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 347.0
-margin_top = 239.0
-margin_right = 421.0
-margin_bottom = 248.0
-color = Color( 0, 0, 0, 0.627451 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+margin_left = 3.0
+margin_top = 350.0
+margin_right = 77.0
+margin_bottom = 359.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 13 )
+
+[node name="Bar" type="ColorRect" parent="CanvasLayer/ColorRect"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 73.0
+margin_bottom = 8.0
+color = Color( 1, 0, 0, 1 )
+
+[connection signal="player_stats_changed" from="Player" to="CanvasLayer/ColorRect" method="_on_Player_player_stats_changed"]
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
