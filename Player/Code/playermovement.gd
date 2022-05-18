@@ -18,7 +18,7 @@ var healthRegen = 1 # health regeneration
 # Mana bar 
 var mana = 100 # health 
 var manaMax = 100 # max health 
-var manaRegen = 1 # health regeneration 
+var manaRegen = 11 # health regeneration 
 
 signal player_stats_changed
 

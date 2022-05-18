@@ -12,7 +12,7 @@
 [ext_resource path="res://TemporaryTileset/Animations/Up_1.png" type="Texture" id=10]
 [ext_resource path="res://TemporaryTileset/Animations/Left_3.png" type="Texture" id=11]
 [ext_resource path="res://TemporaryTileset/Animations/Down_2.png" type="Texture" id=12]
-[ext_resource path="res://GUI/healthBar.gd" type="Script" id=13]
+[ext_resource path="res://GUI/bars.gd" type="Script" id=13]
 [ext_resource path="res://TemporaryTileset/Animations/Down_4.png" type="Texture" id=14]
 [ext_resource path="res://TemporaryTileset/New Project.png" type="Texture" id=15]
 
