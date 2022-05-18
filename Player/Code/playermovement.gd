@@ -14,8 +14,9 @@ var input_allowed = true
 
 func _ready():
 	if Global.scene == "upstairs":
-		$player.play("up_resting")
 		position = Vector2(48, 34)
+		last_direction = Vector2(0,-1)
+		$player.play("up_resting")
 		var fade_amount=1
 		for i in range(0,10):
 			fade_amount-=0.1
@@ -23,8 +24,9 @@ func _ready():
 			yield(VisualServer, 'frame_pre_draw')
 		fade.modulate.a = 0
 	elif Global.scene == "downstairs":
-		$player.play("down_resting")		
 		position = Vector2(47, 53)
+		last_direction = Vector2(0,1)
+		$player.play("down_resting")
 		var fade_amount=1
 		for i in range(0,10):
 			fade_amount-=0.1
