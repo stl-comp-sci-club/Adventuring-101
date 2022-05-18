@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Player/Code/playermovement.gd" type="Script" id=1]
 [ext_resource path="res://TemporaryTileset/Animations/Left_1.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://TemporaryTileset/Animations/Down_2.png" type="Texture" id=12]
 [ext_resource path="res://GUI/healthBar.gd" type="Script" id=13]
 [ext_resource path="res://TemporaryTileset/Animations/Down_4.png" type="Texture" id=14]
+[ext_resource path="res://TemporaryTileset/New Project.png" type="Texture" id=15]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -131,21 +132,32 @@ shape = SubResource( 5 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-margin_left = 3.0
-margin_top = 350.0
-margin_right = 77.0
-margin_bottom = 359.0
-color = Color( 0, 0, 0, 1 )
+[node name="HealthBar" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 53, 338 )
+scale = Vector2( 1, 0.735294 )
+texture = ExtResource( 15 )
+
+[node name="health" type="ColorRect" parent="CanvasLayer/HealthBar"]
+margin_left = -45.0
+margin_top = -11.0
+margin_right = 45.0
+margin_bottom = 11.0
+color = Color( 1, 0, 0, 1 )
 script = ExtResource( 13 )
 
-[node name="Bar" type="ColorRect" parent="CanvasLayer/ColorRect"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 73.0
-margin_bottom = 8.0
-color = Color( 1, 0, 0, 1 )
+[node name="ManaBar" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 53, 311 )
+scale = Vector2( 1, 0.735294 )
+texture = ExtResource( 15 )
 
-[connection signal="player_stats_changed" from="Player" to="CanvasLayer/ColorRect" method="_on_Player_player_stats_changed"]
+[node name="mana" type="ColorRect" parent="CanvasLayer/ManaBar"]
+margin_left = -45.0
+margin_top = -11.0
+margin_right = 45.0
+margin_bottom = 11.0
+color = Color( 0.372549, 0.298039, 0.905882, 1 )
+script = ExtResource( 13 )
+
+[connection signal="player_stats_changed" from="Player" to="CanvasLayer/HealthBar/health" method="_on_Player_player_stats_changed"]
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]

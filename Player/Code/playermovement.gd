@@ -10,10 +10,15 @@ var last_input
 var pressing = false
 var input_allowed = true
 
-# Player stats
+# Health bar 
 var health = 100 # health 
 var healthMax = 100 # max health 
 var healthRegen = 1 # health regeneration 
+
+# Mana bar 
+var mana = 100 # health 
+var manaMax = 100 # max health 
+var manaRegen = 1 # health regeneration 
 
 signal player_stats_changed
 
@@ -21,13 +26,20 @@ func _ready():
 	emit_signal("player_stats_changed", self)
 
 func _process(delta):
-	print("PLAYER HEALTH: ", health)
+	# print("PLAYER HEALTH: ", health)
 	var newHealth = min(health + healthRegen * delta, healthMax); 
 	if health != newHealth: 
 		health = newHealth 
 		emit_signal("player_stats_changed", self); 
 	if health < 0:
 		health = 0; 
+	var newMana = min(mana + manaRegen * delta, manaMax); 
+	if mana != newMana: 
+		mana = newMana 
+		emit_signal("player_stats_changed", self); 
+	if mana < 0:
+		mana = 0; 
+	
 	
 	if input_allowed:
 		if Input.is_action_pressed("ui_right"):
@@ -35,7 +47,6 @@ func _process(delta):
 			$player.flip_h = true
 			$player.play("walk_x")
 			last_input = "right"
-			health = health - 50; 
 			emit_signal("player_stats_changed", self)
 		if Input.is_action_pressed("ui_left"):
 			velocity.x -= speed
@@ -63,7 +74,8 @@ func _process(delta):
 				$player.flip_h = false	
 				$player.play("x_resting")
 			
-		
+		if Input.is_action_just_released("mana_attack"): 
+			mana = mana - 10 
 		
 	if velocity.length() > 0:
 		velocity *= 0.8
