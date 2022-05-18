@@ -74,8 +74,14 @@ animation = "walk_down"
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
 smoothing_enabled = true
-smoothing_speed = 10.0
+smoothing_speed = 2.0
+drag_margin_left = 0.6
+drag_margin_top = 0.3
+drag_margin_right = 0.6
+drag_margin_bottom = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( 0, 10 )
