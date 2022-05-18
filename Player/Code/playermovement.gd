@@ -12,6 +12,7 @@ var last_input
 var pressing = false
 var input_allowed = true
 
+
 func _ready():
 	if Global.scene == "upstairs":
 		position = Vector2(48, 34)
@@ -33,6 +34,14 @@ func _ready():
 			fade.modulate.a = fade_amount
 			yield(VisualServer, 'frame_pre_draw')
 		fade.modulate.a = 0
+	elif Global.scene == "Outside":
+		var fade_amount=1
+		for i in range(0,10):
+			fade_amount-=0.1
+			fade.modulate.a = fade_amount
+			yield(VisualServer, 'frame_pre_draw')
+		fade.modulate.a = 0
+		
 
 func get_animation_direction(direction: Vector2):
 	var norm_direction = direction.normalized()
@@ -182,3 +191,16 @@ func _on_Area2D_body_entered(body):
 		#set_position(Vector2(48, 38))
 		input_allowed = true
 		
+
+
+func _on_Exit_Door_body_entered(body):
+	if body == player:
+		Global.scene = "Level 1"
+		var fade_amount=0
+		for i in range(0,10):
+			fade_amount+=0.1
+			fade.modulate.a = fade_amount
+			yield(VisualServer, 'frame_pre_draw')
+		fade.modulate.a = 1
+		get_tree().change_scene("res://Scenes/Outside.tscn")
+	
