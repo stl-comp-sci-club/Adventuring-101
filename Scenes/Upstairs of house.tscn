@@ -64,7 +64,8 @@ position = Vector2( 165, 93 )
 z_index = 1
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_editor_description_": "Player name: Cay"
 }
 speed = 25
 
@@ -87,14 +88,27 @@ drag_margin_bottom = 0.45
 position = Vector2( 0, 10 )
 shape = SubResource( 3 )
 
+[node name="Node2D" type="Node2D" parent="Player"]
+position = Vector2( -326, -185 )
+z_index = 3
+
+[node name="Fade" type="ColorRect" parent="Player/Node2D"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -486.0
+margin_top = -275.0
+margin_right = 1137.44
+margin_bottom = 643.0
+color = Color( 0, 0, 0, 1 )
+
 [node name="enemy" type="KinematicBody2D" parent="."]
+visible = false
 position = Vector2( 221, 150 )
 z_index = 1
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
-speed = 10
+speed = 0
 
 [node name="Sprite" type="Sprite" parent="enemy"]
 texture = ExtResource( 5 )
@@ -135,18 +149,6 @@ position = Vector2( 160, 84 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -112.5, 13 )
 shape = SubResource( 5 )
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2( -161, -92 )
-z_index = 3
-
-[node name="Fade" type="ColorRect" parent="Node2D"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = -486.0
-margin_top = -275.0
-margin_right = 1138.0
-margin_bottom = 643.0
-color = Color( 0, 0, 0, 1 )
 
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
