@@ -145,6 +145,7 @@ func _on_Exit_Door_body_entered(body):
 		Global.scene = "Level 1"
 		yield(fade_out(), "completed")
 		get_tree().change_scene("res://Scenes/Outside.tscn")
+		input_allowed = true
 	
 func _on_Enter_House_body_entered(body):
 	if body == player:
@@ -152,3 +153,4 @@ func _on_Enter_House_body_entered(body):
 		Global.scene = "downstairs (from outside)"
 		yield(fade_out(), "completed")
 		get_tree().change_scene("res://Scenes/bottom of home.tscn")
+		input_allowed = true
