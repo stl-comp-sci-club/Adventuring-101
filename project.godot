@@ -26,7 +26,6 @@ run/main_scene="res://Scenes/Upstairs of house.tscn"
 [autoload]
 
 Global="*res://Global.gd"
-GlobalVars="*res://Global_vars.gd"
 
 [display]
 

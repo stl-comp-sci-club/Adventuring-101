@@ -12,50 +12,46 @@ var last_input
 var pressing = false
 var input_allowed = true
 
+signal fade_in_finished
+signal fade_out_finished
+
+func fade_out():
+	var fade_amount=0
+	for i in range(0,10):
+		fade_amount+=0.1
+		fade.modulate.a = fade_amount
+		yield(VisualServer, 'frame_pre_draw')
+	fade.modulate.a = 1
+	emit_signal("fade_in_finished")
+	
+func fade_in():
+	var fade_amount=1
+	for i in range(0,10):
+		fade_amount-=0.1
+		fade.modulate.a = fade_amount
+		yield(VisualServer, 'frame_pre_draw')
+	fade.modulate.a = 0
+	emit_signal("fade_out_finished")
 
 func _ready():
 	print(Global.scene)
+	input_allowed = true
 	if Global.scene == "upstairs":
-		input_allowed = true
 		position = Vector2(48, 34)
 		last_direction = Vector2(0,-1)
-		var fade_amount=1
-		for i in range(0,10):
-			fade_amount-=0.1
-			fade.modulate.a = fade_amount
-			yield(VisualServer, 'frame_pre_draw')
-		fade.modulate.a = 0
+		yield(fade_in(), "completed")
 	elif Global.scene == "downstairs":
-		input_allowed = true
 		position = Vector2(47, 53)
 		last_direction = Vector2(0,1)
-		var fade_amount=1
-		for i in range(0,10):
-			fade_amount-=0.1
-			fade.modulate.a = fade_amount
-			yield(VisualServer, 'frame_pre_draw')
-		fade.modulate.a = 0
+		yield(fade_in(), "completed")
 	elif Global.scene == "downstairs (from outside)":
-		input_allowed = true
 		position = Vector2(176, 194)
 		last_direction = Vector2(0,-1)
-		var fade_amount=1
-		for i in range(0,10):
-			fade_amount-=0.1
-			fade.modulate.a = fade_amount
-			yield(VisualServer, 'frame_pre_draw')
-		fade.modulate.a = 0
+		yield(fade_in(), "completed")
 	elif Global.scene == "Level 1":
-		input_allowed = true
 		position = Vector2(144, -23)
 		last_direction = Vector2(0,1)
-		var fade_amount=1
-		for i in range(0,10):
-			fade_amount-=0.1
-			fade.modulate.a = fade_amount
-			yield(VisualServer, 'frame_pre_draw')
-		fade.modulate.a = 0
-		
+		yield(fade_in(), "completed")
 
 func get_animation_direction(direction: Vector2):
 	var norm_direction = direction.normalized()
@@ -72,31 +68,11 @@ func get_animation_direction(direction: Vector2):
 func animate(direction: Vector2):
 	if direction != Vector2.ZERO:
 		last_direction = direction
-		
 		var d = get_animation_direction(last_direction)
-		if d == "down":
-			$player.play("walk_down")
-		elif d == "up":
-			$player.play("walk_up")
-		elif d == "left":
-			$player.flip_h = false
-			$player.play("walk_x")
-		elif d == "right":
-			$player.flip_h = true
-			$player.play("walk_x")
+		$player.play("walk_"+d)
 	else:
 		var d = get_animation_direction(last_direction)
-		
-		if d == "down":
-			$player.play("down_resting")
-		elif d == "up":
-			$player.play("up_resting")
-		elif d == "left":
-			$player.flip_h = false
-			$player.play("x_resting")
-		elif d == "right":
-			$player.flip_h = true
-			$player.play("x_resting")
+		$player.play(d+"_resting")
 
 func _process(delta):
 	var direction: Vector2
@@ -135,23 +111,14 @@ func _on_Area2D_body_entered(body):
 		for i in range(position.y,105):
 			position.y = i
 			yield(VisualServer, 'frame_pre_draw')
-			
-		var fade_amount=0
-		for i in range(0,10):
-			fade_amount+=0.1
-			fade.modulate.a = fade_amount
-			yield(VisualServer, 'frame_pre_draw')
-		fade.modulate.a = 1
 		
-		#Global.change_scene("res://Scenes/bottom of home.tscn", Vector2(49,72), player)
+		yield(fade_out(), "completed")
 		get_tree().change_scene("res://Scenes/bottom of home.tscn")
 		
 		$player.play("down_resting")
 		
 		Global.scene = "downstairs"
 		yield(VisualServer, 'frame_pre_draw')
-		#global_position = Vector2(49, 72)
-		#set_position(Vector2(49, 72))
 		input_allowed = true
 
 	elif (Global.scene == "downstairs" or Global.scene == "downstairs (from outside)") and (body == player):
@@ -162,46 +129,26 @@ func _on_Area2D_body_entered(body):
 			position.y = i
 			yield(VisualServer, 'frame_pre_draw')
 			
-		var fade_amount=0
-		for i in range(0,10):
-			fade_amount+=0.1
-			fade.modulate.a = fade_amount
-			yield(VisualServer, 'frame_pre_draw')
-		fade.modulate.a = 1
-		#Global.change_scene("res://Scenes/Upstairs of house.tscn", Vector2(48,38), player)
+		yield(fade_out(), "completed")
 		get_tree().change_scene("res://Scenes/Upstairs of house.tscn")
 		$player.play("up_resting")
 		
 		Global.scene = "upstairs"
 		yield(VisualServer, 'frame_pre_draw')
 		
-		#set_position(Vector2(48, 38))
 		input_allowed = true
 		
-
 
 func _on_Exit_Door_body_entered(body):
 	if body == player:
 		input_allowed = false
 		Global.scene = "Level 1"
-		var fade_amount=0
-		for i in range(0,10):
-			fade_amount+=0.1
-			fade.modulate.a = fade_amount
-			yield(VisualServer, 'frame_pre_draw')
-		fade.modulate.a = 1
+		yield(fade_out(), "completed")
 		get_tree().change_scene("res://Scenes/Outside.tscn")
 	
-
-
 func _on_Enter_House_body_entered(body):
 	if body == player:
 		input_allowed = false
 		Global.scene = "downstairs (from outside)"
-		var fade_amount=0
-		for i in range(0,10):
-			fade_amount+=0.1
-			fade.modulate.a = fade_amount
-			yield(VisualServer, 'frame_pre_draw')
-		fade.modulate.a = 1
+		yield(fade_out(), "completed")
 		get_tree().change_scene("res://Scenes/bottom of home.tscn")
