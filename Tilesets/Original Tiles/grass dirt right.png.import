@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grass dirt top.png-86838ec1c4367b38950f3b3c5d196664.stex"
+path="res://.import/grass dirt right.png-2f2dcc72ec434007e9a61ca72444dc95.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TileArt/grass dirt top.png"
-dest_files=[ "res://.import/grass dirt top.png-86838ec1c4367b38950f3b3c5d196664.stex" ]
+source_file="res://Tilesets/Original Tiles/grass dirt right.png"
+dest_files=[ "res://.import/grass dirt right.png-2f2dcc72ec434007e9a61ca72444dc95.stex" ]
 
 [params]
 

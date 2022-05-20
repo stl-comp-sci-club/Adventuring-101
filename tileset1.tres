@@ -7,6 +7,7 @@
 [ext_resource path="res://TemporaryTileset/Player Base.png" type="Texture" id=5]
 [ext_resource path="res://TemporaryTileset/upward stairs.png" type="Texture" id=6]
 [ext_resource path="res://TemporaryTileset/door beams.png" type="Texture" id=7]
+[ext_resource path="res://TemporaryTileset/Placeholder_door.png" type="Texture" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=38]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -33,9 +34,6 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=8]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
-
-[sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=10]
@@ -1052,16 +1050,9 @@ segments = PoolVector2Array( 32, 32, 32, 0, 32, 0, 32, 32, 32, 32, 32, 0, 32, 0,
 62/navigation_offset = Vector2( 0, 0 )
 62/shape_offset = Vector2( 0, 0 )
 62/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-62/shape = SubResource( 9 )
 62/shape_one_way = false
-62/shape_one_way_margin = 1.0
-62/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 9 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
+62/shape_one_way_margin = 0.0
+62/shapes = [  ]
 62/z_index = 0
 63/name = "interiors.png 63"
 63/texture = ExtResource( 2 )
@@ -1902,3 +1893,17 @@ segments = PoolVector2Array( 32, 32, 32, 0, 32, 0, 32, 32, 32, 32, 32, 0, 32, 0,
 106/shape_one_way_margin = 0.0
 106/shapes = [  ]
 106/z_index = 0
+107/name = "Placeholder_door.png 107"
+107/texture = ExtResource( 8 )
+107/tex_offset = Vector2( 0, 0 )
+107/modulate = Color( 1, 1, 1, 1 )
+107/region = Rect2( 0, 0, 32, 32 )
+107/tile_mode = 0
+107/occluder_offset = Vector2( 0, 0 )
+107/navigation_offset = Vector2( 0, 0 )
+107/shape_offset = Vector2( 0, 0 )
+107/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+107/shape_one_way = false
+107/shape_one_way_margin = 0.0
+107/shapes = [  ]
+107/z_index = 0

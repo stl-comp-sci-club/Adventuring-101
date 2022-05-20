@@ -1,121 +1,156 @@
 extends KinematicBody2D
 
+onready var fade = get_node("/root/World/Player/Node2D/Fade")
 onready var player : KinematicBody2D = get_node("/root/World/Player")
 
-export (int) var speed = 150
+export (int) var speed = 30
 
 var velocity = Vector2.ZERO
+var last_direction = Vector2(0,1)
 
 var last_input
 var pressing = false
 var input_allowed = true
 
+signal fade_in_finished
+signal fade_out_finished
+
+func fade_out():
+	var fade_amount=0
+	for i in range(0,10):
+		fade_amount+=0.1
+		fade.modulate.a = fade_amount
+		yield(VisualServer, 'frame_pre_draw')
+	fade.modulate.a = 1
+	emit_signal("fade_in_finished")
+	
+func fade_in():
+	var fade_amount=1
+	for i in range(0,10):
+		fade_amount-=0.1
+		fade.modulate.a = fade_amount
+		yield(VisualServer, 'frame_pre_draw')
+	fade.modulate.a = 0
+	emit_signal("fade_out_finished")
+
+func _ready():
+	print(Global.scene)
+	input_allowed = true
+	if Global.scene == "upstairs":
+		position = Vector2(48, 34)
+		last_direction = Vector2(0,-1)
+		yield(fade_in(), "completed")
+	elif Global.scene == "downstairs":
+		position = Vector2(47, 53)
+		last_direction = Vector2(0,1)
+		yield(fade_in(), "completed")
+	elif Global.scene == "downstairs (from outside)":
+		position = Vector2(176, 194)
+		last_direction = Vector2(0,-1)
+		yield(fade_in(), "completed")
+	elif Global.scene == "Level 1":
+		position = Vector2(144, -23)
+		last_direction = Vector2(0,1)
+		yield(fade_in(), "completed")
+
+func get_animation_direction(direction: Vector2):
+	var norm_direction = direction.normalized()
+	if norm_direction.y >= 0.707:
+		return "down"
+	elif norm_direction.y <= -0.707:
+		return "up"
+	elif norm_direction.x <= -0.707:
+		return "left"
+	elif norm_direction.x >= 0.707:
+		return "right"
+	return "down"
+
+func animate(direction: Vector2):
+	if direction != Vector2.ZERO:
+		last_direction = direction
+		var d = get_animation_direction(last_direction)
+		$player.play("walk_"+d)
+	else:
+		var d = get_animation_direction(last_direction)
+		$player.play(d+"_resting")
+
 func _process(delta):
+	var direction: Vector2
+	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	if input_allowed:
 		if Input.is_action_pressed("ui_right"):
 			velocity.x += speed
-			$player.flip_h = true
-			$player.play("walk_x")
-			last_input = "right"
 		if Input.is_action_pressed("ui_left"):
 			velocity.x -= speed
-			$player.flip_h = false		
-			$player.play("walk_x")
-			last_input = "left"
 		if Input.is_action_pressed("ui_down"):
 			velocity.y += speed
-			$player.play("walk_down")
-			last_input = "down"
 		if Input.is_action_pressed("ui_up"):
 			velocity.y -= speed
-			$player.play("walk_up")
-			last_input = "up"
-	
-		if not Input.is_action_pressed("ui_right") and not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_down") and not Input.is_action_pressed("ui_up"):
-			if last_input == "down":
-				$player.play("down_resting")
-			if last_input == "up":
-				$player.play("up_resting")
-			if last_input == "right":
-				$player.flip_h = true
-				$player.play("x_resting")
-			if last_input == "left":
-				$player.flip_h = false	
-				$player.play("x_resting")
 			
+		if (Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_left")) or (Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_right")) or (Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_left")) or (Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_right")):
+			speed = 21
+		else:
+			speed = 30
+
+		animate(direction)
 		
 		
 	if velocity.length() > 0:
 		velocity *= 0.8
 		
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		velocity *= -0.1
-		#velocity = velocity.bounce(collision.normal)
-
-
-# func _on_Area2D_switch_downstairs():
-# 	#position = Vector2(48, 31)
-# 	input_allowed = false
-# 	$player.play("walk_down")
-# 	for i in range(position.y,105):
-# 		position.y = i
-# 		yield(VisualServer, 'frame_pre_draw')
-# 	$player.play("down_resting")
-# 	get_tree().change_scene("res://Scenes/bottom of home.tscn")
-	
-# 	input_allowed = true
-
-
-# func _on_Area2D_switch_upstairs():
-# 	input_allowed = false
-# 	$player.play("walk_up")
-# 	for i in range(position.y, -5, -1):
-# 		position.y = i
-# 		yield(VisualServer, 'frame_pre_draw')
-# 	$player.play("up_resting")
-# 	get_tree().change_scene("res://Scenes/X1.tscn")
-	
-# 	input_allowed = true
-
-
-
-func switch_scene(s):
-	print("switching from " + GlobalVars.scene + " to: " + s) 
-	GlobalVars.scene = s
-	
+	move_and_slide(velocity)
 
 
 func _on_Area2D_body_entered(body):
-	if (GlobalVars.scene == "upstairs") and (body == player):
-		print("going down")
+	if (Global.scene == "upstairs" or Global.scene == "") and (body == player):
 		input_allowed = false
+		
 		$player.play("walk_down")
 		last_input = "down"
 		for i in range(position.y,105):
 			position.y = i
 			yield(VisualServer, 'frame_pre_draw')
-		$player.play("down_resting")
+		
+		yield(fade_out(), "completed")
 		get_tree().change_scene("res://Scenes/bottom of home.tscn")
 		
-		switch_scene("downstairs")
+		$player.play("down_resting")
+		
+		Global.scene = "downstairs"
 		yield(VisualServer, 'frame_pre_draw')
-		set_position(Vector2(49, 72))
 		input_allowed = true
 
-	elif (GlobalVars.scene == "downstairs") and (body == player):
-		print("going up")
+	elif (Global.scene == "downstairs" or Global.scene == "downstairs (from outside)") and (body == player):
 		input_allowed = false
 		$player.play("walk_up")
 		last_input = "up"
 		for i in range(position.y, -5, -1):
 			position.y = i
 			yield(VisualServer, 'frame_pre_draw')
+			
+		yield(fade_out(), "completed")
+		get_tree().change_scene("res://Scenes/Upstairs of house.tscn")
 		$player.play("up_resting")
-		get_tree().change_scene("res://Scenes/X1.tscn")
-
-		switch_scene("upstairs")
+		
+		Global.scene = "upstairs"
 		yield(VisualServer, 'frame_pre_draw')
-		set_position(Vector2(48, 38))
+		
 		input_allowed = true
 		
+
+func _on_Exit_Door_body_entered(body):
+	if body == player:
+		input_allowed = false
+		Global.scene = "Level 1"
+		yield(fade_out(), "completed")
+		get_tree().change_scene("res://Scenes/Outside.tscn")
+		input_allowed = true
+	
+func _on_Enter_House_body_entered(body):
+	if body == player:
+		input_allowed = false
+		Global.scene = "downstairs (from outside)"
+		yield(fade_out(), "completed")
+		get_tree().change_scene("res://Scenes/bottom of home.tscn")
+		input_allowed = true

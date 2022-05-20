@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grass corner bot left.png-c71a9d843fc8f6a91927060e2c22cd85.stex"
+path="res://.import/Right_3.png-e11b15a09572389e3a84f16cbfb01d95.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TileArt/grass corner bot left.png"
-dest_files=[ "res://.import/grass corner bot left.png-c71a9d843fc8f6a91927060e2c22cd85.stex" ]
+source_file="res://TemporaryTileset/Animations/Right_3.png"
+dest_files=[ "res://.import/Right_3.png-e11b15a09572389e3a84f16cbfb01d95.stex" ]
 
 [params]
 
