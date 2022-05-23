@@ -52,7 +52,7 @@ func _ready():
 		last_direction = Vector2(0,-1)
 		yield(fade_in(), "completed")
 	elif Global.scene == "Level 1":
-		position = Vector2(65, 32)
+		position = Vector2(140, -20)
 		last_direction = Vector2(0,1)
 		yield(fade_in(), "completed")
 
