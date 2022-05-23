@@ -15,6 +15,9 @@ var input_allowed = true
 signal fade_in_finished
 signal fade_out_finished
 
+signal new_dialogue
+signal clear_dialogue
+
 func fade_out():
 	var fade_amount=0
 	for i in range(0,10):
@@ -49,7 +52,7 @@ func _ready():
 		last_direction = Vector2(0,-1)
 		yield(fade_in(), "completed")
 	elif Global.scene == "Level 1":
-		position = Vector2(144, -23)
+		position = Vector2(65, 32)
 		last_direction = Vector2(0,1)
 		yield(fade_in(), "completed")
 
@@ -144,7 +147,7 @@ func _on_Exit_Door_body_entered(body):
 		input_allowed = false
 		Global.scene = "Level 1"
 		yield(fade_out(), "completed")
-		get_tree().change_scene("res://Scenes/Outside.tscn")
+		get_tree().change_scene("res://Scenes/Level 1.tscn")
 		input_allowed = true
 	
 func _on_Enter_House_body_entered(body):
