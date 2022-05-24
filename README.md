@@ -1,6 +1,6 @@
 # GameDevGameGodot
 
-This is an indie game all about dealing with grief that is called "advennturing 101"
+This is an indie game all about dealing with grief that is called "Adventuring 101"
 It is under development by the members of the Game Development team, which is apart of the Computer Science Club of St. Theresa of Lisieux C.H.S.
 
 Head by Chris Lozinski, the team at the time of writing this consists of the following:
