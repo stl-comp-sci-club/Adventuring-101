@@ -1,3 +1,12 @@
 # GameDevGameGodot
 
-This is an indie game that is under development by members of the Computer Science Club of St. Theresa of Lisieux C.H.S.
+This is an indie game all about dealing with grief that is called "advennturing 101"
+It is under development by the members of the Game Development team, which is apart of the Computer Science Club of St. Theresa of Lisieux C.H.S.
+
+Head by Chris Lozinski, the team at the time of writing this consists of the following:
+
+Programming By: Ryan Yang, Felix Z, Matias R, Jordan F, and Andrea Di Giovanni 
+
+Art by: Jessica Y, Daniel K, Rory S, and Selina O
+
+Story by: Armand Ustun, Celina Ladak and Marco Capuano 
