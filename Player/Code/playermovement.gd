@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 onready var fade = get_node("/root/World/Player/Node2D/Fade")
 onready var player : KinematicBody2D = get_node("/root/World/Player")
-
+onready var dialogue = get_node("/root/World/Dialogue/PopupDialog")
 export (int) var speed = 30
 
 var velocity = Vector2.ZERO
@@ -17,6 +17,11 @@ signal fade_out_finished
 
 signal new_dialogue
 signal clear_dialogue
+
+func new_dialogue(text):
+#	var d = get_node("/root/World/Dialogue/PopupDialog")
+	dialogue.dialogue_set(text)
+	dialogue.open()
 
 func fade_out():
 	var fade_amount=0
@@ -90,6 +95,11 @@ func _process(delta):
 			velocity.y += speed
 		if Input.is_action_pressed("ui_up"):
 			velocity.y -= speed
+#		if Input.is_action_just_pressed("ui_accept"):
+##			var new_dialogue = dialogue.instance()
+#			var d = get_node("/root/World/Dialogue/PopupDialog")
+#			d.dialogue_set("tests")
+#			d.open()
 			
 		if (Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_left")) or (Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_right")) or (Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_left")) or (Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_right")):
 			speed = 21
@@ -157,3 +167,8 @@ func _on_Enter_House_body_entered(body):
 		yield(fade_out(), "completed")
 		get_tree().change_scene("res://Scenes/bottom of home.tscn")
 		input_allowed = true
+
+
+func _on_floppa_body_entered(body):
+	if body == player:
+		new_dialogue("Hi im floppa!")

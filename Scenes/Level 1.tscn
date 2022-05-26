@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Upstairs of house.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Outside.tres" type="TileSet" id=2]
+[ext_resource path="res://temp_floppa.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.75, 21.75 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 332.963, 310 )
 
 [node name="World" instance=ExtResource( 1 )]
 
@@ -59,4 +63,15 @@ position = Vector2( 65, 32 )
 position = Vector2( 75.75, -79.25 )
 shape = SubResource( 1 )
 
+[node name="TempFloppa" type="Sprite" parent="." index="10"]
+position = Vector2( 59, 93 )
+scale = Vector2( 0.0870968, 0.0870968 )
+texture = ExtResource( 3 )
+
+[node name="floppa" type="Area2D" parent="TempFloppa" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempFloppa/floppa" index="0"]
+shape = SubResource( 2 )
+
 [connection signal="body_entered" from="Enter House" to="Player" method="_on_Enter_House_body_entered"]
+[connection signal="body_entered" from="TempFloppa/floppa" to="Player" method="_on_floppa_body_entered"]
