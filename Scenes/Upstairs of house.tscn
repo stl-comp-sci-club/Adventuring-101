@@ -73,6 +73,7 @@ extents = Vector2( 11, 22 )
 extents = Vector2( 13.5, 31 )
 
 [node name="World" type="Node2D"]
+pause_mode = 2
 position = Vector2( -13, -25 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
@@ -169,6 +170,7 @@ shape = SubResource( 5 )
 [node name="Health N Mana" parent="." instance=ExtResource( 18 )]
 
 [node name="Dialogue" parent="." instance=ExtResource( 19 )]
+pause_mode = 2
 
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]

@@ -6,6 +6,8 @@ extends PopupDialog
 # var b = "text"
 
 var dialogue setget dialogue_set
+var npc_name setget name_set
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +18,10 @@ func _ready():
 func dialogue_set(new_value):
 	dialogue = new_value
 	$DialogueBox/Label.text = new_value
+
+func name_set(new_value):
+	npc_name = new_value
+	$Name.text = new_value
 
 func open():
 	get_tree().paused = true

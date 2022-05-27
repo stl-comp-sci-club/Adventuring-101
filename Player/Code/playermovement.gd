@@ -12,16 +12,48 @@ var last_input
 var pressing = false
 var input_allowed = true
 
-signal fade_in_finished
-signal fade_out_finished
 
-signal new_dialogue
+#signal fade_in_finished
+#signal fade_out_finished
+
+#signal new_dialogue
 signal clear_dialogue
 
-func new_dialogue(text):
+func new_dialogue(text, npc_name):
 #	var d = get_node("/root/World/Dialogue/PopupDialog")
+	input_allowed = false
 	dialogue.dialogue_set(text)
+	dialogue.name_set(npc_name)
 	dialogue.open()
+#	get_tree().paused = true
+	
+func continue_dialogue(text, npc_name, order):
+	var counter = 1
+	while true:
+		if Input.is_action_just_pressed("ui_accept"):
+			if order == counter:
+				new_dialogue(text, npc_name)
+				break
+			else:
+				counter+=1
+		yield(VisualServer, 'frame_pre_draw')
+#
+func end_dialogue(text, npc_name, order):
+	var counter = 1
+	while true:
+		if Input.is_action_just_pressed("ui_accept"):
+			if order == counter:
+				new_dialogue(text, npc_name)
+				break
+			else:
+				counter+=1
+		yield(VisualServer, 'frame_pre_draw')
+	yield(VisualServer, 'frame_pre_draw')
+	while true:
+		if Input.is_action_just_pressed("ui_accept"):
+			input_allowed = true
+			break
+		yield(VisualServer, 'frame_pre_draw')
 
 func fade_out():
 	var fade_amount=0
@@ -30,7 +62,7 @@ func fade_out():
 		fade.modulate.a = fade_amount
 		yield(VisualServer, 'frame_pre_draw')
 	fade.modulate.a = 1
-	emit_signal("fade_in_finished")
+#	emit_signal("fade_in_finished")
 	
 func fade_in():
 	var fade_amount=1
@@ -39,7 +71,7 @@ func fade_in():
 		fade.modulate.a = fade_amount
 		yield(VisualServer, 'frame_pre_draw')
 	fade.modulate.a = 0
-	emit_signal("fade_out_finished")
+#	emit_signal("fade_out_finished")
 
 func _ready():
 	print(Global.scene)
@@ -171,4 +203,8 @@ func _on_Enter_House_body_entered(body):
 
 func _on_floppa_body_entered(body):
 	if body == player:
-		new_dialogue("Hi im floppa!")
+		new_dialogue("Hi, im floppa!", "floppa")
+		continue_dialogue("Welcome to Adventuring 101", "floppa",1)
+		continue_dialogue("Your dad gon", "floppa",2)
+		end_dialogue("This dialogue system is pretty cool isn't it?", "floppa", 3)
+		
