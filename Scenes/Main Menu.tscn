@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Main Menu.gd" type="Script" id=1]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="background" type="ColorRect" parent="."]
+margin_left = -9.0
+margin_top = -8.0
+margin_right = 652.0
+margin_bottom = 373.0
+color = Color( 0.0745098, 0.0980392, 0.635294, 1 )
+
+[node name="logo" type="ColorRect" parent="."]
+margin_left = 128.0
+margin_top = 40.0
+margin_right = 510.0
+margin_bottom = 119.0
+
+[node name="start" type="Button" parent="."]
+margin_left = -9.0
+margin_top = -8.0
+margin_right = 649.0
+margin_bottom = 372.0
+text = "click anywhere to play"
+flat = true
+
+[connection signal="button_up" from="start" to="." method="_on_start_button_up"]
