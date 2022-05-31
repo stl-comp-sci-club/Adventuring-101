@@ -24,19 +24,19 @@ func name_set(new_value):
 	$Name.text = new_value
 
 func open():
-	get_tree().paused = true
+#	get_tree().paused = true
 	popup()
 	$DialogueBox/Label/AnimationPlayer.playback_speed = 60.0/dialogue.length()
 	$DialogueBox/Label/AnimationPlayer.play("Typewriter")
 	
 func close():
-	get_tree().paused = false
+#	get_tree().paused = false
 	hide()
 	
-func _input(event):
-	if event is InputEventKey:
-		if event.pressed and event.scancode == KEY_SPACE:		
-			close()
+#func _input(event):
+#	if event is InputEventKey:
+#		if event.pressed and event.scancode == KEY_SPACE:
+#			close()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

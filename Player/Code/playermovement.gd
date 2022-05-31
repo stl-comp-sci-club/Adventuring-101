@@ -20,7 +20,8 @@ var input_allowed = true
 signal clear_dialogue
 
 func new_dialogue(text, npc_name):
-#	var d = get_node("/root/World/Dialogue/PopupDialog")
+	var d = get_animation_direction(last_direction)
+	$player.play(d+"_resting")	
 	input_allowed = false
 	dialogue.dialogue_set(text)
 	dialogue.name_set(npc_name)
@@ -52,6 +53,7 @@ func end_dialogue(text, npc_name, order):
 	while true:
 		if Input.is_action_just_pressed("ui_accept"):
 			input_allowed = true
+			dialogue.close()
 			break
 		yield(VisualServer, 'frame_pre_draw')
 
