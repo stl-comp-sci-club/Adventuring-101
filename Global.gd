@@ -1,5 +1,5 @@
 extends Node
-
+var quest = []
 var scene = ""
 
 # Declare member variables here. Examples:
