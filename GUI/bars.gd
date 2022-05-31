@@ -2,8 +2,8 @@ extends ColorRect
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	print("Am ready")
+#func _ready():
+#	print("Am ready")
 	
 
 func _on_Player_player_stats_changed(var player):

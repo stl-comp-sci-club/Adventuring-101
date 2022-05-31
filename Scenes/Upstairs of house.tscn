@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player/Code/playermovement.gd" type="Script" id=1]
 [ext_resource path="res://TemporaryTileset/Animations/Left_1.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://TemporaryTileset/Animations/Right_2.png" type="Texture" id=17]
 [ext_resource path="res://HealthandMana.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Dialogue.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Pause Menu.tscn" type="PackedScene" id=20]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -171,6 +172,8 @@ shape = SubResource( 5 )
 
 [node name="Dialogue" parent="." instance=ExtResource( 19 )]
 pause_mode = 2
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 20 )]
 
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
