@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 onready var fade = get_node("/root/World/Player/Node2D/Fade")
 onready var player : KinematicBody2D = get_node("/root/World/Player")
-
+onready var dialogue = get_node("/root/World/Dialogue/PopupDialog")
 export (int) var speed = 30
 
 var velocity = Vector2.ZERO
@@ -12,8 +12,50 @@ var last_input
 var pressing = false
 var input_allowed = true
 
-signal fade_in_finished
-signal fade_out_finished
+
+#signal fade_in_finished
+#signal fade_out_finished
+
+#signal new_dialogue
+signal clear_dialogue
+
+func new_dialogue(text, npc_name):
+	var d = get_animation_direction(last_direction)
+	$player.play(d+"_resting")	
+	input_allowed = false
+	dialogue.dialogue_set(text)
+	dialogue.name_set(npc_name)
+	dialogue.open()
+#	get_tree().paused = true
+	
+func continue_dialogue(text, npc_name, order):
+	var counter = 1
+	while true:
+		if Input.is_action_just_pressed("ui_accept"):
+			if order == counter:
+				new_dialogue(text, npc_name)
+				break
+			else:
+				counter+=1
+		yield(VisualServer, 'frame_pre_draw')
+#
+func end_dialogue(text, npc_name, order):
+	var counter = 1
+	while true:
+		if Input.is_action_just_pressed("ui_accept"):
+			if order == counter:
+				new_dialogue(text, npc_name)
+				break
+			else:
+				counter+=1
+		yield(VisualServer, 'frame_pre_draw')
+	yield(VisualServer, 'frame_pre_draw')
+	while true:
+		if Input.is_action_just_pressed("ui_accept"):
+			input_allowed = true
+			dialogue.close()
+			break
+		yield(VisualServer, 'frame_pre_draw')
 
 func fade_out():
 	var fade_amount=0
@@ -22,7 +64,7 @@ func fade_out():
 		fade.modulate.a = fade_amount
 		yield(VisualServer, 'frame_pre_draw')
 	fade.modulate.a = 1
-	emit_signal("fade_in_finished")
+#	emit_signal("fade_in_finished")
 	
 func fade_in():
 	var fade_amount=1
@@ -31,7 +73,7 @@ func fade_in():
 		fade.modulate.a = fade_amount
 		yield(VisualServer, 'frame_pre_draw')
 	fade.modulate.a = 0
-	emit_signal("fade_out_finished")
+#	emit_signal("fade_out_finished")
 
 func _ready():
 	print(Global.scene)
@@ -49,7 +91,7 @@ func _ready():
 		last_direction = Vector2(0,-1)
 		yield(fade_in(), "completed")
 	elif Global.scene == "Level 1":
-		position = Vector2(144, -23)
+		position = Vector2(140, -20)
 		last_direction = Vector2(0,1)
 		yield(fade_in(), "completed")
 
@@ -87,6 +129,11 @@ func _process(delta):
 			velocity.y += speed
 		if Input.is_action_pressed("ui_up"):
 			velocity.y -= speed
+#		if Input.is_action_just_pressed("ui_accept"):
+##			var new_dialogue = dialogue.instance()
+#			var d = get_node("/root/World/Dialogue/PopupDialog")
+#			d.dialogue_set("tests")
+#			d.open()
 			
 		if (Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_left")) or (Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_right")) or (Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_left")) or (Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_right")):
 			speed = 21
@@ -144,7 +191,7 @@ func _on_Exit_Door_body_entered(body):
 		input_allowed = false
 		Global.scene = "Level 1"
 		yield(fade_out(), "completed")
-		get_tree().change_scene("res://Scenes/Outside.tscn")
+		get_tree().change_scene("res://Scenes/Level 1.tscn")
 		input_allowed = true
 	
 func _on_Enter_House_body_entered(body):
@@ -154,3 +201,12 @@ func _on_Enter_House_body_entered(body):
 		yield(fade_out(), "completed")
 		get_tree().change_scene("res://Scenes/bottom of home.tscn")
 		input_allowed = true
+
+
+func _on_floppa_body_entered(body):
+	if body == player:
+		new_dialogue("Hi, im floppa!", "floppa")
+		continue_dialogue("Welcome to Adventuring 101", "floppa",1)
+		continue_dialogue("Your dad gon", "floppa",2)
+		end_dialogue("This dialogue system is pretty cool isn't it?", "floppa", 3)
+		
