@@ -8,15 +8,7 @@ export (int) var speed = 30
 var velocity = Vector2.ZERO
 var last_direction = Vector2(0,1)
 
-var pressing = false
 var input_allowed = true
-
-
-#signal fade_in_finished
-#signal fade_out_finished
-
-#signal new_dialogue
-signal clear_dialogue
 
 func new_dialogue(text, npc_name):
 	var d = get_animation_direction(last_direction)
@@ -25,8 +17,7 @@ func new_dialogue(text, npc_name):
 	dialogue.dialogue_set(text)
 	dialogue.name_set(npc_name)
 	dialogue.open()
-#	get_tree().paused = true
-	
+
 func continue_dialogue(text, npc_name, order):
 	var counter = 1
 	while true:
@@ -72,7 +63,6 @@ func fade_in():
 		fade.modulate.a = fade_amount
 		yield(VisualServer, 'frame_pre_draw')
 	fade.modulate.a = 0
-#	emit_signal("fade_out_finished")
 
 func _ready():
 	print(Global.scene)
@@ -128,20 +118,12 @@ func _process(delta):
 			velocity.y += speed
 		if Input.is_action_pressed("ui_up"):
 			velocity.y -= speed
-#		if Input.is_action_just_pressed("ui_accept"):
-##			var new_dialogue = dialogue.instance()
-#			var d = get_node("/root/World/Dialogue/PopupDialog")
-#			d.dialogue_set("tests")
-#			d.open()
 			
 		if (Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_left")) or (Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_right")) or (Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_left")) or (Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_right")):
 			speed = 21
 		else:
 			speed = 30
-
 		animate(direction)
-		
-		
 	if velocity.length() > 0:
 		velocity *= 0.8
 		

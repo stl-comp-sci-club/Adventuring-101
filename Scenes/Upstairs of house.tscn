@@ -17,7 +17,7 @@
 [ext_resource path="res://TemporaryTileset/Animations/Right_rest.png" type="Texture" id=15]
 [ext_resource path="res://TemporaryTileset/Animations/Right_3.png" type="Texture" id=16]
 [ext_resource path="res://TemporaryTileset/Animations/Right_2.png" type="Texture" id=17]
-[ext_resource path="res://HealthandMana.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/HealthandMana.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Dialogue.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Pause Menu.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scenes/stairs.gd" type="Script" id=21]

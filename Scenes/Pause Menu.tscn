@@ -1,16 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Pause_menu.gd" type="Script" id=1]
 [ext_resource path="res://font/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://button_pressed.png" type="Texture" id=3]
 [ext_resource path="res://button.png" type="Texture" id=4]
-
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://font/PlaymegamesReguler-2OOee.ttf"
-
-[sub_resource type="DynamicFont" id=2]
-size = 32
-font_data = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 24
@@ -42,38 +35,6 @@ script = ExtResource( 1 )
 margin_right = 640.0
 margin_bottom = 360.0
 color = Color( 0, 0, 0, 0.282353 )
-
-[node name="Resume" type="ColorRect" parent="Popup"]
-visible = false
-margin_left = 214.0
-margin_top = 128.0
-margin_right = 422.0
-margin_bottom = 168.0
-color = Color( 0.870588, 0.662745, 0.219608, 1 )
-
-[node name="Label" type="Label" parent="Popup/Resume"]
-margin_left = 55.0
-margin_top = 7.0
-margin_right = 156.0
-margin_bottom = 35.0
-custom_fonts/font = SubResource( 2 )
-text = "Resume"
-
-[node name="Exit" type="ColorRect" parent="Popup"]
-visible = false
-margin_left = 214.0
-margin_top = 192.0
-margin_right = 422.0
-margin_bottom = 232.0
-color = Color( 0.870588, 0.662745, 0.219608, 1 )
-
-[node name="Label" type="Label" parent="Popup/Exit"]
-margin_left = 78.0
-margin_top = 8.0
-margin_right = 179.0
-margin_bottom = 36.0
-custom_fonts/font = SubResource( 2 )
-text = "Exit"
 
 [node name="Resume2" type="Button" parent="Popup"]
 margin_left = 208.0
