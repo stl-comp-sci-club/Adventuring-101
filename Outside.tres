@@ -1,7 +1,17 @@
-[gd_resource type="TileSet" load_steps=3 format=2]
+[gd_resource type="TileSet" load_steps=7 format=2]
 
 [ext_resource path="res://TemporaryTileset/ground.png" type="Texture" id=1]
 [ext_resource path="res://TemporaryTileset/Placeholder_door.png" type="Texture" id=2]
+[ext_resource path="res://Tilesets/16x16  gfx tileset/Overworld.png" type="Texture" id=3]
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 74.124, 19.0245, 74.9612, 51.677, 71.0317, 52.6929, 69.8261, 76.8055, 52.9137, 73.4454, 52.3556, 49.4444, 25.0056, 49.7235, 24.7265, 74.0036, 6.32947, 76.0018, 5.92758, 51.4872, 2.71255, 51.8891, 3.5163, 20.1408, 38.4797, 2.0563 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 29.0901, 0.327484, 36.3802, 2.79492, 43.5583, 7.61766, 47.5959, 14.4592, 47.708, 28.9274, 43.3339, 36.6662, 36.3802, 42.1619, 28.9779, 44.5172, 19.5567, 44.5172, 10.5842, 41.489, 3.06973, 35.3203, 0, 29.7125, 0.0415039, 15.3565, 3.0697, 9.30002, 7.66815, 4.47728, 14.3975, 1.5612, 20.454, 0.215332 )
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 3.72905, 24.048, 71.825, 24.327, 69.5923, 75.1199, 6.51985, 76.2362 )
 
 [resource]
 0/name = "ground.png 0"
@@ -39,3 +49,66 @@
 1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
+2/name = "Overworld.png 2"
+2/texture = ExtResource( 3 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 97, 0, 79, 78 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 2 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "Overworld.png 3"
+3/texture = ExtResource( 3 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 352, 144, 48, 45 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 3 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "Overworld.png 4"
+4/texture = ExtResource( 3 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 178, 0, 75, 78 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape = SubResource( 1 )
+4/shape_one_way = false
+4/shape_one_way_margin = 1.0
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0

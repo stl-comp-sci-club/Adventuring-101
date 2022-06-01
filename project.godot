@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot-game"
-run/main_scene="res://Scenes/Upstairs of house.tscn"
+run/main_scene="res://Scenes/Main Menu.tscn"
 
 [autoload]
 
