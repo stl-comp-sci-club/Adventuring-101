@@ -17,7 +17,6 @@ func _ready():
 
 
 func _on_start_button_up():
-	print("pressed")
 	get_tree().change_scene("res://Scenes/Upstairs of house.tscn")
 
 

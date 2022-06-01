@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Upstairs of house.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset1.tres" type="TileSet" id=2]
+[ext_resource path="res://Scenes/House Exit Door.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 17 )
@@ -20,10 +21,11 @@ tile_data = PoolIntArray( 393217, 79, 0, 393218, 79, 0, 393219, 79, 0, 393220, 1
 [node name="TileMap2" parent="." index="4"]
 tile_data = PoolIntArray( -65535, 97, 0, -65534, 89, 0, -65533, 91, 0, -65532, 90, 0, -65529, 93, 0, -65528, 93, 0, 1, 98, 0, 6, 101, 0, 65537, 99, 0, 131073, 100, 0, 393217, 79, 0, 393218, 79, 0, 393219, 79, 0, 393223, 79, 0, 393224, 79, 0 )
 
-[node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2( -113, -70.5 )
+[node name="CollisionShape2D" parent="Stairs" index="0"]
+position = Vector2( -112, -70 )
 
 [node name="Exit Door" type="Area2D" parent="." index="6"]
+script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit Door" index="0"]
 position = Vector2( 176, 239 )
@@ -47,3 +49,4 @@ margin_right = 348.0
 margin_bottom = -121.0
 
 [connection signal="body_entered" from="Exit Door" to="Player" method="_on_Exit_Door_body_entered"]
+[connection signal="body_entered" from="Exit Door" to="Exit Door" method="_on_Exit_Door_body_entered"]

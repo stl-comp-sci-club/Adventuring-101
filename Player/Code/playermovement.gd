@@ -8,7 +8,6 @@ export (int) var speed = 30
 var velocity = Vector2.ZERO
 var last_direction = Vector2(0,1)
 
-var last_input
 var pressing = false
 var input_allowed = true
 
@@ -147,66 +146,3 @@ func _process(delta):
 		velocity *= 0.8
 		
 	move_and_slide(velocity)
-
-
-func _on_Area2D_body_entered(body):
-	if (Global.scene == "upstairs" or Global.scene == "") and (body == player):
-		input_allowed = false
-		
-		$player.play("walk_down")
-		last_input = "down"
-		for i in range(position.y,105):
-			position.y = i
-			yield(VisualServer, 'frame_pre_draw')
-		
-		yield(fade_out(), "completed")
-		get_tree().change_scene("res://Scenes/bottom of home.tscn")
-		
-		$player.play("down_resting")
-		
-		Global.scene = "downstairs"
-		yield(VisualServer, 'frame_pre_draw')
-		input_allowed = true
-
-	elif (Global.scene == "downstairs" or Global.scene == "downstairs (from outside)") and (body == player):
-		input_allowed = false
-		$player.play("walk_up")
-		last_input = "up"
-		for i in range(position.y, -5, -1):
-			position.y = i
-			yield(VisualServer, 'frame_pre_draw')
-			
-		yield(fade_out(), "completed")
-		get_tree().change_scene("res://Scenes/Upstairs of house.tscn")
-		$player.play("up_resting")
-		
-		Global.scene = "upstairs"
-		yield(VisualServer, 'frame_pre_draw')
-		
-		input_allowed = true
-		
-
-func _on_Exit_Door_body_entered(body):
-	if body == player:
-		input_allowed = false
-		Global.scene = "Level 1"
-		yield(fade_out(), "completed")
-		get_tree().change_scene("res://Scenes/Level 1.tscn")
-		input_allowed = true
-	
-func _on_Enter_House_body_entered(body):
-	if body == player:
-		input_allowed = false
-		Global.scene = "downstairs (from outside)"
-		yield(fade_out(), "completed")
-		get_tree().change_scene("res://Scenes/bottom of home.tscn")
-		input_allowed = true
-
-
-func _on_floppa_body_entered(body):
-	if body == player:
-		new_dialogue("Hi, im floppa!", "floppa")
-		continue_dialogue("Welcome to Adventuring 101", "floppa",1)
-		continue_dialogue("Your dad gon", "floppa",2)
-		end_dialogue("This dialogue system is pretty cool isn't it?", "floppa", 3)
-		
