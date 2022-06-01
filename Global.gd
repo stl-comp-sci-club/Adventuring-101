@@ -2,6 +2,8 @@ extends Node
 
 var scene = ""
 
+var paused = false
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

@@ -8,7 +8,6 @@ export (int) var speed = 30
 var velocity = Vector2.ZERO
 var last_direction = Vector2(0,1)
 
-var last_input
 var pressing = false
 var input_allowed = true
 
@@ -100,6 +99,7 @@ func _process(delta):
 		velocity *= 0.8
 		
 	move_and_slide(velocity)
+<<<<<<< Updated upstream
 
 
 func _on_Area2D_body_entered(body):
@@ -154,3 +154,5 @@ func _on_Enter_House_body_entered(body):
 		yield(fade_out(), "completed")
 		get_tree().change_scene("res://Scenes/bottom of home.tscn")
 		input_allowed = true
+=======
+>>>>>>> Stashed changes

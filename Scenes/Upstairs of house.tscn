@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=23 format=2]
+=======
+[gd_scene load_steps=26 format=2]
+>>>>>>> Stashed changes
 
 [ext_resource path="res://Player/Code/playermovement.gd" type="Script" id=1]
 [ext_resource path="res://TemporaryTileset/Animations/Left_1.png" type="Texture" id=2]
@@ -18,10 +22,17 @@
 [ext_resource path="res://TemporaryTileset/Animations/Right_3.png" type="Texture" id=16]
 [ext_resource path="res://TemporaryTileset/Animations/Right_2.png" type="Texture" id=17]
 [ext_resource path="res://HealthandMana.tscn" type="PackedScene" id=18]
+<<<<<<< Updated upstream
+=======
+[ext_resource path="res://Dialogue.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Pause Menu.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/stairs.gd" type="Script" id=21]
+>>>>>>> Stashed changes
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 7 ) ],
+<<<<<<< Updated upstream
 "loop": true,
 "name": "left_resting",
 "speed": 5.0
@@ -32,6 +43,8 @@ animations = [ {
 "speed": 7.0
 }, {
 "frames": [ ExtResource( 15 ) ],
+=======
+>>>>>>> Stashed changes
 "loop": true,
 "name": "right_resting",
 "speed": 5.0
@@ -58,8 +71,23 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 17 ), ExtResource( 13 ), ExtResource( 16 ) ],
 "loop": true,
+<<<<<<< Updated upstream
 "name": "walk_right",
 "speed": 10.0
+=======
+"name": "down_resting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 7.0
+>>>>>>> Stashed changes
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -158,14 +186,26 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Stairs" type="Area2D" parent="."]
+process_priority = 1
 position = Vector2( 160, 84 )
+priority = 1.0
+script = ExtResource( 21 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs"]
 position = Vector2( -112.5, 13 )
 shape = SubResource( 5 )
 
 [node name="Health N Mana" parent="." instance=ExtResource( 18 )]
 
+<<<<<<< Updated upstream
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+=======
+[node name="Dialogue" parent="." instance=ExtResource( 19 )]
+pause_mode = 2
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 20 )]
+
+[connection signal="body_entered" from="Stairs" to="Stairs" method="_on_stairs_collide"]
+>>>>>>> Stashed changes
