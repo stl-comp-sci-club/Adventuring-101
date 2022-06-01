@@ -39,14 +39,5 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
 tile_data = PoolIntArray( 393221, 107, 0, 458757, 107, 0 )
 
-[node name="Pause Menu" parent="." index="10"]
-layer = 4
-
-[node name="Pause" parent="Pause Menu" index="0"]
-margin_left = 322.0
-margin_top = -147.0
-margin_right = 348.0
-margin_bottom = -121.0
-
 [connection signal="body_entered" from="Exit Door" to="Player" method="_on_Exit_Door_body_entered"]
 [connection signal="body_entered" from="Exit Door" to="Exit Door" method="_on_Exit_Door_body_entered"]
