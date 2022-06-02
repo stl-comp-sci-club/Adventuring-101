@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Player/Code/playermovement.gd" type="Script" id=1]
 [ext_resource path="res://TemporaryTileset/Animations/Left_1.png" type="Texture" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://Scenes/stairs.gd" type="Script" id=21]
 [ext_resource path="res://Scenes/Bed.gd" type="Script" id=22]
 [ext_resource path="res://Interact Menu.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Scenes/quest.tscn" type="PackedScene" id=24]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -68,7 +69,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 12, 13.5 )
+extents = Vector2( 12, 11.5 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 11, 22 )
@@ -77,7 +78,7 @@ extents = Vector2( 11, 22 )
 extents = Vector2( 13.5, 31 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 32.5, 36.5 )
+extents = Vector2( 34.5, 37 )
 
 [node name="World" type="Node2D"]
 pause_mode = 2
@@ -109,7 +110,7 @@ drag_margin_right = 0.6
 drag_margin_bottom = 0.45
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( 0, 9.5 )
+position = Vector2( 0, 11.5 )
 shape = SubResource( 3 )
 
 [node name="Node2D" type="Node2D" parent="Player"]
@@ -188,10 +189,12 @@ pause_mode = 2
 script = ExtResource( 22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bed"]
-position = Vector2( 255.5, 24.5 )
+position = Vector2( 253.5, 25 )
 shape = SubResource( 6 )
 
 [node name="Interact_Menu" parent="Bed" instance=ExtResource( 23 )]
+
+[node name="Quests" parent="." instance=ExtResource( 24 )]
 
 [connection signal="body_entered" from="Stairs" to="Stairs" method="_on_stairs_collide"]
 [connection signal="body_entered" from="Bed" to="Bed" method="_on_Bed_body_entered"]

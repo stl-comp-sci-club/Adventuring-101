@@ -1,7 +1,8 @@
 extends Area2D
 onready var player : KinematicBody2D = get_node("/root/World/Player")
 onready var dialogue = get_node("/root/World/Dialogue/PopupDialog")
-onready var health = get_node("/root/World/Health N Mana/Popup")
+onready var health = get_node("/root/World/Health N Mana/Bars")
+onready var quest = get_node("/root/World/Quests/Quest_button")
 
 
 var inside_interact_area = false
@@ -13,7 +14,8 @@ var inside_interact_area = false
 func _input(event):
 	if inside_interact_area and Input.is_action_just_pressed("Interact") and not Global.in_dialogue:
 		player.fade_out()
-		health.close()
+		health.modulate.a = 0
+		quest.modulate.a = 0
 		dialogue.dialogue_set("You take a nice long nap...")
 		dialogue.name_set("")
 		dialogue.open()
@@ -25,9 +27,12 @@ func _input(event):
 				if not Global.paused:
 					player.input_allowed = true
 					player.fade_in()
+					health.modulate.a = 1
+					quest.modulate.a = 1
+					Global.in_dialogue = false
 			yield(VisualServer, 'frame_pre_draw')
-		Global.in_dialogue = false
-		health.open()
+		
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

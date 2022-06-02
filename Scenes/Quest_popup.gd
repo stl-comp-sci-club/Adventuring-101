@@ -8,14 +8,24 @@ extends Popup
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	popup()
+	pass # Replace with function body.
 
 func open():
 	popup()
-
+	
 func close():
 	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func _input(event):
+	if visible and Input.is_action_just_pressed("Interact"):
+		close()
+
+
+func _on_Quest_button_button_up():
+	open()
+	
+
