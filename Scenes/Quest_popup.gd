@@ -11,6 +11,8 @@ func _ready():
 	pass # Replace with function body.
 
 func open():
+	get_node("./ColorRect/main quests/main quest list").text = PoolStringArray(Global.main_quests).join("\n")
+	get_node("./ColorRect/side quests/side quest list").text = PoolStringArray(Global.side_quests).join("\n")
 	popup()
 	
 func close():
