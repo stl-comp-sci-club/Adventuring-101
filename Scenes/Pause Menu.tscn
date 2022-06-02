@@ -41,6 +41,7 @@ pause_mode = 2
 pause_mode = 2
 margin_right = 640.0
 margin_bottom = 360.0
+mouse_filter = 1
 popup_exclusive = true
 script = ExtResource( 1 )
 
@@ -85,6 +86,7 @@ margin_right = 648.0
 margin_bottom = 40.0
 rect_scale = Vector2( 0.5, 0.5 )
 focus_mode = 0
+mouse_filter = 2
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 9 )
 custom_styles/normal = SubResource( 7 )
