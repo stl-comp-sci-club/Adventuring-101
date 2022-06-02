@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Player/Code/playermovement.gd" type="Script" id=1]
 [ext_resource path="res://TemporaryTileset/Animations/Left_1.png" type="Texture" id=2]
@@ -21,7 +21,9 @@
 [ext_resource path="res://Dialogue.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Pause Menu.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scenes/stairs.gd" type="Script" id=21]
-[ext_resource path="res://Scenes/Upstairs of house.gd" type="Script" id=22]
+[ext_resource path="res://Scenes/Bed.gd" type="Script" id=22]
+[ext_resource path="res://Interact Menu.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Scenes/quest.tscn" type="PackedScene" id=24]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
