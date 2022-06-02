@@ -28,7 +28,8 @@ func _input(event):
 		if Input.is_action_just_pressed("ui_cancel"):
 #			if not already_paused:
 			get_tree().paused = false
-			player.input_allowed = true
+			if not Global.in_dialogue:
+				player.input_allowed = true
 			hide()
 			Global.paused = false
 
@@ -36,9 +37,20 @@ func _input(event):
 func _on_Resume_button_up():
 #	if not already_paused:
 	get_tree().paused = false
-	player.input_allowed = true
+	if not Global.in_dialogue:
+		player.input_allowed = true
 	hide()
 	Global.paused = false
 	
 func _on_Exit_button_up():
 	get_tree().quit()
+
+
+func _on_Pause_button_button_up():
+	var d = player.get_animation_direction(player.last_direction)
+	get_node("/root/World/Player/player").play(d+"_resting")
+	already_paused = get_tree().paused
+	get_tree().paused = true
+	player.input_allowed = false
+	popup()
+	Global.paused = true

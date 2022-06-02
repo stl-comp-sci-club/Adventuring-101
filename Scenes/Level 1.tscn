@@ -1,16 +1,31 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Upstairs of house.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Outside.tres" type="TileSet" id=2]
 [ext_resource path="res://temp_floppa.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Enter House.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Floppa.gd" type="Script" id=5]
+[ext_resource path="res://Tilesets/Fountain 2.png" type="Texture" id=6]
+[ext_resource path="res://Tilesets/Fountain 3.png" type="Texture" id=7]
+[ext_resource path="res://Tilesets/Fountain 1.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.75, 21.75 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 332.963, 310 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 22.0
+height = 5.0
 
 [node name="World" instance=ExtResource( 1 )]
 
@@ -47,7 +62,7 @@ tile_set = ExtResource( 2 )
 cell_size = Vector2( 4, 4 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
-tile_data = PoolIntArray( -917591, 2, 0, -917569, 2, 0, -917547, 2, 0, -917525, 2, 0, -983039, 2, 0, 1769378, 2, 0, 2162617, 2, 0, 2097163, 2, 0, 2555871, 3, 0, 4980606, 2, 0, 5504945, 2, 0, 5504966, 2, 0, 5504987, 2, 0, 5505008, 2, 0 )
+tile_data = PoolIntArray( -917591, 2, 0, -917569, 2, 0, -917547, 2, 0, -917525, 2, 0, -983039, 2, 0, 1769378, 2, 0, 2162617, 2, 0, 2097163, 2, 0, 4980606, 2, 0, 5504945, 2, 0, 5504966, 2, 0, 5504987, 2, 0, 5505008, 2, 0 )
 
 [node name="Enter House" type="Area2D" parent="." index="8"]
 position = Vector2( 65, 32 )
@@ -67,6 +82,19 @@ script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TempFloppa/floppa" index="0"]
 shape = SubResource( 2 )
+
+[node name="Fountain" type="AnimatedSprite" parent="." index="12"]
+position = Vector2( -160, 297 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 3 )
+playing = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Fountain" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fountain/StaticBody2D" index="0"]
+position = Vector2( 0, -1.49997 )
+rotation = 1.5708
+shape = SubResource( 4 )
 
 [connection signal="body_entered" from="Enter House" to="Enter House" method="_on_Enter_House_body_entered"]
 [connection signal="body_entered" from="TempFloppa/floppa" to="Player" method="_on_floppa_body_entered"]

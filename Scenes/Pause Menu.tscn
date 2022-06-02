@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Pause_menu.gd" type="Script" id=1]
 [ext_resource path="res://font/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://button_pressed.png" type="Texture" id=3]
 [ext_resource path="res://button.png" type="Texture" id=4]
+[ext_resource path="res://Pause_button.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=3]
 size = 24
@@ -21,7 +22,19 @@ region_rect = Rect2( 0, 0, 20, 20 )
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[node name="Pause Menu" type="CanvasLayer"]
 pause_mode = 2
 
 [node name="Popup" type="Popup" parent="."]
@@ -64,5 +77,21 @@ custom_styles/normal = SubResource( 6 )
 enabled_focus_mode = 0
 text = "Exit"
 
+[node name="Pause button" type="Button" parent="."]
+visible = false
+margin_left = 616.0
+margin_top = 8.0
+margin_right = 648.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_mode = 0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 7 )
+enabled_focus_mode = 0
+icon = ExtResource( 5 )
+clip_text = true
+
 [connection signal="button_up" from="Popup/Resume2" to="Popup" method="_on_Resume_button_up"]
 [connection signal="button_up" from="Popup/Exit2" to="Popup" method="_on_Exit_button_up"]
+[connection signal="button_up" from="Pause button" to="Popup" method="_on_Pause_button_button_up"]

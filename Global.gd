@@ -3,6 +3,7 @@ extends Node
 var scene = ""
 
 var paused = false
+var in_dialogue = false
 
 # Declare member variables here. Examples:
 # var a = 2

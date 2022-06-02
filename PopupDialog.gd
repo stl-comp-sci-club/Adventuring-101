@@ -26,11 +26,14 @@ func name_set(new_value):
 func open():
 #	get_tree().paused = true
 	popup()
+	Global.in_dialogue = true
 	$DialogueBox/Label/AnimationPlayer.playback_speed = 60.0/dialogue.length()
 	$DialogueBox/Label/AnimationPlayer.play("Typewriter")
 	
 func close():
 #	get_tree().paused = false
+	Global.in_dialogue = false
+	
 	hide()
 	
 #func _input(event):

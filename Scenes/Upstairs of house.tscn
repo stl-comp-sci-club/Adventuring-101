@@ -177,6 +177,6 @@ shape = SubResource( 5 )
 [node name="Dialogue" parent="." instance=ExtResource( 19 )]
 pause_mode = 2
 
-[node name="CanvasLayer" parent="." instance=ExtResource( 20 )]
+[node name="Pause" parent="." instance=ExtResource( 20 )]
 
 [connection signal="body_entered" from="Stairs" to="Stairs" method="_on_stairs_collide"]

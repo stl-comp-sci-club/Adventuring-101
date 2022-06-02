@@ -21,7 +21,7 @@ func new_dialogue(text, npc_name):
 func continue_dialogue(text, npc_name, order):
 	var counter = 1
 	while true:
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") and not Global.paused:
 			if order == counter:
 				new_dialogue(text, npc_name)
 				break
@@ -32,7 +32,7 @@ func continue_dialogue(text, npc_name, order):
 func end_dialogue(text, npc_name, order):
 	var counter = 1
 	while true:
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") and not Global.paused:
 			if order == counter:
 				new_dialogue(text, npc_name)
 				break
@@ -41,8 +41,9 @@ func end_dialogue(text, npc_name, order):
 		yield(VisualServer, 'frame_pre_draw')
 	yield(VisualServer, 'frame_pre_draw')
 	while true:
-		if Input.is_action_just_pressed("ui_accept"):
-			input_allowed = true
+		if Input.is_action_just_pressed("ui_accept") and not Global.paused:
+			if not Global.paused:
+				input_allowed = true
 			dialogue.close()
 			break
 		yield(VisualServer, 'frame_pre_draw')
