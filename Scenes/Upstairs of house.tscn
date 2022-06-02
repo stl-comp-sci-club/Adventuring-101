@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Player/Code/playermovement.gd" type="Script" id=1]
 [ext_resource path="res://TemporaryTileset/Animations/Left_1.png" type="Texture" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://Dialogue.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Pause Menu.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scenes/stairs.gd" type="Script" id=21]
+[ext_resource path="res://Scenes/Bed.gd" type="Script" id=22]
+[ext_resource path="res://Interact Menu.tscn" type="PackedScene" id=23]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -73,6 +75,9 @@ extents = Vector2( 11, 22 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 13.5, 31 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 32.5, 36.5 )
 
 [node name="World" type="Node2D"]
 pause_mode = 2
@@ -179,4 +184,15 @@ pause_mode = 2
 
 [node name="Pause" parent="." instance=ExtResource( 20 )]
 
+[node name="Bed" type="Area2D" parent="."]
+script = ExtResource( 22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed"]
+position = Vector2( 255.5, 24.5 )
+shape = SubResource( 6 )
+
+[node name="Interact_Menu" parent="Bed" instance=ExtResource( 23 )]
+
 [connection signal="body_entered" from="Stairs" to="Stairs" method="_on_stairs_collide"]
+[connection signal="body_entered" from="Bed" to="Bed" method="_on_Bed_body_entered"]
+[connection signal="body_exited" from="Bed" to="Bed" method="_on_Bed_body_exited"]

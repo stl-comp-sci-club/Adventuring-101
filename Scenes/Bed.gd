@@ -1,12 +1,20 @@
 extends Area2D
 onready var player : KinematicBody2D = get_node("/root/World/Player")
 onready var dialogue = get_node("/root/World/Dialogue/PopupDialog")
+onready var health = get_node("/root/World/Health N Mana/Popup")
+
+
 var inside_interact_area = false
 
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
 
 func _input(event):
 	if inside_interact_area and Input.is_action_just_pressed("Interact") and not Global.in_dialogue:
-		dialogue.dialogue_set("You throw a coin into the fountain...")
+		player.fade_out()
+		health.close()
+		dialogue.dialogue_set("You take a nice long nap...")
 		dialogue.name_set("")
 		dialogue.open()
 		Global.in_dialogue = true
@@ -16,22 +24,24 @@ func _input(event):
 				dialogue.close()
 				if not Global.paused:
 					player.input_allowed = true
+					player.fade_in()
 			yield(VisualServer, 'frame_pre_draw')
 		Global.in_dialogue = false
-#		player.input_allowed = true
-		
-		# Maybe play a sound here
-		
-	
+		health.open()
 
-func _on_Interact_Area_body_entered(body):
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Bed_body_entered(body):
 	if body == player:
 		inside_interact_area = true
-		get_node("/root/World/Fountain/Interact_Menu/Popup").open()
-		
+		get_node("/root/World/Bed/Interact_Menu/Popup").open()
 
 
-func _on_Interact_Area_body_exited(body):
+func _on_Bed_body_exited(body):
 	if body == player:
 		inside_interact_area = false
-		get_node("/root/World/Fountain/Interact_Menu/Popup").close()
+		get_node("/root/World/Bed/Interact_Menu/Popup").close()
+
