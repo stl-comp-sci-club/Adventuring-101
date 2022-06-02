@@ -18,3 +18,6 @@ func _ready():
 
 func _on_start_button_up():
 	get_tree().change_scene("res://Scenes/Upstairs of house.tscn")
+
+func _on_quest_button_down():
+	get_tree().change_scene("res://Scenes/quest.tscn")

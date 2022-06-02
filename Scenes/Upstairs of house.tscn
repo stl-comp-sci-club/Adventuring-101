@@ -175,5 +175,13 @@ pause_mode = 2
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 20 )]
 
+[node name="quest" type="Button" parent="."]
+margin_left = 576.0
+margin_top = 41.0
+margin_right = 639.0
+margin_bottom = 62.0
+text = "Quests"
+
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+[connection signal="button_down" from="quest" to="Player" method="_on_quest_button_down"]

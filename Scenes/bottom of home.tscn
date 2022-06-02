@@ -37,4 +37,14 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
 tile_data = PoolIntArray( 393221, 107, 0, 458757, 107, 0 )
 
+[node name="Node2D" type="Node2D" parent="." index="11"]
+position = Vector2( 576, 41 )
+z_index = 1
+
+[node name="quest" type="Button" parent="Node2D" index="0"]
+margin_right = 63.0
+margin_bottom = 21.0
+text = "Quests"
+
 [connection signal="body_entered" from="Exit Door" to="Player" method="_on_Exit_Door_body_entered"]
+[connection signal="button_down" from="Node2D/quest" to="Player" method="_on_quest_button_down"]

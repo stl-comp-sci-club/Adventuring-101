@@ -208,3 +208,6 @@ func _on_floppa_body_entered(body):
 		continue_dialogue("Your dad gon", "floppa",2)
 		end_dialogue("This dialogue system is pretty cool isn't it?", "floppa", 3)
 		
+
+
+
