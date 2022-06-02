@@ -3,15 +3,6 @@ onready var player : KinematicBody2D = get_node("/root/World/Player")
 onready var dialogue = get_node("/root/World/Dialogue/PopupDialog")
 var inside_interact_area = false
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 
 func _input(event):
 	if inside_interact_area and Input.is_action_just_pressed("Interact") and not Global.in_dialogue:
