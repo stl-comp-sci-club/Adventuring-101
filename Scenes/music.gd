@@ -11,16 +11,22 @@ func _ready():
 	pass # Replace with function body.
 
 func change(song):
-	get_node(".").stream=load(song)
-	get_node(".").play()
+	if get_node(".").stream==load(song):
+		pass
+	else:
+		get_node(".").stream=load(song)
+		get_node(".").play()
 
 func playMusic():
 	get_node(".").play()
 
-func pause():
+func stopMusic():
+	get_node(".").stop()
+
+func pauseMusic():
 	get_node(".").stream_paused=true
 
-func resume():
+func resumeMusic():
 	get_node(".").stream_paused=false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

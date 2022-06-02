@@ -8,7 +8,8 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Music.get_node("AudioStreamPlayer").playMusic() # Replace with function body.
+	Music.get_node("AudioStreamPlayer").change("res://bgm.ogg") # Replace with function body.
+	Music.get_node("AudioStreamPlayer").play() # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
