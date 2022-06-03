@@ -39,8 +39,8 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
 tile_data = PoolIntArray( 393221, 107, 0, 458757, 107, 0 )
 
-[node name="Bed" parent="." index="11"]
-visible = false
+[node name="CollisionShape2D" parent="Bed" index="0"]
+position = Vector2( 84.25, 24.5 )
 
 [connection signal="body_entered" from="Exit Door" to="Player" method="_on_Exit_Door_body_entered"]
 [connection signal="body_entered" from="Exit Door" to="Exit Door" method="_on_Exit_Door_body_entered"]

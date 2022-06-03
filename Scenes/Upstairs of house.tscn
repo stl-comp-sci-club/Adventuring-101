@@ -27,11 +27,6 @@
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 15 ) ],
-"loop": true,
-"name": "right_resting",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "left_resting",
@@ -62,6 +57,11 @@ animations = [ {
 "name": "down_resting",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "right_resting",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 13 ), ExtResource( 17 ), ExtResource( 13 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "walk_right",
@@ -78,7 +78,7 @@ extents = Vector2( 11, 22 )
 extents = Vector2( 13.5, 31 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 34.5, 37 )
+extents = Vector2( 19.75, 34.5 )
 
 [node name="World" type="Node2D"]
 pause_mode = 2

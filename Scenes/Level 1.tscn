@@ -93,7 +93,6 @@ shape = SubResource( 2 )
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
-frame = 2
 playing = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Fountain" index="0"]
