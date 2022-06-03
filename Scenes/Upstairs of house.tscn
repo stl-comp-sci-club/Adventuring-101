@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=2]
 
-[ext_resource path="res://Player/Code/playermovement.gd" type="Script" id=1]
+[ext_resource path="res://Player/Code/player.gd" type="Script" id=1]
 [ext_resource path="res://TemporaryTileset/Animations/Left_1.png" type="Texture" id=2]
 [ext_resource path="res://Player/Code/enemymovement.gd" type="Script" id=3]
 [ext_resource path="res://tileset1.tres" type="TileSet" id=4]

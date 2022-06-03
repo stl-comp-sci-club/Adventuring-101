@@ -51,7 +51,6 @@ region_rect = Rect2( 0, 0, 20, 20 )
 [node name="Quests" type="CanvasLayer"]
 
 [node name="Popup" type="Popup" parent="."]
-visible = true
 margin_right = 640.0
 margin_bottom = 359.0
 mouse_filter = 1

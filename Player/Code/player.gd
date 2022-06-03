@@ -9,6 +9,7 @@ var velocity = Vector2.ZERO
 var last_direction = Vector2(0,1)
 
 var input_allowed = true
+var attacking = false
 
 func new_dialogue(text, npc_name):
 	var d = get_animation_direction(last_direction)
@@ -84,6 +85,8 @@ func _ready():
 		position = Vector2(140, -20)
 		last_direction = Vector2(0,1)
 		yield(fade_in(), "completed")
+		
+	
 
 func get_animation_direction(direction: Vector2):
 	var norm_direction = direction.normalized()
@@ -125,6 +128,30 @@ func _process(delta):
 		else:
 			speed = 30
 		animate(direction)
+		
+		get_node("./Attack Area/Weapon Swipe").look_at(get_global_mouse_position())
+		
+		if Input.is_action_just_pressed("Attack") and not attacking:
+			get_node("Attack Area/Weapon Swipe").disabled = false
+			attacking = true
+			print("attacking")
+			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 0.5
+			
+			var t = Timer.new()
+			t.set_wait_time(0.1)
+			t.set_one_shot(true)
+			self.add_child(t)
+			t.start()
+			yield(t, "timeout")
+			t.queue_free()
+			
+			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 1			
+			print("attack finished")
+			get_node("Attack Area/Weapon Swipe").disabled = true
+			attacking = false
+			
+			
+		
 	if velocity.length() > 0:
 		velocity *= 0.8
 		
