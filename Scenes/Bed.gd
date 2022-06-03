@@ -12,7 +12,8 @@ var inside_interact_area = false
 # var b = "text"
 
 func _input(event):
-	if inside_interact_area and Input.is_action_just_pressed("Interact") and not Global.in_dialogue:
+	if inside_interact_area and Input.is_action_just_pressed("Interact") and not Global.in_dialogue and (Global.scene == "upstairs" or Global.scene == ""):
+		
 		player.fade_out()
 		health.modulate.a = 0
 		quest.modulate.a = 0
@@ -41,7 +42,7 @@ func _input(event):
 
 
 func _on_Bed_body_entered(body):
-	if body == player:
+	if body == player and (Global.scene == "upstairs" or Global.scene == ""):
 		inside_interact_area = true
 		get_node("/root/World/Bed/Interact_Menu/Popup").open()
 
