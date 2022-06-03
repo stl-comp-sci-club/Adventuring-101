@@ -35,6 +35,7 @@ func _input(event):
 					health.modulate.a = 1
 					quest.modulate.a = 1
 					Global.in_dialogue = false
+					break
 			yield(VisualServer, 'frame_pre_draw')
 		
 		
