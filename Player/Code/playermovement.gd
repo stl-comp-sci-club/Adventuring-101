@@ -8,16 +8,7 @@ export (int) var speed = 30
 var velocity = Vector2.ZERO
 var last_direction = Vector2(0,1)
 
-var last_input
-var pressing = false
 var input_allowed = true
-
-
-#signal fade_in_finished
-#signal fade_out_finished
-
-#signal new_dialogue
-signal clear_dialogue
 
 func new_dialogue(text, npc_name):
 	var d = get_animation_direction(last_direction)
@@ -26,12 +17,11 @@ func new_dialogue(text, npc_name):
 	dialogue.dialogue_set(text)
 	dialogue.name_set(npc_name)
 	dialogue.open()
-#	get_tree().paused = true
-	
+
 func continue_dialogue(text, npc_name, order):
 	var counter = 1
 	while true:
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") and not Global.paused:
 			if order == counter:
 				new_dialogue(text, npc_name)
 				break
@@ -42,7 +32,7 @@ func continue_dialogue(text, npc_name, order):
 func end_dialogue(text, npc_name, order):
 	var counter = 1
 	while true:
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") and not Global.paused:
 			if order == counter:
 				new_dialogue(text, npc_name)
 				break
@@ -51,8 +41,9 @@ func end_dialogue(text, npc_name, order):
 		yield(VisualServer, 'frame_pre_draw')
 	yield(VisualServer, 'frame_pre_draw')
 	while true:
-		if Input.is_action_just_pressed("ui_accept"):
-			input_allowed = true
+		if Input.is_action_just_pressed("ui_accept") and not Global.paused:
+			if not Global.paused:
+				input_allowed = true
 			dialogue.close()
 			break
 		yield(VisualServer, 'frame_pre_draw')
@@ -73,7 +64,6 @@ func fade_in():
 		fade.modulate.a = fade_amount
 		yield(VisualServer, 'frame_pre_draw')
 	fade.modulate.a = 0
-#	emit_signal("fade_out_finished")
 
 func _ready():
 	print(Global.scene)
@@ -129,84 +119,13 @@ func _process(delta):
 			velocity.y += speed
 		if Input.is_action_pressed("ui_up"):
 			velocity.y -= speed
-#		if Input.is_action_just_pressed("ui_accept"):
-##			var new_dialogue = dialogue.instance()
-#			var d = get_node("/root/World/Dialogue/PopupDialog")
-#			d.dialogue_set("tests")
-#			d.open()
 			
 		if (Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_left")) or (Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_right")) or (Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_left")) or (Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_right")):
 			speed = 21
 		else:
 			speed = 30
-
 		animate(direction)
-		
-		
 	if velocity.length() > 0:
 		velocity *= 0.8
 		
 	move_and_slide(velocity)
-
-
-func _on_Area2D_body_entered(body):
-	if (Global.scene == "upstairs" or Global.scene == "") and (body == player):
-		input_allowed = false
-		
-		$player.play("walk_down")
-		last_input = "down"
-		for i in range(position.y,105):
-			position.y = i
-			yield(VisualServer, 'frame_pre_draw')
-		
-		yield(fade_out(), "completed")
-		get_tree().change_scene("res://Scenes/bottom of home.tscn")
-		
-		$player.play("down_resting")
-		
-		Global.scene = "downstairs"
-		yield(VisualServer, 'frame_pre_draw')
-		input_allowed = true
-
-	elif (Global.scene == "downstairs" or Global.scene == "downstairs (from outside)") and (body == player):
-		input_allowed = false
-		$player.play("walk_up")
-		last_input = "up"
-		for i in range(position.y, -5, -1):
-			position.y = i
-			yield(VisualServer, 'frame_pre_draw')
-			
-		yield(fade_out(), "completed")
-		get_tree().change_scene("res://Scenes/Upstairs of house.tscn")
-		$player.play("up_resting")
-		
-		Global.scene = "upstairs"
-		yield(VisualServer, 'frame_pre_draw')
-		
-		input_allowed = true
-		
-
-func _on_Exit_Door_body_entered(body):
-	if body == player:
-		input_allowed = false
-		Global.scene = "Level 1"
-		yield(fade_out(), "completed")
-		get_tree().change_scene("res://Scenes/Level 1.tscn")
-		input_allowed = true
-	
-func _on_Enter_House_body_entered(body):
-	if body == player:
-		input_allowed = false
-		Global.scene = "downstairs (from outside)"
-		yield(fade_out(), "completed")
-		get_tree().change_scene("res://Scenes/bottom of home.tscn")
-		input_allowed = true
-
-
-func _on_floppa_body_entered(body):
-	if body == player:
-		new_dialogue("Hi, im floppa!", "floppa")
-		continue_dialogue("Welcome to Adventuring 101", "floppa",1)
-		continue_dialogue("Your dad gon", "floppa",2)
-		end_dialogue("This dialogue system is pretty cool isn't it?", "floppa", 3)
-		

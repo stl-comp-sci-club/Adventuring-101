@@ -2,6 +2,12 @@ extends Node
 
 var scene = ""
 
+var paused = false
+var in_dialogue = false
+
+var main_quests = []
+var side_quests = []
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

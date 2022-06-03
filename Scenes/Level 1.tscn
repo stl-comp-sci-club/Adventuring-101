@@ -1,14 +1,36 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Upstairs of house.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Outside.tres" type="TileSet" id=2]
 [ext_resource path="res://temp_floppa.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Enter House.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Floppa.gd" type="Script" id=5]
+[ext_resource path="res://Tilesets/Fountain 2.png" type="Texture" id=6]
+[ext_resource path="res://Tilesets/Fountain 3.png" type="Texture" id=7]
+[ext_resource path="res://Tilesets/Fountain 1.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Fountain.gd" type="Script" id=9]
+[ext_resource path="res://Interact Menu.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.75, 21.75 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 332.963, 310 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 22.0
+height = 5.0
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 30.0041
 
 [node name="World" instance=ExtResource( 1 )]
 
@@ -38,15 +60,6 @@ tile_data = PoolIntArray(  )
 visible = false
 tile_data = PoolIntArray(  )
 
-[node name="Area2D" parent="." index="5"]
-collision_layer = 2
-collision_mask = 2
-monitoring = false
-monitorable = false
-
-[node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2( -113, -70.5 )
-
 [node name="Houses" type="TileMap" parent="." index="7"]
 position = Vector2( 55, -55 )
 scale = Vector2( 2, 2 )
@@ -54,10 +67,11 @@ tile_set = ExtResource( 2 )
 cell_size = Vector2( 4, 4 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
-tile_data = PoolIntArray( -917591, 2, 0, -917569, 2, 0, -917547, 2, 0, -917525, 2, 0, -983039, 2, 0, 1769378, 2, 0, 2162617, 2, 0, 2097163, 2, 0, 2555871, 3, 0, 4980606, 2, 0, 5504945, 2, 0, 5504966, 2, 0, 5504987, 2, 0, 5505008, 2, 0 )
+tile_data = PoolIntArray( -917591, 2, 0, -917569, 2, 0, -917547, 2, 0, -917525, 2, 0, -983039, 2, 0, 1769378, 2, 0, 2162617, 2, 0, 2097163, 2, 0, 4980606, 2, 0, 5504945, 2, 0, 5504966, 2, 0, 5504987, 2, 0, 5505008, 2, 0 )
 
 [node name="Enter House" type="Area2D" parent="." index="8"]
 position = Vector2( 65, 32 )
+script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enter House" index="0"]
 position = Vector2( 75.75, -79.25 )
@@ -67,11 +81,39 @@ shape = SubResource( 1 )
 position = Vector2( 59, 93 )
 scale = Vector2( 0.0870968, 0.0870968 )
 texture = ExtResource( 3 )
+script = ExtResource( 5 )
 
 [node name="floppa" type="Area2D" parent="TempFloppa" index="0"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TempFloppa/floppa" index="0"]
+position = Vector2( 6.10352e-05, 0.00012207 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 2 )
 
-[connection signal="body_entered" from="Enter House" to="Player" method="_on_Enter_House_body_entered"]
+[node name="Fountain" type="AnimatedSprite" parent="." index="12"]
+position = Vector2( -160, 297 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 3 )
+frame = 2
+playing = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Fountain" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fountain/StaticBody2D" index="0"]
+position = Vector2( 0, -1.49997 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="Interact Area" type="Area2D" parent="Fountain" index="1"]
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fountain/Interact Area" index="0"]
+shape = SubResource( 5 )
+
+[node name="Interact_Menu" parent="Fountain" index="2" instance=ExtResource( 10 )]
+
+[connection signal="body_entered" from="Enter House" to="Enter House" method="_on_Enter_House_body_entered"]
 [connection signal="body_entered" from="TempFloppa/floppa" to="Player" method="_on_floppa_body_entered"]
+[connection signal="body_entered" from="TempFloppa/floppa" to="TempFloppa" method="_on_floppa_body_entered"]
+[connection signal="body_entered" from="Fountain/Interact Area" to="Fountain/Interact Area" method="_on_Interact_Area_body_entered"]
+[connection signal="body_exited" from="Fountain/Interact Area" to="Fountain/Interact Area" method="_on_Interact_Area_body_exited"]

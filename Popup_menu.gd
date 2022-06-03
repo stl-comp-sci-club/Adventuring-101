@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Popup
 
 
 # Declare member variables here. Examples:
@@ -10,15 +10,12 @@ extends CanvasLayer
 func _ready():
 	pass # Replace with function body.
 
+func open():
+	popup()
+	
+func close():
+	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func _on_start_button_up():
-	get_tree().change_scene("res://Scenes/Upstairs of house.tscn")
-
-
-func _on_quit_button_up():
-	get_tree().quit()

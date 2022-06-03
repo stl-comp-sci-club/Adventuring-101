@@ -100,10 +100,10 @@ segments = PoolVector2Array( 32, 0, 32, 0, 32, 0, 32, 0, 32, 0, 0, 0, 0, 0, 0, 3
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=27]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 96, 0, 96 )
+points = PoolVector2Array( 5.44386, 21.45, 56.5158, 21.45, 56.7949, 83.6852, 5.16478, 84.2433 )
 
 [sub_resource type="ConvexPolygonShape2D" id=28]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 96, 0, 96 )
+points = PoolVector2Array( 1.72142, 23.4035, 29.9087, 23.6826, 30.4668, 83.6852, 1.44234, 83.9642 )
 
 [sub_resource type="ConvexPolygonShape2D" id=29]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 64, 0, 64 )

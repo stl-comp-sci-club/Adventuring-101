@@ -1,22 +1,47 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Pause_menu.gd" type="Script" id=1]
+[ext_resource path="res://font/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://button_pressed.png" type="Texture" id=3]
+[ext_resource path="res://button.png" type="Texture" id=4]
+[ext_resource path="res://Pause_button.png" type="Texture" id=5]
 
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://font/PlaymegamesReguler-2OOee.ttf"
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 32
-font_data = SubResource( 1 )
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 20, 20 )
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[node name="Pause Menu" type="CanvasLayer"]
 pause_mode = 2
 
 [node name="Popup" type="Popup" parent="."]
 pause_mode = 2
-visible = true
 margin_right = 640.0
 margin_bottom = 360.0
+mouse_filter = 1
 popup_exclusive = true
 script = ExtResource( 1 )
 
@@ -25,32 +50,50 @@ margin_right = 640.0
 margin_bottom = 360.0
 color = Color( 0, 0, 0, 0.282353 )
 
-[node name="Resume" type="ColorRect" parent="Popup"]
-margin_left = 214.0
+[node name="Resume2" type="Button" parent="Popup"]
+margin_left = 208.0
 margin_top = 128.0
-margin_right = 422.0
+margin_right = 424.0
 margin_bottom = 168.0
-color = Color( 0.870588, 0.662745, 0.219608, 1 )
-
-[node name="Label" type="Label" parent="Popup/Resume"]
-margin_left = 55.0
-margin_top = 7.0
-margin_right = 156.0
-margin_bottom = 35.0
-custom_fonts/font = SubResource( 2 )
+rect_pivot_offset = Vector2( 192, 40 )
+focus_mode = 0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+enabled_focus_mode = 0
 text = "Resume"
 
-[node name="Exit" type="ColorRect" parent="Popup"]
-margin_left = 214.0
+[node name="Exit2" type="Button" parent="Popup"]
+margin_left = 208.0
 margin_top = 192.0
-margin_right = 422.0
+margin_right = 424.0
 margin_bottom = 232.0
-color = Color( 0.870588, 0.662745, 0.219608, 1 )
-
-[node name="Label" type="Label" parent="Popup/Exit"]
-margin_left = 78.0
-margin_top = 8.0
-margin_right = 179.0
-margin_bottom = 36.0
-custom_fonts/font = SubResource( 2 )
+rect_pivot_offset = Vector2( 192, 40 )
+focus_mode = 0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+enabled_focus_mode = 0
 text = "Exit"
+
+[node name="Pause button" type="Button" parent="."]
+visible = false
+margin_left = 616.0
+margin_top = 8.0
+margin_right = 648.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_mode = 0
+mouse_filter = 2
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 7 )
+enabled_focus_mode = 0
+icon = ExtResource( 5 )
+clip_text = true
+
+[connection signal="button_up" from="Popup/Resume2" to="Popup" method="_on_Resume_button_up"]
+[connection signal="button_up" from="Popup/Exit2" to="Popup" method="_on_Exit_button_up"]
+[connection signal="button_up" from="Pause button" to="Popup" method="_on_Pause_button_button_up"]
