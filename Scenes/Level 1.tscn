@@ -87,14 +87,13 @@ script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TempFloppa/floppa" index="0"]
 position = Vector2( 6.10352e-05, 0.00012207 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 2 )
 
 [node name="Fountain" type="AnimatedSprite" parent="." index="12"]
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Fountain" index="0"]
