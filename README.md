@@ -7,6 +7,6 @@ Head by Chris Lozinski, the team at the time of writing this consists of the fol
 
 Programming By: Ryan Yang, Felix Z, Matias R, Jordan F, Doris W, and Andrea Di Giovanni 
 
-Art by: Jessica Y, Daniel K, Rory S, and Selina O
+Art by: Jessica Y, Daniel K, Rory S, Midhat B, and Selina O
 
 Story by: Armand Ustun, Celina Ladak and Marco Capuano 
