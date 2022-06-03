@@ -4,44 +4,55 @@ var already_paused
 var selected_menu
 
 
-
-func change_menu_color():
-	$Resume.color = Color.goldenrod
-	$Exit.color = Color.goldenrod
-	
-	match selected_menu:
-		0:
-			$Resume.color = Color.greenyellow
-		1:
-			$Exit.color = Color.greenyellow
+func _ready():
+	if Global.paused:
+		var d = player.get_animation_direction(player.last_direction)
+		get_node("/root/World/Player/player").play(d+"_resting")
+		already_paused = get_tree().paused
+		get_tree().paused = true
+		player.input_allowed = false
+		popup()
+		Global.paused = true
 
 func _input(event):
 	if not visible:
 		if Input.is_action_just_pressed("ui_cancel"):
-			print("paused")
+			var d = player.get_animation_direction(player.last_direction)
+			get_node("/root/World/Player/player").play(d+"_resting")
 			already_paused = get_tree().paused
 			get_tree().paused = true
-			selected_menu = 0
 			player.input_allowed = false
 			popup()
-	else:
-		if Input.is_action_just_pressed("ui_down"):
-			selected_menu = (selected_menu + 1) % 2;
-			change_menu_color()
-		elif Input.is_action_just_pressed("ui_up"):
-			if selected_menu > 0:
-				selected_menu = selected_menu - 1
-			change_menu_color()
-		elif Input.is_action_just_pressed("ui_accept"):
-			match selected_menu:
-				0:
-					if not already_paused:
-						get_tree().paused = false
-					player.input_allowed = true
-					hide()
-				1:
-					get_tree().quit()
+			Global.paused = true
+	elif visible:
+		if Input.is_action_just_pressed("ui_cancel"):
+#			if not already_paused:
+			get_tree().paused = false
+			if not Global.in_dialogue:
+				player.input_allowed = true
+			hide()
+			Global.paused = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+func _on_Resume_button_up():
+#	if not already_paused:
+	get_tree().paused = false
+	if not Global.in_dialogue:
+		player.input_allowed = true
+	hide()
+	Global.paused = false
+	
+func _on_Exit_button_up():
+	Global.paused = false
+	get_tree().paused = false
+	get_tree().change_scene("res://Scenes/Main Menu.tscn")
+
+
+func _on_Pause_button_button_up():
+	var d = player.get_animation_direction(player.last_direction)
+	get_node("/root/World/Player/player").play(d+"_resting")
+	already_paused = get_tree().paused
+	get_tree().paused = true
+	player.input_allowed = false
+	popup()
+	Global.paused = true

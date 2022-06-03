@@ -67,13 +67,16 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 12, 13.5 )
+extents = Vector2( 12, 11.5 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 11, 22 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 13.5, 31 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 34.5, 37 )
 
 [node name="World" type="Node2D"]
 pause_mode = 2
@@ -104,7 +107,7 @@ drag_margin_right = 0.6
 drag_margin_bottom = 0.45
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( 0, 9.5 )
+position = Vector2( 0, 11.5 )
 shape = SubResource( 3 )
 
 [node name="Node2D" type="Node2D" parent="Player"]
@@ -162,10 +165,13 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Stairs" type="Area2D" parent="."]
+process_priority = 1
 position = Vector2( 160, 84 )
+priority = 1.0
+script = ExtResource( 21 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs"]
 position = Vector2( -112.5, 13 )
 shape = SubResource( 5 )
 
@@ -174,7 +180,19 @@ shape = SubResource( 5 )
 [node name="Dialogue" parent="." instance=ExtResource( 19 )]
 pause_mode = 2
 
-[node name="CanvasLayer" parent="." instance=ExtResource( 20 )]
+[node name="Pause" parent="." instance=ExtResource( 20 )]
 
-[connection signal="body_entered" from="Area2D" to="Player" method="_on_Area2D_body_entered"]
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+[node name="Bed" type="Area2D" parent="."]
+script = ExtResource( 22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed"]
+position = Vector2( 253.5, 25 )
+shape = SubResource( 6 )
+
+[node name="Interact_Menu" parent="Bed" instance=ExtResource( 23 )]
+
+[node name="Quests" parent="." instance=ExtResource( 24 )]
+
+[connection signal="body_entered" from="Stairs" to="Stairs" method="_on_stairs_collide"]
+[connection signal="body_entered" from="Bed" to="Bed" method="_on_Bed_body_entered"]
+[connection signal="body_exited" from="Bed" to="Bed" method="_on_Bed_body_exited"]

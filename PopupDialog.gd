@@ -4,7 +4,7 @@ extends PopupDialog
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+onready var health = get_node("/root/World/Health N Mana/Bars")
 var dialogue setget dialogue_set
 var npc_name setget name_set
 
@@ -26,11 +26,15 @@ func name_set(new_value):
 func open():
 #	get_tree().paused = true
 	popup()
+	health.modulate.a = 0
+	Global.in_dialogue = true
 	$DialogueBox/Label/AnimationPlayer.playback_speed = 60.0/dialogue.length()
 	$DialogueBox/Label/AnimationPlayer.play("Typewriter")
 	
 func close():
 #	get_tree().paused = false
+	Global.in_dialogue = false
+	health.modulate.a = 1
 	hide()
 	
 #func _input(event):
