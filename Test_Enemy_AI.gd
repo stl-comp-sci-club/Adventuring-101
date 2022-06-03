@@ -54,7 +54,7 @@ func _on_Hitbox_area_entered(area):
 		yield(t, "timeout")
 		t.queue_free()
 		
-		stunned = false		
+		stunned = false
 #		print(position.direction_to(player.position) * -1)
 #		print(velocity)
 #		move_and_slide(velocity)

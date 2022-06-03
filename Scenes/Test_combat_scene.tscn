@@ -47,6 +47,12 @@ tile_data = PoolIntArray(  )
 visible = false
 tile_data = PoolIntArray(  )
 
+[node name="Stairs" parent="." index="5"]
+visible = false
+
+[node name="CollisionShape2D" parent="Stairs" index="0"]
+position = Vector2( 282, -393 )
+
 [node name="CollisionShape2D" parent="Bed" index="0"]
 position = Vector2( 537, -302 )
 

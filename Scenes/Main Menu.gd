@@ -12,9 +12,13 @@ func _ready():
 
 
 func _on_start_button_up():
-#	get_tree().change_scene("res://Scenes/Upstairs of house.tscn")
-	get_tree().change_scene("res://Scenes/Test_combat_scene.tscn") # THIS LINE IS JUST FOR TESTING, MAKE SURE TO REMOVE LATER
+	get_tree().change_scene("res://Scenes/Upstairs of house.tscn")
+#	get_tree().change_scene("res://Scenes/Test_combat_scene.tscn") # THIS LINE IS JUST FOR TESTING, MAKE SURE TO REMOVE LATER
 
 
 func _on_quit_button_up():
 	get_tree().quit()
+
+
+func _on_customize_button_up():
+	get_tree().change_scene("res://Scenes/Customize_menu.tscn")

@@ -5,7 +5,9 @@ var inside_interact_area = false
 
 
 func _input(event):
-	if inside_interact_area and Input.is_action_just_pressed("Interact") and not Global.in_dialogue:
+	if inside_interact_area and Input.is_action_just_pressed("Interact") and not Global.in_dialogue and Global.scene == "Level 1":
+		var d = player.get_animation_direction(player.last_direction)
+		get_node("/root/World/Player/player").play(d+"_resting")
 		dialogue.dialogue_set("You throw a coin into the fountain...")
 		dialogue.name_set("")
 		dialogue.open()

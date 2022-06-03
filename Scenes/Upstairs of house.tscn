@@ -141,6 +141,7 @@ texture = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
 position = Vector2( 0, 2 )
 shape = SubResource( 2 )
+disabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )

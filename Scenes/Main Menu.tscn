@@ -72,9 +72,10 @@ text = "Play!"
 
 [node name="quit" type="Button" parent="."]
 margin_left = 232.0
-margin_top = 208.0
+margin_top = 235.0
 margin_right = 400.0
-margin_bottom = 240.0
+margin_bottom = 267.0
+rect_pivot_offset = Vector2( 24, 13 )
 focus_mode = 0
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = SubResource( 4 )
@@ -83,5 +84,20 @@ custom_styles/normal = SubResource( 2 )
 enabled_focus_mode = 0
 text = "Quit"
 
+[node name="customize" type="Button" parent="."]
+margin_left = 232.0
+margin_top = 197.0
+margin_right = 400.0
+margin_bottom = 229.0
+rect_pivot_offset = Vector2( 24, 13 )
+focus_mode = 0
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+text = "Customize"
+
 [connection signal="button_up" from="start" to="." method="_on_start_button_up"]
 [connection signal="button_up" from="quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="customize" to="." method="_on_customize_button_up"]
