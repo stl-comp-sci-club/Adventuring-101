@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://font/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://button_pressed.png" type="Texture" id=2]
 [ext_resource path="res://button.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Customize_menu.gd" type="Script" id=4]
 [ext_resource path="res://TemporaryTileset/default pplayer base.png" type="Texture" id=5]
+[ext_resource path="res://cloth/shitr/red.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -49,6 +50,15 @@ text = "Back"
 position = Vector2( 320, 160 )
 scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 5 )
+
+[node name="shitr" type="OptionButton" parent="DefaultPplayerBase"]
+margin_left = -18.8
+margin_top = -2.8
+margin_right = 36.2
+margin_bottom = 19.2
+text = "red"
+icon = ExtResource( 6 )
+flat = true
 
 [node name="Label" type="Label" parent="."]
 margin_left = 263.0
