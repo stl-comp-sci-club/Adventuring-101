@@ -1,7 +1,7 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
-[ext_resource path="res://Player/Code/playermovement.gd" type="Script" id=1]
-[ext_resource path="res://TemporaryTileset/Animations/Left_1.png" type="Texture" id=2]
+[ext_resource path="res://Player/Code/player.gd" type="Script" id=1]
+[ext_resource path="res://TemporaryTileset/Animations/NewAnimations/newleft1.png" type="Texture" id=2]
 [ext_resource path="res://Player/Code/enemymovement.gd" type="Script" id=3]
 [ext_resource path="res://tileset1.tres" type="TileSet" id=4]
 [ext_resource path="res://TemporaryTileset/default pplayer base.png" type="Texture" id=5]
@@ -16,7 +16,7 @@
 [ext_resource path="res://TemporaryTileset/Animations/Down_4.png" type="Texture" id=14]
 [ext_resource path="res://TemporaryTileset/Animations/Right_rest.png" type="Texture" id=15]
 [ext_resource path="res://TemporaryTileset/Animations/Right_3.png" type="Texture" id=16]
-[ext_resource path="res://TemporaryTileset/Animations/Right_2.png" type="Texture" id=17]
+[ext_resource path="res://TemporaryTileset/Animations/NewAnimations/newright2.png" type="Texture" id=17]
 [ext_resource path="res://Scenes/HealthandMana.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Dialogue.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Pause Menu.tscn" type="PackedScene" id=20]
@@ -24,14 +24,11 @@
 [ext_resource path="res://Scenes/Bed.gd" type="Script" id=22]
 [ext_resource path="res://Interact Menu.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Scenes/quest.tscn" type="PackedScene" id=24]
+[ext_resource path="res://TemporaryTileset/Animations/NewAnimations/newleft2.png" type="Texture" id=25]
+[ext_resource path="res://TemporaryTileset/Animations/NewAnimations/newright1.png" type="Texture" id=26]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "left_resting",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 10 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "walk_up",
@@ -42,7 +39,7 @@ animations = [ {
 "name": "right_resting",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 17 ), ExtResource( 13 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 26 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "walk_right",
 "speed": 10.0
@@ -57,7 +54,7 @@ animations = [ {
 "name": "down_resting",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 25 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "walk_left",
 "speed": 10.0
@@ -66,6 +63,11 @@ animations = [ {
 "loop": true,
 "name": "walk_down",
 "speed": 7.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "left_resting",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -142,6 +144,7 @@ texture = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
 position = Vector2( 0, 2 )
 shape = SubResource( 2 )
+disabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )

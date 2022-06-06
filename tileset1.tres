@@ -10,6 +10,9 @@
 [ext_resource path="res://TemporaryTileset/Placeholder_door.png" type="Texture" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=38]
+
+points = PoolVector2Array( 2.84653, 0, 59.4443, 0, 59.1094, 45.2252, 2.51163, 45.2252 )
+
 points = PoolVector2Array( 10, 0, 22, 0, 22, 32, 10, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=44]
@@ -1818,7 +1821,7 @@ segments = PoolVector2Array( 32, 32, 32, 0, 32, 0, 32, 32, 32, 32, 32, 0, 32, 0,
 101/texture = ExtResource( 4 )
 101/tex_offset = Vector2( 0, 0 )
 101/modulate = Color( 1, 1, 1, 1 )
-101/region = Rect2( 256, 0, 32, 32 )
+101/region = Rect2( 97, 162, 62, 61 )
 101/tile_mode = 0
 101/occluder_offset = Vector2( 0, 0 )
 101/navigation_offset = Vector2( 0, 0 )

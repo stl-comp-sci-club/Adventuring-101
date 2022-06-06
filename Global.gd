@@ -5,6 +5,8 @@ var scene = ""
 var paused = false
 var in_dialogue = false
 
+
+
 var main_quests = []
 var side_quests = []
 
