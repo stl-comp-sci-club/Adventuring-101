@@ -8,8 +8,12 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	get_node("DefaultPplayerBase/shitr").add_item("red")
+	get_node("DefaultPplayerBase/shitr").add_item("green")
+	get_node("DefaultPplayerBase/shitr").add_item("blue")
+	get_node("DefaultPplayerBase/shitr").set_item_icon(0, load("res://cloth/shitr/red.png"))
+	get_node("DefaultPplayerBase/shitr").set_item_icon(1, load("res://cloth/shitr/green.png"))
+	get_node("DefaultPplayerBase/shitr").set_item_icon(2, load("res://cloth/shitr/blue.png"))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
