@@ -11,14 +11,14 @@ func _ready():
 	Music.get_node("AudioStreamPlayer").change("res://bgm.ogg") # Replace with function body.
 	Music.get_node("AudioStreamPlayer").play() # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
 func _on_start_button_up():
 	get_tree().change_scene("res://Scenes/Upstairs of house.tscn")
+#	get_tree().change_scene("res://Scenes/Test_combat_scene.tscn") # THIS LINE IS JUST FOR TESTING, MAKE SURE TO REMOVE LATER
 
 
 func _on_quit_button_up():
 	get_tree().quit()
+
+
+func _on_customize_button_up():
+	get_tree().change_scene("res://Scenes/Customize_menu.tscn")
