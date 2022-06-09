@@ -10,9 +10,6 @@
 [ext_resource path="res://TemporaryTileset/Placeholder_door.png" type="Texture" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=38]
-
-points = PoolVector2Array( 2.84653, 0, 59.4443, 0, 59.1094, 45.2252, 2.51163, 45.2252 )
-
 points = PoolVector2Array( 10, 0, 22, 0, 22, 32, 10, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=44]
