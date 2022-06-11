@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 onready var player : KinematicBody2D = get_node("/root/World/Player")
 onready var dialogue = get_node("/root/World/Dialogue/PopupDialog")
 onready var health = get_node("/root/World/Health N Mana/Bars")
@@ -10,6 +10,11 @@ var inside_interact_area = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	print("test")
+	Music.get_node("AudioStreamPlayer").change("res://bgm2.ogg")
 
 func _input(event):
 	if inside_interact_area and Input.is_action_just_pressed("Interact") and not Global.in_dialogue and (Global.scene == "upstairs" or Global.scene == ""):

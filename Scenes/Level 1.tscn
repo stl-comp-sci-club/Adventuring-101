@@ -11,6 +11,7 @@
 [ext_resource path="res://Scenes/Fountain.gd" type="Script" id=9]
 [ext_resource path="res://Interact Menu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/NPC house door.gd" type="Script" id=11]
+[ext_resource path="res://Water2.ogg" type="AudioStream" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.75, 21.75 )
@@ -138,6 +139,10 @@ shape = SubResource( 6 )
 [node name="Area Shape" type="CollisionShape2D" parent="NPC house door/Interact Area" index="0"]
 position = Vector2( -175, -25.5 )
 shape = SubResource( 7 )
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Fountain" index="3"]
+stream = ExtResource( 11 )
+volume_db = 24.0
+autoplay = true
 
 [connection signal="body_entered" from="Enter House" to="Enter House" method="_on_Enter_House_body_entered"]
 [connection signal="body_entered" from="TempFloppa/floppa" to="Player" method="_on_floppa_body_entered"]

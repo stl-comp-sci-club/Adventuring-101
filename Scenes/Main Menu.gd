@@ -8,8 +8,8 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	Music.get_node("AudioStreamPlayer").change("res://bgm.ogg") # Replace with function body.
+	Music.get_node("AudioStreamPlayer").play() # Replace with function body.
 
 func _on_start_button_up():
 	get_tree().change_scene("res://Scenes/Upstairs of house.tscn")
