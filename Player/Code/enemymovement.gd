@@ -14,3 +14,7 @@ func move():
 func _physics_process(delta):
 	move()
 	velocity = move_and_slide(velocity)
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		collision.collider.set("health", collision.collider.get("health") - 1)
+		print(collision.collider.get("health"))

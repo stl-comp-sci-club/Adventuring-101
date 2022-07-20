@@ -23,25 +23,25 @@ animations = [ {
 "name": "walk_x",
 "speed": 7.0
 }, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "x_resting",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "down_resting",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "walk_down",
-"speed": 7.0
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
 "name": "up_resting",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 14 ) ],
 "loop": true,
-"name": "x_resting",
-"speed": 5.0
+"name": "walk_down",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 8 ) ],
 "loop": true,
