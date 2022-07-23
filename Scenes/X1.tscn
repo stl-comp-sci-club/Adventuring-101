@@ -1,0 +1,163 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Player/Code/playermovement.gd" type="Script" id=1]
+[ext_resource path="res://TemporaryTileset/Animations/Left_1.png" type="Texture" id=2]
+[ext_resource path="res://Player/Code/enemymovement.gd" type="Script" id=3]
+[ext_resource path="res://tileset1.tres" type="TileSet" id=4]
+[ext_resource path="res://TemporaryTileset/default pplayer base.png" type="Texture" id=5]
+[ext_resource path="res://TemporaryTileset/Animations/Left_2.png" type="Texture" id=6]
+[ext_resource path="res://TemporaryTileset/Animations/Left_rest.png" type="Texture" id=7]
+[ext_resource path="res://TemporaryTileset/Animations/Up_2.png" type="Texture" id=8]
+[ext_resource path="res://TemporaryTileset/Animations/Up_rest.png" type="Texture" id=9]
+[ext_resource path="res://TemporaryTileset/Animations/Up_1.png" type="Texture" id=10]
+[ext_resource path="res://TemporaryTileset/Animations/Left_3.png" type="Texture" id=11]
+[ext_resource path="res://TemporaryTileset/Animations/Down_2.png" type="Texture" id=12]
+[ext_resource path="res://GUI/bars.gd" type="Script" id=13]
+[ext_resource path="res://TemporaryTileset/Animations/Down_4.png" type="Texture" id=14]
+[ext_resource path="res://TemporaryTileset/New Project.png" type="Texture" id=15]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk_x",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "x_resting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "down_resting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "up_resting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 7.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 13, 14 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 11, 22 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 13.5, 7.875 )
+
+[node name="World" type="Node2D"]
+position = Vector2( -13, -25 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 176, 87 )
+z_index = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+speed = 30
+
+[node name="player" type="AnimatedSprite" parent="Player"]
+frames = SubResource( 4 )
+animation = "down_resting"
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 0, 10 )
+shape = SubResource( 3 )
+
+[node name="enemy" type="KinematicBody2D" parent="."]
+position = Vector2( 221, 150 )
+z_index = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+speed = 0
+
+[node name="Sprite" type="Sprite" parent="enemy"]
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+position = Vector2( 0, 2 )
+shape = SubResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( -131072, 68, 0, -131071, 69, 0, -131070, 69, 0, -131069, 69, 0, -131068, 69, 0, -131067, 69, 0, -131066, 69, 0, -131065, 69, 0, -131064, 69, 0, -131063, 75, 0, -65536, 74, 0, -65535, 82, 0, -65534, 82, 0, -65533, 82, 0, -65532, 82, 0, -65531, 82, 0, -65530, 82, 0, -65529, 82, 0, -65528, 82, 0, -65527, 76, 0, 0, 74, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 76, 0, 65536, 74, 0, 65537, 84, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 76, 0, 131072, 74, 0, 131073, 85, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 76, 0, 196608, 74, 0, 196609, 86, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 76, 0, 262144, 74, 0, 262145, 87, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 76, 0, 327680, 74, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 76, 0, 393216, 80, 0, 393217, 79, 0, 393218, 79, 0, 393219, 79, 0, 393220, 79, 0, 393221, 79, 0, 393222, 79, 0, 393223, 79, 0, 393224, 79, 0, 393225, 78, 0, 458752, 81, 0, 458753, 82, 0, 458754, 82, 0, 458755, 82, 0, 458756, 82, 0, 458757, 82, 0, 458758, 82, 0, 458759, 82, 0, 458760, 82, 0, 458761, 83, 0 )
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( -65534, 90, 0, -65532, 93, 0, -65531, 95, 0, -65530, 91, 0, -65529, 88, 0, 393217, 79, 0, 393218, 79, 0, 393219, 79, 0, 393220, 79, 0, 393221, 79, 0, 393222, 79, 0, 393223, 79, 0, 393224, 79, 0 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="infront of player" type="TileMap" parent="."]
+z_index = 1
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 160, 84 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -112.5, 13 )
+shape = SubResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 53, 338 )
+scale = Vector2( 1, 0.735294 )
+texture = ExtResource( 15 )
+
+[node name="health" type="ColorRect" parent="CanvasLayer/HealthBar"]
+margin_left = -45.0
+margin_top = -11.0
+margin_right = 45.0
+margin_bottom = 11.0
+color = Color( 1, 0, 0, 1 )
+script = ExtResource( 13 )
+
+[node name="ManaBar" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 53, 311 )
+scale = Vector2( 1, 0.735294 )
+texture = ExtResource( 15 )
+
+[node name="mana" type="ColorRect" parent="CanvasLayer/ManaBar"]
+margin_left = -45.0
+margin_top = -11.0
+margin_right = 45.0
+margin_bottom = 11.0
+color = Color( 0.372549, 0.298039, 0.905882, 1 )
+script = ExtResource( 13 )
+
+[connection signal="player_stats_changed" from="Player" to="CanvasLayer/HealthBar/health" method="_on_Player_player_stats_changed"]
+[connection signal="body_entered" from="Area2D" to="Player" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]

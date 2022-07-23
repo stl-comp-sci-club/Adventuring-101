@@ -4,6 +4,7 @@ onready var fade = get_node("/root/World/Player/Node2D/Fade")
 onready var player : KinematicBody2D = get_node("/root/World/Player")
 onready var dialogue = get_node("/root/World/Dialogue/PopupDialog")
 export (int) var speed = 30
+var health = 100
 
 var velocity = Vector2.ZERO
 var last_direction = Vector2(0,1)

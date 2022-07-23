@@ -69,6 +69,9 @@ custom_styles/pressed = SubResource( 5 )
 custom_styles/normal = SubResource( 2 )
 enabled_focus_mode = 0
 text = "Play!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="quit" type="Button" parent="."]
 margin_left = 232.0
