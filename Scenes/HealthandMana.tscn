@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://GUI/bars.gd" type="Script" id=1]
 [ext_resource path="res://TemporaryTileset/New Project.png" type="Texture" id=2]
+[ext_resource path="res://TemporaryTileset/red.png" type="Texture" id=3]
+[ext_resource path="res://TemporaryTileset/blu.png" type="Texture" id=4]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 2
@@ -9,6 +11,7 @@ layer = 2
 [node name="Bars" type="Node2D" parent="."]
 
 [node name="HealthBar" type="Sprite" parent="Bars"]
+visible = false
 position = Vector2( 52, 346 )
 texture = ExtResource( 2 )
 
@@ -21,6 +24,7 @@ color = Color( 1, 0, 0, 1 )
 script = ExtResource( 1 )
 
 [node name="ManaBar" type="Sprite" parent="Bars"]
+visible = false
 position = Vector2( 52, 320 )
 texture = ExtResource( 2 )
 
@@ -31,3 +35,21 @@ margin_right = 46.0
 margin_bottom = 7.0
 color = Color( 0.372549, 0.298039, 0.905882, 1 )
 script = ExtResource( 1 )
+
+[node name="helf" type="TextureProgress" parent="Bars"]
+margin_left = 2.0
+margin_top = 309.0
+margin_right = 104.0
+margin_bottom = 333.0
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+
+[node name="maner" type="TextureProgress" parent="Bars"]
+margin_left = 2.0
+margin_top = 334.0
+margin_right = 104.0
+margin_bottom = 358.0
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 4 )
