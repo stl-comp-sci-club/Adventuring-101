@@ -44,6 +44,7 @@ margin_left = -49.0
 margin_top = -37.0
 margin_right = 49.0
 margin_bottom = -23.0
+value = 100.0
 
 [connection signal="body_entered" from="Detection Area" to="." method="_on_Detection_Area_body_entered"]
 [connection signal="body_exited" from="Detection Area" to="." method="_on_Detection_Area_body_exited"]

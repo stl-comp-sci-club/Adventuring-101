@@ -1,37 +1,74 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Scenes/Upstairs of house.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/stairs.gd" type="Script" id=1]
 [ext_resource path="res://tileset1.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/House Exit Door.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Bed.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Pause Menu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/quest.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Dialogue.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/HealthandMana.tscn" type="PackedScene" id=11]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 13.5, 31 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 17 )
 
-[node name="World" instance=ExtResource( 1 )]
+[node name="World" type="Node2D"]
+pause_mode = 2
+position = Vector2( -13, -25 )
+script = ExtResource( 5 )
 
-[node name="Player" parent="." index="0"]
-position = Vector2( 47, 53 )
+[node name="Player" parent="." instance=ExtResource( 4 )]
 
-[node name="TileMap" parent="." index="2"]
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
 tile_data = PoolIntArray( -131072, 68, 0, -131071, 69, 0, -131070, 69, 0, -131069, 69, 0, -131068, 69, 0, -131067, 69, 0, -131066, 69, 0, -131065, 69, 0, -131064, 69, 0, -131063, 75, 0, -65536, 74, 0, -65535, 1, 0, -65534, 82, 0, -65533, 82, 0, -65532, 82, 0, -65531, 82, 0, -65530, 82, 0, -65529, 82, 0, -65528, 82, 0, -65527, 76, 0, 0, 74, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 76, 0, 65536, 74, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 76, 0, 131072, 74, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 76, 0, 196608, 74, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 76, 0, 262144, 74, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 76, 0, 327680, 74, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 76, 0, 393216, 80, 0, 393217, 79, 0, 393218, 79, 0, 393219, 79, 0, 393223, 79, 0, 393224, 79, 0, 393225, 78, 0, 458752, 81, 0, 458753, 82, 0, 458754, 82, 0, 458755, 82, 0, 458759, 82, 0, 458760, 82, 0, 458761, 83, 0 )
 
-[node name="Walls bottom" parent="." index="3"]
+[node name="Walls bottom" type="TileMap" parent="."]
+z_index = 2
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+show_collision = true
+format = 1
 tile_data = PoolIntArray( 393217, 79, 0, 393218, 79, 0, 393219, 79, 0, 393220, 102, 0, 393221, 103, 0, 393222, 104, 0, 393223, 79, 0, 393224, 79, 0, 458756, 83, 0, 458757, 107, 0, 458758, 81, 0 )
 
-[node name="TileMap2" parent="." index="4"]
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
 tile_data = PoolIntArray( -65535, 97, 0, -65534, 92, 0, -65533, 91, 0, -65532, 90, 0, -65529, 93, 0, -65528, 93, 0, 1, 98, 0, 65537, 99, 0, 131073, 100, 0, 131078, 101, 0, 393217, 79, 0, 393218, 79, 0, 393219, 79, 0, 393223, 79, 0, 393224, 79, 0 )
+__meta__ = {
+"_editor_description_": ""
+}
 
-[node name="CollisionShape2D" parent="Stairs" index="0"]
+[node name="Stairs" type="Area2D" parent="."]
+process_priority = 1
+position = Vector2( 160, 84 )
+priority = 1.0
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stairs"]
 position = Vector2( -112, -70 )
+shape = SubResource( 5 )
 
-[node name="Exit Door" type="Area2D" parent="." index="6"]
+[node name="Health N Mana" parent="." instance=ExtResource( 11 )]
+
+[node name="Exit Door" type="Area2D" parent="."]
 script = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit Door" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit Door"]
 position = Vector2( 176, 239 )
 shape = SubResource( 1 )
 
-[node name="Door" type="TileMap" parent="." index="7"]
+[node name="Door" type="TileMap" parent="."]
 z_index = 1
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
@@ -39,11 +76,12 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
 tile_data = PoolIntArray( 393221, 107, 0, 458757, 107, 0 )
 
-[node name="CollisionShape2D" parent="Bed" index="0"]
-position = Vector2( 84.25, 24.5 )
+[node name="Dialogue" parent="." instance=ExtResource( 10 )]
+pause_mode = 2
 
-[node name="CollisionShape2D" parent="Bed" index="0"]
-position = Vector2( 248, -108 )
+[node name="Pause" parent="." instance=ExtResource( 6 )]
 
-[connection signal="body_entered" from="Exit Door" to="Player" method="_on_Exit_Door_body_entered"]
+[node name="Quests" parent="." instance=ExtResource( 8 )]
+
+[connection signal="body_entered" from="Stairs" to="Stairs" method="_on_stairs_collide"]
 [connection signal="body_entered" from="Exit Door" to="Exit Door" method="_on_Exit_Door_body_entered"]
