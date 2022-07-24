@@ -136,7 +136,13 @@ func _process(delta):
 			attacking = true
 			print("attacking")
 			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 0.5
-
+			var a = AudioStreamPlayer2D.new()
+			print(a)
+			add_child(a)
+			a.stop()
+			a.stream = load("res://vine-boom.wav")
+			print(a.stream)
+			a.play()
 			var t = Timer.new()
 			t.set_wait_time(0.1)
 			t.set_one_shot(true)
