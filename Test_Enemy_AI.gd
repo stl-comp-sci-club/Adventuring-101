@@ -29,6 +29,13 @@ func _process(delta):
 		velocity = position.direction_to(player.position)
 		velocity *= speed
 		move_and_slide(velocity)
+		for i in get_slide_count():
+			var collision = get_slide_collision(i)
+			if(collision.get_collider().name == "Player"):
+				collision.get_collider().health -= 1
+				print(collision.get_collider().health)
+			
+				
 	elif stunned:
 		velocity = position.direction_to(player.position) * -1
 		velocity *= 500
