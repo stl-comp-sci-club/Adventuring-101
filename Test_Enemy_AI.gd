@@ -33,7 +33,6 @@ func _process(delta):
 			var collision = get_slide_collision(i)
 			if(collision.get_collider().name == "Player"):
 				collision.get_collider().health -= 1
-				print(collision.get_collider().health)
 			
 				
 	elif stunned:

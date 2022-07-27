@@ -110,6 +110,8 @@ func animate(direction: Vector2):
 		$player.play(d+"_resting")
 
 func _process(delta):
+	if(health < 0):
+		get_tree().change_scene("res://Scenes/Main Menu.tscn")
 	var direction: Vector2
 	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
