@@ -4,7 +4,7 @@ onready var fade = get_node("/root/World/Player/Node2D/Fade")
 onready var player : KinematicBody2D = get_node("/root/World/Player")
 onready var dialogue = get_node("/root/World/Dialogue/PopupDialog")
 export (int) var speed = 30
-
+var health = 100
 var velocity = Vector2.ZERO
 var last_direction = Vector2(0,1)
 
@@ -110,9 +110,12 @@ func animate(direction: Vector2):
 		$player.play(d+"_resting")
 
 func _process(delta):
+	if(health < 0):
+		get_tree().change_scene("res://Scenes/Main Menu.tscn")
 	var direction: Vector2
 	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	get_node("../Health N Mana/helf").value=health
 	if input_allowed:
 		if Input.is_action_pressed("ui_right"):
 			velocity.x += speed
@@ -129,26 +132,32 @@ func _process(delta):
 			speed = 30
 		animate(direction)
 		
-#		get_node("./Attack Area/Weapon Swipe").look_at(get_global_mouse_position())
-		
-#		if Input.is_action_just_pressed("Attack") and not attacking:
-#			get_node("Attack Area/Weapon Swipe").disabled = false
-#			attacking = true
-#			print("attacking")
-#			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 0.5
-#
-#			var t = Timer.new()
-#			t.set_wait_time(0.1)
-#			t.set_one_shot(true)
-#			self.add_child(t)
-#			t.start()
-#			yield(t, "timeout")
-#			t.queue_free()
-#
-#			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 1			
-#			print("attack finished")
-#			get_node("Attack Area/Weapon Swipe").disabled = true
-#			attacking = false
+		get_node("./Attack Area/Weapon Swipe").look_at(get_global_mouse_position())
+
+		if Input.is_action_just_pressed("Attack") and not attacking:
+			get_node("Attack Area/Weapon Swipe").disabled = false
+			attacking = true
+			print("attacking")
+			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 0.5
+			var a = AudioStreamPlayer2D.new()
+			print(a)
+			add_child(a)
+			a.stop()
+			a.stream = load("res://vine-boom.wav")
+			print(a.stream)
+			a.play()
+			var t = Timer.new()
+			t.set_wait_time(0.1)
+			t.set_one_shot(true)
+			self.add_child(t)
+			t.start()
+			yield(t, "timeout")
+			t.queue_free()
+
+			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 1			
+			print("attack finished")
+			get_node("Attack Area/Weapon Swipe").disabled = true
+			attacking = false
 			
 			
 		
