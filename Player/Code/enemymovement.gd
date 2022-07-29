@@ -7,6 +7,8 @@ onready var player : KinematicBody2D = get_node("/root/World/Player")
 
 
 func _process(delta):
+	if Global.paused:
+		pass
 	velocity = position.direction_to(player.position) * speed
 	velocity *= speed
 	#velocity = velocity.normalized() * speed

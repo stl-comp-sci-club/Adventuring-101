@@ -25,7 +25,7 @@ func _input(event):
 var velocity = Vector2.ZERO
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if player_in_detection_area and not stunned:
+	if player_in_detection_area and not stunned and not Global.paused:
 		velocity = position.direction_to(player.position)
 		velocity *= speed
 		move_and_slide(velocity)
