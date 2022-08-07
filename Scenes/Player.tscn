@@ -4,10 +4,6 @@
 [ext_resource path="res://Player/caywalksheet.png" type="Texture" id=2]
 [ext_resource path="res://Pause_button.png" type="Texture" id=3]
 
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 2 )
-region = Rect2( 23, 58, 23, 58 )
-
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 174, 23, 58 )
@@ -84,13 +80,12 @@ region = Rect2( 46, 116, 23, 58 )
 atlas = ExtResource( 2 )
 region = Rect2( 69, 116, 23, 58 )
 
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 23, 58, 23, 58 )
+
 [sub_resource type="SpriteFrames" id=27]
 animations = [ {
-"frames": [ SubResource( 11 ) ],
-"loop": true,
-"name": "right_resting",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
 "loop": true,
 "name": "walk_up",
@@ -125,6 +120,11 @@ animations = [ {
 "loop": true,
 "name": "walk_left",
 "speed": 7.0
+}, {
+"frames": [ SubResource( 11 ) ],
+"loop": true,
+"name": "right_resting",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=28]

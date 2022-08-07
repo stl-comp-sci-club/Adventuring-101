@@ -115,7 +115,7 @@ func _process(delta):
 	var direction: Vector2
 	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	get_node("../Health N Mana/helf").value=health
+	get_node("../Health N Mana/Bars/Health").value=health
 	if input_allowed:
 		if Input.is_action_pressed("ui_right"):
 			velocity.x += speed
