@@ -230,7 +230,7 @@ position = Vector2( -1, 14 )
 shape = SubResource( 27 )
 
 [node name="Line2D" type="Line2D" parent="Mom"]
-width = 2.0
+width = 0.0
 
 [node name="NavMesh" type="Navigation2D" parent="."]
 visible = false
