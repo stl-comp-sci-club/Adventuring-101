@@ -113,16 +113,18 @@ func animate(direction: Vector2):
 
 func _process(delta):
 	if stunned:
+		var a = AudioStreamPlayer2D.new()
+		print(a)
+		add_child(a)
+		a.stop()
+		a.volume_db = 23
+		a.stream = load("res://playerhurt.wav")
+		print(a.stream)
+		a.play()
 		velocity = position.direction_to(enemy.position) * -1
 		velocity *= 500
 		move_and_slide(velocity)
-		var t = Timer.new()
-		t.set_wait_time(0.1)
-		t.set_one_shot(true)
-		self.add_child(t)
-		t.start()
-		yield(t, "timeout")
-		t.queue_free()
+		yield(get_tree().create_timer(0.1), "timeout")
 		stunned = false
 	if health < 0:
 		get_tree().change_scene("res://Scenes/Main Menu.tscn")
