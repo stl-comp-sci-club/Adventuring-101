@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var fade = get_node("/root/World/Player/Node2D/Fade")
 onready var player : KinematicBody2D = get_node("/root/World/Player")
+onready var enemy : KinematicBody2D = get_node("/root/World/Enemy")
 onready var dialogue = get_node("/root/World/Dialogue/PopupDialog")
 export (int) var speed = 30
 var health = 100
@@ -10,6 +11,7 @@ var last_direction = Vector2(0,1)
 
 var input_allowed = true
 var attacking = false
+var stunned = false
 
 func new_dialogue(text, npc_name):
 	var d = get_animation_direction(last_direction)
@@ -110,7 +112,19 @@ func animate(direction: Vector2):
 		$player.play(d+"_resting")
 
 func _process(delta):
-	if(health < 0):
+	if stunned:
+		velocity = position.direction_to(enemy.position) * -1
+		velocity *= 500
+		move_and_slide(velocity)
+		var t = Timer.new()
+		t.set_wait_time(0.1)
+		t.set_one_shot(true)
+		self.add_child(t)
+		t.start()
+		yield(t, "timeout")
+		t.queue_free()
+		stunned = false
+	if health < 0:
 		get_tree().change_scene("res://Scenes/Main Menu.tscn")
 	var direction: Vector2
 	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")

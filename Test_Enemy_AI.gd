@@ -3,7 +3,7 @@ extends KinematicBody2D
 onready var player : KinematicBody2D = get_node("/root/World/Player")
 onready var weapon = get_node("/root/World/Player/Attack Area")
 
-export (int) var speed = 20
+export (int) var speed = 30
 var player_in_detection_area = false
 
 var health = 100.0
@@ -32,9 +32,8 @@ func _process(delta):
 		for i in get_slide_count():
 			var collision = get_slide_collision(i)
 			if(collision.get_collider().name == "Player"):
-				collision.get_collider().health -= 1
-			
-				
+				collision.get_collider().stunned = true;
+				collision.get_collider().health -= rng.randf_range(0.0, 5.0)
 	elif stunned:
 		velocity = position.direction_to(player.position) * -1
 		velocity *= 500
