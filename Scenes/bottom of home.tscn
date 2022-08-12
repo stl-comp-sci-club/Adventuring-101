@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scenes/stairs.gd" type="Script" id=1]
 [ext_resource path="res://tileset1.tres" type="TileSet" id=2]
@@ -6,7 +6,9 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Bed.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Pause Menu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://caymom.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/quest.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/NPC.gd" type="Script" id=9]
 [ext_resource path="res://Dialogue.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/HealthandMana.tscn" type="PackedScene" id=11]
 
@@ -15,6 +17,137 @@ extents = Vector2( 13.5, 31 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 17 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 180, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 7 )
+region = Rect2( 24, 180, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 7 )
+region = Rect2( 48, 180, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 7 )
+region = Rect2( 72, 180, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 7 )
+region = Rect2( 24, 180, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 7 )
+region = Rect2( 24, 0, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 7 )
+region = Rect2( 24, 0, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 7 )
+region = Rect2( 48, 0, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 7 )
+region = Rect2( 72, 0, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 60, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 7 )
+region = Rect2( 24, 60, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 7 )
+region = Rect2( 48, 60, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 7 )
+region = Rect2( 72, 60, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 7 )
+region = Rect2( 24, 120, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 120, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 7 )
+region = Rect2( 24, 120, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 7 )
+region = Rect2( 48, 120, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 7 )
+region = Rect2( 72, 120, 24, 60 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 7 )
+region = Rect2( 72, 60, 24, 60 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "up_resting",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 8 ) ],
+"loop": true,
+"name": "down_resting",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 9 ) ],
+"loop": true,
+"name": "left_resting",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 10 ) ],
+"loop": true,
+"name": "right_resting",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=27]
+extents = Vector2( 10, 11.125 )
+
+[sub_resource type="NavigationPolygon" id=28]
+vertices = PoolVector2Array( 194, 195, 193, 124, 252, 124, 289, 194, 289, 34, 252, 65, 64, 35, 193, 64, 65, 96, 31, 192, 32, 97 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 3, 2, 5 ), PoolIntArray( 6, 4, 5, 7 ), PoolIntArray( 8, 6, 7, 0 ), PoolIntArray( 0, 9, 10, 8 ) ]
+outlines = [ PoolVector2Array( 289, 194, 289, 34, 64, 35, 65, 96, 32, 97, 31, 192, 194, 195, 193, 64, 252, 65, 252, 124, 193, 124, 194, 195 ) ]
 
 [node name="World" type="Node2D"]
 pause_mode = 2
@@ -82,6 +215,28 @@ pause_mode = 2
 [node name="Pause" parent="." instance=ExtResource( 6 )]
 
 [node name="Quests" parent="." instance=ExtResource( 8 )]
+
+[node name="Mom" type="StaticBody2D" parent="."]
+position = Vector2( 272, 80 )
+script = ExtResource( 9 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Mom"]
+position = Vector2( 0, -1 )
+frames = SubResource( 6 )
+animation = "left_resting"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mom"]
+position = Vector2( -1, 14 )
+shape = SubResource( 27 )
+
+[node name="Line2D" type="Line2D" parent="Mom"]
+width = 0.0
+
+[node name="NavMesh" type="Navigation2D" parent="."]
+visible = false
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="NavMesh"]
+navpoly = SubResource( 28 )
 
 [connection signal="body_entered" from="Stairs" to="Stairs" method="_on_stairs_collide"]
 [connection signal="body_entered" from="Exit Door" to="Exit Door" method="_on_Exit_Door_body_entered"]
