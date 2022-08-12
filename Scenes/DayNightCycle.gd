@@ -4,8 +4,8 @@ extends CanvasModulate
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-const nightColor = Color("#0f1217")
-const dayColor = Color("#ffffff")
+const nightColor = Color("#281E56")
+const dayColor = Color("#F4F1D9")
 const timeConst = 0.1
 var time = 0
 

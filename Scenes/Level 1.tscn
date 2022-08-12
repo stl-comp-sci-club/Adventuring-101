@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Outside.tres" type="TileSet" id=2]
@@ -201,6 +201,9 @@ animations = [ {
 "speed": 7.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=61]
+extents = Vector2( 14.5, 12 )
+
 [sub_resource type="RectangleShape2D" id=59]
 extents = Vector2( 10.5, 10 )
 
@@ -219,7 +222,7 @@ position = Vector2( 141, -33 )
 
 [node name="Light2D" type="Light2D" parent="Player"]
 texture = ExtResource( 26 )
-energy = 0.5
+energy = 0.4
 shadow_enabled = true
 shadow_gradient_length = 3.0
 shadow_filter = 2
@@ -304,6 +307,7 @@ shape = SubResource( 28 )
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
+frame = 2
 playing = true
 
 [node name="Light2D" type="Light2D" parent="Fountain"]
@@ -418,6 +422,7 @@ tile_data = PoolIntArray( -917591, 2, 0, -917569, 2, 0, -917547, 2, 0, -917525, 
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
+frame = 2
 playing = true
 
 [node name="Player Head" type="Sprite" parent="Map/Border/Minimap/Viewport"]
@@ -439,6 +444,12 @@ animation = "down_resting"
 [node name="Line2D" type="Line2D" parent="Elijah"]
 width = 0.0
 
+[node name="Area2D" type="Area2D" parent="Elijah"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elijah/Area2D"]
+position = Vector2( -0.5, 19 )
+shape = SubResource( 61 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Elijah"]
 position = Vector2( -0.5, 19 )
 shape = SubResource( 59 )
@@ -459,3 +470,5 @@ navpoly = SubResource( 60 )
 [connection signal="body_entered" from="NPC house door/Interact Area" to="NPC house door" method="_on_Interact_Area_body_entered"]
 [connection signal="body_exited" from="NPC house door/Interact Area" to="NPC house door" method="_on_Interact_Area_body_exited"]
 [connection signal="button_up" from="Map Button UI/Map Button" to="Map Button UI/Map Button" method="_on_Map_Button_button_up"]
+[connection signal="body_entered" from="Elijah/Area2D" to="Elijah" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Elijah/Area2D" to="Elijah" method="_on_Area2D_body_exited"]

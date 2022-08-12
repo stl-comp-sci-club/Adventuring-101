@@ -2,10 +2,11 @@ extends StaticBody2D
 
 onready var navMesh : Navigation2D = get_node("/root/World/NavMesh")
 onready var path_line : Line2D = get_node("./Line2D")
-
+onready var player : KinematicBody2D = get_node("/root/World/Player")
 
 # 60
-export (int) var speed = 100
+export (int) var set_speed = 40
+var speed = set_speed
 var path : = PoolVector2Array()
 
 var waiting = false
@@ -67,6 +68,10 @@ func begin_path(var path_i):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if player.position.y > position.y:
+		get_node(".").z_index = 0
+	else:
+		get_node(".").z_index = 1
 	animate(direction)
 	if path.size() == 0:
 			print("Finished point")
@@ -94,3 +99,29 @@ func _process(delta):
 		# go to next point after finishing
 		
 	#	last_position = position
+
+
+
+func _on_Area2D_body_entered(body):
+#	print(body)
+	if body == player:
+		speed = 0
+		print("Collision")
+		waiting = true
+		direction = Vector2.ZERO
+		last_direction = position.direction_to(player.position)
+		yield(get_tree().create_timer(5), "timeout")
+		
+		speed = set_speed
+		print("Continuing...")
+		waiting = false
+		
+		$CollisionShape2D.disabled = true
+		yield(get_tree().create_timer(2), "timeout")
+		
+		$CollisionShape2D.disabled = false
+		
+func _on_Area2D_body_exited(body):
+	if body == player:
+		speed = set_speed
+		waiting = false
