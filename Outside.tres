@@ -1,11 +1,8 @@
-[gd_resource type="TileSet" load_steps=8 format=2]
+[gd_resource type="TileSet" load_steps=7 format=2]
 
 [ext_resource path="res://TemporaryTileset/ground.png" type="Texture" id=1]
 [ext_resource path="res://TemporaryTileset/Placeholder_door.png" type="Texture" id=2]
 [ext_resource path="res://Tilesets/16x16  gfx tileset/Overworld.png" type="Texture" id=3]
-
-[sub_resource type="OccluderPolygon2D" id=4]
-polygon = PoolVector2Array( 32.8014, 73.7487, 32.8014, 58.6318, 35.7085, 55.1433, 42.4917, 55.3371, 45.5927, 58.2442, 46.9493, 74.7177, 70.5937, 76.0744, 72.1442, 50.6857, 76.7955, 51.8485, 71.3689, 20.8395, 76.4079, 19.8704, 71.7565, 15.2191, 62.0662, 9.01728, 50.244, 3.59069, 43.0732, 2.42785, 38.4218, 1.65262, 31.0572, 3.39688, 25.243, 6.6916, 15.165, 10.5677, 9.54462, 13.4748, 5.86229, 15.9943, 2.76138, 18.5138, 3.3428, 21.8085, 4.69945, 21.4209, 4.89326, 31.6926, 4.11803, 34.7936, 3.3428, 39.6387, 2.56757, 43.3211, 2.56757, 48.9414, 2.37377, 52.0424, 7.80035, 52.2362, 5.47468, 65.415, 7.21893, 69.8726, 7.99416, 75.2992 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 74.124, 19.0245, 74.9612, 51.677, 71.0317, 52.6929, 69.8261, 76.8055, 52.9137, 73.4454, 52.3556, 49.4444, 25.0056, 49.7235, 24.7265, 74.0036, 6.32947, 76.0018, 5.92758, 51.4872, 2.71255, 51.8891, 3.5163, 20.1408, 38.4797, 2.0563 )
@@ -59,7 +56,6 @@ points = PoolVector2Array( 3.72905, 24.048, 71.825, 24.327, 69.5923, 75.1199, 6.
 2/region = Rect2( 97, 0, 79, 78 )
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
-2/occluder = SubResource( 4 )
 2/navigation_offset = Vector2( 0, 0 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
