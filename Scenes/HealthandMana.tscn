@@ -7,9 +7,7 @@
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 2
 
-[node name="Bars" type="Node2D" parent="."]
-
-[node name="Health" type="TextureProgress" parent="Bars"]
+[node name="helf" type="TextureProgress" parent="."]
 margin_left = 2.0
 margin_top = 309.0
 margin_right = 104.0
@@ -18,7 +16,7 @@ value = 100.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 3 )
 
-[node name="Mana" type="TextureProgress" parent="Bars"]
+[node name="maner" type="TextureProgress" parent="."]
 margin_left = 2.0
 margin_top = 334.0
 margin_right = 104.0

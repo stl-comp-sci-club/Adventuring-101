@@ -264,7 +264,7 @@ shape = SubResource( 1 )
 [node name="Pause" parent="." instance=ExtResource( 17 )]
 
 [node name="TempFloppa" type="Sprite" parent="."]
-position = Vector2( -23, 92 )
+position = Vector2( 59, 93 )
 scale = Vector2( 0.0870968, 0.0870968 )
 texture = ExtResource( 3 )
 script = ExtResource( 5 )
