@@ -5,12 +5,10 @@ var scene = ""
 var paused = false
 var in_dialogue = false
 
-
 # Vectors define the points the NPC should walk to
 # Integers define pauses between the points (in seconds)
 # Avoid using floats cause it like breaks it
 var NPC_paths = {"Elijah": [1, Vector2(-906, 713), 3, Vector2(0,0), 3], "Mom": [Vector2(272,80)]}
-
 
 var main_quests = []
 var side_quests = []
