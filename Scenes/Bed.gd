@@ -18,7 +18,6 @@ func _ready():
 
 func _input(event):
 	if inside_interact_area and Input.is_action_just_pressed("Interact") and not Global.in_dialogue and (Global.scene == "upstairs" or Global.scene == ""):
-		
 		player.fade_out()
 		health.modulate.a = 0
 		quest.modulate.a = 0

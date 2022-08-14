@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Outside.tres" type="TileSet" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://Tilesets/Fountain 1.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/Fountain.gd" type="Script" id=9]
 [ext_resource path="res://Interact Menu.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/NPC house door.gd" type="Script" id=11]
+[ext_resource path="res://NPC house door.tscn" type="PackedScene" id=11]
 [ext_resource path="res://test2.png" type="Texture" id=12]
 [ext_resource path="res://Scenes/Drum.gd" type="Script" id=13]
 [ext_resource path="res://Scenes/Minimap_zoom.gd" type="Script" id=14]
@@ -29,6 +29,8 @@
 [ext_resource path="res://Scenes/DayNightCycle.gd" type="Script" id=27]
 [ext_resource path="res://NPC sprites/Elijah.png" type="Texture" id=28]
 [ext_resource path="res://Scenes/NPC.gd" type="Script" id=29]
+[ext_resource path="res://tileset1.tres" type="TileSet" id=30]
+[ext_resource path="res://Scenes/Elijah House Door.gd" type="Script" id=31]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.75, 21.75 )
@@ -56,12 +58,6 @@ height = 5.0
 
 [sub_resource type="CircleShape2D" id=31]
 radius = 30.0041
-
-[sub_resource type="RectangleShape2D" id=32]
-extents = Vector2( 18, 21 )
-
-[sub_resource type="RectangleShape2D" id=33]
-extents = Vector2( 26, 28.5 )
 
 [sub_resource type="DynamicFont" id=37]
 font_data = ExtResource( 23 )
@@ -212,13 +208,27 @@ vertices = PoolVector2Array( -218, 293, -242, 369, -242, 292, -241, 173, -207, 3
 polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 1, 0, 4 ), PoolIntArray( 5, 6, 7, 8 ), PoolIntArray( 5, 8, 9, 10 ), PoolIntArray( 11, 12, 13, 14 ), PoolIntArray( 14, 13, 10, 15 ), PoolIntArray( 15, 10, 9, 16, 17 ), PoolIntArray( 18, 19, 20, 21 ), PoolIntArray( 22, 23, 24, 15, 1 ), PoolIntArray( 16, 25, 17 ), PoolIntArray( 15, 17, 1 ), PoolIntArray( 26, 27, 18 ), PoolIntArray( 26, 18, 21 ), PoolIntArray( 28, 29, 26, 21, 30, 31 ), PoolIntArray( 32, 0, 3, 29 ), PoolIntArray( 28, 32, 29 ), PoolIntArray( 30, 33, 22, 34 ), PoolIntArray( 1, 4, 35 ), PoolIntArray( 22, 1, 35 ), PoolIntArray( 22, 35, 36 ), PoolIntArray( 22, 36, 34 ), PoolIntArray( 31, 30, 34 ) ]
 outlines = [ PoolVector2Array( 216, -17, 216, 24, -112, 24, -111, 174, -82, 175, -81, 367, 302, 368, 302, 465, -588, 464, -588, 786, 80, 784, 81, 848, -656, 848, -657, 785, -882, 785, -879, 960, -944, 960, -945, 714, -664, 717, -662, 333, -589, 333, -589, 368, -242, 369, -242, 292, -218, 293, -207, 336, -159, 356, -113, 340, -100, 299, -122, 249, -161, 237, -202, 252, -218, 293, -242, 292, -241, 173, -212, 172, -210, 24, -631, 24, -631, -15 ) ]
 
+[sub_resource type="NavigationPolygon" id=65]
+vertices = PoolVector2Array( 289, -1985, 513, -1986, 513, -1792, 289, -1918, 257, -1792, 257, -1918 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 2, 4, 5 ) ]
+outlines = [ PoolVector2Array( 289, -1985, 289, -1918, 257, -1918, 257, -1792, 513, -1792, 513, -1986 ) ]
+
+[sub_resource type="RectangleShape2D" id=62]
+extents = Vector2( 16, 44 )
+
+[sub_resource type="RectangleShape2D" id=63]
+extents = Vector2( 16.875, 18 )
+
+[sub_resource type="RectangleShape2D" id=64]
+extents = Vector2( 16.375, 4.5625 )
+
 [node name="World" type="Node2D"]
 pause_mode = 2
 position = Vector2( -13, -25 )
 script = ExtResource( 16 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 141, -33 )
+position = Vector2( 141, -24 )
 
 [node name="Light2D" type="Light2D" parent="Player"]
 texture = ExtResource( 26 )
@@ -307,7 +317,6 @@ shape = SubResource( 28 )
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
-frame = 2
 playing = true
 
 [node name="Light2D" type="Light2D" parent="Fountain"]
@@ -337,19 +346,9 @@ autoplay = true
 
 [node name="Quests" parent="." instance=ExtResource( 19 )]
 
-[node name="NPC house door" type="StaticBody2D" parent="."]
-position = Vector2( 140, -20 )
-script = ExtResource( 11 )
-
-[node name="Door" type="CollisionShape2D" parent="NPC house door"]
-position = Vector2( -175, -27 )
-shape = SubResource( 32 )
-
-[node name="Interact Area" type="Area2D" parent="NPC house door"]
-
-[node name="Area Shape" type="CollisionShape2D" parent="NPC house door/Interact Area"]
-position = Vector2( -175, -25.5 )
-shape = SubResource( 33 )
+[node name="NPC house door" parent="." instance=ExtResource( 11 )]
+position = Vector2( -35, -47 )
+NPC_name = "Elijah"
 
 [node name="Map Button UI" type="CanvasLayer" parent="."]
 
@@ -422,7 +421,6 @@ tile_data = PoolIntArray( -917591, 2, 0, -917569, 2, 0, -917547, 2, 0, -917525, 
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
-frame = 2
 playing = true
 
 [node name="Player Head" type="Sprite" parent="Map/Border/Minimap/Viewport"]
@@ -436,6 +434,7 @@ script = ExtResource( 27 )
 [node name="Elijah" type="StaticBody2D" parent="."]
 position = Vector2( 0, -13 )
 script = ExtResource( 29 )
+editor_speed = 100
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Elijah"]
 frames = SubResource( 58 )
@@ -456,8 +455,74 @@ shape = SubResource( 59 )
 
 [node name="NavMesh" type="Navigation2D" parent="."]
 
-[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="NavMesh"]
+[node name="Main World" type="NavigationPolygonInstance" parent="NavMesh"]
 navpoly = SubResource( 60 )
+
+[node name="Elijah House" type="NavigationPolygonInstance" parent="NavMesh"]
+navpoly = SubResource( 65 )
+
+[node name="Elijah House" type="Node2D" parent="."]
+position = Vector2( 65, 32 )
+
+[node name="Layer1" type="TileMap" parent="Elijah House"]
+z_index = -1
+tile_set = ExtResource( 30 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -4194298, 97, 0, -4194297, 71, 0, -4194296, 71, 0, -4194295, 71, 0, -4194294, 71, 0, -4194293, 71, 0, -4194292, 71, 0, -4194291, 71, 0, -4128762, 98, 0, -4128761, 0, 0, -4128760, 0, 0, -4128759, 0, 0, -4128758, 0, 0, -4128757, 0, 0, -4128756, 0, 0, -4128755, 0, 0, -4063226, 99, 0, -4063225, 0, 0, -4063224, 0, 0, -4063223, 0, 0, -4063222, 0, 0, -4063221, 0, 0, -4063220, 0, 0, -4063219, 0, 0, -3997690, 100, 0, -3997689, 0, 0, -3997688, 0, 0, -3997687, 0, 0, -3997686, 0, 0, -3997685, 0, 0, -3997684, 0, 0, -3997683, 0, 0, -3932154, 0, 0, -3932153, 0, 0, -3932152, 0, 0, -3932151, 0, 0, -3932150, 0, 0, -3932149, 0, 0, -3932148, 0, 0, -3932147, 0, 0, -3866618, 0, 0, -3866617, 0, 0, -3866616, 0, 0, -3866615, 0, 0, -3866614, 0, 0, -3866613, 0, 0, -3866612, 0, 0, -3866611, 0, 0, -3801082, 0, 0, -3801081, 0, 0, -3801080, 0, 0, -3801079, 0, 0, -3801078, 0, 0, -3801077, 0, 0, -3801076, 0, 0, -3801075, 0, 0, -3670011, 81, 0, -3670010, 71, 0, -3670009, 71, 0, -3670008, 71, 0, -3670004, 71, 0, -3670003, 71, 0, -3670002, 83, 0 )
+
+[node name="Layer2" type="TileMap" parent="Elijah House"]
+z_index = -1
+tile_set = ExtResource( 30 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -4194296, 90, 0, -4194294, 90, 0, -4194292, 90, 0, -4128761, 27, 0, -4128760, 28, 0, -4128759, 28, 0, -4128758, 28, 0, -4128757, 28, 0, -4128756, 28, 0, -4128755, 31, 0, -4063225, 45, 0, -4063224, 47, 0, -4063223, 47, 0, -4063222, 47, 0, -4063221, 47, 0, -4063220, 47, 0, -4063219, 108, 0, -3997689, 45, 0, -3997688, 47, 0, -3997687, 47, 0, -3997686, 47, 0, -3997685, 47, 0, -3997684, 47, 0, -3997683, 108, 0, -3932153, 45, 0, -3932152, 47, 0, -3932151, 47, 0, -3932150, 47, 0, -3932149, 47, 0, -3932148, 47, 0, -3932147, 108, 0, -3866617, 45, 0, -3866616, 47, 0, -3866615, 47, 0, -3866614, 47, 0, -3866613, 47, 0, -3866612, 47, 0, -3866611, 108, 0, -3801081, 46, 0, -3801080, 49, 0, -3801079, 49, 0, -3801078, 49, 0, -3801077, 49, 0, -3801076, 49, 0, -3801075, 48, 0 )
+
+[node name="Layer3" type="TileMap" parent="Elijah House"]
+z_index = 1
+tile_set = ExtResource( 30 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -3997686, 96, 0, -3735542, 107, 0 )
+
+[node name="Stair Block" type="StaticBody2D" parent="Elijah House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elijah House/Stair Block"]
+position = Vector2( 208, -2003 )
+shape = SubResource( 62 )
+
+[node name="Layer4" type="TileMap" parent="Elijah House"]
+z_index = 2
+tile_set = ExtResource( 30 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -4259835, 68, 0, -4259834, 70, 0, -4259833, 70, 0, -4259832, 70, 0, -4259831, 70, 0, -4259830, 70, 0, -4259829, 70, 0, -4259828, 70, 0, -4259827, 70, 0, -4259826, 66, 0, -4194299, 73, 0, -4194290, 77, 0, -4128763, 73, 0, -4128754, 77, 0, -4063227, 73, 0, -4063218, 77, 0, -3997691, 73, 0, -3997682, 77, 0, -3932155, 73, 0, -3932146, 77, 0, -3866619, 73, 0, -3866610, 77, 0, -3801083, 73, 0, -3801074, 77, 0, -3735547, 80, 0, -3735546, 79, 0, -3735545, 79, 0, -3735544, 79, 0, -3735543, 102, 0, -3735542, 103, 0, -3735541, 104, 0, -3735540, 79, 0, -3735539, 79, 0, -3735538, 78, 0, -3670010, 82, 0, -3670009, 82, 0, -3670008, 82, 0, -3670007, 82, 0, -3670005, 82, 0, -3670004, 82, 0, -3670003, 82, 0 )
+
+[node name="Layer5" type="TileMap" parent="Elijah House"]
+z_index = 3
+tile_set = ExtResource( 30 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -3670007, 106, 0, -3670006, 107, 0, -3670005, 105, 0 )
+
+[node name="Door" type="Area2D" parent="Elijah House"]
+position = Vector2( -65, -32 )
+script = ExtResource( 31 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elijah House/Door"]
+position = Vector2( 401.125, -1746 )
+shape = SubResource( 63 )
+
+[node name="Door Stop" type="StaticBody2D" parent="Elijah House"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elijah House/Door Stop"]
+position = Vector2( 335.625, -1764.44 )
+shape = SubResource( 64 )
 
 [connection signal="body_entered" from="Enter House" to="Enter House" method="_on_Enter_House_body_entered"]
 [connection signal="body_entered" from="TempFloppa/floppa" to="TempFloppa" method="_on_floppa_body_entered"]
@@ -467,8 +532,7 @@ navpoly = SubResource( 60 )
 [connection signal="body_exited" from="Drum/drum" to="Drum" method="_on_drum_body_exited"]
 [connection signal="body_entered" from="Fountain/Interact Area" to="Fountain/Interact Area" method="_on_Interact_Area_body_entered"]
 [connection signal="body_exited" from="Fountain/Interact Area" to="Fountain/Interact Area" method="_on_Interact_Area_body_exited"]
-[connection signal="body_entered" from="NPC house door/Interact Area" to="NPC house door" method="_on_Interact_Area_body_entered"]
-[connection signal="body_exited" from="NPC house door/Interact Area" to="NPC house door" method="_on_Interact_Area_body_exited"]
 [connection signal="button_up" from="Map Button UI/Map Button" to="Map Button UI/Map Button" method="_on_Map_Button_button_up"]
 [connection signal="body_entered" from="Elijah/Area2D" to="Elijah" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Elijah/Area2D" to="Elijah" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Elijah House/Door" to="Elijah House/Door" method="_on_Area2D_body_entered"]
