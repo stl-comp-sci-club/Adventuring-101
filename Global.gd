@@ -7,8 +7,28 @@ var in_dialogue = false
 
 # Vectors define the points the NPC should walk to
 # Integers define pauses between the points (in seconds)
+
+# "hide" hides the npc
+# "show" shows the npc
+# used when NPC enters or exits house, seperated by a timer
+
+# Arrays define teleport points for the npc
+# ex. [Vector2(40, 30)]
+# teleports npc to 40x 30y
+
+# "enter_house" allows player to enter the house
+# "leave_house" prevents player from entering the house
+
+# "stop" makes the NPC un-responsive (basically just a static object)
+# "start" re-enables the NPC
+
 # Avoid using floats cause it like breaks it
-var NPC_paths = {"Elijah": [1, Vector2(-906, 713), 3, Vector2(0,0), 3], "Mom": [Vector2(272,80)]}
+var NPC_paths = {"Elijah": [Vector2(0,0), 1, Vector2(-906, 713), 3, Vector2(0,0), 3, Vector2(-35, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-35, -60)]], "Mom": [Vector2(272,80)]}
+
+
+# true means npc is inside their house
+# false means npc is not inside their house
+var NPC_houses = {"Elijah": false}
 
 var main_quests = []
 var side_quests = []
