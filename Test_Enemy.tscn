@@ -1,34 +1,151 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://test_enemy.png" type="Texture" id=1]
+[ext_resource path="res://Elijah.png" type="Texture" id=1]
 [ext_resource path="res://Test_Enemy_AI.gd" type="Script" id=2]
 [ext_resource path="res://tets2.png" type="Texture" id=3]
 [ext_resource path="res://tets.png" type="Texture" id=4]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 1 )
+region = Rect2( 69, 0, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 1 )
+region = Rect2( 69, 120, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 1 )
+region = Rect2( 69, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 1 )
+region = Rect2( 69, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 1 )
+region = Rect2( 23, 0, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 1 )
+region = Rect2( 46, 0, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 1 )
+region = Rect2( 69, 0, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 120, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 1 )
+region = Rect2( 23, 120, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 1 )
+region = Rect2( 46, 120, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 1 )
+region = Rect2( 69, 120, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 1 )
+region = Rect2( 23, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 1 )
+region = Rect2( 46, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 1 )
+region = Rect2( 69, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 1 )
+region = Rect2( 23, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 1 )
+region = Rect2( 46, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 1 )
+region = Rect2( 69, 180, 23, 60 )
+
+[sub_resource type="SpriteFrames" id=27]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ SubResource( 28 ) ],
 "loop": true,
-"name": "default",
+"name": "down_resting",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 29 ) ],
+"loop": true,
+"name": "left_resting",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 30 ) ],
+"loop": true,
+"name": "right_resting",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 31 ) ],
+"loop": true,
+"name": "up_resting",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 7.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 21, 21 )
+extents = Vector2( 11.5, 17.5 )
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 220.002
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 21, 21 )
+extents = Vector2( 11.5, 17.5 )
 
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+[node name="enemy" type="AnimatedSprite" parent="."]
+frames = SubResource( 27 )
+animation = "down_resting"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, 11.5 )
 shape = SubResource( 2 )
 
 [node name="Detection Area" type="Area2D" parent="."]
@@ -39,13 +156,14 @@ shape = SubResource( 3 )
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( -0.5, 11.5 )
 shape = SubResource( 4 )
 
 [node name="ProgressBar" type="TextureProgress" parent="."]
 margin_left = -50.0
-margin_top = -44.0
+margin_top = -50.0
 margin_right = 50.0
-margin_bottom = -24.0
+margin_bottom = -30.0
 value = 100.0
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 3 )
