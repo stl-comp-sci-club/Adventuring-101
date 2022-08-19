@@ -129,13 +129,13 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 11.5, 16.5 )
+extents = Vector2( 11.5, 17.5 )
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 220.002
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 11.5, 16.5 )
+extents = Vector2( 11.5, 17.5 )
 
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 2 )
