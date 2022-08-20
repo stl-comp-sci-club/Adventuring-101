@@ -1,0 +1,25 @@
+{
+	"Health Potion": {
+	"ItemCategory": "Consumable",
+	"AddHealth": 5,
+	"StackSize": 99,
+	"Description": "Made with the root of a heart tree, replenishes your health"
+	},
+	"Iron Sword": {
+	"ItemCategory": "Sword",
+	"ItemAttack": 3,
+	"ItemSpeed": 0.75,
+	"StackSize": 1,
+	"Description": "Gets the job done."
+	},
+
+	"Magic Wand": {
+	"ItemCategory": "Wand",
+	"ItemAttack": 5,
+	"ItemSpeed": 5,
+	"StackSize": 1,
+	"Description": "Enchanted with the powers of old."
+	}
+
+
+}

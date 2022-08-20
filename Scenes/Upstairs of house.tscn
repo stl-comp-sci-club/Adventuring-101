@@ -1,8 +1,22 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=37 format=2]
 
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Code/player.gd" type="Script" id=1]
+[ext_resource path="res://TemporaryTileset/Animations/NewAnimations/newleft1.png" type="Texture" id=2]
+[ext_resource path="res://Player/Code/enemymovement.gd" type="Script" id=3]
 [ext_resource path="res://tileset1.tres" type="TileSet" id=4]
-[ext_resource path="res://Scenes/hell_entrypoint.gd" type="Script" id=7]
+[ext_resource path="res://TemporaryTileset/default pplayer base.png" type="Texture" id=5]
+[ext_resource path="res://TemporaryTileset/Animations/Left_2.png" type="Texture" id=6]
+[ext_resource path="res://TemporaryTileset/Animations/Left_rest.png" type="Texture" id=7]
+[ext_resource path="res://TemporaryTileset/Animations/Up_2.png" type="Texture" id=8]
+[ext_resource path="res://TemporaryTileset/Animations/Up_rest.png" type="Texture" id=9]
+[ext_resource path="res://TemporaryTileset/Animations/Up_1.png" type="Texture" id=10]
+[ext_resource path="res://TemporaryTileset/Animations/Left_3.png" type="Texture" id=11]
+[ext_resource path="res://TemporaryTileset/Animations/Down_2.png" type="Texture" id=12]
+[ext_resource path="res://TemporaryTileset/Animations/Right_1.png" type="Texture" id=13]
+[ext_resource path="res://TemporaryTileset/Animations/Down_4.png" type="Texture" id=14]
+[ext_resource path="res://TemporaryTileset/Animations/Right_rest.png" type="Texture" id=15]
+[ext_resource path="res://TemporaryTileset/Animations/Right_3.png" type="Texture" id=16]
+[ext_resource path="res://TemporaryTileset/Animations/NewAnimations/newright2.png" type="Texture" id=17]
 [ext_resource path="res://Scenes/HealthandMana.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Dialogue.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Pause Menu.tscn" type="PackedScene" id=20]
@@ -10,6 +24,64 @@
 [ext_resource path="res://Scenes/Bed.gd" type="Script" id=22]
 [ext_resource path="res://Interact Menu.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Scenes/quest.tscn" type="PackedScene" id=24]
+[ext_resource path="res://TemporaryTileset/Animations/NewAnimations/newleft2.png" type="Texture" id=25]
+[ext_resource path="res://TemporaryTileset/Animations/NewAnimations/newright1.png" type="Texture" id=26]
+[ext_resource path="res://Scenes/Inventory.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Scenes/InventoryUI.gd" type="Script" id=28]
+[ext_resource path="res://Scenes/ItemDrop.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Scenes/PickUpZone.gd" type="Script" id=30]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "down_resting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "left_resting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "right_resting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "up_resting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 25 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 7.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 12, 11.5 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 36, 34.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 11, 22 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 13.5, 31 )
@@ -17,16 +89,75 @@ extents = Vector2( 13.5, 31 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 32, 35.75 )
 
-[sub_resource type="RectangleShape2D" id=27]
-extents = Vector2( 14, 15.5 )
-
 [node name="World" type="Node2D"]
 pause_mode = 2
 position = Vector2( -13, -25 )
 script = ExtResource( 22 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 167, 91 )
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 165, 93 )
+z_index = 1
+collision_mask = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Player name: Cay"
+}
+speed = 25
+
+[node name="player" type="AnimatedSprite" parent="Player"]
+frames = SubResource( 4 )
+animation = "down_resting"
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 3.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 0, 11.5 )
+shape = SubResource( 3 )
+
+[node name="Node2D" type="Node2D" parent="Player"]
+position = Vector2( -326, -185 )
+z_index = 3
+
+[node name="Fade" type="ColorRect" parent="Player/Node2D"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -486.0
+margin_top = -275.0
+margin_right = 1137.44
+margin_bottom = 643.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="PickUpZone" type="Area2D" parent="Player"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 30 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PickUpZone"]
+position = Vector2( -1, 3.5 )
+shape = SubResource( 7 )
+
+[node name="enemy" type="KinematicBody2D" parent="."]
+visible = false
+position = Vector2( 221, 150 )
+z_index = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+speed = 0
+
+[node name="Sprite" type="Sprite" parent="enemy"]
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+position = Vector2( 0, 2 )
+shape = SubResource( 2 )
+disabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )
@@ -82,15 +213,20 @@ shape = SubResource( 6 )
 
 [node name="Quests" parent="." instance=ExtResource( 24 )]
 
-[node name="hell_entrypoint" type="Area2D" parent="."]
-position = Vector2( 165, 93 )
-script = ExtResource( 7 )
+[node name="Inventory UI" type="CanvasLayer" parent="."]
+script = ExtResource( 28 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hell_entrypoint"]
-position = Vector2( 11, -76.5 )
-shape = SubResource( 27 )
+[node name="Inventory" parent="Inventory UI" instance=ExtResource( 27 )]
+visible = false
+position = Vector2( -2, 12 )
 
+[node name="ItemDrop" parent="." instance=ExtResource( 29 )]
+position = Vector2( 271, 116 )
+collision_layer = 4
+collision_mask = 2
+
+[connection signal="body_entered" from="Player/PickUpZone" to="Player/PickUpZone" method="_on_PickUpZone_body_entered"]
+[connection signal="body_exited" from="Player/PickUpZone" to="Player/PickUpZone" method="_on_PickUpZone_body_exited"]
 [connection signal="body_entered" from="Stairs" to="Stairs" method="_on_stairs_collide"]
 [connection signal="body_entered" from="Bed" to="Bed" method="_on_Bed_body_entered"]
 [connection signal="body_exited" from="Bed" to="Bed" method="_on_Bed_body_exited"]
-[connection signal="body_entered" from="hell_entrypoint" to="hell_entrypoint" method="_on_hell_entrypoint_body_entered"]
