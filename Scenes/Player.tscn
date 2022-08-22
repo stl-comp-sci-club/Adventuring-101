@@ -190,6 +190,7 @@ texture = ExtResource( 3 )
 [node name="Node2D2" type="Node2D" parent="."]
 
 [node name="Inventory" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Inventory" parent="Inventory" instance=ExtResource( 4 )]
 position = Vector2( -13, -25 )

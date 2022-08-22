@@ -25,6 +25,11 @@ var in_dialogue = false
 # Avoid using floats cause it like breaks it
 var NPC_paths = {"Elijah": [Vector2(0,0), 1, Vector2(-906, 713), 3, Vector2(0,0), 3, Vector2(-35, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-35, -60)]], "Mom": [Vector2(272,80)]}
 
+var VMusic = 0;
+var VSFX = 0;
+
+var PMusic = 0.0;
+var PSFX = 0.0;
 
 # true means npc is inside their house
 # false means npc is not inside their house

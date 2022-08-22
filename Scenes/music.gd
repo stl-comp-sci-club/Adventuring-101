@@ -10,6 +10,10 @@ extends AudioStreamPlayer
 func _ready():
 	pass # Replace with function body.
 
+func _process(delta):
+	get_node(".").volume_db=Global.VMusic
+	get_node(".").pitch_scale=Global.PMusic
+
 func change(song):
 	if get_node(".").stream==load(song):
 		pass
