@@ -69,6 +69,9 @@ custom_styles/pressed = SubResource( 5 )
 custom_styles/normal = SubResource( 2 )
 enabled_focus_mode = 0
 text = "Play!"
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="quit" type="Button" parent="."]
 margin_left = 232.0
@@ -83,6 +86,9 @@ custom_styles/pressed = SubResource( 6 )
 custom_styles/normal = SubResource( 2 )
 enabled_focus_mode = 0
 text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="customize" type="Button" parent="."]
 margin_left = 232.0
@@ -97,6 +103,9 @@ custom_styles/pressed = SubResource( 6 )
 custom_styles/normal = SubResource( 2 )
 enabled_focus_mode = 0
 text = "Customize"
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [connection signal="button_up" from="start" to="." method="_on_start_button_up"]
 [connection signal="button_up" from="quit" to="." method="_on_quit_button_up"]
