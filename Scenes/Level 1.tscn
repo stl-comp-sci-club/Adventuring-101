@@ -74,6 +74,10 @@ region_rect = Rect2( 0, 0, 20, 20 )
 texture = ExtResource( 18 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 0, 23, 60 )
+
 [sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 28 )
 region = Rect2( 23, 60, 23, 60 )
@@ -98,9 +102,21 @@ region = Rect2( 69, 180, 23, 60 )
 atlas = ExtResource( 28 )
 region = Rect2( 23, 180, 23, 60 )
 
-[sub_resource type="AtlasTexture" id=44]
+[sub_resource type="AtlasTexture" id=49]
 atlas = ExtResource( 28 )
-region = Rect2( 23, 0, 23, 60 )
+region = Rect2( 0, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 28 )
+region = Rect2( 46, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 28 )
+region = Rect2( 69, 60, 23, 60 )
 
 [sub_resource type="AtlasTexture" id=45]
 atlas = ExtResource( 28 )
@@ -118,26 +134,6 @@ region = Rect2( 46, 0, 23, 60 )
 atlas = ExtResource( 28 )
 region = Rect2( 69, 0, 23, 60 )
 
-[sub_resource type="AtlasTexture" id=49]
-atlas = ExtResource( 28 )
-region = Rect2( 0, 60, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=50]
-atlas = ExtResource( 28 )
-region = Rect2( 23, 60, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=51]
-atlas = ExtResource( 28 )
-region = Rect2( 46, 60, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=52]
-atlas = ExtResource( 28 )
-region = Rect2( 69, 60, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 28 )
-region = Rect2( 23, 120, 23, 60 )
-
 [sub_resource type="AtlasTexture" id=54]
 atlas = ExtResource( 28 )
 region = Rect2( 0, 120, 23, 60 )
@@ -154,8 +150,17 @@ region = Rect2( 46, 120, 23, 60 )
 atlas = ExtResource( 28 )
 region = Rect2( 69, 120, 23, 60 )
 
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 120, 23, 60 )
+
 [sub_resource type="SpriteFrames" id=58]
 animations = [ {
+"frames": [ SubResource( 44 ) ],
+"loop": true,
+"name": "down_resting",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 38 ) ],
 "loop": true,
 "name": "right_resting",
@@ -171,30 +176,25 @@ animations = [ {
 "name": "up_resting",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 44 ) ],
+"frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
 "loop": true,
-"name": "down_resting",
-"speed": 5.0
+"name": "walk_right",
+"speed": 7.0
 }, {
 "frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
 "loop": true,
 "name": "walk_down",
 "speed": 7.0
 }, {
-"frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
+"frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
 "loop": true,
-"name": "walk_right",
+"name": "walk_left",
 "speed": 7.0
 }, {
 "frames": [ SubResource( 53 ) ],
 "loop": true,
 "name": "left_resting",
 "speed": 5.0
-}, {
-"frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 7.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=61]
@@ -204,9 +204,9 @@ extents = Vector2( 14.5, 12 )
 extents = Vector2( 10.5, 10 )
 
 [sub_resource type="NavigationPolygon" id=60]
-vertices = PoolVector2Array( -218, 293, -242, 369, -242, 292, -241, 173, -207, 336, -882, 785, -879, 960, -944, 960, -945, 714, -664, 717, -657, 785, 80, 784, 81, 848, -656, 848, -588, 786, -588, 464, -662, 333, -589, 368, -631, -15, 216, -17, 216, 24, -112, 24, -81, 367, 302, 368, 302, 465, -589, 333, -210, 24, -631, 24, -161, 237, -212, 172, -111, 174, -122, 249, -202, 252, -82, 175, -100, 299, -159, 356, -113, 340 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 1, 0, 4 ), PoolIntArray( 5, 6, 7, 8 ), PoolIntArray( 5, 8, 9, 10 ), PoolIntArray( 11, 12, 13, 14 ), PoolIntArray( 14, 13, 10, 15 ), PoolIntArray( 15, 10, 9, 16, 17 ), PoolIntArray( 18, 19, 20, 21 ), PoolIntArray( 22, 23, 24, 15, 1 ), PoolIntArray( 16, 25, 17 ), PoolIntArray( 15, 17, 1 ), PoolIntArray( 26, 27, 18 ), PoolIntArray( 26, 18, 21 ), PoolIntArray( 28, 29, 26, 21, 30, 31 ), PoolIntArray( 32, 0, 3, 29 ), PoolIntArray( 28, 32, 29 ), PoolIntArray( 30, 33, 22, 34 ), PoolIntArray( 1, 4, 35 ), PoolIntArray( 22, 1, 35 ), PoolIntArray( 22, 35, 36 ), PoolIntArray( 22, 36, 34 ), PoolIntArray( 31, 30, 34 ) ]
-outlines = [ PoolVector2Array( 216, -17, 216, 24, -112, 24, -111, 174, -82, 175, -81, 367, 302, 368, 302, 465, -588, 464, -588, 786, 80, 784, 81, 848, -656, 848, -657, 785, -882, 785, -879, 960, -944, 960, -945, 714, -664, 717, -662, 333, -589, 333, -589, 368, -242, 369, -242, 292, -218, 293, -207, 336, -159, 356, -113, 340, -100, 299, -122, 249, -161, 237, -202, 252, -218, 293, -242, 292, -241, 173, -212, 172, -210, 24, -631, 24, -631, -15 ) ]
+vertices = PoolVector2Array( -218, 293, -242, 369, -242, 292, -241, 173, -207, 336, -882, 785, -879, 960, -944, 960, -945, 714, -664, 717, -657, 785, 80, 784, 81, 848, -656, 848, -588, 786, -588, 464, -662, 333, -589, 368, -631, -15, 216, -17, 216, 24, 5.53217, 24, -112, 24, -210, 24, -81, 367, 302, 368, 302, 465, -589, 333, -631, 24, -161, 237, -212, 172, -111, 174, -122, 249, -202, 252, -82, 175, -100, 299, -159, 356, -113, 340 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 1, 0, 4 ), PoolIntArray( 5, 6, 7, 8 ), PoolIntArray( 5, 8, 9, 10 ), PoolIntArray( 11, 12, 13, 14 ), PoolIntArray( 14, 13, 10, 15 ), PoolIntArray( 15, 10, 9, 16, 17 ), PoolIntArray( 18, 19, 20, 21 ), PoolIntArray( 18, 21, 22, 23 ), PoolIntArray( 24, 25, 26, 15, 1 ), PoolIntArray( 16, 27, 17 ), PoolIntArray( 15, 17, 1 ), PoolIntArray( 23, 28, 18 ), PoolIntArray( 29, 30, 23, 22, 31, 32 ), PoolIntArray( 33, 0, 3, 30 ), PoolIntArray( 29, 33, 30 ), PoolIntArray( 31, 34, 24, 35 ), PoolIntArray( 1, 4, 36 ), PoolIntArray( 24, 1, 36 ), PoolIntArray( 24, 36, 37 ), PoolIntArray( 24, 37, 35 ), PoolIntArray( 32, 31, 35 ) ]
+outlines = [ PoolVector2Array( 216, -17, 216, 24, 5.53217, 24, -112, 24, -111, 174, -82, 175, -81, 367, 302, 368, 302, 465, -588, 464, -588, 786, 80, 784, 81, 848, -656, 848, -657, 785, -882, 785, -879, 960, -944, 960, -945, 714, -664, 717, -662, 333, -589, 333, -589, 368, -242, 369, -242, 292, -218, 293, -207, 336, -159, 356, -113, 340, -100, 299, -122, 249, -161, 237, -202, 252, -218, 293, -242, 292, -241, 173, -212, 172, -210, 24, -631, 24, -631, -15 ) ]
 
 [sub_resource type="NavigationPolygon" id=65]
 vertices = PoolVector2Array( 289, -1985, 513, -1986, 513, -1792, 289, -1918, 257, -1792, 257, -1918 )
@@ -270,7 +270,7 @@ tile_data = PoolIntArray( -917591, 2, 0, -917569, 2, 0, -917547, 2, 0, -917525, 
 position = Vector2( 65, 32 )
 script = ExtResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enter House"]
+[node name="PlayerHouseDoor" type="CollisionShape2D" parent="Enter House"]
 position = Vector2( 75.75, -79.25 )
 shape = SubResource( 1 )
 
@@ -317,6 +317,7 @@ shape = SubResource( 28 )
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
+frame = 1
 playing = true
 
 [node name="Light2D" type="Light2D" parent="Fountain"]
@@ -346,8 +347,20 @@ autoplay = true
 
 [node name="Quests" parent="." instance=ExtResource( 19 )]
 
-[node name="NPC house door" parent="." instance=ExtResource( 11 )]
+[node name="NPCDoor" parent="." instance=ExtResource( 11 )]
 position = Vector2( -35, -47 )
+NPC_name = "Elijah"
+
+[node name="NPCDoor2" parent="." instance=ExtResource( 11 )]
+position = Vector2( -210, -44 )
+NPC_name = "Elijah"
+
+[node name="NPCDoor3" parent="." instance=ExtResource( 11 )]
+position = Vector2( -387, -45 )
+NPC_name = "Elijah"
+
+[node name="NPCDoor4" parent="." instance=ExtResource( 11 )]
+position = Vector2( -560, -45 )
 NPC_name = "Elijah"
 
 [node name="Map Button UI" type="CanvasLayer" parent="."]
@@ -421,6 +434,7 @@ tile_data = PoolIntArray( -917591, 2, 0, -917569, 2, 0, -917547, 2, 0, -917525, 
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
+frame = 1
 playing = true
 
 [node name="Player Head" type="Sprite" parent="Map/Border/Minimap/Viewport"]
@@ -450,6 +464,72 @@ position = Vector2( -0.5, 19 )
 shape = SubResource( 61 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Elijah"]
+position = Vector2( -0.5, 19 )
+shape = SubResource( 59 )
+
+[node name="Elijah2" type="StaticBody2D" parent="."]
+position = Vector2( -200, -10 )
+script = ExtResource( 29 )
+editor_speed = 100
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Elijah2"]
+frames = SubResource( 58 )
+animation = "down_resting"
+
+[node name="Line2D" type="Line2D" parent="Elijah2"]
+width = 0.0
+
+[node name="Area2D" type="Area2D" parent="Elijah2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elijah2/Area2D"]
+position = Vector2( -0.5, 19 )
+shape = SubResource( 61 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elijah2"]
+position = Vector2( -0.5, 19 )
+shape = SubResource( 59 )
+
+[node name="Elijah3" type="StaticBody2D" parent="."]
+position = Vector2( -360, -10 )
+script = ExtResource( 29 )
+editor_speed = 100
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Elijah3"]
+frames = SubResource( 58 )
+animation = "down_resting"
+
+[node name="Line2D" type="Line2D" parent="Elijah3"]
+width = 0.0
+
+[node name="Area2D" type="Area2D" parent="Elijah3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elijah3/Area2D"]
+position = Vector2( -0.5, 19 )
+shape = SubResource( 61 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elijah3"]
+position = Vector2( -0.5, 19 )
+shape = SubResource( 59 )
+
+[node name="Elijah4" type="StaticBody2D" parent="."]
+position = Vector2( -530, -10 )
+script = ExtResource( 29 )
+editor_speed = 100
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Elijah4"]
+frames = SubResource( 58 )
+animation = "down_resting"
+
+[node name="Line2D" type="Line2D" parent="Elijah4"]
+width = 0.0
+
+[node name="Area2D" type="Area2D" parent="Elijah4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elijah4/Area2D"]
+position = Vector2( -0.5, 19 )
+shape = SubResource( 61 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elijah4"]
 position = Vector2( -0.5, 19 )
 shape = SubResource( 59 )
 
@@ -535,4 +615,10 @@ shape = SubResource( 64 )
 [connection signal="button_up" from="Map Button UI/Map Button" to="Map Button UI/Map Button" method="_on_Map_Button_button_up"]
 [connection signal="body_entered" from="Elijah/Area2D" to="Elijah" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Elijah/Area2D" to="Elijah" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Elijah2/Area2D" to="Elijah2" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Elijah2/Area2D" to="Elijah2" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Elijah3/Area2D" to="Elijah3" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Elijah3/Area2D" to="Elijah3" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Elijah4/Area2D" to="Elijah4" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Elijah4/Area2D" to="Elijah4" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Elijah House/Door" to="Elijah House/Door" method="_on_Area2D_body_entered"]
