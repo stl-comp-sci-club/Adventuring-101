@@ -1,9 +1,8 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Player/Code/player.gd" type="Script" id=1]
 [ext_resource path="res://Player/caywalksheet.png" type="Texture" id=2]
 [ext_resource path="res://Pause_button.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/Inventory.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 2 )
@@ -188,9 +187,3 @@ scale = Vector2( 1.44548, 2.94492 )
 texture = ExtResource( 3 )
 
 [node name="Node2D2" type="Node2D" parent="."]
-
-[node name="Inventory" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="Inventory" parent="Inventory" instance=ExtResource( 4 )]
-position = Vector2( -13, -25 )

@@ -56,7 +56,3 @@ func _on_Pause_button_button_up():
 	player.input_allowed = false
 	popup()
 	Global.paused = true
-
-
-func _on_Settings2_button_up():
-	get_node("MusicMenu").show()
