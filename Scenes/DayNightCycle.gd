@@ -11,6 +11,10 @@ var calc = 0
 
 func _ready():
 	pass
+	
+	# sus (does nothing rn) 
+var upperLim = 1
+var lowerLim = 0
 
 func _process(delta:float):
 	# Dividing by twelve makes each half of the day 12 minutes long. 
@@ -18,9 +22,16 @@ func _process(delta:float):
 	# if you do sin(PI * TIME) the speed at period of the sine wave is 1 
 	# If you want to see what it does just go on desmos and put sin(PI * x) and play around with it 
 	
-	if sin(PI/12 * Global.TIME) < 0:
-		calc = sin(PI/12 * Global.TIME)/20
+	if sin(PI/12 * Global.TIME + (-PI/2)) + 0.25 < 0:
+		calc = sin((PI/12 * Global.TIME) + (-PI/2)) + 0.25
 	else: 
-		calc = sin(PI/12 * Global.TIME)
+		calc = sin((PI/12 * Global.TIME) + (-PI/2)) + 0.25
+	
+	if calc > self.upperLim:
+		calc = self.upperLim
+	if calc < self.lowerLim:
+		calc = self.lowerLim
+	
+	print("CALC:" ,calc)
 		
 	self.color = nightColor.linear_interpolate(dayColor, calc)
