@@ -156,7 +156,11 @@ func _process(delta):
 		animate(direction)
 		
 		get_node("./Attack Area/Weapon Swipe").look_at(get_global_mouse_position())
-
+		if Input.is_action_just_pressed("Inventory"):
+			if get_node("Inventory").is_visible():
+				get_node("Inventory").hide()
+			else:
+				get_node("Inventory").show()
 		if Input.is_action_just_pressed("Attack") and not attacking:
 			get_node("Attack Area/Weapon Swipe").disabled = false
 			attacking = true
