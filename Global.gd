@@ -25,7 +25,7 @@ var in_dialogue = false
 # Avoid using floats cause it like breaks it
 var NPC_paths = {"Elijah": [Vector2(0,0), 1, Vector2(-906, 713), 3, Vector2(0,0), 3, Vector2(-35, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-35, -60)]], "Mom": [Vector2(272,80)], "Elijah2": [Vector2(-200,0), 1, Vector2(-906, 800), 3, Vector2(-200,0), 3, Vector2(-210, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-210, -60)]], "Elijah3": [Vector2(-400,0), 1, Vector2(-906, 900), 3, Vector2(-400,0), 3, Vector2(-387, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-387, -60)]], "Elijah4": [Vector2(-500,0), 1, Vector2(-906, 1000), 3, Vector2(-500,0), 3, Vector2(-560, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-560, -60)]]}
 
-var TIME = 0
+var TIME = 10
 # Equivalent of dividing by 60 making it each second as an hour in game
 var timeConst = 0.0166666666666
 
@@ -59,7 +59,8 @@ var hours = 0
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	self.TIME += delta * timeConst
+	if !paused:
+		self.TIME += delta * timeConst
 
 	if "." in (str(self.TIME).substr(0, 2)):
 		self.hours = str(self.TIME).substr(0, 1)
