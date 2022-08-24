@@ -34,6 +34,7 @@ func animate(direction: Vector2):
 	else:
 		var d = get_animation_direction(last_direction)
 		$AnimatedSprite.play(d+"_resting")
+	
 
 
 var points = []
@@ -95,38 +96,42 @@ func begin_path(var path_i):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if player.position.y > position.y:
-		get_node(".").z_index = 0
-	else:
-		get_node(".").z_index = 1
-	animate(direction)
-	if path.size() == 0 and not waiting:
-		print("Finished point")
-		path_index+=1
-		if path_index == len(points):
-			path_index = 0
-		begin_path(path_index)
-	if !stopped:
-		if !waiting && path.size() > 0:
-			direction = position.direction_to(path[0]).normalized()
-		#	print(last_position)
-		#	print(position)
-		#
-		#	print(position.x-last_position.x)
-		#	print(position.y-last_position.y)
-		#	print(direction)
-			var distance_to_walk = speed * delta
-			while distance_to_walk > 0 and path.size() > 0:
-				var distance_to_next_point = position.distance_to(path[0])
-				if distance_to_walk <= distance_to_next_point:
-					position += position.direction_to(path[0]) * distance_to_walk
-				else:
-					position = path[0]
-					path.remove(0)
-				distance_to_walk -= distance_to_next_point
-			# go to next point after finishing
-			
-		#	last_position = position
+	if Global.paused:
+		$AnimatedSprite.play(get_animation_direction(last_direction)+"_resting")
+
+	if !Global.paused:
+		if player.position.y > position.y:
+			get_node(".").z_index = 0
+		else:
+			get_node(".").z_index = 1
+		animate(direction)
+		if path.size() == 0 and not waiting:
+			print("Finished point")
+			path_index+=1
+			if path_index == len(points):
+				path_index = 0
+			begin_path(path_index)
+		if !stopped:
+			if !waiting && path.size() > 0:
+				direction = position.direction_to(path[0]).normalized()
+			#	print(last_position)
+			#	print(position)
+			#
+			#	print(position.x-last_position.x)
+			#	print(position.y-last_position.y)
+			#	print(direction)
+				var distance_to_walk = speed * delta
+				while distance_to_walk > 0 and path.size() > 0:
+					var distance_to_next_point = position.distance_to(path[0])
+					if distance_to_walk <= distance_to_next_point:
+						position += position.direction_to(path[0]) * distance_to_walk
+					else:
+						position = path[0]
+						path.remove(0)
+					distance_to_walk -= distance_to_next_point
+				# go to next point after finishing
+				
+			#	last_position = position
 
 var touching_player = false
 
