@@ -20,7 +20,7 @@ func _on_stairs_collide(body):
 	if (Global.scene == "upstairs" or Global.scene == "") and body == player:
 		player.input_allowed = false
 		get_node("/root/World/Player/player").play("walk_down")
-		for i in range(player.position.y,105):
+		for i in range(player.position.y,40):
 			player.position.y = i
 			yield(VisualServer, 'frame_pre_draw')
 		
@@ -35,7 +35,7 @@ func _on_stairs_collide(body):
 	elif (Global.scene == "downstairs" or Global.scene == "downstairs (from outside)") and (body == player):
 		player.input_allowed = false
 		get_node("/root/World/Player/player").play("walk_up")
-		for i in range(player.position.y, -5, -1):
+		for i in range(player.position.y, 15, -1):
 			player.position.y = i
 			yield(VisualServer, 'frame_pre_draw')
 
