@@ -138,7 +138,7 @@ func _process(delta):
 	var direction: Vector2
 	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	get_node("../Health N Mana/helf").value=health
+	get_node("../Health N Mana/Bars/Health").value=health
 	if input_allowed:
 		if Input.is_action_pressed("ui_right"):
 			velocity.x += speed
@@ -188,3 +188,11 @@ func _process(delta):
 		velocity *= 0.8
 		
 	move_and_slide(velocity)
+
+
+func _input(event):
+	if event.is_action_pressed("PickUp"):
+		if $PickUpZone.items_in_range.size() > 0:
+			var pickup_item = $PickUpZone.items_in_range.values()[0]
+			pickup_item.pick_up_item(self)
+			$PickUpZone.items_in_range.erase(pickup_item)

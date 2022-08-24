@@ -1,7 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/InventoryUI.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Inventory.tscn" type="PackedScene" id=3]
 [ext_resource path="res://tileset1.tres" type="TileSet" id=4]
+[ext_resource path="res://Scenes/ItemDrop.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/hell_entrypoint.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/HealthandMana.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Dialogue.tscn" type="PackedScene" id=19]
@@ -89,6 +92,17 @@ script = ExtResource( 7 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hell_entrypoint"]
 position = Vector2( 11, -76.5 )
 shape = SubResource( 27 )
+
+[node name="Inventory UI" type="CanvasLayer" parent="."]
+script = ExtResource( 2 )
+
+[node name="Inventory" parent="Inventory UI" instance=ExtResource( 3 )]
+visible = false
+
+[node name="ItemDrop" parent="." instance=ExtResource( 5 )]
+position = Vector2( 269, 109 )
+collision_layer = 4
+collision_mask = 2
 
 [connection signal="body_entered" from="Stairs" to="Stairs" method="_on_stairs_collide"]
 [connection signal="body_entered" from="Bed" to="Bed" method="_on_Bed_body_entered"]

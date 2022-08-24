@@ -1,24 +1,9 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Player/Code/player.gd" type="Script" id=1]
 [ext_resource path="res://Player/caywalksheet.png" type="Texture" id=2]
 [ext_resource path="res://Pause_button.png" type="Texture" id=3]
-
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 2 )
-region = Rect2( 23, 0, 23, 58 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 2 )
-region = Rect2( 23, 116, 23, 58 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 2 )
-region = Rect2( 23, 58, 23, 58 )
-
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 2 )
-region = Rect2( 23, 174, 23, 58 )
+[ext_resource path="res://Scenes/PickUpZone.gd" type="Script" id=4]
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 2 )
@@ -52,22 +37,6 @@ region = Rect2( 46, 116, 23, 58 )
 atlas = ExtResource( 2 )
 region = Rect2( 69, 116, 23, 58 )
 
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 58, 23, 58 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 2 )
-region = Rect2( 23, 58, 23, 58 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 2 )
-region = Rect2( 46, 58, 23, 58 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 2 )
-region = Rect2( 69, 58, 23, 58 )
-
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 174, 23, 58 )
@@ -84,12 +53,54 @@ region = Rect2( 46, 174, 23, 58 )
 atlas = ExtResource( 2 )
 region = Rect2( 69, 174, 23, 58 )
 
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 23, 116, 23, 58 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 23, 58, 23, 58 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 2 )
+region = Rect2( 23, 174, 23, 58 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 2 )
+region = Rect2( 23, 0, 23, 58 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 58, 23, 58 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 23, 58, 23, 58 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 46, 58, 23, 58 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 69, 58, 23, 58 )
+
 [sub_resource type="SpriteFrames" id=27]
 animations = [ {
-"frames": [ SubResource( 26 ) ],
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
-"name": "down_resting",
-"speed": 5.0
+"name": "walk_down",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 7.0
 }, {
 "frames": [ SubResource( 16 ) ],
 "loop": true,
@@ -106,29 +117,22 @@ animations = [ {
 "name": "up_resting",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 26 ) ],
 "loop": true,
-"name": "walk_down",
-"speed": 7.0
-}, {
-"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 7.0
+"name": "down_resting",
+"speed": 5.0
 }, {
 "frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
 "name": "walk_right",
 "speed": 7.0
-}, {
-"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 7.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=28]
 extents = Vector2( 10.5, 9.5 )
+
+[sub_resource type="CircleShape2D" id=29]
+radius = 39.0128
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 47, 53 )
@@ -186,4 +190,13 @@ rotation = 1.5708
 scale = Vector2( 1.44548, 2.94492 )
 texture = ExtResource( 3 )
 
-[node name="Node2D2" type="Node2D" parent="."]
+[node name="PickUpZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpZone"]
+shape = SubResource( 29 )
+
+[connection signal="body_entered" from="PickUpZone" to="PickUpZone" method="_on_PickUpZone_body_entered"]
+[connection signal="body_exited" from="PickUpZone" to="PickUpZone" method="_on_PickUpZone_body_exited"]
