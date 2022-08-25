@@ -110,13 +110,14 @@ func get_animation_direction(direction: Vector2):
 	return "down"
 
 func animate(direction: Vector2):
-	if direction != Vector2.ZERO:
-		last_direction = direction
-		var d = get_animation_direction(last_direction)
-		$player.play("walk_"+d)
-	else:
-		var d = get_animation_direction(last_direction)
-		$player.play(d+"_resting")
+	if !attacking:
+		if direction != Vector2.ZERO:
+			last_direction = direction
+			var d = get_animation_direction(last_direction)
+			$player.play("walk_"+d)
+		else:
+			var d = get_animation_direction(last_direction)
+			$player.play(d+"_resting")
 
 func _process(delta):
 	if stunned:
@@ -155,31 +156,34 @@ func _process(delta):
 			speed = 30
 		animate(direction)
 		
-		get_node("./Attack Area/Weapon Swipe").look_at(get_global_mouse_position())
+#		get_node("./Attack Area/Weapon Swipe").look_at(get_global_mouse_position())
 
 		if Input.is_action_just_pressed("Attack") and not attacking:
-			get_node("Attack Area/Weapon Swipe").disabled = false
+			
+#			get_node("Attack Area/Weapon Swipe").disabled = false
 			attacking = true
 			print("attacking")
-			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 0.5
+			var _temp = get_global_mouse_position()-position
+			var d = get_animation_direction(_temp)
+			$player.play("attack_"+d)
+
 			var a = AudioStreamPlayer2D.new()
 			print(a)
 			add_child(a)
 			a.stop()
-			a.stream = load("res://vine-boom.wav")
-			print(a.stream)
+#			print("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
+			a.stream = load("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
+#			print(a.stream)
 			a.play()
-			var t = Timer.new()
-			t.set_wait_time(0.1)
-			t.set_one_shot(true)
-			self.add_child(t)
-			t.start()
-			yield(t, "timeout")
-			t.queue_free()
-
-			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 1			
+			yield(a, "finished")
+			
+			velocity += _temp.normalized()*200
+			yield($player, "animation_finished")
+			last_direction = _temp
+			
+#			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 1			
 			print("attack finished")
-			get_node("Attack Area/Weapon Swipe").disabled = true
+#			get_node("Attack Area/Weapon Swipe").disabled = true
 			attacking = false
 			
 			

@@ -32,6 +32,6 @@ func _process(delta:float):
 	if calc < self.lowerLim:
 		calc = self.lowerLim
 	
-	print("CALC:" ,calc)
+#	print("CALC:" ,calc)
 		
 	self.color = nightColor.linear_interpolate(dayColor, calc)

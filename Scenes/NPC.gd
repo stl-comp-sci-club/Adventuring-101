@@ -56,7 +56,7 @@ func _ready():
 var direction: Vector2
 
 func begin_path(var path_i):
-	print(path_i)
+#	print(path_i)
 	var val = points[path_i]
 	if typeof(val) == TYPE_INT:
 		direction = Vector2.ZERO
@@ -87,7 +87,7 @@ func begin_path(var path_i):
 			stopped = false
 	elif typeof(val) == TYPE_ARRAY:
 		position = val[0]
-		print(path)
+#		print(path)
 	else:
 		path = navMesh.get_simple_path(position, val)
 		path_line.points = path
@@ -106,7 +106,7 @@ func _process(delta):
 			get_node(".").z_index = 1
 		animate(direction)
 		if path.size() == 0 and not waiting:
-			print("Finished point")
+#			print("Finished point")
 			path_index+=1
 			if path_index == len(points):
 				path_index = 0

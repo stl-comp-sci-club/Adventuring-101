@@ -1,9 +1,9 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Player/Code/player.gd" type="Script" id=1]
 [ext_resource path="res://Player/caywalksheet.png" type="Texture" id=2]
-[ext_resource path="res://Pause_button.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/PickUpZone.gd" type="Script" id=4]
+[ext_resource path="res://cayattacksheet.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 2 )
@@ -20,6 +20,26 @@ region = Rect2( 46, 0, 23, 58 )
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
 region = Rect2( 69, 0, 23, 58 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 106, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 5 )
+region = Rect2( 106, 106, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 5 )
+region = Rect2( 212, 106, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 5 )
+region = Rect2( 318, 106, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 5 )
+region = Rect2( 424, 106, 106, 106 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 2 )
@@ -85,12 +105,77 @@ region = Rect2( 46, 58, 23, 58 )
 atlas = ExtResource( 2 )
 region = Rect2( 69, 58, 23, 58 )
 
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 318, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 5 )
+region = Rect2( 106, 318, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 5 )
+region = Rect2( 212, 318, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 5 )
+region = Rect2( 318, 318, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 5 )
+region = Rect2( 424, 318, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 212, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 5 )
+region = Rect2( 106, 212, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 5 )
+region = Rect2( 212, 212, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 5 )
+region = Rect2( 318, 212, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 5 )
+region = Rect2( 424, 212, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 5 )
+region = Rect2( 106, 0, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 5 )
+region = Rect2( 212, 0, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 5 )
+region = Rect2( 318, 0, 106, 106 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 5 )
+region = Rect2( 424, 0, 106, 106 )
+
 [sub_resource type="SpriteFrames" id=27]
 animations = [ {
 "frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
 "name": "walk_down",
 "speed": 7.0
+}, {
+"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 34 ) ],
+"loop": false,
+"name": "attack_right",
+"speed": 25.0
 }, {
 "frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
 "loop": true,
@@ -126,6 +211,21 @@ animations = [ {
 "loop": true,
 "name": "walk_right",
 "speed": 7.0
+}, {
+"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 39 ) ],
+"loop": false,
+"name": "attack_up",
+"speed": 25.0
+}, {
+"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 44 ) ],
+"loop": false,
+"name": "attack_left",
+"speed": 25.0
+}, {
+"frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 49 ) ],
+"loop": false,
+"name": "attack_down",
+"speed": 25.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=28]
@@ -146,7 +246,7 @@ speed = 25
 
 [node name="player" type="AnimatedSprite" parent="."]
 frames = SubResource( 27 )
-animation = "down_resting"
+animation = "attack_right"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -174,21 +274,6 @@ margin_top = -32229.0
 margin_right = 61959.0
 margin_bottom = 32597.0
 color = Color( 0, 0, 0, 1 )
-
-[node name="Attack Area" type="Area2D" parent="."]
-position = Vector2( 0, 6 )
-
-[node name="Weapon Swipe" type="CollisionPolygon2D" parent="Attack Area"]
-position = Vector2( -1, -5 )
-scale = Vector2( 0.793561, 0.842742 )
-polygon = PoolVector2Array( 21.4224, -27.2919, -8.821, -27.2919, -8.821, 29.6651, 21.4224, 29.6651, 41.5847, 29.6651, 51.6659, 29.6651, 61.747, 1.1866, 51.6659, -27.2919, 41.5847, -27.2919 )
-disabled = true
-
-[node name="Weapon" type="Sprite" parent="Attack Area/Weapon Swipe"]
-position = Vector2( 28.7454, 0.864165 )
-rotation = 1.5708
-scale = Vector2( 1.44548, 2.94492 )
-texture = ExtResource( 3 )
 
 [node name="PickUpZone" type="Area2D" parent="."]
 collision_layer = 0
