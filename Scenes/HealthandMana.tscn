@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://Scenes/ClockAppearance.gd" type="Script" id=1]
 [ext_resource path="res://TemporaryTileset/New Project.png" type="Texture" id=2]
 [ext_resource path="res://TemporaryTileset/red.png" type="Texture" id=3]
 [ext_resource path="res://TemporaryTileset/blu.png" type="Texture" id=4]
+[ext_resource path="res://font/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 5 )
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 2
@@ -26,3 +33,23 @@ margin_bottom = 358.0
 value = 100.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 18.0
+margin_top = 289.0
+margin_right = 79.0
+margin_bottom = 306.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 21.0
+margin_top = 291.0
+margin_right = 154.0
+margin_bottom = 307.0
+theme = SubResource( 1 )
+custom_colors/default_color = Color( 1, 0, 0, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "10:10:10"
+script = ExtResource( 1 )

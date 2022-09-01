@@ -60,7 +60,7 @@ var hours = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !paused:
-		self.TIME += delta # * timeConst
+		self.TIME += delta * timeConst
 #	print("ACC TIME: ", self.TIME)
 
 	if "." in (str(self.TIME).substr(0, 2)):
@@ -74,7 +74,16 @@ func _process(delta):
 
 	self.minutes = int(self.minutes) * 60 / 100
 	self.seconds = int(self.seconds) * 60 / 100
-	self.hours = int(self.hours)
+	
+	if self.TIME > 13:
+		self.hours = int(self.hours) - 12
+	
+	if self.TIME > 24: 
+		self.TIME = 1
+		
+	if self.TIME < 1:
+		self.TIME = 1 
+	
 	# These can be used for npc stuff
 	
 	
@@ -83,11 +92,6 @@ func _process(delta):
 #	else: 
 #		print(self.hours, ":", self.minutes, ":", self.seconds, " AM")
 		
-	if self.TIME > 24: 
-		self.TIME = 1
-		
-	if self.TIME < 1:
-		self.TIME = 1 
 	
 	
 	

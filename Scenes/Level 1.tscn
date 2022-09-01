@@ -90,22 +90,6 @@ region = Rect2( 46, 0, 23, 60 )
 atlas = ExtResource( 28 )
 region = Rect2( 69, 0, 23, 60 )
 
-[sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 28 )
-region = Rect2( 0, 120, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=55]
-atlas = ExtResource( 28 )
-region = Rect2( 23, 120, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=56]
-atlas = ExtResource( 28 )
-region = Rect2( 46, 120, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=57]
-atlas = ExtResource( 28 )
-region = Rect2( 69, 120, 23, 60 )
-
 [sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 28 )
 region = Rect2( 0, 180, 23, 60 )
@@ -134,10 +118,6 @@ region = Rect2( 23, 60, 23, 60 )
 atlas = ExtResource( 28 )
 region = Rect2( 23, 180, 23, 60 )
 
-[sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 28 )
-region = Rect2( 23, 0, 23, 60 )
-
 [sub_resource type="AtlasTexture" id=49]
 atlas = ExtResource( 28 )
 region = Rect2( 0, 60, 23, 60 )
@@ -154,16 +134,31 @@ region = Rect2( 46, 60, 23, 60 )
 atlas = ExtResource( 28 )
 region = Rect2( 69, 60, 23, 60 )
 
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 0, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 28 )
+region = Rect2( 0, 120, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 120, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 28 )
+region = Rect2( 46, 120, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 28 )
+region = Rect2( 69, 120, 23, 60 )
+
 [sub_resource type="SpriteFrames" id=58]
 animations = [ {
 "frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
 "loop": true,
 "name": "walk_down",
-"speed": 7.0
-}, {
-"frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
-"loop": true,
-"name": "walk_left",
 "speed": 7.0
 }, {
 "frames": [ SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
@@ -186,14 +181,19 @@ animations = [ {
 "name": "up_resting",
 "speed": 5.0
 }, {
+"frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 7.0
+}, {
 "frames": [ SubResource( 44 ) ],
 "loop": true,
 "name": "down_resting",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
+"frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
 "loop": true,
-"name": "walk_right",
+"name": "walk_left",
 "speed": 7.0
 } ]
 
@@ -317,6 +317,7 @@ shape = SubResource( 28 )
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
+frame = 2
 playing = true
 
 [node name="Light2D" type="Light2D" parent="Fountain"]
@@ -433,6 +434,7 @@ tile_data = PoolIntArray( -917591, 2, 0, -917569, 2, 0, -917547, 2, 0, -917525, 
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
+frame = 2
 playing = true
 
 [node name="Player Head" type="Sprite" parent="Map/Border/Minimap/Viewport"]
