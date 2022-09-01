@@ -60,7 +60,7 @@ var hours = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !paused:
-		self.TIME += delta * timeConst
+		self.TIME += delta # * timeConst
 #	print("ACC TIME: ", self.TIME)
 
 	if "." in (str(self.TIME).substr(0, 2)):
