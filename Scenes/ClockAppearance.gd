@@ -20,27 +20,31 @@ func _process(delta):
 	var dayColor = Color("#fcf803")
 	var nightColor = Color("#1e52fc")
 	
-	if sin(PI/12 * Global.TIME + (-PI/2)) + 0.25 < 0:
-		calc = sin((PI/12 * Global.TIME) + (-PI/2)) + 0.25
-	else: 
-		calc = sin((PI/12 * Global.TIME) + (-PI/2)) + 0.25
-	
-	if calc > self.upperLim:
-		calc = self.upperLim
-	if calc < self.lowerLim:
-		calc = self.lowerLim
-	
 	if int(Global.minutes) < 10:
 		bbcode_text = str(Global.hours) + ":0" + str(Global.minutes) 
 	else:
 		bbcode_text = str(Global.hours) + ":" + str(Global.minutes) 
 	
-	if int(Global.TIME) > 13:
+	if int(Global.TIME) > 12:
 		bbcode_text = bbcode_text + " PM"
 	else:
 		bbcode_text = bbcode_text + " AM"
 		
+#	add_color_override("default_color", nightColor.linear_interpolate(dayColor, calc))
+	
+#	print(Global.TIME)
+	
+	var x = Global.TIME
+
+
+	# desmos here: https://www.desmos.com/calculator/r6vrnsbskg
+	calc = 0.00916*pow(x, 2)-0.000035*pow(x, 4)+0.000000072035*pow(x, 6)-0.0000000000675*pow(x, 8)
+	
+	
+#	print(interpolate_factor/12)
+	
 	add_color_override("default_color", nightColor.linear_interpolate(dayColor, calc))
+
 	
 	
 	

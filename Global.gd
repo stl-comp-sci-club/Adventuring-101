@@ -25,9 +25,6 @@ var in_dialogue = false
 # Avoid using floats cause it like breaks it
 var NPC_paths = {"Elijah": [Vector2(0,0), 1, Vector2(-906, 713), 3, Vector2(0,0), 3, Vector2(-35, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-35, -60)]], "Mom": [Vector2(272,80)], "Elijah2": [Vector2(-200,0), 1, Vector2(-906, 800), 3, Vector2(-200,0), 3, Vector2(-210, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-210, -60)]], "Elijah3": [Vector2(-400,0), 1, Vector2(-906, 900), 3, Vector2(-400,0), 3, Vector2(-387, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-387, -60)]], "Elijah4": [Vector2(-500,0), 1, Vector2(-906, 1000), 3, Vector2(-500,0), 3, Vector2(-560, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-560, -60)]]}
 
-var TIME = 10
-# Equivalent of dividing by 60 making it each second as an hour in game
-var timeConst = 0.0166666666666
 
 # true means npc is inside their house
 # false means npc is not inside their house
@@ -52,11 +49,19 @@ func _ready():
 	#var player = get_tree().get_root().get_child(0).get_node("Player")
 #	print("Setting player position to " + str(player_pos))
 #	player.set_position(player_pos)
+
+var TIME = 10
+# Equivalent of dividing by 60 making it each second as an hour in game
+
+# Explanation of above comment (by ryan) it makes it so that when your game is running at 60 fps
+# each frame updates it so that the seconds in game match up with seconds in real world
+var timeConst = 0.016666666666666666666
+#var timeConst = 1
 	
 var minutes = 0
 var seconds = 0
 var hours = 0
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !paused:
