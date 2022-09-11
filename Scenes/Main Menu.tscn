@@ -55,6 +55,7 @@ margin_right = 510.0
 margin_bottom = 119.0
 
 [node name="Label" type="Label" parent="logo"]
+modulate = Color( 1.2, 1.2, 1.2, 1 )
 margin_left = 35.0
 margin_top = 21.0
 margin_right = 348.0

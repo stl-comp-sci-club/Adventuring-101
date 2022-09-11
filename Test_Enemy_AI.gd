@@ -67,6 +67,8 @@ func _on_Hitbox_area_entered(area):
 		
 		health -= rng.randf_range(0.0, 5.0)
 		
+		$"Blood Spurt".emitting = true
+		
 		if health <= 0:
 			print("die")
 			var a = AudioStreamPlayer2D.new()

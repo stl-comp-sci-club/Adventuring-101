@@ -283,5 +283,7 @@ script = ExtResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpZone"]
 shape = SubResource( 29 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [connection signal="body_entered" from="PickUpZone" to="PickUpZone" method="_on_PickUpZone_body_entered"]
 [connection signal="body_exited" from="PickUpZone" to="PickUpZone" method="_on_PickUpZone_body_exited"]

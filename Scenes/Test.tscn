@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+fog_enabled = true
+auto_exposure_speed = 18.81
+dof_blur_near_distance = 8.01
+dof_blur_near_transition = 0.01
+dof_blur_near_amount = 0.08
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.01
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 49.5
+glow_hdr_scale = 0.73
+glow_bicubic_upscale = true
+glow_high_quality = true
+adjustment_brightness = 1.51
+adjustment_contrast = 0.48
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 1
+emission_sphere_radius = 4.66
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, -20, 0 )
+initial_velocity = 10.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.823529, 0.101961, 0.101961, 1 )
+hue_variation = 0.1
+hue_variation_random = 0.27
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 5
+emission_ring_radius = 372.56
+emission_ring_inner_radius = 52.29
+emission_ring_height = 1.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 0.73
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="Main" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 2, 2, 2, 1 )
+margin_left = 208.0
+margin_top = 160.0
+margin_right = 349.0
+margin_bottom = 176.0
+text = "This is a test scene"
+
+[node name="Glowy Fire" type="Particles2D" parent="."]
+modulate = Color( 1.6, 1.6, 1.6, 1 )
+position = Vector2( 136, 184 )
+scale = Vector2( 3, 3 )
+amount = 30
+process_material = SubResource( 2 )
+
+[node name="FireFlies" type="Particles2D" parent="."]
+modulate = Color( 3, 3, 1, 1 )
+position = Vector2( 328, 192 )
+amount = 500
+lifetime = 1000.0
+speed_scale = 10.0
+visibility_rect = Rect2( -500, -300, 1000, 600 )
+process_material = SubResource( 3 )

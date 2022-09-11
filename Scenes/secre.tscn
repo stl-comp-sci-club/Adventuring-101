@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Player/Code/playermovement.gd" type="Script" id=1]
+[ext_resource path="res://Player/Code/player.gd" type="Script" id=1]
 [ext_resource path="res://TemporaryTileset/default pplayer base.png" type="Texture" id=2]
 [ext_resource path="res://TemporaryTileset/Animations/Right_rest.png" type="Texture" id=3]
 [ext_resource path="res://TemporaryTileset/Animations/Left_1.png" type="Texture" id=4]
