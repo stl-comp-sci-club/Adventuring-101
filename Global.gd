@@ -5,6 +5,11 @@ var scene = ""
 var paused = false
 var in_dialogue = false
 
+var camera_zoom = 1.5
+var sound_effect_volume = 100
+var music_volume = 100
+var master_volume = 100
+
 # Vectors define the points the NPC should walk to
 # Integers define pauses between the points (in seconds)
 
