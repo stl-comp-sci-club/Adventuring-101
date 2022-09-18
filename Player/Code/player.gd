@@ -69,6 +69,8 @@ func fade_in():
 	fade.modulate.a = 0
 
 func _ready():
+
+	
 	print(Global.scene)
 	input_allowed = true
 	if Global.scene == "upstairs":
@@ -120,9 +122,11 @@ func animate(direction: Vector2):
 			$player.play(d+"_resting")
 
 func _process(delta):
+	$Camera2D.zoom.x = Global.camera_zoom
+	$Camera2D.zoom.y = Global.camera_zoom
 	if stunned:
 		var a = AudioStreamPlayer2D.new()
-		print(a)
+		a.bus = "Sound Effects"
 		add_child(a)
 		a.stop()
 		a.volume_db = 23
@@ -165,10 +169,23 @@ func _process(delta):
 			print("attacking")
 			var _temp = get_global_mouse_position()-position
 			var d = get_animation_direction(_temp)
+
+			$"player/Sword area/Sword Collision".disabled = false
+			
+			if d == "down":
+				$"player/Sword area".rotation_degrees = 0
+			elif d == "right":
+				$"player/Sword area".rotation_degrees = -90
+			elif d == "up":
+				$"player/Sword area".rotation_degrees = 180
+			elif d == "left":
+				$"player/Sword area".rotation_degrees = 90
+			
 			$player.play("attack_"+d)
 
 			var a = AudioStreamPlayer2D.new()
-			print(a)
+			a.bus = "Sound Effects"
+#			print(a)
 			add_child(a)
 			a.stop()
 #			print("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
@@ -185,6 +202,8 @@ func _process(delta):
 			print("attack finished")
 #			get_node("Attack Area/Weapon Swipe").disabled = true
 			attacking = false
+			
+			$"player/Sword area/Sword Collision".disabled = true
 			
 			
 		

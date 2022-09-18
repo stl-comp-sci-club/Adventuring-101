@@ -22,16 +22,41 @@ func _process(delta:float):
 	# if you do sin(PI * TIME) the speed at period of the sine wave is 1 
 	# If you want to see what it does just go on desmos and put sin(PI * x) and play around with it 
 	
-	if sin(PI/12 * Global.TIME + (-PI/2)) + 0.25 < 0:
-		calc = sin((PI/12 * Global.TIME) + (-PI/2)) + 0.25
-	else: 
-		calc = sin((PI/12 * Global.TIME) + (-PI/2)) + 0.25
+#	calc = -0.5*cos((PI*Global.TIME)/12)+0.5
+
+#	print(Global.TIME)
 	
-	if calc > self.upperLim:
-		calc = self.upperLim
-	if calc < self.lowerLim:
-		calc = self.lowerLim
+	var x = Global.TIME
+
+#	var x = 17
+
+	# desmos here: https://www.desmos.com/calculator/r6vrnsbskg
+	calc = 0.00916*pow(x, 2)-0.000035*pow(x, 4)+0.000000072035*pow(x, 6)-0.0000000000675*pow(x, 8)
+	
+#	print(calc)
+	
+#	if sin(PI/12 * Global.TIME + (-PI/2)) + 0.25 < 0:
+#		calc = 0.5*sin((PI*Global.TIME)/12)+0.5
+#	else: 
+#		calc = sin((PI/12 * Global.TIME) + (-PI/2)) + 0.25
+#
+#	if calc > self.upperLim:
+#		calc = self.upperLim
+#	if calc < self.lowerLim:
+#		calc = self.lowerLim
 	
 #	print("CALC:" ,calc)
+
+#	var interpolate_factor = 0
+#
+#	if (Global.TIME > 12): # night time, start deicrementing
+#		interpolate_factor = 24-Global.TIME
+#	else: # day time, start incrementing
+#		interpolate_factor = Global.TIME
+#
+#	print(interpolate_factor/12)
+	
+#	add_color_override("default_color", nightColor.linear_interpolate(dayColor, interpolate_factor/12))
+
 		
 	self.color = nightColor.linear_interpolate(dayColor, calc)

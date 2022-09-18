@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Pause_menu.gd" type="Script" id=1]
 [ext_resource path="res://font/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://button_pressed.png" type="Texture" id=3]
 [ext_resource path="res://button.png" type="Texture" id=4]
 [ext_resource path="res://Pause_button.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Settings.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=3]
 size = 24
@@ -50,11 +51,11 @@ margin_right = 640.0
 margin_bottom = 360.0
 color = Color( 0, 0, 0, 0.282353 )
 
-[node name="Resume2" type="Button" parent="Popup"]
+[node name="Resume" type="Button" parent="Popup"]
 margin_left = 208.0
-margin_top = 128.0
+margin_top = 103.0
 margin_right = 424.0
-margin_bottom = 168.0
+margin_bottom = 143.0
 rect_pivot_offset = Vector2( 192, 40 )
 focus_mode = 0
 custom_fonts/font = SubResource( 3 )
@@ -64,11 +65,25 @@ custom_styles/normal = SubResource( 6 )
 enabled_focus_mode = 0
 text = "Resume"
 
-[node name="Exit2" type="Button" parent="Popup"]
+[node name="Settings Button" type="Button" parent="Popup"]
 margin_left = 208.0
-margin_top = 192.0
+margin_top = 153.0
 margin_right = 424.0
-margin_bottom = 232.0
+margin_bottom = 193.0
+rect_pivot_offset = Vector2( 192, 40 )
+focus_mode = 0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+enabled_focus_mode = 0
+text = "Settings"
+
+[node name="Exit" type="Button" parent="Popup"]
+margin_left = 208.0
+margin_top = 206.0
+margin_right = 424.0
+margin_bottom = 246.0
 rect_pivot_offset = Vector2( 192, 40 )
 focus_mode = 0
 custom_fonts/font = SubResource( 3 )
@@ -77,6 +92,9 @@ custom_styles/pressed = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
 enabled_focus_mode = 0
 text = "Exit"
+
+[node name="Settings" parent="Popup" instance=ExtResource( 6 )]
+layer = 5
 
 [node name="Pause button" type="Button" parent="."]
 visible = false
@@ -94,6 +112,7 @@ enabled_focus_mode = 0
 icon = ExtResource( 5 )
 clip_text = true
 
-[connection signal="button_up" from="Popup/Resume2" to="Popup" method="_on_Resume_button_up"]
-[connection signal="button_up" from="Popup/Exit2" to="Popup" method="_on_Exit_button_up"]
+[connection signal="button_up" from="Popup/Resume" to="Popup" method="_on_Resume_button_up"]
+[connection signal="button_up" from="Popup/Settings Button" to="Popup" method="_on_Settings_button_up"]
+[connection signal="button_up" from="Popup/Exit" to="Popup" method="_on_Exit_button_up"]
 [connection signal="button_up" from="Pause button" to="Popup" method="_on_Pause_button_button_up"]

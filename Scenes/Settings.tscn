@@ -1,0 +1,249 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scenes/Settings.gd" type="Script" id=1]
+[ext_resource path="res://font/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://button.png" type="Texture" id=3]
+[ext_resource path="res://button_pressed.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://font/PlaymegamesReguler-2OOee.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 33
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = SubResource( 1 )
+
+[node name="Settings" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Popup" type="Popup" parent="."]
+margin_right = 640.0
+margin_bottom = 360.0
+mouse_filter = 1
+popup_exclusive = true
+
+[node name="Background" type="ColorRect" parent="Popup"]
+margin_left = -16.0
+margin_top = -8.0
+margin_right = 664.0
+margin_bottom = 392.0
+rect_pivot_offset = Vector2( 519, 223 )
+color = Color( 0.172549, 0.176471, 0.258824, 1 )
+
+[node name="Settings Label" type="Label" parent="Popup/Background"]
+margin_left = 80.0
+margin_top = 32.0
+margin_right = 193.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 2 )
+text = "Settings"
+
+[node name="Back" type="Button" parent="Popup/Background"]
+margin_left = 504.0
+margin_top = 32.0
+margin_right = 587.0
+margin_bottom = 53.0
+rect_pivot_offset = Vector2( 24, 13 )
+focus_mode = 0
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+enabled_focus_mode = 0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Popup"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 576.0
+margin_bottom = 320.0
+rect_pivot_offset = Vector2( -256, -80 )
+
+[node name="Scroll background" type="ColorRect" parent="Popup/ScrollContainer"]
+margin_right = 512.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 100, 300 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+color = Color( 0.231373, 0.231373, 0.309804, 1 )
+
+[node name="Master" type="Control" parent="Popup/ScrollContainer/Scroll background"]
+margin_left = 24.0
+margin_top = 32.0
+margin_right = 64.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( 64, 28 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Master Volume Label" type="Label" parent="Popup/ScrollContainer/Scroll background/Master"]
+margin_top = -12.0
+margin_right = 113.0
+margin_bottom = 9.0
+custom_fonts/font = SubResource( 3 )
+text = "Master Volume"
+
+[node name="Master Slider" type="HSlider" parent="Popup/ScrollContainer/Scroll background/Master"]
+margin_top = 12.0
+margin_right = 232.0
+margin_bottom = 44.0
+value = 100.0
+scrollable = false
+
+[node name="Master Volume Value" type="Label" parent="Popup/ScrollContainer/Scroll background/Master"]
+margin_left = -32.0
+margin_top = 4.0
+margin_right = 103.0
+margin_bottom = 25.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 68, 11 )
+custom_fonts/font = SubResource( 4 )
+text = "100%"
+
+[node name="Music" type="Control" parent="Popup/ScrollContainer/Scroll background"]
+margin_left = 24.0
+margin_top = 84.0
+margin_right = 64.0
+margin_bottom = 124.0
+rect_pivot_offset = Vector2( 64, 28 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Music Label" type="Label" parent="Popup/ScrollContainer/Scroll background/Music"]
+margin_top = -12.0
+margin_right = 113.0
+margin_bottom = 9.0
+custom_fonts/font = SubResource( 3 )
+text = "Music"
+
+[node name="Music Slider" type="HSlider" parent="Popup/ScrollContainer/Scroll background/Music"]
+margin_top = 12.0
+margin_right = 232.0
+margin_bottom = 44.0
+value = 100.0
+scrollable = false
+
+[node name="Music Volume Value" type="Label" parent="Popup/ScrollContainer/Scroll background/Music"]
+margin_left = -32.0
+margin_top = 4.0
+margin_right = 103.0
+margin_bottom = 25.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 68, 11 )
+custom_fonts/font = SubResource( 4 )
+text = "100%"
+
+[node name="Sound Effects" type="Control" parent="Popup/ScrollContainer/Scroll background"]
+margin_left = -40.0
+margin_top = 24.0
+margin_right = -40.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sound Effects Label" type="Label" parent="Popup/ScrollContainer/Scroll background/Sound Effects"]
+margin_left = 64.0
+margin_top = 100.0
+margin_right = 199.0
+margin_bottom = 121.0
+custom_fonts/font = SubResource( 3 )
+text = "Sound Effects"
+
+[node name="Sound Effect Slider" type="HSlider" parent="Popup/ScrollContainer/Scroll background/Sound Effects"]
+margin_left = 64.0
+margin_top = 124.0
+margin_right = 296.0
+margin_bottom = 156.0
+value = 100.0
+scrollable = false
+
+[node name="Sound Effect Value" type="Label" parent="Popup/ScrollContainer/Scroll background/Sound Effects"]
+margin_left = 32.0
+margin_top = 116.0
+margin_right = 167.0
+margin_bottom = 137.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 68, 11 )
+custom_fonts/font = SubResource( 4 )
+text = "100%"
+
+[node name="Camera Zoom" type="Control" parent="Popup/ScrollContainer/Scroll background"]
+margin_left = -40.0
+margin_top = 24.0
+margin_right = -40.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Camera Zoom Label" type="Label" parent="Popup/ScrollContainer/Scroll background/Camera Zoom"]
+margin_left = 64.0
+margin_top = 156.0
+margin_right = 199.0
+margin_bottom = 177.0
+rect_pivot_offset = Vector2( 68, 11 )
+custom_fonts/font = SubResource( 3 )
+text = "Camera Zoom"
+
+[node name="Zoom Value" type="Label" parent="Popup/ScrollContainer/Scroll background/Camera Zoom"]
+margin_left = 32.0
+margin_top = 172.0
+margin_right = 167.0
+margin_bottom = 193.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 68, 11 )
+custom_fonts/font = SubResource( 4 )
+text = "1.5x"
+
+[node name="Camera Zoom Slider" type="HSlider" parent="Popup/ScrollContainer/Scroll background/Camera Zoom"]
+margin_left = 64.0
+margin_top = 182.0
+margin_right = 296.0
+margin_bottom = 214.0
+min_value = 1.5
+max_value = 3.0
+step = 0.1
+value = 1.5
+scrollable = false
+
+[node name="Dev Note" type="Label" parent="Popup/ScrollContainer/Scroll background"]
+margin_left = 24.0
+margin_top = 272.0
+margin_right = 359.0
+margin_bottom = 293.0
+custom_fonts/font = SubResource( 3 )
+text = "Future Settings can be added here"
+
+[connection signal="button_up" from="Popup/Background/Back" to="." method="_on_Back_button_up"]
+[connection signal="value_changed" from="Popup/ScrollContainer/Scroll background/Master/Master Slider" to="." method="_on_Master_Slider_value_changed"]
+[connection signal="value_changed" from="Popup/ScrollContainer/Scroll background/Music/Music Slider" to="." method="_on_Music_Slider_value_changed"]
+[connection signal="value_changed" from="Popup/ScrollContainer/Scroll background/Sound Effects/Sound Effect Slider" to="." method="_on_Sound_Effect_Slider_value_changed"]
+[connection signal="value_changed" from="Popup/ScrollContainer/Scroll background/Camera Zoom/Camera Zoom Slider" to="." method="_on_Camera_Zoom_Slider_value_changed"]

@@ -56,3 +56,9 @@ func _on_Pause_button_button_up():
 	player.input_allowed = false
 	popup()
 	Global.paused = true
+
+
+func _on_Settings_button_up():
+#	hide()
+	$Settings.show()
+#	get_node("../Settings").show()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Outside.tres" type="TileSet" id=2]
@@ -74,49 +74,13 @@ region_rect = Rect2( 0, 0, 20, 20 )
 texture = ExtResource( 18 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
-[sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 28 )
-region = Rect2( 0, 0, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 28 )
-region = Rect2( 23, 0, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=47]
-atlas = ExtResource( 28 )
-region = Rect2( 46, 0, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=48]
-atlas = ExtResource( 28 )
-region = Rect2( 69, 0, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=39]
-atlas = ExtResource( 28 )
-region = Rect2( 0, 180, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=40]
-atlas = ExtResource( 28 )
-region = Rect2( 23, 180, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=41]
-atlas = ExtResource( 28 )
-region = Rect2( 46, 180, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=42]
-atlas = ExtResource( 28 )
-region = Rect2( 69, 180, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 28 )
-region = Rect2( 23, 120, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=38]
-atlas = ExtResource( 28 )
-region = Rect2( 23, 60, 23, 60 )
-
 [sub_resource type="AtlasTexture" id=43]
 atlas = ExtResource( 28 )
 region = Rect2( 23, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 0, 23, 60 )
 
 [sub_resource type="AtlasTexture" id=49]
 atlas = ExtResource( 28 )
@@ -134,9 +98,29 @@ region = Rect2( 46, 60, 23, 60 )
 atlas = ExtResource( 28 )
 region = Rect2( 69, 60, 23, 60 )
 
-[sub_resource type="AtlasTexture" id=44]
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 28 )
+region = Rect2( 0, 0, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=46]
 atlas = ExtResource( 28 )
 region = Rect2( 23, 0, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 28 )
+region = Rect2( 46, 0, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 28 )
+region = Rect2( 69, 0, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 120, 23, 60 )
 
 [sub_resource type="AtlasTexture" id=54]
 atlas = ExtResource( 28 )
@@ -154,31 +138,32 @@ region = Rect2( 46, 120, 23, 60 )
 atlas = ExtResource( 28 )
 region = Rect2( 69, 120, 23, 60 )
 
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 28 )
+region = Rect2( 0, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 28 )
+region = Rect2( 46, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 28 )
+region = Rect2( 69, 180, 23, 60 )
+
 [sub_resource type="SpriteFrames" id=58]
 animations = [ {
-"frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
-"loop": true,
-"name": "walk_down",
-"speed": 7.0
-}, {
-"frames": [ SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 7.0
-}, {
-"frames": [ SubResource( 53 ) ],
-"loop": true,
-"name": "left_resting",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 38 ) ],
-"loop": true,
-"name": "right_resting",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 43 ) ],
 "loop": true,
 "name": "up_resting",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 44 ) ],
+"loop": true,
+"name": "down_resting",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
@@ -186,14 +171,29 @@ animations = [ {
 "name": "walk_right",
 "speed": 7.0
 }, {
-"frames": [ SubResource( 44 ) ],
+"frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
 "loop": true,
-"name": "down_resting",
+"name": "walk_down",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 38 ) ],
+"loop": true,
+"name": "right_resting",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 53 ) ],
+"loop": true,
+"name": "left_resting",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
 "loop": true,
 "name": "walk_left",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"loop": true,
+"name": "walk_up",
 "speed": 7.0
 } ]
 
@@ -221,6 +221,13 @@ extents = Vector2( 16.875, 18 )
 
 [sub_resource type="RectangleShape2D" id=64]
 extents = Vector2( 16.375, 4.5625 )
+
+[sub_resource type="Environment" id=66]
+glow_enabled = true
+glow_intensity = 8.0
+glow_strength = 2.0
+glow_blend_mode = 0
+glow_bicubic_upscale = true
 
 [node name="World" type="Node2D"]
 pause_mode = 2
@@ -317,7 +324,6 @@ shape = SubResource( 28 )
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
-frame = 2
 playing = true
 
 [node name="Light2D" type="Light2D" parent="Fountain"]
@@ -434,7 +440,6 @@ tile_data = PoolIntArray( -917591, 2, 0, -917569, 2, 0, -917547, 2, 0, -917525, 
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
-frame = 2
 playing = true
 
 [node name="Player Head" type="Sprite" parent="Map/Border/Minimap/Viewport"]
@@ -612,6 +617,9 @@ cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
 tile_data = PoolIntArray( -4259900, 53, 0, -4259899, 70, 0, -4259898, 70, 0, -4259897, 70, 0, -4259896, 70, 0, -4259895, 70, 0, -4259894, 70, 0, -4259893, 70, 0, -4259892, 70, 0, -4259891, 70, 0, -4259890, 70, 0, -4259889, 66, 0, -4194364, 54, 0, -4194363, 71, 0, -4194362, 71, 0, -4194361, 71, 0, -4194360, 71, 0, -4194359, 71, 0, -4194358, 71, 0, -4194357, 71, 0, -4194356, 71, 0, -4194355, 71, 0, -4194354, 71, 0, -4194353, 76, 0, -4128828, 54, 0, -4128827, 40, 0, -4128826, 40, 0, -4128825, 40, 0, -4128824, 40, 0, -4128823, 40, 0, -4128822, 40, 0, -4128821, 40, 0, -4128820, 40, 0, -4128819, 40, 0, -4128818, 40, 0, -4128817, 76, 0, -4063292, 54, 0, -4063291, 40, 0, -4063290, 40, 0, -4063289, 40, 0, -4063288, 40, 0, -4063287, 40, 0, -4063286, 40, 0, -4063285, 40, 0, -4063284, 40, 0, -4063283, 40, 0, -4063282, 40, 0, -4063281, 76, 0, -3997756, 54, 0, -3997755, 40, 0, -3997754, 40, 0, -3997753, 40, 0, -3997752, 40, 0, -3997751, 40, 0, -3997750, 40, 0, -3997749, 40, 0, -3997748, 40, 0, -3997747, 40, 0, -3997746, 40, 0, -3997745, 76, 0, -3932220, 54, 0, -3932219, 40, 0, -3932218, 40, 0, -3932217, 40, 0, -3932216, 40, 0, -3932215, 40, 0, -3932214, 40, 0, -3932213, 40, 0, -3932212, 40, 0, -3932211, 40, 0, -3932210, 40, 0, -3932209, 76, 0, -3866684, 54, 0, -3866683, 40, 0, -3866682, 40, 0, -3866681, 40, 0, -3866680, 40, 0, -3866679, 40, 0, -3866678, 40, 0, -3866677, 40, 0, -3866676, 40, 0, -3866675, 40, 0, -3866674, 40, 0, -3866673, 76, 0, -3801148, 54, 0, -3801147, 40, 0, -3801146, 40, 0, -3801145, 40, 0, -3801144, 40, 0, -3801143, 40, 0, -3801142, 40, 0, -3801141, 40, 0, -3801140, 40, 0, -3801139, 40, 0, -3801138, 40, 0, -3801137, 76, 0, -3735612, 54, 0, -3735611, 40, 0, -3735610, 40, 0, -3735609, 40, 0, -3735608, 40, 0, -3735607, 40, 0, -3735606, 40, 0, -3735605, 40, 0, -3735604, 40, 0, -3735603, 40, 0, -3735602, 40, 0, -3735601, 76, 0, -3670076, 54, 0, -3670075, 40, 0, -3670074, 40, 0, -3670073, 40, 0, -3670072, 40, 0, -3670071, 40, 0, -3670070, 40, 0, -3670069, 40, 0, -3670068, 40, 0, -3670067, 40, 0, -3670066, 40, 0, -3670065, 76, 0, -3604540, 80, 0, -3604539, 79, 0, -3604538, 79, 0, -3604537, 79, 0, -3604536, 79, 0, -3604535, 79, 0, -3604534, 79, 0, -3604533, 79, 0, -3604532, 79, 0, -3604531, 79, 0, -3604530, 79, 0, -3604529, 78, 0 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 66 )
 
 [connection signal="body_entered" from="Enter House" to="Enter House" method="_on_Enter_House_body_entered"]
 [connection signal="body_entered" from="TempFloppa/floppa" to="TempFloppa" method="_on_floppa_body_entered"]
