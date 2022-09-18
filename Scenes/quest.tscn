@@ -51,9 +51,10 @@ region_rect = Rect2( 0, 0, 20, 20 )
 [node name="Quests" type="CanvasLayer"]
 
 [node name="Popup" type="Popup" parent="."]
+visible = true
 margin_right = 640.0
 margin_bottom = 359.0
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="Popup"]
@@ -79,6 +80,7 @@ margin_top = 56.0
 margin_right = 93.0
 margin_bottom = 70.0
 rect_pivot_offset = Vector2( -140, 36 )
+mouse_filter = 1
 custom_fonts/font = SubResource( 2 )
 text = "Main Quests"
 
@@ -88,6 +90,7 @@ margin_top = 15.0
 margin_right = 185.0
 margin_bottom = 71.0
 rect_pivot_offset = Vector2( 66, 28 )
+mouse_filter = 1
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 9 )
 
@@ -96,6 +99,7 @@ margin_left = 20.0
 margin_top = 144.0
 margin_right = 93.0
 margin_bottom = 158.0
+mouse_filter = 1
 custom_fonts/font = SubResource( 3 )
 text = "Side Quests"
 
@@ -105,6 +109,7 @@ margin_top = 19.0
 margin_right = 183.0
 margin_bottom = 75.0
 rect_pivot_offset = Vector2( 66, 28 )
+mouse_filter = 1
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 9 )
 
@@ -121,6 +126,7 @@ margin_left = 21.0
 margin_top = 237.0
 margin_right = 122.0
 margin_bottom = 249.0
+mouse_filter = 1
 custom_fonts/font = SubResource( 8 )
 text = "Press [E] to close"
 

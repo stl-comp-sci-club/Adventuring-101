@@ -324,7 +324,6 @@ shape = SubResource( 28 )
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
-frame = 1
 playing = true
 
 [node name="Light2D" type="Light2D" parent="Fountain"]
@@ -441,7 +440,6 @@ tile_data = PoolIntArray( -917591, 2, 0, -917569, 2, 0, -917547, 2, 0, -917525, 
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
-frame = 1
 playing = true
 
 [node name="Player Head" type="Sprite" parent="Map/Border/Minimap/Viewport"]

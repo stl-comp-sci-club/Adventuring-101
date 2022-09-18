@@ -34,17 +34,16 @@ value = 100.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 4 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Bars"]
 margin_left = 18.0
 margin_top = 289.0
 margin_right = 79.0
 margin_bottom = 306.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 21.0
-margin_top = 289.0
-margin_right = 79.0
-margin_bottom = 306.0
+[node name="RichTextLabel" type="RichTextLabel" parent="Bars/ColorRect"]
+margin_left = 3.0
+margin_right = 61.0
+margin_bottom = 17.0
 theme = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0.486275, 1, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )

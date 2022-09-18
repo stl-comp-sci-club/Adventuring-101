@@ -4,7 +4,8 @@ extends PopupDialog
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-onready var health = get_node("/root/World/Health N Mana/Bars/Health")
+onready var health = get_node("/root/World/Health N Mana/Bars")
+onready var clock = get_node("/root/World/")
 var dialogue setget dialogue_set
 var npc_name setget name_set
 
