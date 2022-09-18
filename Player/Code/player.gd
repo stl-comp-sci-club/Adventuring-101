@@ -169,6 +169,18 @@ func _process(delta):
 			print("attacking")
 			var _temp = get_global_mouse_position()-position
 			var d = get_animation_direction(_temp)
+
+			$"player/Sword area/Sword Collision".disabled = false
+			
+			if d == "down":
+				$"player/Sword area".rotation_degrees = 0
+			elif d == "right":
+				$"player/Sword area".rotation_degrees = -90
+			elif d == "up":
+				$"player/Sword area".rotation_degrees = 180
+			elif d == "left":
+				$"player/Sword area".rotation_degrees = 90
+			
 			$player.play("attack_"+d)
 
 			var a = AudioStreamPlayer2D.new()
@@ -190,6 +202,8 @@ func _process(delta):
 			print("attack finished")
 #			get_node("Attack Area/Weapon Swipe").disabled = true
 			attacking = false
+			
+			$"player/Sword area/Sword Collision".disabled = true
 			
 			
 		

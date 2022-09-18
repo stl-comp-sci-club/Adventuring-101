@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Player/Code/player.gd" type="Script" id=1]
 [ext_resource path="res://Player/caywalksheet.png" type="Texture" id=2]
@@ -228,88 +228,14 @@ animations = [ {
 "speed": 25.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=50]
+extents = Vector2( 34, 10 )
+
 [sub_resource type="RectangleShape2D" id=28]
 extents = Vector2( 10.5, 9.5 )
 
 [sub_resource type="CircleShape2D" id=29]
 radius = 39.0128
-
-[sub_resource type="RectangleShape2D" id=51]
-extents = Vector2( 4.24265, 19.864 )
-
-[sub_resource type="Animation" id=53]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 22.9541, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 31.9541, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath(".:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( -44.9999, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath(".:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 22.9541, 31.9541 ) ]
-}
-
-[sub_resource type="Animation" id=52]
-resource_name = "attack_up"
-length = 0.2
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 31, 25 ), Vector2( 31, 25 ), Vector2( 56, 19 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ -44.9999, -33.75, 0.0 ]
-}
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 47, 53 )
@@ -322,8 +248,15 @@ speed = 25
 
 [node name="player" type="AnimatedSprite" parent="."]
 frames = SubResource( 27 )
-animation = "attack_up"
-frame = 2
+animation = "attack_down"
+
+[node name="Sword area" type="Area2D" parent="player"]
+rotation = 3.14159
+
+[node name="Sword Collision" type="CollisionShape2D" parent="player/Sword area"]
+position = Vector2( 3.8147e-06, 21 )
+shape = SubResource( 50 )
+disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -343,34 +276,30 @@ shape = SubResource( 28 )
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( -326, -185 )
 z_index = 3
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Fade" type="ColorRect" parent="Node2D"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = -61308.0
-margin_top = -32229.0
-margin_right = 61959.0
-margin_bottom = 32597.0
+margin_left = -61211.0
+margin_top = -32247.0
+margin_right = 62056.0
+margin_bottom = 32579.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="PickUpZone" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpZone"]
 shape = SubResource( 29 )
-
-[node name="Attack Area" type="Area2D" parent="."]
-position = Vector2( -47, -53 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Area"]
-position = Vector2( 22.9541, 31.9541 )
-rotation = -0.785396
-shape = SubResource( 51 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Attack Area/CollisionShape2D"]
-anims/RESET = SubResource( 53 )
-anims/attack_up = SubResource( 52 )
 
 [connection signal="body_entered" from="PickUpZone" to="PickUpZone" method="_on_PickUpZone_body_entered"]
 [connection signal="body_exited" from="PickUpZone" to="PickUpZone" method="_on_PickUpZone_body_exited"]

@@ -39,7 +39,6 @@ font_data = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Popup" type="Popup" parent="."]
-visible = true
 margin_right = 640.0
 margin_bottom = 360.0
 mouse_filter = 1
@@ -86,7 +85,7 @@ margin_bottom = 320.0
 rect_pivot_offset = Vector2( -256, -80 )
 
 [node name="Scroll background" type="ColorRect" parent="Popup/ScrollContainer"]
-margin_right = 500.0
+margin_right = 512.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 100, 300 )
 size_flags_horizontal = 3

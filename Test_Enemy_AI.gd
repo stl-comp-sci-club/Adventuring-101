@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var player : KinematicBody2D = get_node("/root/World/Player")
-onready var weapon = get_node("/root/World/Player/Attack Area")
+onready var weapon = get_node("/root/World/Player/player/Sword area")
 
 export (int) var speed = 30
 var player_in_detection_area = false
@@ -93,12 +93,13 @@ func _on_Hitbox_area_entered(area):
 		
 		print(health)
 		
-		yield(get_tree().create_timer(0.1), "timeout")
+		yield(get_tree().create_timer(0.2), "timeout")
 		
 		stunned = false
 		print(position.direction_to(player.position) * -1)
 		print(velocity)
 		move_and_slide(velocity)
+		$"./enemy/Blood Spurt".emitting = false
 
 
 func get_animation_direction(direction: Vector2):
