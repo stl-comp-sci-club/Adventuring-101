@@ -8,7 +8,7 @@
 [ext_resource path="res://Scenes/Settings.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=7]
-size = 48
+size = 128
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=1]
@@ -64,10 +64,11 @@ margin_bottom = 119.0
 
 [node name="Label" type="Label" parent="logo"]
 modulate = Color( 1.2, 1.2, 1.2, 1 )
-margin_left = 35.0
-margin_top = 21.0
-margin_right = 348.0
-margin_bottom = 62.0
+margin_left = 11.0
+margin_top = 19.0
+margin_right = 856.0
+margin_bottom = 128.0
+rect_scale = Vector2( 0.423, 0.423 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Adventuring 101"

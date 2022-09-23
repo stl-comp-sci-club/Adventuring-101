@@ -11,6 +11,7 @@ onready var sound_effect_bus = AudioServer.get_bus_index("Sound Effects")
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		$Popup.hide()
+		Global.save_settings()
 #		get_tree().change_scene("res://Scenes/Main Menu.tscn")
 
 func map(val, in_min, in_max, out_min, out_max):
@@ -70,7 +71,7 @@ func _on_Master_Slider_value_changed(value):
 	
 func _on_Back_button_up():
 	$Popup.hide()
-	print("hide")
+	Global.save_settings()
 #	get_tree().change_scene("res://Scenes/Main Menu.tscn")
 
 

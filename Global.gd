@@ -10,6 +10,47 @@ var sound_effect_volume = 100
 var music_volume = 100
 var master_volume = 100
 
+var data = { # Empty for now, future data can be added
+	"Inventory": []
+}
+
+var save_password = "b5^E%2fZJkX%ho&d&^"
+
+func save_settings(): # I dont think its manditory to encrypt the settings file... so settings will remain unencrypted
+	var save_file = File.new()
+	var status = save_file.open_encrypted_with_pass("user://settings.dat", File.WRITE, save_password)
+	if status != OK:
+		print_debug("Save file failed to load")
+		return "Error"
+	save_file.store_line(str(camera_zoom))
+	save_file.store_line(str(sound_effect_volume))
+	save_file.store_line(str(music_volume))
+	save_file.store_line(str(master_volume))
+	save_file.store_var(data)
+	save_file.close()
+	return "Saved"
+	
+func load_settings():
+	var save_file = File.new()
+	if not save_file.file_exists("user://settings.dat"):
+		print_debug("Save file does not exist, creating new file")
+		save_settings()
+	if not save_file.file_exists("user://settings.dat"):
+		print_debug("Save file still does not existing, aborting")
+		return "Error"
+	var status = save_file.open_encrypted_with_pass("user://settings.dat", File.READ, save_password)
+	if status != OK:
+		print_debug("Save file failed to load")
+		return "Error"
+	camera_zoom = float(save_file.get_line())
+	sound_effect_volume = int(save_file.get_line())
+	music_volume = int(save_file.get_line())
+	master_volume = int(save_file.get_line())
+	data = save_file.get_var()
+	save_file.close()
+	return "Loaded"
+	
+
 # Vectors define the points the NPC should walk to
 # Integers define pauses between the points (in seconds)
 
@@ -46,6 +87,7 @@ var side_quests = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	load_settings()
 	pass # Replace with function body.
 
 #func change_scene(new_scene, player_pos, player):
