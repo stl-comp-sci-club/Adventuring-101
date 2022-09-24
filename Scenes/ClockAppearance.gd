@@ -20,12 +20,12 @@ func _process(delta):
 	var dayColor = Color("#fcf803")
 	var nightColor = Color("#1e52fc")
 	
-	if int(Global.minutes) < 10:
-		bbcode_text = str(Global.hours) + ":0" + str(Global.minutes) 
+	if int(Global.MINUTES) < 10:
+		bbcode_text = str(Global.hours) + ":0" + str(Global.MINUTES) 
 	else:
-		bbcode_text = str(Global.hours) + ":" + str(Global.minutes) 
+		bbcode_text = str(Global.hours) + ":" + str(Global.MINUTES) 
 	
-	if int(Global.TIME) > 12:
+	if int(Global.HOUR) > 12:
 		bbcode_text = bbcode_text + " PM"
 	else:
 		bbcode_text = bbcode_text + " AM"
@@ -34,7 +34,7 @@ func _process(delta):
 	
 #	print(Global.TIME)
 	
-	var x = Global.TIME
+	var x = Global.HOUR+Global.minutes
 
 
 	# desmos here: https://www.desmos.com/calculator/r6vrnsbskg

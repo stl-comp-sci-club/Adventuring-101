@@ -83,12 +83,30 @@ var side_quests = []
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var HOUR = 10
+var MINUTES = 0
+#var game_seconds = 0
+
+var minute_timer = null
+#var game_timer = null
+func _increment_clock():
+	self.MINUTES += 1
+
+#func _increment_internal_time():
+#	self.game_seconds += 0.1
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_settings()
-	pass # Replace with function body.
+	minute_timer = Timer.new()
+	add_child(minute_timer)
+	minute_timer.connect("timeout", self, "_increment_clock")
+	minute_timer.set_wait_time(1)
+	minute_timer.set_one_shot(false) # Make sure it loops
+	minute_timer.start()
+
+#	if !paused:
 
 #func change_scene(new_scene, player_pos, player):
 #	get_tree().change_scene(new_scene)
@@ -97,45 +115,58 @@ func _ready():
 #	print("Setting player position to " + str(player_pos))
 #	player.set_position(player_pos)
 
-var TIME = 10
-# Equivalent of dividing by 60 making it each second as an hour in game
-
-# Explanation of above comment (by ryan) it makes it so that when your game is running at 60 fps
-# each frame updates it so that the seconds in game match up with seconds in real world
-var timeConst = 0.016666666666666666666
-#var timeConst = 1
-	
 var minutes = 0
-var seconds = 0
 var hours = 0
+
+func time_map(val):
+	return float(val) * 99 / 60
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !paused:
-		self.TIME += delta * timeConst
-#	print("ACC TIME: ", self.TIME)
-
-	if "." in (str(self.TIME).substr(0, 2)):
-		self.hours = str(self.TIME).substr(0, 1)
-		self.minutes = str(self.TIME).substr(2, 2)
-		self.seconds = str(self.TIME).substr(4, 2) 
-	else: 
-		self.hours = str(self.TIME).substr(0, 2)
-		self.minutes = str(self.TIME).substr(3,2)
-		self.seconds = str(self.TIME).substr(5,2) 
-
-	self.minutes = int(self.minutes) * 60 / 100
-	self.seconds = int(self.seconds) * 60 / 100
 	
-	if self.TIME > 13:
-		self.hours = int(self.hours) - 12
+#	if paused:
+#		minute_timer.stop()
 	
-	if self.TIME > 24: 
-		self.TIME = 1
+#	if !paused:
+#		minute_timer.start()
+#		self.TIME += delta * timeConst
+#		self.TIME += 0.01
+	
+	
+#	print("ACC TIME: ", str(self.HOUR) + " " + str(self.MINUTES))
+#	print(str(hours) + " " +str(minutes))
+#	print(Global.HOUR+minutes)
+
+#	if "." in (str(self.TIME).substr(0, 2)):
+#		self.hours = str(self.TIME).substr(0, 1)
+#		self.minutes = str(self.TIME).substr(2, 2)
+#		self.seconds = str(self.TIME).substr(4, 2)
+#	else: 
+#		self.hours = str(self.TIME).substr(0, 2)
+#		self.minutes = str(self.TIME).substr(3,2)
+#		self.seconds = str(self.TIME).substr(5,2) 
+
+
+#	self.minutes = int(self.minutes) * 60 / 100
+#	self.seconds = int(self.seconds) * 60 / 100
+	
+	if HOUR >= 13:
+		hours = HOUR - 12
+	else:
+		hours = HOUR
+	
+	
+	if HOUR > 24: 
+		HOUR = 1
 		
-	if self.TIME < 1:
-		self.TIME = 1 
+	if MINUTES > 59:
+		MINUTES = 0
+		HOUR += 1
 	
+	if self.HOUR < 1:
+		self.HOUR = 1
+	
+	minutes = time_map(MINUTES)/100
 	# These can be used for npc stuff
 	
 	

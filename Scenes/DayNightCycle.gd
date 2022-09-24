@@ -26,7 +26,8 @@ func _process(delta:float):
 
 #	print(Global.TIME)
 	
-	var x = Global.TIME
+	var x = Global.HOUR+Global.minutes
+	print(x)
 
 #	var x = 17
 
