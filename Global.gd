@@ -88,12 +88,8 @@ var MINUTES = 0
 #var game_seconds = 0
 
 var minute_timer = null
-#var game_timer = null
 func _increment_clock():
 	self.MINUTES += 1
-
-#func _increment_internal_time():
-#	self.game_seconds += 0.1
 
 
 # Called when the node enters the scene tree for the first time.
@@ -106,15 +102,6 @@ func _ready():
 	minute_timer.set_one_shot(false) # Make sure it loops
 	minute_timer.start()
 
-#	if !paused:
-
-#func change_scene(new_scene, player_pos, player):
-#	get_tree().change_scene(new_scene)
-	#var player : KinematicBody2D = get_node("/root/World/Player")
-	#var player = get_tree().get_root().get_child(0).get_node("Player")
-#	print("Setting player position to " + str(player_pos))
-#	player.set_position(player_pos)
-
 var minutes = 0
 var hours = 0
 
@@ -123,33 +110,6 @@ func time_map(val):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-#	if paused:
-#		minute_timer.stop()
-	
-#	if !paused:
-#		minute_timer.start()
-#		self.TIME += delta * timeConst
-#		self.TIME += 0.01
-	
-	
-#	print("ACC TIME: ", str(self.HOUR) + " " + str(self.MINUTES))
-#	print(str(hours) + " " +str(minutes))
-#	print(Global.HOUR+minutes)
-
-#	if "." in (str(self.TIME).substr(0, 2)):
-#		self.hours = str(self.TIME).substr(0, 1)
-#		self.minutes = str(self.TIME).substr(2, 2)
-#		self.seconds = str(self.TIME).substr(4, 2)
-#	else: 
-#		self.hours = str(self.TIME).substr(0, 2)
-#		self.minutes = str(self.TIME).substr(3,2)
-#		self.seconds = str(self.TIME).substr(5,2) 
-
-
-#	self.minutes = int(self.minutes) * 60 / 100
-#	self.seconds = int(self.seconds) * 60 / 100
-	
 	if HOUR >= 13:
 		hours = HOUR - 12
 	else:
@@ -167,14 +127,5 @@ func _process(delta):
 		self.HOUR = 1
 	
 	minutes = time_map(MINUTES)/100
-	# These can be used for npc stuff
-	
-	
-#	if self.TIME > 13:
-#		print(int(self.hours)-12, ":", self.minutes, ":", self.seconds, " PM")
-#	else: 
-#		print(self.hours, ":", self.minutes, ":", self.seconds, " AM")
-		
-	
-	
+
 	
