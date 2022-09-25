@@ -322,7 +322,6 @@ shape = SubResource( 28 )
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
-frame = 1
 playing = true
 
 [node name="Light2D" type="Light2D" parent="Fountain"]
@@ -343,8 +342,6 @@ script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fountain/Interact Area"]
 shape = SubResource( 31 )
-
-[node name="Interact_Menu" parent="Fountain" instance=ExtResource( 10 )]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Fountain"]
 volume_db = 24.0
@@ -438,7 +435,6 @@ tile_data = PoolIntArray( -917591, 2, 0, -917569, 2, 0, -917547, 2, 0, -917525, 
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
-frame = 1
 playing = true
 
 [node name="Player Head" type="Sprite" parent="Map/Border/Minimap/Viewport"]
@@ -728,6 +724,9 @@ script = ExtResource( 34 )
 
 [node name="Inventory" parent="Inventory UI" instance=ExtResource( 33 )]
 visible = false
+
+[node name="Interact Menu" parent="." instance=ExtResource( 10 )]
+layer = 0
 
 [connection signal="body_entered" from="Enter House" to="Enter House" method="_on_Enter_House_body_entered"]
 [connection signal="body_entered" from="TempFloppa/floppa" to="TempFloppa" method="_on_floppa_body_entered"]

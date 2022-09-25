@@ -29,11 +29,11 @@ func _input(event):
 func _on_Interact_Area_body_entered(body):
 	if body == player:
 		inside_interact_area = true
-		get_node("/root/World/Fountain/Interact_Menu/Popup").open()
+		get_node("/root/World/Interact Menu/Popup").open()
 		
 
 
 func _on_Interact_Area_body_exited(body):
 	if body == player:
 		inside_interact_area = false
-		get_node("/root/World/Fountain/Interact_Menu/Popup").close()
+		get_node("/root/World/Interact Menu/Popup").close()
