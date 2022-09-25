@@ -26,14 +26,14 @@ func _process(delta:float):
 
 #	print(Global.TIME)
 	
-	var x = Global.HOUR+Global.minutes-1
+	var x = Global.HOUR+Global.minutes-2
+	
 
 #	var x = 17
 
 	# desmos here: https://www.desmos.com/calculator/r6vrnsbskg
-	calc = 0.00916*pow(x, 2)-0.000035*pow(x, 4)+0.000000072035*pow(x, 6)-0.0000000000675*pow(x, 8)
+	calc = pow(3, -0.0333333*pow(x-11.5, 2))
 	
-#	print(calc)
 	
 #	if sin(PI/12 * Global.TIME + (-PI/2)) + 0.25 < 0:
 #		calc = 0.5*sin((PI*Global.TIME)/12)+0.5
