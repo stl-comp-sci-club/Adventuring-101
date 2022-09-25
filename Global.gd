@@ -98,7 +98,7 @@ func _ready():
 	minute_timer = Timer.new()
 	add_child(minute_timer)
 	minute_timer.connect("timeout", self, "_increment_clock")
-	minute_timer.set_wait_time(0.01)
+	minute_timer.set_wait_time(1)
 	minute_timer.set_one_shot(false) # Make sure it loops
 	minute_timer.start()
 
