@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Outside.tres" type="TileSet" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://Scenes/Drum.gd" type="Script" id=13]
 [ext_resource path="res://Scenes/Minimap_zoom.gd" type="Script" id=14]
 [ext_resource path="res://minimap_border.png" type="Texture" id=15]
-[ext_resource path="res://Scenes/Bed.gd" type="Script" id=16]
 [ext_resource path="res://Scenes/Pause Menu.tscn" type="PackedScene" id=17]
 [ext_resource path="res://button.png" type="Texture" id=18]
 [ext_resource path="res://Scenes/quest.tscn" type="PackedScene" id=19]
@@ -42,9 +41,6 @@ extents = Vector2( 16.75, 21.75 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 332.963, 310 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 32, 35.75 )
 
 [sub_resource type="RectangleShape2D" id=28]
 extents = Vector2( 1968.75, 1923.25 )
@@ -308,17 +304,6 @@ script = ExtResource( 5 )
 position = Vector2( 6.10352e-05, 0.00012207 )
 shape = SubResource( 2 )
 
-[node name="Bed" type="Area2D" parent="."]
-visible = false
-script = ExtResource( 16 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed"]
-visible = false
-position = Vector2( 8, -306 )
-shape = SubResource( 6 )
-
-[node name="Interact_Menu" parent="Bed" instance=ExtResource( 10 )]
-
 [node name="Drum" type="Sprite" parent="."]
 position = Vector2( 327.866, 168 )
 scale = Vector2( 0.0263169, 0.0175758 )
@@ -337,6 +322,7 @@ shape = SubResource( 28 )
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
+frame = 1
 playing = true
 
 [node name="Light2D" type="Light2D" parent="Fountain"]
@@ -452,6 +438,7 @@ tile_data = PoolIntArray( -917591, 2, 0, -917569, 2, 0, -917547, 2, 0, -917525, 
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
+frame = 1
 playing = true
 
 [node name="Player Head" type="Sprite" parent="Map/Border/Minimap/Viewport"]
@@ -744,8 +731,6 @@ visible = false
 
 [connection signal="body_entered" from="Enter House" to="Enter House" method="_on_Enter_House_body_entered"]
 [connection signal="body_entered" from="TempFloppa/floppa" to="TempFloppa" method="_on_floppa_body_entered"]
-[connection signal="body_entered" from="Bed" to="Bed" method="_on_Bed_body_entered"]
-[connection signal="body_exited" from="Bed" to="Bed" method="_on_Bed_body_exited"]
 [connection signal="body_entered" from="Drum/drum" to="Drum" method="_on_drum_body_entered"]
 [connection signal="body_exited" from="Drum/drum" to="Drum" method="_on_drum_body_exited"]
 [connection signal="body_entered" from="Fountain/Interact Area" to="Fountain/Interact Area" method="_on_Interact_Area_body_entered"]
