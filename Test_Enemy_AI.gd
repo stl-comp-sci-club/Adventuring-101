@@ -29,12 +29,11 @@ func _process(delta):
 	if player_in_detection_area and not stunned and not Global.paused:
 		if not alerted:
 			var a = AudioStreamPlayer2D.new()
-			print(a)
+			a.bus = "Sound Effects"
 			add_child(a)
 			a.stop()
 			a.volume_db = 22
 			a.stream = load("res://alert.wav")
-			print(a.stream)
 			a.play()
 			alerted = true
 		velocity = position.direction_to(player.position)
@@ -81,12 +80,11 @@ func _on_Hitbox_area_entered(area):
 			return
 		
 		var a = AudioStreamPlayer2D.new()
-		print(a)
+		a.bus = "Sound Effects"
 		add_child(a)
 		a.stop()
 		a.volume_db = 15
 		a.stream = load("res://ouch.wav")
-		print(a.stream)
 		a.play()
 			
 		get_node("ProgressBar").value = health

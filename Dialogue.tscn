@@ -33,7 +33,6 @@ font_data = ExtResource( 2 )
 
 [node name="PopupDialog" type="PopupDialog" parent="."]
 pause_mode = 2
-visible = true
 popup_exclusive = true
 script = ExtResource( 3 )
 

@@ -117,6 +117,8 @@ func animate(direction: Vector2):
 			var d = get_animation_direction(last_direction)
 			$player.play(d+"_resting")
 
+
+
 func _process(delta):
 	$Camera2D.zoom.x = Global.camera_zoom
 	$Camera2D.zoom.y = Global.camera_zoom
@@ -127,13 +129,12 @@ func _process(delta):
 		a.stop()
 		a.volume_db = 23
 		a.stream = load("res://playerhurt.wav")
-		print(a.stream)
 		a.play()
 		velocity = position.direction_to(enemy.position) * -1
 		velocity *= 500
 		move_and_slide(velocity)
-		yield(get_tree().create_timer(0.1), "timeout")
 		stunned = false
+		yield(get_tree().create_timer(0.1), "timeout")
 	if health < 0:
 		get_tree().change_scene("res://Scenes/Main Menu.tscn")
 	var direction: Vector2

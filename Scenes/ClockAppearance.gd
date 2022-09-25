@@ -18,7 +18,7 @@ var calc = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var dayColor = Color("#fcf803")
-	var nightColor = Color("#1e52fc")
+	var nightColor = Color("#4262c9")
 	
 	if int(Global.MINUTES) < 10:
 		bbcode_text = str(Global.hours) + ":0" + str(Global.MINUTES) 
@@ -30,11 +30,16 @@ func _process(delta):
 	else:
 		bbcode_text = bbcode_text + " AM"
 		
+	if int(Global.HOUR) > 22 or int(Global.HOUR) < 6:
+		get_node("../Day Night").play("Night")
+	else:
+		get_node("../Day Night").play("Day")
+	
 #	add_color_override("default_color", nightColor.linear_interpolate(dayColor, calc))
 	
 #	print(Global.TIME)
 	
-	var x = Global.HOUR+Global.minutes
+	var x = Global.HOUR+Global.minutes-1
 
 
 	# desmos here: https://www.desmos.com/calculator/r6vrnsbskg
