@@ -73,31 +73,27 @@ func _ready():
 	
 	print(Global.scene)
 	input_allowed = true
-	if Global.scene == "upstairs":
-		position = Vector2(48, 34)
-		last_direction = Vector2(0,-1)
-		yield(fade_in(), "completed")
-	elif Global.scene == "downstairs":
-		position = Vector2(47, 53)
-		last_direction = Vector2(0,1)
-		yield(fade_in(), "completed")
-	elif Global.scene == "downstairs (from outside)":
-		position = Vector2(176, 194)
-		last_direction = Vector2(0,-1)
-		yield(fade_in(), "completed")
-	elif Global.scene == "Level 1":
-		position = Vector2(140, -20)
-		last_direction = Vector2(0,1)
-		yield(fade_in(), "completed")
-	elif Global.scene == "Level 1 (from Elijah)":	
-		position = Vector2(-37, -30)	
-		last_direction = Vector2(0,1)	
-		yield(fade_in(), "completed")	
-	elif Global.scene == "Elijah house":	
-		position = Vector2(176, 180)	
-		last_direction = Vector2(0,-1)	
-		yield(fade_in(), "completed")
-	
+#	if Global.scene == "downstairs":
+#		position = Vector2(47, 53)
+#		last_direction = Vector2(0,1)
+#		yield(fade_in(), "completed")
+#	elif Global.scene == "downstairs (from outside)":
+#		position = Vector2(176, 194)
+#		last_direction = Vector2(0,-1)
+#		yield(fade_in(), "completed")
+#	elif Global.scene == "Level 1":
+#		position = Vector2(140, -20)
+#		last_direction = Vector2(0,1)
+#		yield(fade_in(), "completed")
+#	elif Global.scene == "Level 1 (from Elijah)":	
+#		position = Vector2(-37, -30)	
+#		last_direction = Vector2(0,1)	
+#		yield(fade_in(), "completed")	
+#	elif Global.scene == "Elijah house":	
+#		position = Vector2(176, 180)	
+#		last_direction = Vector2(0,-1)	
+#		yield(fade_in(), "completed")
+#
 
 func get_animation_direction(direction: Vector2):
 	var norm_direction = direction.normalized()
