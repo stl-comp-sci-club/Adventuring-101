@@ -11,14 +11,16 @@ var music_volume = 100
 var master_volume = 100
 
 var data = { # Empty for now, future data can be added
-	"Inventory": []
+	"Inventory": [],
+	"Hour": 10,
+	"Minute": 0
 }
 
 var save_password = "b5^E%2fZJkX%ho&d&^"
 
-func save_settings(): # I dont think its manditory to encrypt the settings file... so settings will remain unencrypted
+func save_game(): # I dont think its manditory to encrypt the settings file... so settings will remain unencrypted
 	var save_file = File.new()
-	var status = save_file.open_encrypted_with_pass("user://settings.dat", File.WRITE, save_password)
+	var status = save_file.open_encrypted_with_pass("user://save.dat", File.WRITE, save_password)
 	if status != OK:
 		print_debug("Save file failed to load")
 		return "Error"
@@ -30,15 +32,15 @@ func save_settings(): # I dont think its manditory to encrypt the settings file.
 	save_file.close()
 	return "Saved"
 	
-func load_settings():
+func load_game():
 	var save_file = File.new()
-	if not save_file.file_exists("user://settings.dat"):
+	if not save_file.file_exists("user://save.dat"):
 		print_debug("Save file does not exist, creating new file")
-		save_settings()
-	if not save_file.file_exists("user://settings.dat"):
+		save_game()
+	if not save_file.file_exists("user://save.dat"):
 		print_debug("Save file still does not existing, aborting")
 		return "Error"
-	var status = save_file.open_encrypted_with_pass("user://settings.dat", File.READ, save_password)
+	var status = save_file.open_encrypted_with_pass("user://save.dat", File.READ, save_password)
 	if status != OK:
 		print_debug("Save file failed to load")
 		return "Error"
@@ -89,12 +91,21 @@ var MINUTES = 0
 
 var minute_timer = null
 func _increment_clock():
-	self.MINUTES += 1
+	if scene != "":
+		self.MINUTES += 1
 
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		save_game()
+		yield(VisualServer, 'frame_pre_draw')
+		get_tree().quit() # default behavior
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_settings()
+	load_game()
+	HOUR = data["Hour"]
+	MINUTES = data["Minute"]
+	print(HOUR, " ", MINUTES)
 	minute_timer = Timer.new()
 	add_child(minute_timer)
 	minute_timer.connect("timeout", self, "_increment_clock")
@@ -125,6 +136,9 @@ func _process(delta):
 	
 	if self.HOUR < 1:
 		self.HOUR = 1
+		
+	data["Hour"] = HOUR
+	data["Minute"] = MINUTES
 	
 	minutes = time_map(MINUTES)/100
 
