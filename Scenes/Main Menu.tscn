@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Main Menu.gd" type="Script" id=1]
 [ext_resource path="res://font/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=2]
@@ -6,10 +6,26 @@
 [ext_resource path="res://button_pressed.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Sound.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Settings.tscn" type="PackedScene" id=6]
+[ext_resource path="res://grid.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=7]
 size = 128
 font_data = ExtResource( 2 )
+
+[sub_resource type="Shader" id=11]
+code = "shader_type canvas_item;
+uniform float scroll_speed;
+
+void fragment() {
+	vec2 shifteduv = UV;
+	shifteduv.x += TIME * scroll_speed;
+	vec4 color = texture(TEXTURE, shifteduv);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = SubResource( 11 )
+shader_param/scroll_speed = 2.0
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -72,6 +88,21 @@ rect_scale = Vector2( 0.423, 0.423 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Adventuring 101"
+
+[node name="TextureRect" type="TextureRect" parent="logo"]
+modulate = Color( 0.54902, 0.25098, 0.545098, 1 )
+show_behind_parent = true
+material = SubResource( 12 )
+margin_left = -105.0
+margin_top = -501.0
+margin_right = 2018.0
+margin_bottom = 1172.0
+rect_rotation = 27.6658
+rect_scale = Vector2( 0.55, 0.55 )
+rect_pivot_offset = Vector2( 101.818, -101.818 )
+size_flags_horizontal = 7
+texture = ExtResource( 7 )
+stretch_mode = 2
 
 [node name="start" type="Button" parent="."]
 margin_left = 232.0
