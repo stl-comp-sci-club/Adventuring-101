@@ -26,6 +26,10 @@ func _input(event):
 var velocity = Vector2.ZERO
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if player.position.y > position.y:
+		get_node(".").z_index = 0
+	else:
+		get_node(".").z_index = 1
 	if player_in_detection_area and not stunned and not Global.paused:
 		if not alerted:
 			var a = AudioStreamPlayer2D.new()

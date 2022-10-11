@@ -17,26 +17,26 @@ margin_left = 144.0
 margin_top = 105.0
 margin_right = 496.0
 margin_bottom = 240.0
+mouse_filter = 0
+input_pass_on_modal_close_click = false
 texture = ExtResource( 1 )
 stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_left = 161.0
 margin_top = 121.0
 margin_right = 481.0
 margin_bottom = 226.0
+mouse_filter = 0
+input_pass_on_modal_close_click = false
 columns = 9
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Slot1" type="Panel" parent="GridContainer"]
 margin_right = 32.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -45,6 +45,8 @@ margin_left = 36.0
 margin_right = 68.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -53,6 +55,8 @@ margin_left = 72.0
 margin_right = 104.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -61,6 +65,8 @@ margin_left = 108.0
 margin_right = 140.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -69,6 +75,8 @@ margin_left = 144.0
 margin_right = 176.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -77,6 +85,8 @@ margin_left = 180.0
 margin_right = 212.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -85,6 +95,8 @@ margin_left = 216.0
 margin_right = 248.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -93,6 +105,8 @@ margin_left = 252.0
 margin_right = 284.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -101,6 +115,8 @@ margin_left = 288.0
 margin_right = 320.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -109,6 +125,8 @@ margin_top = 36.0
 margin_right = 32.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -118,6 +136,8 @@ margin_top = 36.0
 margin_right = 68.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -127,6 +147,8 @@ margin_top = 36.0
 margin_right = 104.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -136,6 +158,8 @@ margin_top = 36.0
 margin_right = 140.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -145,6 +169,8 @@ margin_top = 36.0
 margin_right = 176.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -154,6 +180,8 @@ margin_top = 36.0
 margin_right = 212.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -163,6 +191,8 @@ margin_top = 36.0
 margin_right = 248.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -172,6 +202,8 @@ margin_top = 36.0
 margin_right = 284.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -181,6 +213,8 @@ margin_top = 36.0
 margin_right = 320.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -189,6 +223,8 @@ margin_top = 72.0
 margin_right = 32.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -198,6 +234,8 @@ margin_top = 72.0
 margin_right = 68.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -207,6 +245,8 @@ margin_top = 72.0
 margin_right = 104.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -216,6 +256,8 @@ margin_top = 72.0
 margin_right = 140.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -225,6 +267,8 @@ margin_top = 72.0
 margin_right = 176.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -234,6 +278,8 @@ margin_top = 72.0
 margin_right = 212.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -243,6 +289,8 @@ margin_top = 72.0
 margin_right = 248.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -252,6 +300,8 @@ margin_top = 72.0
 margin_right = 284.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
@@ -261,5 +311,7 @@ margin_top = 72.0
 margin_right = 320.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
+input_pass_on_modal_close_click = false
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )

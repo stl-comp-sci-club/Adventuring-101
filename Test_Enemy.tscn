@@ -5,13 +5,9 @@
 [ext_resource path="res://tets2.png" type="Texture" id=3]
 [ext_resource path="res://tets.png" type="Texture" id=4]
 
-[sub_resource type="AtlasTexture" id=31]
+[sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 1 )
-region = Rect2( 69, 180, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 1 )
-region = Rect2( 69, 0, 23, 60 )
+region = Rect2( 69, 120, 23, 60 )
 
 [sub_resource type="AtlasTexture" id=40]
 atlas = ExtResource( 1 )
@@ -49,9 +45,13 @@ region = Rect2( 69, 0, 23, 60 )
 atlas = ExtResource( 1 )
 region = Rect2( 69, 60, 23, 60 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 1 )
-region = Rect2( 69, 120, 23, 60 )
+region = Rect2( 69, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 1 )
+region = Rect2( 69, 0, 23, 60 )
 
 [sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 1 )
@@ -87,14 +87,9 @@ region = Rect2( 69, 180, 23, 60 )
 
 [sub_resource type="SpriteFrames" id=27]
 animations = [ {
-"frames": [ SubResource( 31 ) ],
+"frames": [ SubResource( 29 ) ],
 "loop": true,
-"name": "up_resting",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 28 ) ],
-"loop": true,
-"name": "down_resting",
+"name": "left_resting",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ) ],
@@ -112,9 +107,14 @@ animations = [ {
 "name": "right_resting",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 29 ) ],
+"frames": [ SubResource( 31 ) ],
 "loop": true,
-"name": "left_resting",
+"name": "up_resting",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 28 ) ],
+"loop": true,
+"name": "down_resting",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
@@ -149,7 +149,7 @@ extents = Vector2( 11.5, 17.5 )
 radius = 220.002
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 11.5, 17.5 )
+extents = Vector2( 11.5, 25 )
 
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -178,7 +178,7 @@ shape = SubResource( 3 )
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( -0.5, 11.5 )
+position = Vector2( -0.5, 4 )
 shape = SubResource( 4 )
 
 [node name="ProgressBar" type="TextureProgress" parent="."]

@@ -20,7 +20,11 @@ func slot_gui_input(event:InputEvent, slot:SlotClass):
 		if event.button_index == BUTTON_LEFT && event.pressed:
 			if holding_item != null:
 				if !slot.item: # place holding item to slot 
+					
 					slot.putIntoSlot(holding_item)
+#					print(slot.get_index())
+					
+#					PlayerInventory.inventory[slot.get_index()]
 					holding_item = null
 				else: #swap holding item with item in slot
 					if holding_item.item_name != slot.item.item_name:
@@ -42,9 +46,9 @@ func slot_gui_input(event:InputEvent, slot:SlotClass):
 			elif slot.item:
 				holding_item = slot.item
 				slot.pickFromSlot()
-				holding_item.global_position = get_global_mouse_position()
+				holding_item.global_position = get_global_mouse_position()-Vector2(15,15)
 
 # warning-ignore:unused_argument
 func _input(event):
 	if holding_item:
-		holding_item.global_position = get_global_mouse_position()
+		holding_item.global_position = get_global_mouse_position()-Vector2(15,15)
