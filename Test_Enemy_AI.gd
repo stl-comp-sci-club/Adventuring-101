@@ -33,7 +33,7 @@ func _process(delta):
 			add_child(a)
 			a.stop()
 			a.volume_db = 22
-			a.stream = load("res://alert.wav")
+			a.stream = load("res://Sounds/Effects/alert.wav")
 			a.play()
 			alerted = true
 		velocity = position.direction_to(player.position)
@@ -74,7 +74,7 @@ func _on_Hitbox_area_entered(area):
 			print(a)
 			add_child(a)
 			a.stop()
-			a.stream = load("res://die.wav")
+			a.stream = load("res://Sounds/Effects/die.wav")
 			print(a.stream)
 			a.play()
 			return
@@ -84,7 +84,7 @@ func _on_Hitbox_area_entered(area):
 		add_child(a)
 		a.stop()
 		a.volume_db = 15
-		a.stream = load("res://ouch.wav")
+		a.stream = load("res://Sounds/Effects/ouch.wav")
 		a.play()
 			
 		get_node("ProgressBar").value = health

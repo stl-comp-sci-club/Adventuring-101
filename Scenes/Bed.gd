@@ -13,7 +13,7 @@ var inside_interact_area = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Music.get_node("AudioStreamPlayer").change("res://bgm2.ogg")
+	Music.get_node("AudioStreamPlayer").change("res://Sounds/Effects/bgm2.ogg")
 
 func _input(event):
 	if inside_interact_area and Input.is_action_just_pressed("Interact") and not Global.in_dialogue and (Global.scene == "upstairs" or Global.scene == ""):

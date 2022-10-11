@@ -12,7 +12,7 @@ func _ready():
 	else:
 		item_name = "Health Potion"
 		
-	$TextureRect.texture = load("res://assets/items/" + item_name + ".png") 
+	$TextureRect.texture = load("res://Assets/items/" + item_name + ".png") 
 	var stack_size = int(JsonData.item_data[item_name]["StackSize"]) 
 	item_quantity = randi() % stack_size + 1
 
@@ -24,7 +24,7 @@ func _ready():
 func set_item(nm, qt):
 	item_name = nm
 	item_quantity = qt
-	$TextureRect.texture = load("res://assets/items/" + item_name + ".png")
+	$TextureRect.texture = load("res://Assets/items/" + item_name + ".png")
 	
 	var stack_size  = int(JsonData.item_data[item_name]["StackSize"])
 	if stack_size == 1:

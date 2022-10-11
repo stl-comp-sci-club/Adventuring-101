@@ -11,9 +11,9 @@ func _ready():
 	get_node("DefaultPplayerBase/shitr").add_item("red")
 	get_node("DefaultPplayerBase/shitr").add_item("green")
 	get_node("DefaultPplayerBase/shitr").add_item("blue")
-	get_node("DefaultPplayerBase/shitr").set_item_icon(0, load("res://cloth/shitr/red.png"))
-	get_node("DefaultPplayerBase/shitr").set_item_icon(1, load("res://cloth/shitr/green.png"))
-	get_node("DefaultPplayerBase/shitr").set_item_icon(2, load("res://cloth/shitr/blue.png"))
+	get_node("DefaultPplayerBase/shitr").set_item_icon(0, load("res://Clothes/shitr/red.png"))
+	get_node("DefaultPplayerBase/shitr").set_item_icon(1, load("res://Clothes/shitr/green.png"))
+	get_node("DefaultPplayerBase/shitr").set_item_icon(2, load("res://Clothes/shitr/blue.png"))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

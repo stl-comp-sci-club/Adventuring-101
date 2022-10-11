@@ -14,7 +14,7 @@ func _input(event):
 		a.bus = "Sound Effects"
 		add_child(a)
 		a.stop()
-		a.stream = load("res://vine-boom.wav")
+		a.stream = load("res://Sounds/Effects/vine-boom.wav")
 		a.play()
 
 

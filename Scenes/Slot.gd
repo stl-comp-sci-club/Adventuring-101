@@ -1,7 +1,7 @@
 extends Panel
 
-var default_tex = preload("res://assets/inventory/inventoryslot filled.png")
-var empty_tex = preload("res://assets/inventory/inventoryslot.png")
+var default_tex = preload("res://Assets/inventory/inventoryslot filled.png")
+var empty_tex = preload("res://Assets/inventory/inventoryslot.png")
 
 var default_style: StyleBoxTexture = null
 var empty_style: StyleBoxTexture = null

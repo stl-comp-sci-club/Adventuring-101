@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Pause_menu.gd" type="Script" id=1]
-[ext_resource path="res://font/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Fonts/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://button_pressed.png" type="Texture" id=3]
 [ext_resource path="res://button.png" type="Texture" id=4]
 [ext_resource path="res://Pause_button.png" type="Texture" id=5]

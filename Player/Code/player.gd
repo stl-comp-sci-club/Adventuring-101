@@ -128,7 +128,7 @@ func _process(delta):
 		add_child(a)
 		a.stop()
 		a.volume_db = 23
-		a.stream = load("res://playerhurt.wav")
+		a.stream = load("res://Sounds/Effects/playerhurt.wav")
 		a.play()
 		velocity = position.direction_to(enemy.position) * -1
 		velocity *= 500
