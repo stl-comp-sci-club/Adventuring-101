@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Player/Code/player.gd" type="Script" id=1]
 [ext_resource path="res://Player/caywalksheet.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/PickUpZone.gd" type="Script" id=4]
-[ext_resource path="res://cayattacksheet.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/PickUpZone.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Characters/cayattacksheet.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=40]
 atlas = ExtResource( 5 )

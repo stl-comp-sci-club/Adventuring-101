@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Scenes/ClockAppearance.gd" type="Script" id=1]
-[ext_resource path="res://assets/manabarui.png" type="Texture" id=2]
-[ext_resource path="res://assets/healthbarui.png" type="Texture" id=3]
-[ext_resource path="res://assets/Moon.png" type="Texture" id=4]
-[ext_resource path="res://font/VT323-Regular.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://assets/emptyui.png" type="Texture" id=6]
-[ext_resource path="res://assets/Sun.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/ClockAppearance.gd" type="Script" id=1]
+[ext_resource path="res://Assets/manabarui.png" type="Texture" id=2]
+[ext_resource path="res://Assets/healthbarui.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Moon.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/VT323-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Assets/emptyui.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sun.png" type="Texture" id=7]
 
 [sub_resource type="Theme" id=1]
 

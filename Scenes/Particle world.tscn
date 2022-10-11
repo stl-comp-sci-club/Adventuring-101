@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player/Art/light.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/Flame.gd" type="Script" id=2]
-[ext_resource path="res://leafparticle1.png" type="Texture" id=4]
-[ext_resource path="res://leafparticle2.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Flame.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Particles/leafparticle1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Particles/leafparticle2.png" type="Texture" id=5]
 
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0320987, 0, 0, Vector2( 0.111888, 0.781818 ), 2.3234, 2.3234, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
