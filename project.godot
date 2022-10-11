@@ -26,9 +26,9 @@ run/main_scene="res://Scenes/Main Menu.tscn"
 [autoload]
 
 GlobalVars="*res://Global_vars.gd"
-Global="*res://Global.gd"
+Global="*res://Scripts/Global.gd"
 Music="*res://Scenes/music.tscn"
-JsonData="*res://JSONData.gd"
+JsonData="*res://Scripts/JSONData.gd"
 PlayerInventory="*res://Scripts/PlayerInventory.gd"
 
 [display]

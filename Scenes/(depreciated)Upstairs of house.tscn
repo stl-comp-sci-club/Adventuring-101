@@ -7,11 +7,11 @@
 [ext_resource path="res://Scenes/ItemDrop.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/hell_entrypoint.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/HealthandMana.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Dialogue.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Dialogue.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Pause Menu.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scripts/stairs.gd" type="Script" id=21]
 [ext_resource path="res://Scripts/Bed.gd" type="Script" id=22]
-[ext_resource path="res://Interact Menu.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Scenes/Interact Menu.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Scenes/quest.tscn" type="PackedScene" id=24]
 
 [sub_resource type="RectangleShape2D" id=5]
