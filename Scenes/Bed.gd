@@ -13,7 +13,6 @@ var inside_interact_area = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("test")
 	Music.get_node("AudioStreamPlayer").change("res://bgm2.ogg")
 
 func _input(event):

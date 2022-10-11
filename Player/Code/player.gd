@@ -73,31 +73,27 @@ func _ready():
 	
 	print(Global.scene)
 	input_allowed = true
-	if Global.scene == "upstairs":
-		position = Vector2(48, 34)
-		last_direction = Vector2(0,-1)
-		yield(fade_in(), "completed")
-	elif Global.scene == "downstairs":
-		position = Vector2(47, 53)
-		last_direction = Vector2(0,1)
-		yield(fade_in(), "completed")
-	elif Global.scene == "downstairs (from outside)":
-		position = Vector2(176, 194)
-		last_direction = Vector2(0,-1)
-		yield(fade_in(), "completed")
-	elif Global.scene == "Level 1":
-		position = Vector2(140, -20)
-		last_direction = Vector2(0,1)
-		yield(fade_in(), "completed")
-	elif Global.scene == "Level 1 (from Elijah)":	
-		position = Vector2(-37, -30)	
-		last_direction = Vector2(0,1)	
-		yield(fade_in(), "completed")	
-	elif Global.scene == "Elijah house":	
-		position = Vector2(176, 180)	
-		last_direction = Vector2(0,-1)	
-		yield(fade_in(), "completed")
-	
+#	if Global.scene == "downstairs":
+#		position = Vector2(47, 53)
+#		last_direction = Vector2(0,1)
+#		yield(fade_in(), "completed")
+#	elif Global.scene == "downstairs (from outside)":
+#		position = Vector2(176, 194)
+#		last_direction = Vector2(0,-1)
+#		yield(fade_in(), "completed")
+#	elif Global.scene == "Level 1":
+#		position = Vector2(140, -20)
+#		last_direction = Vector2(0,1)
+#		yield(fade_in(), "completed")
+#	elif Global.scene == "Level 1 (from Elijah)":	
+#		position = Vector2(-37, -30)	
+#		last_direction = Vector2(0,1)	
+#		yield(fade_in(), "completed")	
+#	elif Global.scene == "Elijah house":	
+#		position = Vector2(176, 180)	
+#		last_direction = Vector2(0,-1)	
+#		yield(fade_in(), "completed")
+#
 
 func get_animation_direction(direction: Vector2):
 	var norm_direction = direction.normalized()
@@ -121,6 +117,8 @@ func animate(direction: Vector2):
 			var d = get_animation_direction(last_direction)
 			$player.play(d+"_resting")
 
+
+
 func _process(delta):
 	$Camera2D.zoom.x = Global.camera_zoom
 	$Camera2D.zoom.y = Global.camera_zoom
@@ -131,13 +129,12 @@ func _process(delta):
 		a.stop()
 		a.volume_db = 23
 		a.stream = load("res://playerhurt.wav")
-		print(a.stream)
 		a.play()
 		velocity = position.direction_to(enemy.position) * -1
 		velocity *= 500
 		move_and_slide(velocity)
-		yield(get_tree().create_timer(0.1), "timeout")
 		stunned = false
+		yield(get_tree().create_timer(0.1), "timeout")
 	if health < 0:
 		get_tree().change_scene("res://Scenes/Main Menu.tscn")
 	var direction: Vector2

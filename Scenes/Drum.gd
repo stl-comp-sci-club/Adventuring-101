@@ -10,13 +10,11 @@ var touching = false
 # Called when the node enters the scene tree for the first time.
 func _input(event):
 	if Input.is_action_just_pressed("Interact") and touching:
-		print("e")
 		var a = AudioStreamPlayer2D.new()
-		print(a)
+		a.bus = "Sound Effects"
 		add_child(a)
 		a.stop()
 		a.stream = load("res://vine-boom.wav")
-		print(a.stream)
 		a.play()
 
 

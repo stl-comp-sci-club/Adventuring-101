@@ -12,7 +12,8 @@ func _ready():
 	Music.get_node("AudioStreamPlayer").play() # Replace with function body.
 
 func _on_start_button_up():
-	get_tree().change_scene("res://Scenes/Upstairs of house.tscn")
+	get_tree().change_scene("res://Scenes/Level 1.tscn")
+	Global.scene = "upstairs"
 #	get_tree().change_scene("res://Scenes/Test_combat_scene.tscn") # THIS LINE IS JUST FOR TESTING, MAKE SURE TO REMOVE LATER
 
 

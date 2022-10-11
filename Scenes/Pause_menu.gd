@@ -46,6 +46,7 @@ func _on_Exit_button_up():
 	Global.paused = false
 	get_tree().paused = false
 	get_tree().change_scene("res://Scenes/Main Menu.tscn")
+	Global.scene = ""
 
 
 func _on_Pause_button_button_up():
