@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Scenes/ClockAppearance.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ClockAppearance.gd" type="Script" id=1]
 [ext_resource path="res://Assets/manabarui.png" type="Texture" id=2]
 [ext_resource path="res://Assets/healthbarui.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Moon.png" type="Texture" id=4]

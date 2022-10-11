@@ -16,7 +16,7 @@
 [ext_resource path="res://Tilesets/TemporaryTileset/Animations/Down_4.png" type="Texture" id=14]
 [ext_resource path="res://Tilesets/TemporaryTileset/Animations/Right_2.png" type="Texture" id=15]
 [ext_resource path="res://Tilesets/tileset1.tres" type="TileSet" id=16]
-[ext_resource path="res://Scenes/secre.gd" type="Script" id=17]
+[ext_resource path="res://Scripts/secre.gd" type="Script" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

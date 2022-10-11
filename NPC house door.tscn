@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/NPC house door.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/NPC house door.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=32]
 extents = Vector2( 18, 21 )

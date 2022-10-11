@@ -1,10 +1,10 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Scenes/Main Menu.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Main Menu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://button.png" type="Texture" id=3]
 [ext_resource path="res://button_pressed.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/Sound.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Sound.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Settings.tscn" type="PackedScene" id=6]
 [ext_resource path="res://grid.png" type="Texture" id=7]
 

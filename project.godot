@@ -29,7 +29,7 @@ GlobalVars="*res://Global_vars.gd"
 Global="*res://Global.gd"
 Music="*res://Scenes/music.tscn"
 JsonData="*res://JSONData.gd"
-PlayerInventory="*res://Scenes/PlayerInventory.gd"
+PlayerInventory="*res://Scripts/PlayerInventory.gd"
 
 [display]
 

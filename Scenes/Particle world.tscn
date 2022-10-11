@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player/Art/light.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/Flame.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Flame.gd" type="Script" id=2]
 [ext_resource path="res://leafparticle1.png" type="Texture" id=4]
 [ext_resource path="res://leafparticle2.png" type="Texture" id=5]
 
