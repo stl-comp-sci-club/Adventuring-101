@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/test_enemy.png-bcf53f0e337ad44d5d7653bc70777bde.stex"
+path="res://.import/minimap_border.png-666946c97a816a33126d72c2dad9dde9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://test_enemy.png"
-dest_files=[ "res://.import/test_enemy.png-bcf53f0e337ad44d5d7653bc70777bde.stex" ]
+source_file="res://Assets/GUI/minimap_border.png"
+dest_files=[ "res://.import/minimap_border.png-666946c97a816a33126d72c2dad9dde9.stex" ]
 
 [params]
 

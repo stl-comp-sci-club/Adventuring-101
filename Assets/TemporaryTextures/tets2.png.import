@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/leafparticle2.png-fb9d1a7f58a61d42771d7360d789715e.stex"
+path="res://.import/tets2.png-97f6ab18f271e78637754c5cb42cfc27.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://leafparticle2.png"
-dest_files=[ "res://.import/leafparticle2.png-fb9d1a7f58a61d42771d7360d789715e.stex" ]
+source_file="res://Assets/TemporaryTextures/tets2.png"
+dest_files=[ "res://.import/tets2.png-97f6ab18f271e78637754c5cb42cfc27.stex" ]
 
 [params]
 

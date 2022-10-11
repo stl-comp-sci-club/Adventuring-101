@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tets2.png-b796660bfc5ba861d392440f6749fc92.stex"
+path="res://.import/tets.png-e390da31d3975a9d72e1781989232592.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tets2.png"
-dest_files=[ "res://.import/tets2.png-b796660bfc5ba861d392440f6749fc92.stex" ]
+source_file="res://Assets/TemporaryTextures/tets.png"
+dest_files=[ "res://.import/tets.png-e390da31d3975a9d72e1781989232592.stex" ]
 
 [params]
 

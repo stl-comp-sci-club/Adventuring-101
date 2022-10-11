@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/minimap_border.png-e9a2118430d5ea7540af7bab2b2b9dc9.stex"
+path="res://.import/button.png-b53cfaa0ff1a9cae73de920c887f0814.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minimap_border.png"
-dest_files=[ "res://.import/minimap_border.png-e9a2118430d5ea7540af7bab2b2b9dc9.stex" ]
+source_file="res://Assets/GUI/button.png"
+dest_files=[ "res://.import/button.png-b53cfaa0ff1a9cae73de920c887f0814.stex" ]
 
 [params]
 

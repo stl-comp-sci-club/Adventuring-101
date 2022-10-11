@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/button_pressed.png-412456a7422a9acc3e4b424d5b039141.stex"
+path="res://.import/leafparticle2.png-9f4af1dc4fefea52b12b3dafa6f922f8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://button_pressed.png"
-dest_files=[ "res://.import/button_pressed.png-412456a7422a9acc3e4b424d5b039141.stex" ]
+source_file="res://Assets/Particles/leafparticle2.png"
+dest_files=[ "res://.import/leafparticle2.png-9f4af1dc4fefea52b12b3dafa6f922f8.stex" ]
 
 [params]
 

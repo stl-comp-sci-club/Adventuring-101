@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/caymom.png-7ee34aa5571d3abb6bd5cac7989f8a2c.stex"
+path="res://.import/test2.png-86a8ba1cfb5f2c62053893e231739690.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://caymom.png"
-dest_files=[ "res://.import/caymom.png-7ee34aa5571d3abb6bd5cac7989f8a2c.stex" ]
+source_file="res://Assets/TemporaryTextures/test2.png"
+dest_files=[ "res://.import/test2.png-86a8ba1cfb5f2c62053893e231739690.stex" ]
 
 [params]
 
