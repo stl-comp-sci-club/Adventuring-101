@@ -52,12 +52,15 @@ func _process(delta):
 
 func _on_Detection_Area_body_entered(body):
 	if body == player:
+		get_node("../Intense").volume_db = 0.0
 		player_in_detection_area = true
 
 
-#func _on_Detection_Area_body_exited(body):
-#	if body == player:
-#		player_in_detection_area = false
+func _on_Detection_Area_body_exited(body):
+	if body == player:
+		get_node("../Normal").volume_db = 0.0
+		get_node("../Intense").volume_db = -80.0
+		player_in_detection_area = false
 
 func _on_Hitbox_area_entered(area):
 	if area == weapon:
