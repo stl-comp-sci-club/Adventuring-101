@@ -164,9 +164,11 @@ func _process(delta):
 #			get_node("Attack Area/Weapon Swipe").disabled = false
 			attacking = true
 			print("attacking")
-			var _temp = get_global_mouse_position()-position
-			var d = get_animation_direction(_temp)
-
+			#var _temp = get_global_mouse_position()-position
+			var d = get_animation_direction(direction)
+			
+#			var d = direction
+	
 			$"player/Sword area/Sword Collision".disabled = false
 			
 			if d == "down":
@@ -191,9 +193,10 @@ func _process(delta):
 			a.play()
 			yield(a, "finished")
 			
-			velocity += _temp.normalized()*200
+			#velocity += _temp.normalized()*200
+			
 			yield($player, "animation_finished")
-			last_direction = _temp
+			#last_direction = _temp
 			
 #			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 1			
 			print("attack finished")

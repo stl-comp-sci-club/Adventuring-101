@@ -38,5 +38,8 @@ pause_mode = 2
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 371, 89 )
+z_as_relative = false
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+z_index = 0
+z_as_relative = false

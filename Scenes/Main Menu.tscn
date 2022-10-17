@@ -1,9 +1,9 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Main Menu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Assets/GUI/button.png" type="Texture" id=3]
-[ext_resource path="res://Assets/GUI/button_pressed.png" type="Texture" id=4]
+[ext_resource path="res://Assets/StyleTextures/Main Menu Button.tres" type="StyleBox" id=3]
+[ext_resource path="res://Assets/StyleTextures/Main Menu Button Pressed.tres" type="StyleBox" id=4]
 [ext_resource path="res://Scripts/Sound.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Settings.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/GUI/grid.png" type="Texture" id=7]
@@ -29,26 +29,6 @@ shader_param/scroll_speed = 2.0
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="DynamicFontData" id=10]
 font_path = "res://Fonts/PlaymegamesReguler-2OOee.ttf"
@@ -111,11 +91,12 @@ margin_right = 400.0
 margin_bottom = 180.0
 focus_mode = 0
 custom_fonts/font = SubResource( 1 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/normal = SubResource( 2 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
 enabled_focus_mode = 0
 text = "Play!"
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -128,9 +109,9 @@ margin_bottom = 294.0
 rect_pivot_offset = Vector2( 24, 13 )
 focus_mode = 0
 custom_fonts/font = SubResource( 1 )
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 2 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
 enabled_focus_mode = 0
 text = "Quit"
 __meta__ = {
@@ -145,9 +126,9 @@ margin_bottom = 218.0
 rect_pivot_offset = Vector2( 24, 13 )
 focus_mode = 0
 custom_fonts/font = SubResource( 1 )
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 2 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
 enabled_focus_mode = 0
 text = "Customize"
 __meta__ = {
@@ -207,9 +188,9 @@ margin_bottom = 256.0
 rect_pivot_offset = Vector2( 24, 13 )
 focus_mode = 0
 custom_fonts/font = SubResource( 1 )
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 2 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
 enabled_focus_mode = 0
 text = "Settings"
 __meta__ = {

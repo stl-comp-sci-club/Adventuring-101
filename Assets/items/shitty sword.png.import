@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shitty sword.png-568a15b087e10d474ab3740a2bf11414.stex"
+path="res://.import/shitty sword.png-43ade84b612b980df5a9c4a49b323b7e.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/items/shitty sword.png"
-dest_files=[ "res://.import/shitty sword.png-568a15b087e10d474ab3740a2bf11414.stex" ]
+dest_files=[ "res://.import/shitty sword.png-43ade84b612b980df5a9c4a49b323b7e.stex" ]
 
 [params]
 
