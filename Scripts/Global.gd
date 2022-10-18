@@ -9,6 +9,7 @@ var camera_zoom = 1.5
 var sound_effect_volume = 100
 var music_volume = 100
 var master_volume = 100
+var full_screen = false
 
 var data = { # Empty for now, future data can be added
 	"Inventory": [],
@@ -17,6 +18,7 @@ var data = { # Empty for now, future data can be added
 }
 
 var save_password = "b5^E%2fZJkX%ho&d&^"
+
 
 func save_game(): # I dont think its manditory to encrypt the settings file... so settings will remain unencrypted
 	var save_file = File.new()
@@ -28,6 +30,7 @@ func save_game(): # I dont think its manditory to encrypt the settings file... s
 	save_file.store_line(str(sound_effect_volume))
 	save_file.store_line(str(music_volume))
 	save_file.store_line(str(master_volume))
+	save_file.store_line(str(full_screen))
 	save_file.store_var(data)
 	save_file.close()
 	return "Saved"
@@ -48,6 +51,7 @@ func load_game():
 	sound_effect_volume = int(save_file.get_line())
 	music_volume = int(save_file.get_line())
 	master_volume = int(save_file.get_line())
+	full_screen = true if save_file.get_line() == "True" else false
 	data = save_file.get_var()
 	save_file.close()
 	return "Loaded"
@@ -105,7 +109,11 @@ func _ready():
 	load_game()
 	HOUR = data["Hour"]
 	MINUTES = data["Minute"]
-	print(HOUR, " ", MINUTES)
+	print(Global.full_screen)
+	if Global.full_screen:
+		OS.window_fullscreen = true
+	else:
+		OS.window_fullscreen = false
 	minute_timer = Timer.new()
 	add_child(minute_timer)
 	minute_timer.connect("timeout", self, "_increment_clock")

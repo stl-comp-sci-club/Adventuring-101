@@ -1,4 +1,4 @@
-extends CanvasLayer
+	extends CanvasLayer
 
 
 # Declare member variables here. Examples:
@@ -30,6 +30,9 @@ func show():
 
 	$"Popup/ScrollContainer/Scroll background/Sound Effects/Sound Effect Value".text = str(Global.sound_effect_volume) + "x"
 	$"Popup/ScrollContainer/Scroll background/Sound Effects/Sound Effect Slider".value = Global.sound_effect_volume
+
+	$"Popup/ScrollContainer/Scroll background/Fullscreen Toggle/Fullscreen Toggle".pressed = Global.full_screen
+	$"Popup/ScrollContainer/Scroll background/Fullscreen Toggle/Fullscreen Value".text = "On" if Global.full_screen else "Off"
 
 	$Popup.popup()
 
@@ -75,3 +78,11 @@ func _on_Back_button_up():
 #	get_tree().change_scene("res://Scenes/Main Menu.tscn")
 
 
+func _on_Fullscreen_Toggle_button_up():
+	Global.full_screen = !Global.full_screen
+	$"Popup/ScrollContainer/Scroll background/Fullscreen Toggle/Fullscreen Value".text = "On" if Global.full_screen else "Off"
+	if Global.full_screen:
+		OS.window_fullscreen = true
+	else:
+		OS.window_fullscreen = false
+	

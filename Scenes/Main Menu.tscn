@@ -7,6 +7,7 @@
 [ext_resource path="res://Scripts/Sound.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Settings.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/GUI/grid.png" type="Texture" id=7]
+[ext_resource path="res://Assets/StyleTextures/Main Menu Font.tres" type="DynamicFont" id=8]
 
 [sub_resource type="DynamicFont" id=7]
 size = 128
@@ -26,9 +27,6 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=12]
 shader = SubResource( 11 )
 shader_param/scroll_speed = 2.0
-
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFontData" id=10]
 font_path = "res://Fonts/PlaymegamesReguler-2OOee.ttf"
@@ -90,7 +88,7 @@ margin_top = 148.0
 margin_right = 400.0
 margin_bottom = 180.0
 focus_mode = 0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 8 )
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 4 )
 custom_styles/normal = ExtResource( 3 )
@@ -108,7 +106,7 @@ margin_right = 400.0
 margin_bottom = 294.0
 rect_pivot_offset = Vector2( 24, 13 )
 focus_mode = 0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 8 )
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 4 )
 custom_styles/normal = ExtResource( 3 )
@@ -125,7 +123,7 @@ margin_right = 400.0
 margin_bottom = 218.0
 rect_pivot_offset = Vector2( 24, 13 )
 focus_mode = 0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 8 )
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 4 )
 custom_styles/normal = ExtResource( 3 )
@@ -187,7 +185,7 @@ margin_right = 400.0
 margin_bottom = 256.0
 rect_pivot_offset = Vector2( 24, 13 )
 focus_mode = 0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 8 )
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 4 )
 custom_styles/normal = ExtResource( 3 )
