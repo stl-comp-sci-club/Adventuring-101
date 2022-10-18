@@ -75,33 +75,21 @@ region_rect = Rect2( 0, 0, 20, 20 )
 texture = ExtResource( 18 )
 region_rect = Rect2( 0, 0, 20, 20 )
 
-[sub_resource type="AtlasTexture" id=43]
-atlas = ExtResource( 28 )
-region = Rect2( 23, 180, 23, 60 )
-
 [sub_resource type="AtlasTexture" id=44]
 atlas = ExtResource( 28 )
 region = Rect2( 23, 0, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 120, 23, 60 )
 
 [sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 28 )
 region = Rect2( 23, 60, 23, 60 )
 
-[sub_resource type="AtlasTexture" id=39]
-atlas = ExtResource( 28 )
-region = Rect2( 0, 180, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=40]
+[sub_resource type="AtlasTexture" id=43]
 atlas = ExtResource( 28 )
 region = Rect2( 23, 180, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=41]
-atlas = ExtResource( 28 )
-region = Rect2( 46, 180, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=42]
-atlas = ExtResource( 28 )
-region = Rect2( 69, 180, 23, 60 )
 
 [sub_resource type="AtlasTexture" id=45]
 atlas = ExtResource( 28 )
@@ -118,10 +106,6 @@ region = Rect2( 46, 0, 23, 60 )
 [sub_resource type="AtlasTexture" id=48]
 atlas = ExtResource( 28 )
 region = Rect2( 69, 0, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 28 )
-region = Rect2( 23, 120, 23, 60 )
 
 [sub_resource type="AtlasTexture" id=54]
 atlas = ExtResource( 28 )
@@ -155,16 +139,32 @@ region = Rect2( 46, 60, 23, 60 )
 atlas = ExtResource( 28 )
 region = Rect2( 69, 60, 23, 60 )
 
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 28 )
+region = Rect2( 0, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 28 )
+region = Rect2( 46, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 28 )
+region = Rect2( 69, 180, 23, 60 )
+
 [sub_resource type="SpriteFrames" id=58]
 animations = [ {
-"frames": [ SubResource( 43 ) ],
-"loop": true,
-"name": "up_resting",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 44 ) ],
 "loop": true,
 "name": "down_resting",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 53 ) ],
+"loop": true,
+"name": "left_resting",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 38 ) ],
@@ -172,20 +172,15 @@ animations = [ {
 "name": "right_resting",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"frames": [ SubResource( 43 ) ],
 "loop": true,
-"name": "walk_up",
-"speed": 7.0
+"name": "up_resting",
+"speed": 5.0
 }, {
 "frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
 "loop": true,
 "name": "walk_down",
 "speed": 7.0
-}, {
-"frames": [ SubResource( 53 ) ],
-"loop": true,
-"name": "left_resting",
-"speed": 5.0
 }, {
 "frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
 "loop": true,
@@ -195,6 +190,11 @@ animations = [ {
 "frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
 "loop": true,
 "name": "walk_right",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"loop": true,
+"name": "walk_up",
 "speed": 7.0
 } ]
 
@@ -322,7 +322,6 @@ shape = SubResource( 28 )
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
-frame = 2
 playing = true
 
 [node name="Light2D" type="Light2D" parent="Fountain"]
@@ -436,7 +435,6 @@ tile_data = PoolIntArray( -917591, 2, 0, -917569, 2, 0, -917547, 2, 0, -917525, 
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
-frame = 2
 playing = true
 
 [node name="Player Head" type="Sprite" parent="Map/Border/Minimap/Viewport"]
@@ -711,6 +709,16 @@ __meta__ = {
 
 [node name="ItemDrop" parent="Player Upstairs House" instance=ExtResource( 32 )]
 position = Vector2( 269, 109 )
+collision_layer = 4
+collision_mask = 2
+
+[node name="ItemDrop2" parent="Player Upstairs House" instance=ExtResource( 32 )]
+position = Vector2( 242, 171 )
+collision_layer = 4
+collision_mask = 2
+
+[node name="ItemDrop3" parent="Player Upstairs House" instance=ExtResource( 32 )]
+position = Vector2( 173, 166 )
 collision_layer = 4
 collision_mask = 2
 

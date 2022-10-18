@@ -29,9 +29,6 @@ margin_top = 121.0
 margin_right = 481.0
 margin_bottom = 226.0
 columns = 9
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Slot1" type="Panel" parent="GridContainer"]
 margin_right = 32.0

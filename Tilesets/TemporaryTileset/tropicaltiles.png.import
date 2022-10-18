@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tropicaltiles.png-aad234d867fbddeea47243e6e96fa250.stex"
+path="res://.import/tropicaltiles.png-0317457878e5fb941e845925fa7d73ee.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://Tilesets/TemporaryTileset/tropicaltiles.png"
-dest_files=[ "res://.import/tropicaltiles.png-aad234d867fbddeea47243e6e96fa250.stex" ]
+dest_files=[ "res://.import/tropicaltiles.png-0317457878e5fb941e845925fa7d73ee.stex" ]
 
 [params]
 

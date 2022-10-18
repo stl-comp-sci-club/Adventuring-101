@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Health Potion.png-bddb086a7ffd76e4ff4bc51f0a4d0a7d.stex"
+path="res://.import/Health Potion.png-4f20748291b4ce40db4cfb3cc60ec5c6.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/items/Health Potion.png"
-dest_files=[ "res://.import/Health Potion.png-bddb086a7ffd76e4ff4bc51f0a4d0a7d.stex" ]
+dest_files=[ "res://.import/Health Potion.png-4f20748291b4ce40db4cfb3cc60ec5c6.stex" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/bgm2.ogg-bfc9b251b50ffcda0b697d03d4c983e9.oggstr"
+path="res://.import/bgm2.ogg-328944fe538e30cc7fdb55312dcdc80d.oggstr"
 
 [deps]
 
 source_file="res://Sounds/Music/bad music/bgm2.ogg"
-dest_files=[ "res://.import/bgm2.ogg-bfc9b251b50ffcda0b697d03d4c983e9.oggstr" ]
+dest_files=[ "res://.import/bgm2.ogg-328944fe538e30cc7fdb55312dcdc80d.oggstr" ]
 
 [params]
 
