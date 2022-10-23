@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/newright2.png-ebb01ea245f02b61b5eaabbe5d3601f7.stex"
+path="res://.import/bartender dude.png-5b97af70f38136839ddd14e160af8597.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tilesets/TemporaryTileset/Animations/NewAnimations/newright2.png"
-dest_files=[ "res://.import/newright2.png-ebb01ea245f02b61b5eaabbe5d3601f7.stex" ]
+source_file="res://NPC sprites/bartender dude.png"
+dest_files=[ "res://.import/bartender dude.png-5b97af70f38136839ddd14e160af8597.stex" ]
 
 [params]
 

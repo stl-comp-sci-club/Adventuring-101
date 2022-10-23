@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Left_3.png-4bbe5286c8c0b3e29fa92bd3269eb52e.stex"
+path="res://.import/Left_3.png-d2636caf6ee24f327ebdd6cd83bc5267.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://Tilesets/TemporaryTileset/Animations/Left_3.png"
-dest_files=[ "res://.import/Left_3.png-4bbe5286c8c0b3e29fa92bd3269eb52e.stex" ]
+dest_files=[ "res://.import/Left_3.png-d2636caf6ee24f327ebdd6cd83bc5267.stex" ]
 
 [params]
 

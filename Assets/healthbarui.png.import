@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/healthbarui.png-2d8899bfcafcdd48c5203754dc69943d.stex"
+path="res://.import/healthbarui.png-13f54c7954a1064efdffe02435c7d39a.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/healthbarui.png"
-dest_files=[ "res://.import/healthbarui.png-2d8899bfcafcdd48c5203754dc69943d.stex" ]
+dest_files=[ "res://.import/healthbarui.png-13f54c7954a1064efdffe02435c7d39a.stex" ]
 
 [params]
 

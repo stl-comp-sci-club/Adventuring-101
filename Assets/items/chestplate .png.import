@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chestplate .png-216d4845410096bd1eb2b23429bd400d.stex"
+path="res://.import/chestplate .png-a5a1f3603dc3fd75776ca9cddd7af9ac.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/items/chestplate .png"
-dest_files=[ "res://.import/chestplate .png-216d4845410096bd1eb2b23429bd400d.stex" ]
+dest_files=[ "res://.import/chestplate .png-a5a1f3603dc3fd75776ca9cddd7af9ac.stex" ]
 
 [params]
 

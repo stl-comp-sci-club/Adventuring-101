@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Down_4.png-fd6ffa988fafc1941647a5947c71b4d3.stex"
+path="res://.import/Down_4.png-7d7797c2e4a180de81aba6d39ee1bb5b.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://Tilesets/TemporaryTileset/Animations/Down_4.png"
-dest_files=[ "res://.import/Down_4.png-fd6ffa988fafc1941647a5947c71b4d3.stex" ]
+dest_files=[ "res://.import/Down_4.png-7d7797c2e4a180de81aba6d39ee1bb5b.stex" ]
 
 [params]
 

@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/new basic inventory system.png-0de9582914a7bcda697a61de44b0c9c4.stex"
+path="res://.import/new basic inventory system.png-6a0d9646bb2105d71d439819944152d6.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/inventory/new basic inventory system.png"
-dest_files=[ "res://.import/new basic inventory system.png-0de9582914a7bcda697a61de44b0c9c4.stex" ]
+dest_files=[ "res://.import/new basic inventory system.png-6a0d9646bb2105d71d439819944152d6.stex" ]
 
 [params]
 

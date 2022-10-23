@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/vest .png-b990ea96b58aba7b5cea867192a0ae6c.stex"
+path="res://.import/vest .png-982e542f57bc5588ca5b73343eee27ab.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/items/vest .png"
-dest_files=[ "res://.import/vest .png-b990ea96b58aba7b5cea867192a0ae6c.stex" ]
+dest_files=[ "res://.import/vest .png-982e542f57bc5588ca5b73343eee27ab.stex" ]
 
 [params]
 
