@@ -165,20 +165,20 @@ func _process(delta):
 			attacking = true
 			print("attacking")
 			#var _temp = get_global_mouse_position()-position
-			var d = get_animation_direction(direction)
+			var d = get_animation_direction(last_direction)
 			
 #			var d = direction
 	
-			$"player/Sword area/Sword Collision".disabled = false
+			$"player/Sword/Sword area/Sword Collision".disabled = false
 			
 			if d == "down":
-				$"player/Sword area".rotation_degrees = 0
+				$"player/Sword/Sword area".rotation_degrees = 180
 			elif d == "right":
-				$"player/Sword area".rotation_degrees = -90
+				$"player/Sword/Sword area".rotation_degrees = 90
 			elif d == "up":
-				$"player/Sword area".rotation_degrees = 180
+				$"player/Sword/Sword area".rotation_degrees = 0
 			elif d == "left":
-				$"player/Sword area".rotation_degrees = 90
+				$"player/Sword/Sword area".rotation_degrees = -90
 			
 			$player.play("attack_"+d)
 
@@ -203,7 +203,7 @@ func _process(delta):
 #			get_node("Attack Area/Weapon Swipe").disabled = true
 			attacking = false
 			
-			$"player/Sword area/Sword Collision".disabled = true
+			$"player/Sword/Sword area/Sword Collision".disabled = true
 			
 			
 		

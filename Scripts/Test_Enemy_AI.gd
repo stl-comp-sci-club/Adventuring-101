@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var player : KinematicBody2D = get_node("/root/World/Player")
-onready var weapon = get_node("/root/World/Player/player/Sword area")
+onready var weapon = get_node("/root/World/Player/player/Sword/Sword area")
 
 export (int) var speed = 30
 var player_in_detection_area = false
@@ -22,6 +22,10 @@ func _input(event):
 	if Input.is_action_just_pressed("Interact"):
 		print(player.position)
 		print(position)
+
+func take_damage(damage: int):
+	health -= damage
+	
 
 var velocity = Vector2.ZERO
 # Called every frame. 'delta' is the elapsed time since the previous frame.
