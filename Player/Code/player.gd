@@ -159,51 +159,51 @@ func _process(delta):
 		
 #		get_node("./Attack Area/Weapon Swipe").look_at(get_global_mouse_position())
 
-		if Input.is_action_just_pressed("Attack") and not attacking:
-			
-#			get_node("Attack Area/Weapon Swipe").disabled = false
-			attacking = true
-			print("attacking")
-			#var _temp = get_global_mouse_position()-position
-			var d = get_animation_direction(last_direction)
+#		if Input.is_action_just_pressed("Attack") and not attacking:
+#
+##			get_node("Attack Area/Weapon Swipe").disabled = false
+#			attacking = true
+#			print("attacking")
+#			#var _temp = get_global_mouse_position()-position
+#			var d = get_animation_direction(last_direction)
 			
 #			var d = direction
 	
-			$"player/Sword/Sword area/Sword Collision".disabled = false
+#			$"player/Sword/Sword area/Sword Collision".disabled = false
 			
-			if d == "down":
-				$"player/Sword/Sword area".rotation_degrees = 180
-			elif d == "right":
-				$"player/Sword/Sword area".rotation_degrees = 90
-			elif d == "up":
-				$"player/Sword/Sword area".rotation_degrees = 0
-			elif d == "left":
-				$"player/Sword/Sword area".rotation_degrees = -90
-			
-			$player.play("attack_"+d)
-
-			var a = AudioStreamPlayer2D.new()
-			a.bus = "Sound Effects"
-#			print(a)
-			add_child(a)
-			a.stop()
-#			print("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
-			a.stream = load("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
-#			print(a.stream)
-			a.play()
-			yield(a, "finished")
-			
-			#velocity += _temp.normalized()*200
-			
-			yield($player, "animation_finished")
-			#last_direction = _temp
-			
-#			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 1			
-			print("attack finished")
-#			get_node("Attack Area/Weapon Swipe").disabled = true
-			attacking = false
-			
-			$"player/Sword/Sword area/Sword Collision".disabled = true
+#			if d == "down":
+#				$"player/Sword/Sword area".rotation_degrees = 180
+#			elif d == "right":
+#				$"player/Sword/Sword area".rotation_degrees = 90
+#			elif d == "up":
+#				$"player/Sword/Sword area".rotation_degrees = 0
+#			elif d == "left":
+#				$"player/Sword/Sword area".rotation_degrees = -90
+#
+#			$player.play("attack_"+d)
+#
+#			var a = AudioStreamPlayer2D.new()
+#			a.bus = "Sound Effects"
+##			print(a)
+#			add_child(a)
+#			a.stop()
+##			print("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
+#			a.stream = load("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
+##			print(a.stream)
+#			a.play()
+#			yield(a, "finished")
+#
+#			#velocity += _temp.normalized()*200
+#
+#			yield($player, "animation_finished")
+#			#last_direction = _temp
+#
+##			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 1			
+#			print("attack finished")
+##			get_node("Attack Area/Weapon Swipe").disabled = true
+#			attacking = false
+#
+#			$"player/Sword/Sword area/Sword Collision".disabled = true
 			
 			
 		

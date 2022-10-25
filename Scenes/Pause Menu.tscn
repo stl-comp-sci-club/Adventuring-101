@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Pause_menu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=2]
@@ -6,22 +6,12 @@
 [ext_resource path="res://Assets/GUI/button.png" type="Texture" id=4]
 [ext_resource path="res://Assets/GUI/Pause_button.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Settings.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/StyleTextures/Main Menu Button Pressed.tres" type="StyleBox" id=7]
+[ext_resource path="res://Assets/StyleTextures/Main Menu Button.tres" type="StyleBox" id=8]
 
 [sub_resource type="DynamicFont" id=3]
 size = 24
 font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 3 )
@@ -59,9 +49,9 @@ margin_bottom = 143.0
 rect_pivot_offset = Vector2( 192, 40 )
 focus_mode = 0
 custom_fonts/font = SubResource( 3 )
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/normal = ExtResource( 8 )
 enabled_focus_mode = 0
 text = "Resume"
 
@@ -73,9 +63,9 @@ margin_bottom = 193.0
 rect_pivot_offset = Vector2( 192, 40 )
 focus_mode = 0
 custom_fonts/font = SubResource( 3 )
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/normal = ExtResource( 8 )
 enabled_focus_mode = 0
 text = "Settings"
 
@@ -87,9 +77,9 @@ margin_bottom = 246.0
 rect_pivot_offset = Vector2( 192, 40 )
 focus_mode = 0
 custom_fonts/font = SubResource( 3 )
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/normal = ExtResource( 8 )
 enabled_focus_mode = 0
 text = "Exit"
 
