@@ -157,20 +157,23 @@ func _process(delta):
 			speed = 30
 		animate(direction)
 		
+		
 #		get_node("./Attack Area/Weapon Swipe").look_at(get_global_mouse_position())
 
-#		if Input.is_action_just_pressed("Attack") and not attacking:
+		if Input.is_action_just_pressed("Attack") and not attacking:
+#			print_debug("Ryan fix combat")
 #
-##			get_node("Attack Area/Weapon Swipe").disabled = false
-#			attacking = true
+			get_node("Sword/Sword Collision/Sword Shape").disabled = false
+			attacking = true
 #			print("attacking")
-#			#var _temp = get_global_mouse_position()-position
-#			var d = get_animation_direction(last_direction)
+			#var _temp = get_global_mouse_position()-position
+			var d = get_animation_direction(last_direction)
 			
 #			var d = direction
 	
 #			$"player/Sword/Sword area/Sword Collision".disabled = false
 			
+			get_node("Sword Swipe").current_animation = "Attack " + d	
 #			if d == "down":
 #				$"player/Sword/Sword area".rotation_degrees = 180
 #			elif d == "right":
@@ -180,28 +183,28 @@ func _process(delta):
 #			elif d == "left":
 #				$"player/Sword/Sword area".rotation_degrees = -90
 #
-#			$player.play("attack_"+d)
+			$player.play("attack_"+d)
 #
-#			var a = AudioStreamPlayer2D.new()
-#			a.bus = "Sound Effects"
+			var a = AudioStreamPlayer2D.new()
+			a.bus = "Sound Effects"
 ##			print(a)
-#			add_child(a)
-#			a.stop()
+			add_child(a)
+			a.stop()
 ##			print("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
-#			a.stream = load("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
+			a.stream = load("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
 ##			print(a.stream)
-#			a.play()
-#			yield(a, "finished")
+			a.play()
+			yield(a, "finished")
 #
 #			#velocity += _temp.normalized()*200
 #
-#			yield($player, "animation_finished")
+			yield($player, "animation_finished")
 #			#last_direction = _temp
 #
-##			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 1			
+#			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 1			
 #			print("attack finished")
-##			get_node("Attack Area/Weapon Swipe").disabled = true
-#			attacking = false
+			get_node("Sword/Sword Collision/Sword Shape").disabled = true
+			attacking = false
 #
 #			$"player/Sword/Sword area/Sword Collision".disabled = true
 			

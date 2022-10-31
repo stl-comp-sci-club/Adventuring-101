@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var player : KinematicBody2D = get_node("/root/World/Player")
-onready var weapon = get_node("/root/World/Player/player/Sword/Sword area")
+onready var weapon = get_node("/root/World/Player/Sword/Sword Collision")
 
 export (int) var speed = 30
 var player_in_detection_area = false
@@ -58,16 +58,20 @@ func _process(delta):
 		move_and_slide(velocity)
 	animate(velocity)
 
-func _on_Detection_Area_body_entered(body):
-	if body == player:
-		player_in_detection_area = true
+	
 
 
 #func _on_Detection_Area_body_exited(body):
 #	if body == player:
 #		player_in_detection_area = false
 
+func _on_Detection_Area_body_entered(body):
+	if body == player:
+		player_in_detection_area = true
+		
+
 func _on_Hitbox_area_entered(area):
+	print(area)
 	if area == weapon:
 		print("hit")
 		stunned = true
