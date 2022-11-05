@@ -4,6 +4,7 @@ onready var fade = get_node("/root/World/Player/Node2D/Fade")
 onready var player : KinematicBody2D = get_node("/root/World/Player")
 onready var enemy : KinematicBody2D = get_node("/root/World/Enemy")
 onready var dialogue = get_node("/root/World/Dialogue/PopupDialog")
+export (PackedScene) var fireball
 export (int) var speed = 30
 var health = 100
 var velocity = Vector2.ZERO
@@ -159,6 +160,23 @@ func _process(delta):
 		
 		
 #		get_node("./Attack Area/Weapon Swipe").look_at(get_global_mouse_position())
+		if Input.is_action_just_pressed("Special Attack") and not attacking:
+			# Get the currently selected special weapon
+			# Ex. Fireball, bow
+			# Basically anything that isn't the sword and shoots "something"
+			var new_fireball = fireball.instance()
+			new_fireball.position = position
+			var fireball_direction = get_angle_to(get_global_mouse_position()) + rotation
+			print(fireball_direction)
+			new_fireball.rotation = fireball_direction
+			get_tree().get_root().add_child(new_fireball)
+			print("Added fireball facing: " + str(new_fireball.rotation))
+			new_fireball.attack(Vector2(position.x, position.y))
+			yield(get_tree().create_timer(3), "timeout")
+			new_fireball.get_node("./Flame").emitting = false
+			yield(get_tree().create_timer(0.2), "timeout")
+			new_fireball.queue_free()
+			
 
 		if Input.is_action_just_pressed("Attack") and not attacking:
 #			print_debug("Ryan fix combat")
@@ -174,15 +192,7 @@ func _process(delta):
 #			$"player/Sword/Sword area/Sword Collision".disabled = false
 			
 			get_node("Sword Swipe").current_animation = "Attack " + d	
-#			if d == "down":
-#				$"player/Sword/Sword area".rotation_degrees = 180
-#			elif d == "right":
-#				$"player/Sword/Sword area".rotation_degrees = 90
-#			elif d == "up":
-#				$"player/Sword/Sword area".rotation_degrees = 0
-#			elif d == "left":
-#				$"player/Sword/Sword area".rotation_degrees = -90
-#
+
 			$player.play("attack_"+d)
 #
 			var a = AudioStreamPlayer2D.new()

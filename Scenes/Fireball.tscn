@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Player/Art/light.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Fireball.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=70]
+radius = 8.0
+
+[sub_resource type="Curve" id=68]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0320987, 0, 0, Vector2( 0.111888, 0.781818 ), 2.3234, 2.3234, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=67]
+curve = SubResource( 68 )
+
+[sub_resource type="ParticlesMaterial" id=69]
+lifetime_randomness = 0.1
+emission_shape = 1
+emission_sphere_radius = 0.4
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 36.14
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 10.0
+scale_curve = SubResource( 67 )
+color = Color( 0.968627, 0.0980392, 0.0980392, 1 )
+hue_variation = 0.01
+hue_variation_random = 0.01
+
+[node name="Fireball" type="KinematicBody2D"]
+script = ExtResource( 2 )
+fireball = null
+
+[node name="Fireball Collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 70 )
+disabled = true
+
+[node name="Flame" type="Particles2D" parent="."]
+modulate = Color( 1.2, 1.2, 1.2, 1 )
+light_mask = 4
+scale = Vector2( 10, 10 )
+amount = 300
+lifetime = 0.2
+speed_scale = 0.35
+explosiveness = 0.05
+randomness = 1.0
+visibility_rect = Rect2( -50, -50, 100, 100 )
+local_coords = false
+process_material = SubResource( 69 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Highlight" type="Light2D" parent="Flame"]
+scale = Vector2( 2.69531, 2.69531 )
+texture = ExtResource( 1 )
+texture_scale = 0.03
+color = Color( 1, 0.537255, 0.231373, 1 )
+energy = 1.1
+range_item_cull_mask = 4
+shadow_item_cull_mask = 4
+
+[node name="Flame light" type="Light2D" parent="Flame"]
+scale = Vector2( 0.196875, 0.196875 )
+texture = ExtResource( 1 )
+color = Color( 1, 0.537255, 0, 1 )
+energy = 0.3
+range_z_min = -64
+range_z_max = 64

@@ -8,7 +8,7 @@
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0320987, 0, 0, Vector2( 0.111888, 0.781818 ), 2.3234, 2.3234, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=67]
+[sub_resource type="CurveTexture" id=69]
 curve = SubResource( 2 )
 
 [sub_resource type="ParticlesMaterial" id=1]
@@ -24,7 +24,7 @@ initial_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 10.0
-scale_curve = SubResource( 67 )
+scale_curve = SubResource( 69 )
 color = Color( 0.968627, 0.0980392, 0.0980392, 1 )
 hue_variation = 0.01
 hue_variation_random = 0.01
