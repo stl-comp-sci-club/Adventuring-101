@@ -6,7 +6,11 @@ onready var enemy : KinematicBody2D = get_node("/root/World/Enemy")
 onready var dialogue = get_node("/root/World/Dialogue/PopupDialog")
 export (PackedScene) var fireball
 export (int) var speed = 30
+export (int) var regen_rate = 2
+export (int) var health_regen_amount = 5
+export (int) var mana_regen_amount = 3
 var health = 100
+var mana = 100
 var velocity = Vector2.ZERO
 var last_direction = Vector2(0,1)
 
@@ -69,10 +73,31 @@ func fade_in():
 		yield(VisualServer, 'frame_pre_draw')
 	fade.modulate.a = 0
 
-func _ready():
+func health_mana_regen():
+	if health != 100:
+		for i in range(health_regen_amount):
+			health += 1
+			yield(VisualServer, 'frame_pre_draw')
+#			yield(get_tree().create_timer(0.01), "timeout")
+			get_node("../Health N Mana/Bars/Health").value = health
+	if mana != 100:
+		for i in range(mana_regen_amount):
+			mana += 1
+			yield(VisualServer, 'frame_pre_draw')
+#			yield(get_tree().create_timer(0.01), "timeout")
+			get_node("../Health N Mana/Bars/Mana").value = mana
 
+
+func _ready():
 	
-	print(Global.scene)
+	var regen_timer = Timer.new()
+	add_child(regen_timer)
+	regen_timer.connect("timeout", self, "health_mana_regen")
+	regen_timer.set_wait_time(regen_rate)
+	regen_timer.set_one_shot(false) # Make sure it loops
+	regen_timer.start()
+	
+#	print(Global.scene)
 	input_allowed = true
 #	if Global.scene == "downstairs":
 #		position = Vector2(47, 53)
@@ -119,7 +144,6 @@ func animate(direction: Vector2):
 			$player.play(d+"_resting")
 
 
-
 func _process(delta):
 	$Camera2D.zoom.x = Global.camera_zoom
 	$Camera2D.zoom.y = Global.camera_zoom
@@ -164,18 +188,24 @@ func _process(delta):
 			# Get the currently selected special weapon
 			# Ex. Fireball, bow
 			# Basically anything that isn't the sword and shoots "something"
-			var new_fireball = fireball.instance()
-			new_fireball.position = position
-			var fireball_direction = get_angle_to(get_global_mouse_position()) + rotation
-			print(fireball_direction)
-			new_fireball.rotation = fireball_direction
-			get_tree().get_root().add_child(new_fireball)
-			print("Added fireball facing: " + str(new_fireball.rotation))
-			new_fireball.attack(Vector2(position.x, position.y))
-			yield(get_tree().create_timer(3), "timeout")
-			new_fireball.get_node("./Flame").emitting = false
-			yield(get_tree().create_timer(0.2), "timeout")
-			new_fireball.queue_free()
+			if mana > 0:
+				for i in range(5):
+					mana -= 1
+					get_node("../Health N Mana/Bars/Mana").value = mana
+					yield(VisualServer, 'frame_pre_draw')
+				var new_fireball = fireball.instance()
+				new_fireball.position = position
+				var fireball_direction = get_angle_to(get_global_mouse_position()) + rotation
+				print(fireball_direction)
+				new_fireball.rotation = fireball_direction
+				get_tree().get_root().add_child(new_fireball)
+				
+				print("Added fireball facing: " + str(new_fireball.rotation))
+				new_fireball.attack(Vector2(position.x, position.y))
+				yield(get_tree().create_timer(3), "timeout")
+				new_fireball.get_node("./Flame").emitting = false
+				yield(get_tree().create_timer(0.2), "timeout")
+				new_fireball.queue_free()
 			
 
 		if Input.is_action_just_pressed("Attack") and not attacking:
