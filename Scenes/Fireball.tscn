@@ -32,7 +32,6 @@ hue_variation_random = 0.01
 
 [node name="Fireball" type="KinematicBody2D"]
 script = ExtResource( 2 )
-fireball = null
 
 [node name="Fireball Collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 70 )
@@ -43,7 +42,7 @@ modulate = Color( 1.2, 1.2, 1.2, 1 )
 light_mask = 4
 scale = Vector2( 10, 10 )
 amount = 300
-lifetime = 0.2
+lifetime = 0.03
 speed_scale = 0.35
 explosiveness = 0.05
 randomness = 1.0
