@@ -5,22 +5,6 @@
 [ext_resource path="res://Scripts/PickUpZone.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Characters/cayattacksheet.png" type="Texture" id=5]
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 23, 58 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 2 )
-region = Rect2( 23, 0, 23, 58 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 2 )
-region = Rect2( 46, 0, 23, 58 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 2 )
-region = Rect2( 69, 0, 23, 58 )
-
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 2 )
 region = Rect2( 23, 116, 23, 58 )
@@ -165,13 +149,24 @@ region = Rect2( 424, 106, 106, 106 )
 atlas = ExtResource( 2 )
 region = Rect2( 23, 58, 23, 58 )
 
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 23, 58 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 23, 0, 23, 58 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 46, 0, 23, 58 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 69, 0, 23, 58 )
+
 [sub_resource type="SpriteFrames" id=27]
 animations = [ {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
-"loop": true,
-"name": "walk_down",
-"speed": 7.0
-}, {
 "frames": [ SubResource( 16 ) ],
 "loop": true,
 "name": "left_resting",
@@ -226,6 +221,11 @@ animations = [ {
 "loop": true,
 "name": "right_resting",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 7.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=28]
@@ -321,7 +321,6 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 47, 53 )
 z_index = 1
 script = ExtResource( 1 )
 __meta__ = {
