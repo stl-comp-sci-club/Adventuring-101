@@ -1,10 +1,9 @@
 extends KinematicBody2D
-export (PackedScene) var fireball
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+onready var player : KinematicBody2D = get_node("/root/World/Player")
 var velocity = Vector2(0,0)
 
 # Called when the node enters the scene tree for the first time.
@@ -25,3 +24,19 @@ func attack(fireball_position):
 func _process(delta):
 	move_and_collide(velocity*delta)
 #	pass
+
+
+func _on_Fireball_Collider_body_entered(body):
+	if get_node("/root/World/Enemy") != null: # enemy
+		if body == get_node("/root/World/Enemy"):
+			get_node("/root/World/Enemy").hit()
+
+	if body != player && body != get_node("."):
+		velocity = Vector2(0,0)
+		$Flame.emitting = false
+		$Explosion.emitting = true
+		yield(get_tree().create_timer(0.2), "timeout")
+		for child in get_node("./Flame").get_children():
+			child.queue_free()
+#		$"Fireball Shape".disabled = true
+		$"Fireball Collider/Fireball Collision".disabled = true
