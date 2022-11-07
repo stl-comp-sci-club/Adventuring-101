@@ -9,6 +9,7 @@ export (int) var speed = 30
 export (int) var regen_rate = 2
 export (int) var health_regen_amount = 5
 export (int) var mana_regen_amount = 3
+export (int) var active_fireballs = 0
 var health = 100
 var mana = 100
 var velocity = Vector2.ZERO
@@ -182,7 +183,7 @@ func _process(delta):
 			speed = 30
 		animate(direction)
 		
-		
+
 #		get_node("./Attack Area/Weapon Swipe").look_at(get_global_mouse_position())
 		if Input.is_action_just_pressed("Special Attack") and not attacking:
 			# Get the currently selected special weapon
@@ -196,6 +197,8 @@ func _process(delta):
 				var new_fireball = fireball.instance()
 				get_tree().get_root().add_child(new_fireball)
 				new_fireball.attack(position)
+				active_fireballs += 1
+				print(active_fireballs)
 
 		if Input.is_action_just_pressed("Attack") and not attacking:
 #			print_debug("Ryan fix combat")

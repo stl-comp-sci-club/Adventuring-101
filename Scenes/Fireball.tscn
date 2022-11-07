@@ -88,6 +88,7 @@ shadow_item_cull_mask = 4
 
 [node name="Flame light" type="Light2D" parent="Flame"]
 scale = Vector2( 0.196875, 0.196875 )
+enabled = false
 texture = ExtResource( 1 )
 color = Color( 1, 0.537255, 0, 1 )
 energy = 0.5
