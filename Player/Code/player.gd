@@ -194,19 +194,8 @@ func _process(delta):
 					get_node("../Health N Mana/Bars/Mana").value = mana
 					yield(VisualServer, 'frame_pre_draw')
 				var new_fireball = fireball.instance()
-				new_fireball.position = position+Vector2(-10,-15) # offset to center of player
-				var fireball_direction = get_angle_to(get_global_mouse_position()) + rotation
-#				print(fireball_direction)
-				new_fireball.rotation = fireball_direction
 				get_tree().get_root().add_child(new_fireball)
-				
-#				print("Added fireball facing: " + str(new_fireball.rotation))
 				new_fireball.attack(position)
-				yield(get_tree().create_timer(3), "timeout")
-				new_fireball.get_node("./Flame").emitting = false
-				yield(get_tree().create_timer(0.2), "timeout")
-				new_fireball.queue_free()
-			
 
 		if Input.is_action_just_pressed("Attack") and not attacking:
 #			print_debug("Ryan fix combat")
@@ -216,38 +205,22 @@ func _process(delta):
 #			print("attacking")
 			#var _temp = get_global_mouse_position()-position
 			var d = get_animation_direction(last_direction)
-			
-#			var d = direction
-	
-#			$"player/Sword/Sword area/Sword Collision".disabled = false
-			
+
 			get_node("Sword Swipe").current_animation = "Attack " + d	
 
 			$player.play("attack_"+d)
 #
 			var a = AudioStreamPlayer2D.new()
 			a.bus = "Sound Effects"
-##			print(a)
 			add_child(a)
 			a.stop()
-##			print("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
 			a.stream = load("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
-##			print(a.stream)
 			a.play()
 			yield(a, "finished")
-#
-#			#velocity += _temp.normalized()*200
-#
+
 			yield($player, "animation_finished")
-#			#last_direction = _temp
-#
-#			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 1			
-#			print("attack finished")
 			get_node("Sword/Sword Collision/Sword Shape").disabled = true
 			attacking = false
-#
-#			$"player/Sword/Sword area/Sword Collision".disabled = true
-			
 			
 		
 	if velocity.length() > 0:

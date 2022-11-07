@@ -12,17 +12,20 @@ func _ready():
 
 
 func attack(fireball_position):
+	position = fireball_position
 	velocity = Vector2(0,0)
 	velocity = (get_global_mouse_position() - fireball_position).normalized()
 	velocity *= 500
+	yield(get_tree().create_timer(3), "timeout")
+	$Flame.emitting = false
+	yield(get_tree().create_timer(0.2), "timeout")
+	queue_free()
 
-	
-	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _process(delta):
-	move_and_collide(velocity*delta)
+	move_and_slide(velocity)
 #	pass
 
 
@@ -36,7 +39,7 @@ func _on_Fireball_Collider_body_entered(body):
 		$Flame.emitting = false
 		$Explosion.emitting = true
 		yield(get_tree().create_timer(0.2), "timeout")
-		for child in get_node("./Flame").get_children():
+		for child in get_node("./Flame").get_children(): # Remove lights
 			child.queue_free()
 #		$"Fireball Shape".disabled = true
 		$"Fireball Collider/Fireball Collision".disabled = true

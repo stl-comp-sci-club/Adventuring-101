@@ -19,8 +19,9 @@ func map(val, in_min, in_max, out_min, out_max):
 
 # Called when the node enters the scene tree for the first time.
 func show():
+	print(Global.camera_zoom)
 	$"Popup/ScrollContainer/Scroll background/Camera Zoom/Zoom Value".text = str(map(Global.camera_zoom, 1.5, 3, 3, 1.5)) + "x"
-	$"Popup/ScrollContainer/Scroll background/Camera Zoom/Camera Zoom Slider".value = Global.camera_zoom
+	$"Popup/ScrollContainer/Scroll background/Camera Zoom/Camera Zoom Slider".value = map(Global.camera_zoom, 1.5, 3, 3, 1.5)
 	
 	$"Popup/ScrollContainer/Scroll background/Master/Master Volume Value".text = str(Global.master_volume) + "%"
 	$"Popup/ScrollContainer/Scroll background/Master/Master Slider".value = Global.master_volume
@@ -38,8 +39,8 @@ func show():
 
 
 func _on_Camera_Zoom_Slider_value_changed(value):
-	Global.camera_zoom = value
-	$"Popup/ScrollContainer/Scroll background/Camera Zoom/Zoom Value".text = str(map(value, 1.5, 3, 3, 1.5))+"x"
+	Global.camera_zoom = map(value, 1.5, 3, 3, 1.5)
+	$"Popup/ScrollContainer/Scroll background/Camera Zoom/Zoom Value".text = str(value)+"x"
 
 
 func _on_Sound_Effect_Slider_value_changed(value):
