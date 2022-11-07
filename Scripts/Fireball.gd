@@ -17,7 +17,7 @@ func attack(fireball_position):
 	velocity = Vector2(0,0)
 	velocity = (get_global_mouse_position() - fireball_position).normalized()
 	velocity *= 500
-	yield(get_tree().create_timer(0.1), "timeout")	
+	yield(VisualServer, 'frame_pre_draw')
 	$"Flame/Flame light".enabled = true
 	yield(get_tree().create_timer(3), "timeout")
 	if active:

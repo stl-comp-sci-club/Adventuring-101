@@ -5,13 +5,18 @@ onready var player : KinematicBody2D = get_node("/root/World/Player")
 onready var enemy : KinematicBody2D = get_node("/root/World/Enemy")
 onready var dialogue = get_node("/root/World/Dialogue/PopupDialog")
 export (PackedScene) var fireball
+var can_use_fireball = true
+var fireball_cooldown = null
 export (int) var speed = 30
 export (int) var regen_rate = 2
 export (int) var health_regen_amount = 5
 export (int) var mana_regen_amount = 3
 export (int) var active_fireballs = 0
 var health = 100
+var can_regen_health = true
 var mana = 100
+var can_regen_mana = true
+var mana_regen_cooldown = null
 var velocity = Vector2.ZERO
 var last_direction = Vector2(0,1)
 
@@ -74,6 +79,9 @@ func fade_in():
 		yield(VisualServer, 'frame_pre_draw')
 	fade.modulate.a = 0
 
+func allow_mana_regen():
+	can_regen_mana = true
+
 func health_mana_regen():
 	if health != 100:
 		for i in range(health_regen_amount):
@@ -81,13 +89,15 @@ func health_mana_regen():
 			yield(VisualServer, 'frame_pre_draw')
 #			yield(get_tree().create_timer(0.01), "timeout")
 			get_node("../Health N Mana/Bars/Health").value = health
-	if mana != 100:
+	if mana != 100 and can_regen_mana:
 		for i in range(mana_regen_amount):
 			mana += 1
 			yield(VisualServer, 'frame_pre_draw')
 #			yield(get_tree().create_timer(0.01), "timeout")
 			get_node("../Health N Mana/Bars/Mana").value = mana
 
+func allow_fireball():
+	can_use_fireball = true
 
 func _ready():
 	
@@ -98,29 +108,16 @@ func _ready():
 	regen_timer.set_one_shot(false) # Make sure it loops
 	regen_timer.start()
 	
-#	print(Global.scene)
+	mana_regen_cooldown = Timer.new()
+	add_child(mana_regen_cooldown)
+	mana_regen_cooldown.connect("timeout", self, "allow_mana_regen")
+	
 	input_allowed = true
-#	if Global.scene == "downstairs":
-#		position = Vector2(47, 53)
-#		last_direction = Vector2(0,1)
-#		yield(fade_in(), "completed")
-#	elif Global.scene == "downstairs (from outside)":
-#		position = Vector2(176, 194)
-#		last_direction = Vector2(0,-1)
-#		yield(fade_in(), "completed")
-#	elif Global.scene == "Level 1":
-#		position = Vector2(140, -20)
-#		last_direction = Vector2(0,1)
-#		yield(fade_in(), "completed")
-#	elif Global.scene == "Level 1 (from Elijah)":	
-#		position = Vector2(-37, -30)	
-#		last_direction = Vector2(0,1)	
-#		yield(fade_in(), "completed")	
-#	elif Global.scene == "Elijah house":	
-#		position = Vector2(176, 180)	
-#		last_direction = Vector2(0,-1)	
-#		yield(fade_in(), "completed")
-#
+
+	fireball_cooldown = Timer.new()
+	add_child(fireball_cooldown)
+	fireball_cooldown.connect("timeout", self, "allow_fireball")
+
 
 func get_animation_direction(direction: Vector2):
 	var norm_direction = direction.normalized()
@@ -146,6 +143,8 @@ func animate(direction: Vector2):
 
 
 func _process(delta):
+	
+	print(can_regen_mana)
 	$Camera2D.zoom.x = Global.camera_zoom
 	$Camera2D.zoom.y = Global.camera_zoom
 	if stunned:
@@ -189,7 +188,7 @@ func _process(delta):
 			# Get the currently selected special weapon
 			# Ex. Fireball, bow
 			# Basically anything that isn't the sword and shoots "something"
-			if mana > 0:
+			if mana > 0 and can_use_fireball:
 				for i in range(5):
 					mana -= 1
 					get_node("../Health N Mana/Bars/Mana").value = mana
@@ -198,7 +197,14 @@ func _process(delta):
 				get_tree().get_root().add_child(new_fireball)
 				new_fireball.attack(position)
 				active_fireballs += 1
-				print(active_fireballs)
+				can_regen_mana = false
+				can_use_fireball = false
+				mana_regen_cooldown.set_wait_time(5)
+				mana_regen_cooldown.start()
+				fireball_cooldown.set_wait_time(1)
+				fireball_cooldown.start()
+				
+
 
 		if Input.is_action_just_pressed("Attack") and not attacking:
 #			print_debug("Ryan fix combat")
