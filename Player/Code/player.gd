@@ -11,7 +11,6 @@ export (int) var speed = 30
 export (int) var regen_rate = 2
 export (int) var health_regen_amount = 5
 export (int) var mana_regen_amount = 3
-export (int) var active_fireballs = 0
 var health = 100
 var can_regen_health = true
 var mana = 100
@@ -143,8 +142,6 @@ func animate(direction: Vector2):
 
 
 func _process(delta):
-	
-	print(can_regen_mana)
 	$Camera2D.zoom.x = Global.camera_zoom
 	$Camera2D.zoom.y = Global.camera_zoom
 	if stunned:
@@ -196,7 +193,6 @@ func _process(delta):
 				var new_fireball = fireball.instance()
 				get_tree().get_root().add_child(new_fireball)
 				new_fireball.attack(position)
-				active_fireballs += 1
 				can_regen_mana = false
 				can_use_fireball = false
 				mana_regen_cooldown.set_wait_time(5)

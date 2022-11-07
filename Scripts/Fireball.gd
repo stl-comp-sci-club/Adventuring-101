@@ -10,7 +10,6 @@ var velocity = Vector2(0,0)
 func _ready():
 	pass # Replace with function body.
 
-var active = true
 
 func attack(fireball_position):
 	position = fireball_position
@@ -20,9 +19,6 @@ func attack(fireball_position):
 	yield(VisualServer, 'frame_pre_draw')
 	$"Flame/Flame light".enabled = true
 	yield(get_tree().create_timer(3), "timeout")
-	if active:
-		player.active_fireballs -= 1
-		active = false
 	$Flame.emitting = false
 	yield(get_tree().create_timer(0.2), "timeout")
 	queue_free()
@@ -49,6 +45,3 @@ func _on_Fireball_Collider_body_entered(body):
 			child.queue_free()
 #		$"Fireball Shape".disabled = true
 		$"Fireball Collider/Fireball Collision".disabled = true
-		if active:
-			player.active_fireballs -= 1
-			active = false
