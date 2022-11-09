@@ -5,8 +5,8 @@ It is under development by the members of the Game Development team, which is ap
 
 Head by Chris Lozinski, the team at the time of writing this consists of the following:
 
-Programming By: Ryan Yang, Felix Z, Matias R, Jordan F, Doris W, and Andrea Di Giovanni 
+Programming By: Ryan Yang, Felix Z, Matias R, Jordan F, and Alan W
 
-Art by: Jessica Y, Daniel K, Rory S, Midhat B, and Selina O
+Art by: Jessica Y, Daniel K, and Selina O
 
 Story by: Armand Ustun, Celina Ladak and Marco Capuano 
