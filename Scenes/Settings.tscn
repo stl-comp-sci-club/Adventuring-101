@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Settings.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Assets/GUI/button.png" type="Texture" id=3]
-[ext_resource path="res://Assets/GUI/button_pressed.png" type="Texture" id=4]
+[ext_resource path="res://Assets/StyleTextures/Main Menu Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/StyleTextures/Main Menu Button Pressed.tres" type="StyleBox" id=3]
+[ext_resource path="res://Assets/StyleTextures/Main Menu Button.tres" type="StyleBox" id=4]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Fonts/PlaymegamesReguler-2OOee.ttf"
@@ -11,21 +11,6 @@ font_path = "res://Fonts/PlaymegamesReguler-2OOee.ttf"
 [sub_resource type="DynamicFont" id=2]
 size = 33
 font_data = SubResource( 1 )
-
-[sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 20, 20 )
-
-[sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 24
@@ -67,10 +52,10 @@ margin_right = 587.0
 margin_bottom = 53.0
 rect_pivot_offset = Vector2( 24, 13 )
 focus_mode = 0
-custom_fonts/font = SubResource( 5 )
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/normal = SubResource( 8 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/normal = ExtResource( 4 )
 enabled_focus_mode = 0
 text = "Back"
 __meta__ = {
@@ -86,8 +71,8 @@ rect_pivot_offset = Vector2( -256, -80 )
 
 [node name="Scroll background" type="ColorRect" parent="Popup/ScrollContainer"]
 margin_right = 512.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 100, 300 )
+margin_bottom = 400.0
+rect_min_size = Vector2( 100, 400 )
 size_flags_horizontal = 3
 size_flags_vertical = 0
 color = Color( 0.231373, 0.231373, 0.309804, 1 )
@@ -195,6 +180,39 @@ rect_pivot_offset = Vector2( 68, 11 )
 custom_fonts/font = SubResource( 4 )
 text = "100%"
 
+[node name="Fullscreen Toggle" type="Control" parent="Popup/ScrollContainer/Scroll background"]
+margin_left = -40.0
+margin_top = 88.0
+margin_right = -40.0
+margin_bottom = 88.0
+
+[node name="Fullscreen Label" type="Label" parent="Popup/ScrollContainer/Scroll background/Fullscreen Toggle"]
+margin_left = 64.0
+margin_top = 156.0
+margin_right = 199.0
+margin_bottom = 177.0
+rect_pivot_offset = Vector2( 68, 11 )
+custom_fonts/font = SubResource( 3 )
+text = "Fullscreen"
+
+[node name="Fullscreen Value" type="Label" parent="Popup/ScrollContainer/Scroll background/Fullscreen Toggle"]
+margin_left = 32.0
+margin_top = 172.0
+margin_right = 167.0
+margin_bottom = 193.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 68, 11 )
+custom_fonts/font = SubResource( 4 )
+text = "Off"
+
+[node name="Fullscreen Toggle" type="CheckBox" parent="Popup/ScrollContainer/Scroll background/Fullscreen Toggle"]
+margin_left = 83.0
+margin_top = 171.0
+margin_right = 107.0
+margin_bottom = 195.0
+focus_mode = 0
+enabled_focus_mode = 0
+
 [node name="Camera Zoom" type="Control" parent="Popup/ScrollContainer/Scroll background"]
 margin_left = -40.0
 margin_top = 24.0
@@ -236,9 +254,9 @@ scrollable = false
 
 [node name="Dev Note" type="Label" parent="Popup/ScrollContainer/Scroll background"]
 margin_left = 24.0
-margin_top = 272.0
+margin_top = 368.0
 margin_right = 359.0
-margin_bottom = 293.0
+margin_bottom = 389.0
 custom_fonts/font = SubResource( 3 )
 text = "Future Settings can be added here"
 
@@ -246,4 +264,5 @@ text = "Future Settings can be added here"
 [connection signal="value_changed" from="Popup/ScrollContainer/Scroll background/Master/Master Slider" to="." method="_on_Master_Slider_value_changed"]
 [connection signal="value_changed" from="Popup/ScrollContainer/Scroll background/Music/Music Slider" to="." method="_on_Music_Slider_value_changed"]
 [connection signal="value_changed" from="Popup/ScrollContainer/Scroll background/Sound Effects/Sound Effect Slider" to="." method="_on_Sound_Effect_Slider_value_changed"]
+[connection signal="button_up" from="Popup/ScrollContainer/Scroll background/Fullscreen Toggle/Fullscreen Toggle" to="." method="_on_Fullscreen_Toggle_button_up"]
 [connection signal="value_changed" from="Popup/ScrollContainer/Scroll background/Camera Zoom/Camera Zoom Slider" to="." method="_on_Camera_Zoom_Slider_value_changed"]

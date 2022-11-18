@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cayattacksheet.png-c8372244ffa9b1cf92d1c1037d24e07d.stex"
+path="res://.import/Poo.png-161a222780b3fcd667d39312b207c0d0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/cayattacksheet.png"
-dest_files=[ "res://.import/cayattacksheet.png-c8372244ffa9b1cf92d1c1037d24e07d.stex" ]
+source_file="res://Assets/items/Poo.png"
+dest_files=[ "res://.import/Poo.png-161a222780b3fcd667d39312b207c0d0.stex" ]
 
 [params]
 

@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var player : KinematicBody2D = get_node("/root/World/Player")
-onready var weapon = get_node("/root/World/Player/player/Sword area")
+onready var weapon = get_node("/root/World/Player/Sword/Sword Collision")
 
 export (int) var speed = 30
 var player_in_detection_area = false
@@ -18,21 +18,28 @@ var alerted = false
 func _ready():
 	rng.randomize()
 
-func _input(event):
-	if Input.is_action_just_pressed("Interact"):
-		print(player.position)
-		print(position)
+#func _input(event):
+#	if Input.is_action_just_pressed("Interact"):
+#		print(player.position)
+#		print(position)
+
+func take_damage(damage: int):
+	health -= damage
+	
 
 var velocity = Vector2.ZERO
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if player.position.y > position.y:
+		get_node(".").z_index = 0
+	else:
+		get_node(".").z_index = 1
 	if player_in_detection_area and not stunned and not Global.paused:
 		if not alerted:
 			var a = AudioStreamPlayer2D.new()
-			a.bus = "Sound Effects"
 			add_child(a)
+			a.bus = "Sound Effects"
 			a.stop()
-			a.volume_db = 22
 			a.stream = load("res://Sounds/Effects/alert.wav")
 			a.play()
 			alerted = true
@@ -50,54 +57,54 @@ func _process(delta):
 		move_and_slide(velocity)
 	animate(velocity)
 
-func _on_Detection_Area_body_entered(body):
-	if body == player:
-		player_in_detection_area = true
+	
 
 
 #func _on_Detection_Area_body_exited(body):
 #	if body == player:
 #		player_in_detection_area = false
 
-func _on_Hitbox_area_entered(area):
-	if area == weapon:
-		print("hit")
-		stunned = true
+func _on_Detection_Area_body_entered(body):
+	if body == player:
+		player_in_detection_area = true
 		
-		health -= rng.randf_range(0.0, 5.0)
-		
-		$"./enemy/Blood Spurt".emitting = true
-		
-		if health <= 0:
-			print("die")
-			var a = AudioStreamPlayer2D.new()
-			print(a)
-			add_child(a)
-			a.stop()
-			a.stream = load("res://Sounds/Effects/die.wav")
-			print(a.stream)
-			a.play()
-			return
-		
+func hit():
+	stunned = true
+	health -= rng.randf_range(0.0, 15.0)
+	
+	$"./enemy/Blood Spurt".emitting = true
+	
+	if health <= 0:
 		var a = AudioStreamPlayer2D.new()
 		a.bus = "Sound Effects"
 		add_child(a)
 		a.stop()
-		a.volume_db = 15
-		a.stream = load("res://Sounds/Effects/ouch.wav")
+		a.stream = load("res://Sounds/Effects/die.wav")
 		a.play()
-			
-		get_node("ProgressBar").value = health
+		return
+	
+	var a = AudioStreamPlayer2D.new()
+	add_child(a)
+	a.bus = "Sound Effects"
+	a.stop()
+	a.stream = load("res://Sounds/Effects/ouch.wav")
+	a.play()
 		
-		print(health)
-		
-		yield(get_tree().create_timer(0.2), "timeout")
-		
-		stunned = false
-		print(position.direction_to(player.position) * -1)
-		print(velocity)
-		move_and_slide(velocity)
-		$"./enemy/Blood Spurt".emitting = false
+	get_node("ProgressBar").value = health
+	
+	print(health)
+	
+	yield(get_tree().create_timer(0.2), "timeout")
+	
+	stunned = false
+	print(position.direction_to(player.position) * -1)
+	print(velocity)
+	move_and_slide(velocity)
+	$"./enemy/Blood Spurt".emitting = false
+
+func _on_Hitbox_area_entered(area):
+	if area == weapon:
+		hit()
 
 
 func get_animation_direction(direction: Vector2):
