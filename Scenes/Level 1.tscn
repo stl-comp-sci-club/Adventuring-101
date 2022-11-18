@@ -60,13 +60,21 @@ height = 5.0
 [sub_resource type="CircleShape2D" id=31]
 radius = 30.0041
 
-[sub_resource type="AtlasTexture" id=38]
+[sub_resource type="AtlasTexture" id=54]
 atlas = ExtResource( 28 )
-region = Rect2( 23, 60, 23, 60 )
+region = Rect2( 0, 120, 23, 60 )
 
-[sub_resource type="AtlasTexture" id=44]
+[sub_resource type="AtlasTexture" id=55]
 atlas = ExtResource( 28 )
-region = Rect2( 23, 0, 23, 60 )
+region = Rect2( 23, 120, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 28 )
+region = Rect2( 46, 120, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 28 )
+region = Rect2( 69, 120, 23, 60 )
 
 [sub_resource type="AtlasTexture" id=45]
 atlas = ExtResource( 28 )
@@ -104,6 +112,10 @@ region = Rect2( 69, 180, 23, 60 )
 atlas = ExtResource( 28 )
 region = Rect2( 23, 120, 23, 60 )
 
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 0, 23, 60 )
+
 [sub_resource type="AtlasTexture" id=43]
 atlas = ExtResource( 28 )
 region = Rect2( 23, 180, 23, 60 )
@@ -124,33 +136,16 @@ region = Rect2( 46, 60, 23, 60 )
 atlas = ExtResource( 28 )
 region = Rect2( 69, 60, 23, 60 )
 
-[sub_resource type="AtlasTexture" id=54]
+[sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 28 )
-region = Rect2( 0, 120, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=55]
-atlas = ExtResource( 28 )
-region = Rect2( 23, 120, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=56]
-atlas = ExtResource( 28 )
-region = Rect2( 46, 120, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=57]
-atlas = ExtResource( 28 )
-region = Rect2( 69, 120, 23, 60 )
+region = Rect2( 23, 60, 23, 60 )
 
 [sub_resource type="SpriteFrames" id=58]
 animations = [ {
-"frames": [ SubResource( 38 ) ],
+"frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
 "loop": true,
-"name": "right_resting",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 44 ) ],
-"loop": true,
-"name": "down_resting",
-"speed": 5.0
+"name": "walk_left",
+"speed": 7.0
 }, {
 "frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
 "loop": true,
@@ -167,6 +162,11 @@ animations = [ {
 "name": "left_resting",
 "speed": 5.0
 }, {
+"frames": [ SubResource( 44 ) ],
+"loop": true,
+"name": "down_resting",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 43 ) ],
 "loop": true,
 "name": "up_resting",
@@ -177,10 +177,10 @@ animations = [ {
 "name": "walk_right",
 "speed": 7.0
 }, {
-"frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
+"frames": [ SubResource( 38 ) ],
 "loop": true,
-"name": "walk_left",
-"speed": 7.0
+"name": "right_resting",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=61]
@@ -310,6 +310,7 @@ shape = SubResource( 28 )
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
+frame = 1
 playing = true
 
 [node name="Light2D" type="Light2D" parent="Fountain"]
@@ -662,12 +663,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="ItemDrop2" parent="Player Upstairs House" instance=ExtResource( 32 )]
-position = Vector2( 242, 171 )
-collision_layer = 4
-collision_mask = 2
-
-[node name="ItemDrop3" parent="Player Upstairs House" instance=ExtResource( 32 )]
-position = Vector2( 173, 166 )
+position = Vector2( 221, 160 )
 collision_layer = 4
 collision_mask = 2
 
@@ -687,7 +683,7 @@ script = ExtResource( 34 )
 [node name="Inventory" parent="Inventory UI" instance=ExtResource( 33 )]
 visible = false
 
-[node name="Hotbar" parent="Inventory UI" instance=ExtResource( 16 )]
+[node name="Hotbar" parent="Inventory UI" instance=ExtResource( 25 )]
 
 [node name="Interact Menu" parent="." instance=ExtResource( 10 )]
 layer = 0
