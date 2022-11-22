@@ -4,8 +4,18 @@ onready var fade = get_node("/root/World/Player/Node2D/Fade")
 onready var player : KinematicBody2D = get_node("/root/World/Player")
 onready var enemy : KinematicBody2D = get_node("/root/World/Enemy")
 onready var dialogue = get_node("/root/World/Dialogue/PopupDialog")
+export (PackedScene) var fireball
+var can_use_fireball = true
+var fireball_cooldown = null
 export (int) var speed = 30
+export (int) var regen_rate = 2
+export (int) var health_regen_amount = 5
+export (int) var mana_regen_amount = 3
 var health = 100
+var can_regen_health = true
+var mana = 100
+var can_regen_mana = true
+var mana_regen_cooldown = null
 var velocity = Vector2.ZERO
 var last_direction = Vector2(0,1)
 
@@ -68,32 +78,45 @@ func fade_in():
 		yield(VisualServer, 'frame_pre_draw')
 	fade.modulate.a = 0
 
-func _ready():
+func allow_mana_regen():
+	can_regen_mana = true
 
+func health_mana_regen():
+	if health != 100:
+		for i in range(health_regen_amount):
+			health += 1
+			yield(VisualServer, 'frame_pre_draw')
+#			yield(get_tree().create_timer(0.01), "timeout")
+			get_node("../Health N Mana/Bars/Health").value = health
+	if mana != 100 and can_regen_mana:
+		for i in range(mana_regen_amount):
+			mana += 1
+			yield(VisualServer, 'frame_pre_draw')
+#			yield(get_tree().create_timer(0.01), "timeout")
+			get_node("../Health N Mana/Bars/Mana").value = mana
+
+func allow_fireball():
+	can_use_fireball = true
+
+func _ready():
 	
-	print(Global.scene)
+	var regen_timer = Timer.new()
+	add_child(regen_timer)
+	regen_timer.connect("timeout", self, "health_mana_regen")
+	regen_timer.set_wait_time(regen_rate)
+	regen_timer.set_one_shot(false) # Make sure it loops
+	regen_timer.start()
+	
+	mana_regen_cooldown = Timer.new()
+	add_child(mana_regen_cooldown)
+	mana_regen_cooldown.connect("timeout", self, "allow_mana_regen")
+	
 	input_allowed = true
-#	if Global.scene == "downstairs":
-#		position = Vector2(47, 53)
-#		last_direction = Vector2(0,1)
-#		yield(fade_in(), "completed")
-#	elif Global.scene == "downstairs (from outside)":
-#		position = Vector2(176, 194)
-#		last_direction = Vector2(0,-1)
-#		yield(fade_in(), "completed")
-#	elif Global.scene == "Level 1":
-#		position = Vector2(140, -20)
-#		last_direction = Vector2(0,1)
-#		yield(fade_in(), "completed")
-#	elif Global.scene == "Level 1 (from Elijah)":	
-#		position = Vector2(-37, -30)	
-#		last_direction = Vector2(0,1)	
-#		yield(fade_in(), "completed")	
-#	elif Global.scene == "Elijah house":	
-#		position = Vector2(176, 180)	
-#		last_direction = Vector2(0,-1)	
-#		yield(fade_in(), "completed")
-#
+
+	fireball_cooldown = Timer.new()
+	add_child(fireball_cooldown)
+	fireball_cooldown.connect("timeout", self, "allow_fireball")
+
 
 func get_animation_direction(direction: Vector2):
 	var norm_direction = direction.normalized()
@@ -116,7 +139,6 @@ func animate(direction: Vector2):
 		else:
 			var d = get_animation_direction(last_direction)
 			$player.play(d+"_resting")
-
 
 
 func _process(delta):
@@ -157,51 +179,53 @@ func _process(delta):
 			speed = 30
 		animate(direction)
 		
+
 #		get_node("./Attack Area/Weapon Swipe").look_at(get_global_mouse_position())
+		if Input.is_action_just_pressed("Special Attack") and not attacking:
+			# Get the currently selected special weapon
+			# Ex. Fireball, bow
+			# Basically anything that isn't the sword and shoots "something"
+			if mana > 0 and can_use_fireball:
+				for i in range(5):
+					mana -= 1
+					get_node("../Health N Mana/Bars/Mana").value = mana
+					yield(VisualServer, 'frame_pre_draw')
+				var new_fireball = fireball.instance()
+				get_tree().get_root().add_child(new_fireball)
+				new_fireball.attack(position)
+				can_regen_mana = false
+				can_use_fireball = false
+				mana_regen_cooldown.set_wait_time(5)
+				mana_regen_cooldown.start()
+				fireball_cooldown.set_wait_time(1)
+				fireball_cooldown.start()
+				
+
 
 		if Input.is_action_just_pressed("Attack") and not attacking:
-			
-#			get_node("Attack Area/Weapon Swipe").disabled = false
+#			print_debug("Ryan fix combat")
+#
+			get_node("Sword/Sword Collision/Sword Shape").disabled = false
 			attacking = true
-			print("attacking")
-			var _temp = get_global_mouse_position()-position
-			var d = get_animation_direction(_temp)
+#			print("attacking")
+			#var _temp = get_global_mouse_position()-position
+			var d = get_animation_direction(last_direction)
 
-			$"player/Sword area/Sword Collision".disabled = false
-			
-			if d == "down":
-				$"player/Sword area".rotation_degrees = 0
-			elif d == "right":
-				$"player/Sword area".rotation_degrees = -90
-			elif d == "up":
-				$"player/Sword area".rotation_degrees = 180
-			elif d == "left":
-				$"player/Sword area".rotation_degrees = 90
-			
+			get_node("Sword Swipe").current_animation = "Attack " + d	
+
 			$player.play("attack_"+d)
-
+#
 			var a = AudioStreamPlayer2D.new()
 			a.bus = "Sound Effects"
-#			print(a)
 			add_child(a)
 			a.stop()
-#			print("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
 			a.stream = load("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
-#			print(a.stream)
 			a.play()
 			yield(a, "finished")
-			
-			velocity += _temp.normalized()*200
+
 			yield($player, "animation_finished")
-			last_direction = _temp
-			
-#			get_node("Attack Area/Weapon Swipe/Weapon").modulate.a = 1			
-			print("attack finished")
-#			get_node("Attack Area/Weapon Swipe").disabled = true
+			get_node("Sword/Sword Collision/Sword Shape").disabled = true
 			attacking = false
-			
-			$"player/Sword area/Sword Collision".disabled = true
-			
 			
 		
 	if velocity.length() > 0:

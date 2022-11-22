@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/caymom.png-45a046ff7f6977038c33beb69dd2134f.stex"
+path="res://.import/buttonui.png-71d2c882fc608fa1a6b41ad3eba345c1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/caymom.png"
-dest_files=[ "res://.import/caymom.png-45a046ff7f6977038c33beb69dd2134f.stex" ]
+source_file="res://Assets/buttonui.png"
+dest_files=[ "res://.import/buttonui.png-71d2c882fc608fa1a6b41ad3eba345c1.stex" ]
 
 [params]
 

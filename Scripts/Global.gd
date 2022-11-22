@@ -9,6 +9,10 @@ var camera_zoom = 1.5
 var sound_effect_volume = 100
 var music_volume = 100
 var master_volume = 100
+var full_screen = false
+onready var master_bus = AudioServer.get_bus_index("Master")
+onready var music_bus = AudioServer.get_bus_index("Music")
+onready var sound_effect_bus = AudioServer.get_bus_index("Sound Effects")
 
 var data = { # Empty for now, future data can be added
 	"Inventory": [],
@@ -17,6 +21,9 @@ var data = { # Empty for now, future data can be added
 }
 
 var save_password = "b5^E%2fZJkX%ho&d&^"
+
+func map(val, in_min, in_max, out_min, out_max):
+	return (val - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
 func save_game(): # I dont think its manditory to encrypt the settings file... so settings will remain unencrypted
 	var save_file = File.new()
@@ -28,6 +35,7 @@ func save_game(): # I dont think its manditory to encrypt the settings file... s
 	save_file.store_line(str(sound_effect_volume))
 	save_file.store_line(str(music_volume))
 	save_file.store_line(str(master_volume))
+	save_file.store_line(str(full_screen))
 	save_file.store_var(data)
 	save_file.close()
 	return "Saved"
@@ -48,11 +56,31 @@ func load_game():
 	sound_effect_volume = int(save_file.get_line())
 	music_volume = int(save_file.get_line())
 	master_volume = int(save_file.get_line())
+	full_screen = true if save_file.get_line() == "True" else false
 	data = save_file.get_var()
 	save_file.close()
+	set_sound()
+	
 	return "Loaded"
 	
-
+func set_sound():
+	if master_volume == 0:
+		AudioServer.set_bus_mute(master_bus, true)
+	else:
+		AudioServer.set_bus_mute(master_bus, false)
+		AudioServer.set_bus_volume_db(master_bus, map(master_volume, 0, 100, -20, 0))
+		
+	if music_volume == 0:
+		AudioServer.set_bus_mute(music_bus, true)
+	else:
+		AudioServer.set_bus_mute(music_bus, false)
+		AudioServer.set_bus_volume_db(music_bus, map(music_volume, 0, 100, -20, 0))
+		
+	if sound_effect_volume == 0:
+		AudioServer.set_bus_mute(sound_effect_bus, true)
+	else:
+		AudioServer.set_bus_mute(sound_effect_bus, false)
+		AudioServer.set_bus_volume_db(sound_effect_bus, map(sound_effect_volume, 0, 100, -20, 0))
 # Vectors define the points the NPC should walk to
 # Integers define pauses between the points (in seconds)
 
@@ -105,7 +133,11 @@ func _ready():
 	load_game()
 	HOUR = data["Hour"]
 	MINUTES = data["Minute"]
-	print(HOUR, " ", MINUTES)
+	print(Global.full_screen)
+	if Global.full_screen:
+		OS.window_fullscreen = true
+	else:
+		OS.window_fullscreen = false
 	minute_timer = Timer.new()
 	add_child(minute_timer)
 	minute_timer.connect("timeout", self, "_increment_clock")

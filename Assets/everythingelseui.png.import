@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/everythingelseui.png-dd0ffee725069f769eea064bb17ae375.stex"
+path="res://.import/everythingelseui.png-84fa4e958c02b2fa5bba035853e27cdc.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/everythingelseui.png"
-dest_files=[ "res://.import/everythingelseui.png-dd0ffee725069f769eea064bb17ae375.stex" ]
+dest_files=[ "res://.import/everythingelseui.png-84fa4e958c02b2fa5bba035853e27cdc.stex" ]
 
 [params]
 

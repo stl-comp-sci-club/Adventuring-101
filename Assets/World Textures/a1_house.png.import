@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/inventoryslot filled.png-604d7126e99a84787ac9ecdcc20de58d.stex"
+path="res://.import/a1_house.png-63ab4fde0779ea482203d7f978a863a1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/inventoryslot filled.png"
-dest_files=[ "res://.import/inventoryslot filled.png-604d7126e99a84787ac9ecdcc20de58d.stex" ]
+source_file="res://Assets/World Textures/a1_house.png"
+dest_files=[ "res://.import/a1_house.png-63ab4fde0779ea482203d7f978a863a1.stex" ]
 
 [params]
 

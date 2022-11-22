@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/inventory no slots.png-85485b54a750bae344e7d83e57c13651.stex"
+path="res://.import/inventory no slots.png-a5b7b9a535cf84a794fc9fdb73ce16d8.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/inventory/inventory no slots.png"
-dest_files=[ "res://.import/inventory no slots.png-85485b54a750bae344e7d83e57c13651.stex" ]
+dest_files=[ "res://.import/inventory no slots.png-a5b7b9a535cf84a794fc9fdb73ce16d8.stex" ]
 
 [params]
 

@@ -1,4 +1,4 @@
-extends CanvasLayer
+	extends CanvasLayer
 
 
 # Declare member variables here. Examples:
@@ -19,8 +19,9 @@ func map(val, in_min, in_max, out_min, out_max):
 
 # Called when the node enters the scene tree for the first time.
 func show():
+	print(Global.camera_zoom)
 	$"Popup/ScrollContainer/Scroll background/Camera Zoom/Zoom Value".text = str(map(Global.camera_zoom, 1.5, 3, 3, 1.5)) + "x"
-	$"Popup/ScrollContainer/Scroll background/Camera Zoom/Camera Zoom Slider".value = Global.camera_zoom
+	$"Popup/ScrollContainer/Scroll background/Camera Zoom/Camera Zoom Slider".value = map(Global.camera_zoom, 1.5, 3, 3, 1.5)
 	
 	$"Popup/ScrollContainer/Scroll background/Master/Master Volume Value".text = str(Global.master_volume) + "%"
 	$"Popup/ScrollContainer/Scroll background/Master/Master Slider".value = Global.master_volume
@@ -31,12 +32,15 @@ func show():
 	$"Popup/ScrollContainer/Scroll background/Sound Effects/Sound Effect Value".text = str(Global.sound_effect_volume) + "x"
 	$"Popup/ScrollContainer/Scroll background/Sound Effects/Sound Effect Slider".value = Global.sound_effect_volume
 
+	$"Popup/ScrollContainer/Scroll background/Fullscreen Toggle/Fullscreen Toggle".pressed = Global.full_screen
+	$"Popup/ScrollContainer/Scroll background/Fullscreen Toggle/Fullscreen Value".text = "On" if Global.full_screen else "Off"
+
 	$Popup.popup()
 
 
 func _on_Camera_Zoom_Slider_value_changed(value):
-	Global.camera_zoom = value
-	$"Popup/ScrollContainer/Scroll background/Camera Zoom/Zoom Value".text = str(map(value, 1.5, 3, 3, 1.5))+"x"
+	Global.camera_zoom = map(value, 1.5, 3, 3, 1.5)
+	$"Popup/ScrollContainer/Scroll background/Camera Zoom/Zoom Value".text = str(value)+"x"
 
 
 func _on_Sound_Effect_Slider_value_changed(value):
@@ -75,3 +79,11 @@ func _on_Back_button_up():
 #	get_tree().change_scene("res://Scenes/Main Menu.tscn")
 
 
+func _on_Fullscreen_Toggle_button_up():
+	Global.full_screen = !Global.full_screen
+	$"Popup/ScrollContainer/Scroll background/Fullscreen Toggle/Fullscreen Value".text = "On" if Global.full_screen else "Off"
+	if Global.full_screen:
+		OS.window_fullscreen = true
+	else:
+		OS.window_fullscreen = false
+	

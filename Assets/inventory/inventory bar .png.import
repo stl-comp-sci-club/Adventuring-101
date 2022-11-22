@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/inventory bar .png-f347761faa7e35321263e5419dcae852.stex"
+path="res://.import/inventory bar .png-056d6ece498fcbdd2ef8481e09cc58eb.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/inventory/inventory bar .png"
-dest_files=[ "res://.import/inventory bar .png-f347761faa7e35321263e5419dcae852.stex" ]
+dest_files=[ "res://.import/inventory bar .png-056d6ece498fcbdd2ef8481e09cc58eb.stex" ]
 
 [params]
 

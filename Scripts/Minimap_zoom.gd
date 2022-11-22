@@ -22,8 +22,8 @@ func map():
 			border.scale.x = 0.75
 			border.scale.y = 0.75
 			
-			border.position.x = get_viewport().size.x / 4
-			border.position.y = get_viewport().size.y / 4
+			border.position.x = get_viewport().get_visible_rect().size.x / 2
+			border.position.y = get_viewport().get_visible_rect().size.y / 2
 			zoomed = !zoomed
 			
 			head.scale.x = 5

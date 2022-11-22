@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cayattacksheet.png-c8372244ffa9b1cf92d1c1037d24e07d.stex"
+path="res://.import/tree.png-9c4af8301ec2a8fb5966d597e918d5c5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/cayattacksheet.png"
-dest_files=[ "res://.import/cayattacksheet.png-c8372244ffa9b1cf92d1c1037d24e07d.stex" ]
+source_file="res://Assets/World Textures/tree.png"
+dest_files=[ "res://.import/tree.png-9c4af8301ec2a8fb5966d597e918d5c5.stex" ]
 
 [params]
 
