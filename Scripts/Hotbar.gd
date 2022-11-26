@@ -18,7 +18,7 @@ func _ready():
 func initialize_hotbar():
 	for i in range(slots.size()):
 		if PlayerInventory.hotbar.has(i):
-			slots[i].initialize_item(PlayerInventory.hotbar[i][0], PlayerInventory.hotbar[i])
+			slots[i].initialize_item(PlayerInventory.hotbar[i][0], PlayerInventory.hotbar[i][1])
 	
 func slot_gui_input(event:InputEvent, slot:SlotClass):
 	if event is InputEventMouseButton:
