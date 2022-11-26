@@ -39,7 +39,7 @@ func refresh_style():
 	else: 
 		set('custom_style/panel', default_style)
 		
-func pickFromSlot():
+func pickFromSlot(): # Already fucked by this point
 	remove_child(item)
 	var inventoryNode = find_parent("Inventory UI")
 	inventoryNode.add_child(item)

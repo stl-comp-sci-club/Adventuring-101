@@ -7,6 +7,7 @@ var item_name
 
 var player = null
 var being_picked_up = false
+var item_quantity = 1
 
 func _ready():
 	item_name = "Health Potion"
@@ -21,7 +22,7 @@ func _physics_process(delta):
 		
 		var distance = global_position.distance_to(player.global_position)
 		if distance < 20:
-			PlayerInventory.add_item(item_name, 1)
+			PlayerInventory.add_item(item_name, item_quantity)
 			queue_free()
 	velocity = move_and_slide(velocity, Vector2.UP)
 
