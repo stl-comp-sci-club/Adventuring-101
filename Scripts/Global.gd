@@ -1,5 +1,10 @@
 extends Node
 
+var pauseMenuOpened = false
+var mapOpened = false
+var invOpened = false
+var questMenuOpened = false
+
 var scene = ""
 
 var paused = false

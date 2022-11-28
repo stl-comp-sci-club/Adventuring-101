@@ -1,3 +1,5 @@
+#this file is not used for displaying the inventory
+
 extends Node2D
 
 const SlotClass = preload("res://Scripts/Slot.gd")
@@ -43,6 +45,7 @@ func slot_gui_input(event:InputEvent, slot:SlotClass):
 func _input(event):
 	if find_parent("Inventory UI").holding_item:
 		find_parent("Inventory UI").holding_item.global_position = get_global_mouse_position()
+		
 
 func left_click_empty_slot(slot: SlotClass):
 	PlayerInventory.add_item_to_empty_slot(find_parent("Inventory UI").holding_item, slot) # breaks here

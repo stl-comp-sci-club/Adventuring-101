@@ -15,7 +15,7 @@ func _ready():
 		Global.paused = true
 
 func _input(event):
-	if not visible:
+	if not visible and !Global.invOpened and !Global.mapOpened and !Global.questMenuOpened:
 		if Input.is_action_just_pressed("ui_cancel"):
 			var d = player.get_animation_direction(player.last_direction)
 			get_node("/root/World/Player/player").play(d+"_resting")
@@ -24,6 +24,7 @@ func _input(event):
 			player.input_allowed = false
 			popup()
 			Global.paused = true
+			Global.pauseMenuOpened = true
 	elif visible:
 		if Input.is_action_just_pressed("ui_cancel"):
 #			if not already_paused:
@@ -32,6 +33,7 @@ func _input(event):
 				player.input_allowed = true
 			hide()
 			Global.paused = false
+			Global.pauseMenuOpened = false
 
 
 func _on_Resume_button_up():
