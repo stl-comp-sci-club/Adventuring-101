@@ -1,3 +1,5 @@
+#this file is not used for displaying the inventory
+
 extends Node2D
 
 const SlotClass = preload("res://Scripts/Slot.gd")
@@ -21,30 +23,32 @@ func initialize_inventory():
 	var slots = inventory_slots.get_children()
 	for i in range(slots.size()):
 		if PlayerInventory.inventory.has(i):
-			slots[i].initialize_item(PlayerInventory.inventory[i][0], PlayerInventory.inventory[i])
+			slots[i].initialize_item(PlayerInventory.inventory[i][0], PlayerInventory.inventory[i][1])
 	
 func slot_gui_input(event:InputEvent, slot:SlotClass):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT && event.pressed:
 			#currently holding an item
-			if find_parent("Inventory UI").holding_item != null:
-				if !slot.item: # place holding item to slot 
-					left_click_empty_slot(slot)
+			if find_parent("Inventory UI").holding_item != null: # temp, do not keep
+				if !slot.item: # place holding item to slot # not yet 
+					left_click_empty_slot(slot) 
 				else: #swap holding item with item in slot
 					if find_parent("Inventory UI").holding_item.item_name != slot.item.item_name:
-						left_click_different_item(event, slot)	
+						left_click_different_item(event, slot)
 					else:
 						left_click_same_item(slot)
-			elif slot.item:
+			elif slot.item != null:
+				print("picked up")
 				left_click_not_holding(slot)
 				
 # warning-ignore:unused_argument
 func _input(event):
 	if find_parent("Inventory UI").holding_item:
 		find_parent("Inventory UI").holding_item.global_position = get_global_mouse_position()
+		
 
 func left_click_empty_slot(slot: SlotClass):
-	PlayerInventory.add_item_to_empty_slot(find_parent("Inventory UI").holding_item, slot)
+	PlayerInventory.add_item_to_empty_slot(find_parent("Inventory UI").holding_item, slot) # breaks here
 	slot.putIntoSlot(find_parent("Inventory UI").holding_item)
 	find_parent("Inventory UI").holding_item = null
 
@@ -71,8 +75,8 @@ func left_click_same_item(slot: SlotClass):
 		slot.item.add_item_quantity(able_to_add)
 		find_parent("Inventory UI").holding_item.decrease_item_quantity(able_to_add)
 
-func left_click_not_holding(slot: SlotClass):
-	PlayerInventory.remove_item(slot)
-	find_parent("Inventory UI").holding_item = slot.item
-	slot.pickFromSlot()
+func left_click_not_holding(slot: SlotClass): # not culprit
+	find_parent("Inventory UI").holding_item = slot.item # already broken (slot.item is already broken)
+	PlayerInventory.remove_item(slot) 
+	slot.pickFromSlot() 
 	find_parent("Inventory UI").holding_item.global_position = get_global_mouse_position()

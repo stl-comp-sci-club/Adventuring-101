@@ -19,10 +19,16 @@ var hotbar = {
 
 var active_item_slot = 0
 
-func add_item (item_name, item_quantity):
+func _input(event): # temp, do not keep
+	if event.is_action_pressed("ui_home"):
+		print("Update " + str(inventory))
+
+func add_item(item_name, item_quantity):
+	print("Before " + str(inventory))
 	for item in inventory:
 		if inventory[item][0] == item_name:
-			var stack_size =int(JsonData.item_data[item_name]["StackSize"])
+			var stack_size = int(JsonData.item_data[item_name]["StackSize"])
+			print("item: ", item)
 			var able_to_add = stack_size - inventory[item][1]
 			if able_to_add >= item_quantity:
 				inventory[item][1] += item_quantity
@@ -32,12 +38,13 @@ func add_item (item_name, item_quantity):
 				inventory[item][1] += able_to_add
 				#update_slot_visual(item, inventory[item][0], inventory[item][1])
 				item_quantity = item_quantity - able_to_add
-			
+	
 	#item doesnt exist in inventory yet so add it to an empty slot
 	for i in range(NUM_INVENTORY_SLOTS):
 		if inventory.has(i) == false:
 			inventory[i] = [item_name, item_quantity]
 			#update_slot_visual(i, inventory[i][0], inventory[i][1])
+			print("After " + str(inventory))
 			return
 
 #func update_slot_visual(slot_index, item_name, new_quantity):
@@ -52,11 +59,15 @@ func remove_item(slot: SlotClass, is_hotbar: bool = false):
 		hotbar.erase(slot.slot_index)
 	else:
 		inventory.erase(slot.slot_index)
+	print("Item removed: " + str(inventory))
+	print("Item: " + str(slot))
 
 func add_item_to_empty_slot(item: ItemClass, slot: SlotClass, is_hotbar: bool = false):
 	if is_hotbar:
 		hotbar[slot.slot_index] = [item.item_name, item.item_quantity]
 	else:
+		print(slot.slot_index)
+		print(item.item_name, item.item_quantity)
 		inventory[slot.slot_index] = [item.item_name, item.item_quantity]
 
 func add_item_quantity(slot: SlotClass, quantity_to_add: int, is_hotbar: bool = false):

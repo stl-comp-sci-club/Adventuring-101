@@ -15,9 +15,12 @@ func map():
 		if !zoomed:
 			var d = player.get_animation_direction(player.last_direction)
 			get_node("/root/World/Player/player").play(d+"_resting")
-	#		get_tree().paused = true
-	#		player.input_allowed = false
-	#		Global.paused = true
+			#pause
+			#get_tree().paused = true
+			#player.input_allowed = false
+			#Global.paused = true
+			
+			Global.mapOpened = true
 			
 			border.scale.x = 0.75
 			border.scale.y = 0.75
@@ -30,9 +33,11 @@ func map():
 			head.scale.y = 5
 			
 		else:
-	#		get_tree().paused = false
-	#		player.input_allowed = true
-	#		Global.paused = false
+			#unpause
+			#get_tree().paused = false
+			#player.input_allowed = true
+			#Global.paused = false
+			Global.mapOpened = false
 			
 			border.scale.x = 0.225
 			border.scale.y = 0.225
@@ -48,5 +53,5 @@ func _on_Map_Button_button_up():
 	map()
 	
 func _input(ev):
-	if Input.is_action_just_pressed("Map"):
+	if Input.is_action_just_pressed("Map") and !Global.pauseMenuOpened and !Global.invOpened and !Global.questMenuOpened:
 		map()
