@@ -4,10 +4,6 @@ var default_tex = preload("res://Assets/inventory/inventoryslot.png")
 var empty_tex = preload("res://Assets/inventory/inventoryslot.png")
 var selected_tex = preload("res://Assets/inventory/slotfilled.png")
 
-var default_style: StyleBoxTexture = null
-var empty_style: StyleBoxTexture = null
-var selected_style: StyleBoxTexture = null
-
 var ItemClass = preload("res://Scenes/Item.tscn")
 var item = null
 var slot_index
@@ -19,27 +15,17 @@ enum SlotType {
 }
 
 func _ready():
-	default_style = StyleBoxTexture.new()
-	empty_style = StyleBoxTexture.new()
-	selected_style = StyleBoxTexture.new()
-	default_style.texture = default_tex
-	empty_style.texture = empty_tex
-	selected_style.texture = selected_tex
-	
-	#if randi() % 2 == 0:
-	#	item = ItemClass.instance()
-	#	add_child(item)
 	refresh_style()
 	
 func refresh_style():
 	if SlotType.HOTBAR == slot_type and  PlayerInventory.active_item_slot == slot_index:
-		set('custom_style/panel', selected_style)
+		get_stylebox("panel", "").set_texture(selected_tex)
 	elif item == null:
-		set('custom_style/panel', empty_style)
+		get_stylebox("panel", "").set_texture(empty_tex)
 	else: 
-		set('custom_style/panel', default_style)
+		get_stylebox("panel", "").set_texture(default_tex)
 		
-func pickFromSlot(): # Already fucked by this point
+func pickFromSlot():
 	remove_child(item)
 	var inventoryNode = find_parent("Inventory UI")
 	inventoryNode.add_child(item)

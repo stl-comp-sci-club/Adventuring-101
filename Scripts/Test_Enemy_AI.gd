@@ -15,8 +15,16 @@ var rng = RandomNumberGenerator.new()
 var stunned = false
 var alerted = false
 
+var attack_timer = null
+var on_attack_cooldown = false
+
 func _ready():
 	rng.randomize()
+
+	attack_timer = Timer.new()
+	add_child(attack_timer)
+	attack_timer.connect("timeout", self, "attack_cool_down")
+	
 
 #func _input(event):
 #	if Input.is_action_just_pressed("Interact"):
@@ -25,10 +33,13 @@ func _ready():
 
 func take_damage(damage: int):
 	health -= damage
-	
+
+
+func attack_cool_down():
+	on_attack_cooldown = false
 
 var velocity = Vector2.ZERO
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	if player.position.y > position.y:
 		get_node(".").z_index = 0
@@ -48,9 +59,17 @@ func _process(delta):
 		move_and_slide(velocity)
 		for i in get_slide_count():
 			var collision = get_slide_collision(i)
-			if(collision.get_collider().name == "Player"):
-				collision.get_collider().stunned = true;
-				collision.get_collider().health -= rng.randf_range(0.0, 5.0)
+			var collider = collision.get_collider()
+			if (collider.name == "Player") and not on_attack_cooldown:
+				collider.stunned = true;
+				collider.health -= rng.randf_range(0.0, 5.0)
+				collider.can_regen_health = false
+				collider.health_regen_cooldown.start(2)
+				on_attack_cooldown = true
+				attack_timer.start(0.3)
+
+
+
 	elif stunned:
 		velocity = position.direction_to(player.position) * -1
 		velocity *= 500
@@ -79,6 +98,7 @@ func hit():
 		a.bus = "Sound Effects"
 		add_child(a)
 		a.stop()
+		a.volume_db = 10
 		a.stream = load("res://Sounds/Effects/die.wav")
 		a.play()
 		return

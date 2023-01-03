@@ -30,7 +30,7 @@ var save_password = "b5^E%2fZJkX%ho&d&^"
 func map(val, in_min, in_max, out_min, out_max):
 	return (val - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
-func save_game(): # I dont think its manditory to encrypt the settings file... so settings will remain unencrypted
+func save_game():
 	var save_file = File.new()
 	var status = save_file.open_encrypted_with_pass("user://save.dat", File.WRITE, save_password)
 	if status != OK:
@@ -57,12 +57,17 @@ func load_game():
 	if status != OK:
 		print_debug("Save file failed to load")
 		return "Error"
+		
+	
 	camera_zoom = float(save_file.get_line())
 	sound_effect_volume = int(save_file.get_line())
 	music_volume = int(save_file.get_line())
 	master_volume = int(save_file.get_line())
 	full_screen = true if save_file.get_line() == "True" else false
 	data = save_file.get_var()
+	
+	
+
 	save_file.close()
 	set_sound()
 	
@@ -111,6 +116,7 @@ var NPC_paths = {"Elijah": [Vector2(0,0), 1, Vector2(-906, 713), 3, Vector2(0,0)
 # false means npc is not inside their house
 
 var NPC_houses = {"Elijah": false, "Elijah2": false, "Elijah3": false, "Elijah4": false}
+var NPC_house_positions = {"Elijah": Vector2(400, -1801), "Blacksmith": Vector2()}
 
 var main_quests = []
 var side_quests = []
@@ -135,10 +141,16 @@ func _notification(what):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_game()
+	var load_status = load_game()
+	if load_status == "Error" or data == null  or data["Hour"] == null or data["Minute"] == null:
+		print_debug("Corrupted save file!!")
+		var save_dir = Directory.new()
+		save_dir.open("user://")
+		save_dir.remove("save.dat")
+		save_game()
+
 	HOUR = data["Hour"]
 	MINUTES = data["Minute"]
-	print(Global.full_screen)
 	if Global.full_screen:
 		OS.window_fullscreen = true
 	else:

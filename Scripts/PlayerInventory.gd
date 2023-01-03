@@ -9,7 +9,8 @@ const NUM_HOTBAR_SLOTS = 9
 
 var inventory = {
 	0: ["Iron Sword", 1], #--> slot_index: [item_name, item_quantity]
-	1: ["Iron Sword", 1] #--> slot_index: [item_name, item_quantity]
+	1: ["Iron Sword", 1], #--> slot_index: [item_name, item_quantity]
+	20: ["Magic Wand", 1], #--> slot_index: [item_name, item_quantity]
 }
 
 var hotbar = {
@@ -21,7 +22,50 @@ var active_item_slot = 0
 
 func _input(event): # temp, do not keep
 	if event.is_action_pressed("ui_home"):
-		print("Update " + str(inventory))
+		print("Update " + str(hotbar))
+
+	if event is InputEventKey and event.is_pressed():
+		match event.scancode:
+			KEY_1:
+				if active_item_slot != 0:
+					active_item_slot = 0
+					emit_signal("active_item_updated")
+			KEY_2:
+				if active_item_slot != 1:
+					active_item_slot = 1
+					emit_signal("active_item_updated")
+			KEY_3:
+				if active_item_slot != 2:
+					active_item_slot = 2
+					emit_signal("active_item_updated")
+			KEY_4:
+				if active_item_slot != 3:
+					active_item_slot = 3
+					emit_signal("active_item_updated")
+			KEY_5:
+				if active_item_slot != 4:
+					active_item_slot = 4
+					emit_signal("active_item_updated")
+			KEY_6:
+				if active_item_slot != 5:
+					active_item_slot = 5
+					emit_signal("active_item_updated")
+			KEY_7:
+				if active_item_slot != 6:
+					active_item_slot = 6
+					emit_signal("active_item_updated")
+			KEY_8:
+				if active_item_slot != 7:
+					active_item_slot = 7
+					emit_signal("active_item_updated")
+			KEY_9:
+				if active_item_slot != 8:
+					active_item_slot = 8
+					emit_signal("active_item_updated")
+	
+
+
+
 
 func add_item(item_name, item_quantity):
 	print("Before " + str(inventory))
@@ -53,7 +97,9 @@ func add_item(item_name, item_quantity):
 	#	slot.item.set_item(item_name, new_quantity)
 	#else:
 	#	slot.initalize_item(item_name, new_quantity) 
-	
+
+
+
 func remove_item(slot: SlotClass, is_hotbar: bool = false):
 	if is_hotbar:
 		hotbar.erase(slot.slot_index)
@@ -75,6 +121,13 @@ func add_item_quantity(slot: SlotClass, quantity_to_add: int, is_hotbar: bool = 
 		hotbar[slot.slot_index][1] += quantity_to_add
 	else:
 		inventory[slot.slot_index][1] += quantity_to_add
+
+func remove_item_quantity(slot: SlotClass, quantity_to_remove: int, is_hotbar: bool = false):
+	if is_hotbar:
+		hotbar[slot.slot_index][1] -= quantity_to_remove
+	else:
+		inventory[slot.slot_index][1] -= quantity_to_remove
+		
 
 func active_item_scroll_up():
 	active_item_slot = (active_item_slot + 1) % NUM_HOTBAR_SLOTS

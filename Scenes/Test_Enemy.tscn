@@ -5,65 +5,21 @@
 [ext_resource path="res://Assets/TemporaryTextures/tets2.png" type="Texture" id=3]
 [ext_resource path="res://Assets/TemporaryTextures/tets.png" type="Texture" id=4]
 
-[sub_resource type="AtlasTexture" id=40]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 60, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=41]
-atlas = ExtResource( 1 )
-region = Rect2( 23, 60, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=42]
-atlas = ExtResource( 1 )
-region = Rect2( 46, 60, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=43]
-atlas = ExtResource( 1 )
-region = Rect2( 69, 60, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=36]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 120, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=37]
-atlas = ExtResource( 1 )
-region = Rect2( 23, 120, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=38]
-atlas = ExtResource( 1 )
-region = Rect2( 46, 120, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=39]
-atlas = ExtResource( 1 )
-region = Rect2( 69, 120, 23, 60 )
-
 [sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 1 )
 region = Rect2( 69, 0, 23, 60 )
 
-[sub_resource type="AtlasTexture" id=31]
+[sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 1 )
-region = Rect2( 69, 180, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 180, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 1 )
-region = Rect2( 23, 180, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 1 )
-region = Rect2( 46, 180, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=47]
-atlas = ExtResource( 1 )
-region = Rect2( 69, 180, 23, 60 )
+region = Rect2( 69, 120, 23, 60 )
 
 [sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 1 )
 region = Rect2( 69, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 1 )
+region = Rect2( 69, 180, 23, 60 )
 
 [sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 1 )
@@ -81,25 +37,69 @@ region = Rect2( 46, 0, 23, 60 )
 atlas = ExtResource( 1 )
 region = Rect2( 69, 0, 23, 60 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 120, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 1 )
+region = Rect2( 23, 120, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 1 )
+region = Rect2( 46, 120, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 1 )
 region = Rect2( 69, 120, 23, 60 )
 
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 1 )
+region = Rect2( 23, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 1 )
+region = Rect2( 46, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 1 )
+region = Rect2( 69, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 1 )
+region = Rect2( 23, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 1 )
+region = Rect2( 46, 180, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 1 )
+region = Rect2( 69, 180, 23, 60 )
+
 [sub_resource type="SpriteFrames" id=27]
 animations = [ {
-"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 7.0
-}, {
-"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 7.0
-}, {
 "frames": [ SubResource( 28 ) ],
 "loop": true,
 "name": "down_resting",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 29 ) ],
+"loop": true,
+"name": "left_resting",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 30 ) ],
+"loop": true,
+"name": "right_resting",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 31 ) ],
@@ -107,25 +107,25 @@ animations = [ {
 "name": "up_resting",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 7.0
-}, {
-"frames": [ SubResource( 30 ) ],
-"loop": true,
-"name": "right_resting",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ],
 "loop": true,
 "name": "walk_down",
 "speed": 7.0
 }, {
-"frames": [ SubResource( 29 ) ],
+"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
 "loop": true,
-"name": "left_resting",
-"speed": 5.0
+"name": "walk_left",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 7.0
 } ]
 
 [sub_resource type="ParticlesMaterial" id=48]
@@ -155,6 +155,7 @@ extents = Vector2( 12.5, 24 )
 script = ExtResource( 2 )
 
 [node name="enemy" type="AnimatedSprite" parent="."]
+scale = Vector2( 1.03752, 1.01875 )
 frames = SubResource( 27 )
 animation = "down_resting"
 

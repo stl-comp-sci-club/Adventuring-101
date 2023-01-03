@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
-const ACCELERATION = 1000
-const MAX_SPEED = 1500
+const ACCELERATION = 5000
+const MAX_SPEED = 2000
 var velocity = Vector2.ZERO
 var item_name
 
-var player = null
+onready var player : KinematicBody2D = get_node("/root/World/Player")
 var being_picked_up = false
 var item_quantity = 1
 
@@ -15,7 +15,7 @@ func _ready():
  
 func _physics_process(delta):
 	if being_picked_up == false:
-		velocity = velocity.move_toward(Vector2(0,MAX_SPEED), ACCELERATION * 0)
+		velocity = Vector2.ZERO
 	else:
 		var direction = global_position.direction_to(player.global_position)
 		velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
