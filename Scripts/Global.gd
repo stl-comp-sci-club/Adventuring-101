@@ -43,6 +43,7 @@ func save_game():
 	save_file.store_line(str(music_volume))
 	save_file.store_line(str(master_volume))
 	save_file.store_line(str(full_screen))
+	save_file.store_line(str(auto_pickup))
 	save_file.store_var(data)
 	save_file.close()
 	return "Saved"
@@ -66,6 +67,7 @@ func load_game():
 	music_volume = int(save_file.get_line())
 	master_volume = int(save_file.get_line())
 	full_screen = true if save_file.get_line() == "True" else false
+	auto_pickup = true if save_file.get_line() == "True" else false
 	data = save_file.get_var()
 	
 	
@@ -144,12 +146,19 @@ func _notification(what):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var load_status = load_game()
-	if load_status == "Error" or data == null  or data["Hour"] == null or data["Minute"] == null:
+	if load_status == "Error" or data == null or data.has("Hour") == false or data.has("Minute") == false:
 		print_debug("Corrupted save file!!")
-		var save_dir = Directory.new()
-		save_dir.open("user://")
-		save_dir.remove("save.dat")
-		save_game()
+		OS.move_to_trash(ProjectSettings.globalize_path("user://save.dat"))
+		print_debug("Please restart game to create new save file")
+		get_tree().quit()
+		return
+		# print("Attempting to reset to default save file")
+		# var status = load_game()
+		# if status == "Error":
+		# 	print("Failed to reset save file, bailing out")
+		# 	get_tree().quit()
+		# else:
+		# 	print("Reset save file")
 
 	HOUR = data["Hour"]
 	MINUTES = data["Minute"]

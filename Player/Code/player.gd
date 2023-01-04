@@ -245,7 +245,7 @@ func _process(delta):
 						PlayerInventory.hotbar[PlayerInventory.active_item_slot][1] -= 1
 
 		if Input.is_action_just_pressed("Attack"):
-			if current_item == "Iron Sword":
+			if (current_item == "Iron Sword") and (get_node("Sword/Sword Collision/Sword Shape").disabled == true):
 				get_node("Sword/Sword Collision/Sword Shape").disabled = false
 				attacking = true
 				var d = get_animation_direction(last_direction)
