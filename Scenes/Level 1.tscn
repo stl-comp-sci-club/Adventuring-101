@@ -309,7 +309,7 @@ shape = SubResource( 28 )
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Light2D" type="Light2D" parent="Fountain"]
@@ -687,6 +687,7 @@ position = Vector2( -112.5, 13 )
 shape = SubResource( 67 )
 
 [node name="Inventory UI" parent="." instance=ExtResource( 24 )]
+layer = 0
 
 [node name="Interact Menu" parent="." instance=ExtResource( 10 )]
 layer = 0
