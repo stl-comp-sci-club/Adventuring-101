@@ -213,6 +213,39 @@ margin_bottom = 195.0
 focus_mode = 0
 enabled_focus_mode = 0
 
+[node name="Auto Pickup Toggle" type="Control" parent="Popup/ScrollContainer/Scroll background"]
+margin_left = -40.0
+margin_top = 131.0
+margin_right = -40.0
+margin_bottom = 131.0
+
+[node name="Auto Pickup Label" type="Label" parent="Popup/ScrollContainer/Scroll background/Auto Pickup Toggle"]
+margin_left = 64.0
+margin_top = 156.0
+margin_right = 199.0
+margin_bottom = 177.0
+rect_pivot_offset = Vector2( 68, 11 )
+custom_fonts/font = SubResource( 3 )
+text = "Auto-Pickup"
+
+[node name="Auto Pickup Value" type="Label" parent="Popup/ScrollContainer/Scroll background/Auto Pickup Toggle"]
+margin_left = 32.0
+margin_top = 172.0
+margin_right = 167.0
+margin_bottom = 193.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 68, 11 )
+custom_fonts/font = SubResource( 4 )
+text = "Off"
+
+[node name="Auto Pickup Toggle" type="CheckBox" parent="Popup/ScrollContainer/Scroll background/Auto Pickup Toggle"]
+margin_left = 83.0
+margin_top = 171.0
+margin_right = 107.0
+margin_bottom = 195.0
+focus_mode = 0
+enabled_focus_mode = 0
+
 [node name="Camera Zoom" type="Control" parent="Popup/ScrollContainer/Scroll background"]
 margin_left = -40.0
 margin_top = 24.0
@@ -265,4 +298,5 @@ text = "Future Settings can be added here"
 [connection signal="value_changed" from="Popup/ScrollContainer/Scroll background/Music/Music Slider" to="." method="_on_Music_Slider_value_changed"]
 [connection signal="value_changed" from="Popup/ScrollContainer/Scroll background/Sound Effects/Sound Effect Slider" to="." method="_on_Sound_Effect_Slider_value_changed"]
 [connection signal="button_up" from="Popup/ScrollContainer/Scroll background/Fullscreen Toggle/Fullscreen Toggle" to="." method="_on_Fullscreen_Toggle_button_up"]
+[connection signal="button_up" from="Popup/ScrollContainer/Scroll background/Auto Pickup Toggle/Auto Pickup Toggle" to="." method="_on_Auto_Pickup_Toggle_button_up"]
 [connection signal="value_changed" from="Popup/ScrollContainer/Scroll background/Camera Zoom/Camera Zoom Slider" to="." method="_on_Camera_Zoom_Slider_value_changed"]

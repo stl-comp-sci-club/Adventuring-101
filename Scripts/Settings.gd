@@ -1,4 +1,4 @@
-	extends CanvasLayer
+extends CanvasLayer
 
 
 # Declare member variables here. Examples:
@@ -34,6 +34,10 @@ func show():
 
 	$"Popup/ScrollContainer/Scroll background/Fullscreen Toggle/Fullscreen Toggle".pressed = Global.full_screen
 	$"Popup/ScrollContainer/Scroll background/Fullscreen Toggle/Fullscreen Value".text = "On" if Global.full_screen else "Off"
+
+	$"Popup/ScrollContainer/Scroll background/Auto Pickup Toggle/Auto Pickup Toggle".pressed = Global.auto_pickup
+	$"Popup/ScrollContainer/Scroll background/Auto Pickup Toggle/Auto Pickup Value".text = "On" if Global.auto_pickup else "Off"
+
 
 	$Popup.popup()
 
@@ -87,3 +91,7 @@ func _on_Fullscreen_Toggle_button_up():
 	else:
 		OS.window_fullscreen = false
 	
+
+
+func _on_Auto_Pickup_Toggle_button_up():
+	Global.auto_pickup = !Global.auto_pickup

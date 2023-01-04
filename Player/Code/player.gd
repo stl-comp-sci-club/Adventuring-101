@@ -236,12 +236,15 @@ func _process(delta):
 					get_node("../Health N Mana/Bars/Health").value = health
 
 				if PlayerInventory.hotbar[PlayerInventory.active_item_slot][1] == 1: # broken
-					PlayerInventory.hotbar.erase(PlayerInventory.active_item_slot)
+					# PlayerInventory.hotbar.erase(PlayerInventory.active_item_slot)
+					PlayerInventory.hotbar[PlayerInventory.active_item_slot][1] = 0
+					
+					# PlayerHotbar.slots[PlayerInventory.active_item_slot] = null
 					
 
 				elif PlayerInventory.hotbar[PlayerInventory.active_item_slot][1] > 1:
 					PlayerInventory.hotbar[PlayerInventory.active_item_slot][1] -= 1
-			
+					# PlayerHotbar.slots[PlayerInventory.active_item_slot].get_item().decrease_item_quantity(1)
 
 			print(health)
 
@@ -267,6 +270,12 @@ func _process(delta):
 			attacking = false
 			
 		
+		if Global.auto_pickup:
+			if $PickUpZone.items_in_range.size() > 0:
+				var pickup_item = $PickUpZone.items_in_range.values()[0]
+				pickup_item.pick_up_item(player)
+				$PickUpZone.items_in_range.erase(pickup_item)
+
 	if velocity.length() > 0:
 		velocity *= 0.8
 		

@@ -20,7 +20,7 @@ var item_quantity:int
 	# 	$Label.visible = false 
 	# else:
 	# 	$Label.text = String(item_quantity)
-		
+
 func set_item(nm, qt):
 	item_name = nm
 	item_quantity = qt

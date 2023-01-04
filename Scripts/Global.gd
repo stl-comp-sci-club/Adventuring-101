@@ -15,6 +15,8 @@ var sound_effect_volume = 100
 var music_volume = 100
 var master_volume = 100
 var full_screen = false
+var auto_pickup = true
+
 onready var master_bus = AudioServer.get_bus_index("Master")
 onready var music_bus = AudioServer.get_bus_index("Music")
 onready var sound_effect_bus = AudioServer.get_bus_index("Sound Effects")

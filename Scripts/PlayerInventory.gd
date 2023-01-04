@@ -65,8 +65,6 @@ func _input(event): # temp, do not keep
 	
 
 
-
-
 func add_item(item_name, item_quantity):
 	print("Before " + str(inventory))
 	for item in inventory:

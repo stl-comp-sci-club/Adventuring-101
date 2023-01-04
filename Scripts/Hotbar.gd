@@ -9,7 +9,6 @@ onready var slots = hotbar.get_children()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
 	for i in range (slots.size()):
 		slots[i].connect("gui_input", self, "slot_gui_input", [slots[i]])
 		PlayerInventory.connect("active_item_updated", slots[i], "refresh_style")
@@ -21,7 +20,11 @@ func initialize_hotbar():
 	for i in range(slots.size()):
 		if PlayerInventory.hotbar.has(i):
 			slots[i].initialize_item(PlayerInventory.hotbar[i][0], PlayerInventory.hotbar[i][1])
+			if PlayerInventory.hotbar[i][1] == 0:
+				slots[i].delete()
 
+func _process(delta):
+	initialize_hotbar()
 
 func slot_gui_input(event:InputEvent, slot:SlotClass):
 	if event is InputEventMouseButton:
