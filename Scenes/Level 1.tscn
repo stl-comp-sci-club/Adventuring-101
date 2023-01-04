@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilesets/Outside.tres" type="TileSet" id=2]
@@ -23,7 +23,7 @@
 [ext_resource path="res://Scenes/Dialogue.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Scenes/HealthandMana.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Scenes/Fireball.tscn" type="PackedScene" id=23]
-[ext_resource path="res://Scenes/Hotbar.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Scenes/Inventory UI.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Player/Art/light.png" type="Texture" id=26]
 [ext_resource path="res://Scripts/DayNightCycle.gd" type="Script" id=27]
 [ext_resource path="res://NPC sprites/Elijah.png" type="Texture" id=28]
@@ -31,8 +31,6 @@
 [ext_resource path="res://Tilesets/tileset1.tres" type="TileSet" id=30]
 [ext_resource path="res://Scripts/Elijah House Door.gd" type="Script" id=31]
 [ext_resource path="res://Scenes/ItemDrop.tscn" type="PackedScene" id=32]
-[ext_resource path="res://Scenes/Inventory.tscn" type="PackedScene" id=33]
-[ext_resource path="res://Scripts/InventoryUI.gd" type="Script" id=34]
 [ext_resource path="res://Scripts/stairs.gd" type="Script" id=35]
 [ext_resource path="res://Scripts/House Exit Door.gd" type="Script" id=36]
 
@@ -226,6 +224,7 @@ extents = Vector2( 16, 17 )
 
 [node name="World" type="Node2D"]
 pause_mode = 2
+scale = Vector2( 0.999663, 0.999406 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 3258, -1909 )
@@ -310,6 +309,7 @@ shape = SubResource( 28 )
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
+frame = 1
 playing = true
 
 [node name="Light2D" type="Light2D" parent="Fountain"]
@@ -666,6 +666,16 @@ position = Vector2( 221, 160 )
 collision_layer = 4
 collision_mask = 2
 
+[node name="ItemDrop3" parent="Player Upstairs House" instance=ExtResource( 32 )]
+position = Vector2( 160.085, 161.914 )
+collision_layer = 4
+collision_mask = 2
+
+[node name="ItemDrop4" parent="Player Upstairs House" instance=ExtResource( 32 )]
+position = Vector2( 267.121, 154.91 )
+collision_layer = 4
+collision_mask = 2
+
 [node name="Down Stairs" type="Area2D" parent="Player Upstairs House"]
 process_priority = 1
 position = Vector2( 160, 84 )
@@ -676,13 +686,8 @@ script = ExtResource( 35 )
 position = Vector2( -112.5, 13 )
 shape = SubResource( 67 )
 
-[node name="Inventory UI" type="CanvasLayer" parent="."]
-script = ExtResource( 34 )
-
-[node name="Inventory" parent="Inventory UI" instance=ExtResource( 33 )]
-visible = false
-
-[node name="Hotbar" parent="Inventory UI" instance=ExtResource( 25 )]
+[node name="Inventory UI" parent="." instance=ExtResource( 24 )]
+layer = 0
 
 [node name="Interact Menu" parent="." instance=ExtResource( 10 )]
 layer = 0

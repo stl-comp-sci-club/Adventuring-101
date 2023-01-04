@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/InventoryUI.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Hotbar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Inventory.tscn" type="PackedScene" id=5]
+
+[node name="Inventory UI" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Inventory" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="Hotbar" parent="." instance=ExtResource( 4 )]

@@ -41,7 +41,7 @@ func _input(event):
 		if Global.NPC_houses[NPC_name]:
 			print("enter house of "+ NPC_name)
 			Global.scene = NPC_name+" house"
-			go_to(Vector2(400, -1801))
+			go_to(Global.NPC_house_positions[NPC_name])
 		else:
 			player.new_dialogue("You knock on the door", "")
 			player.end_dialogue("No one seems to be home...", "", 1)

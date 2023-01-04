@@ -1,7 +1,8 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Player/Code/player.gd" type="Script" id=1]
 [ext_resource path="res://Player/caywalksheet.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Item Cooldown.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/PickUpZone.gd" type="Script" id=4]
 [ext_resource path="res://Player/cayattacksheet.png" type="Texture" id=5]
 
@@ -396,5 +397,9 @@ root_node = NodePath("../Sword")
 "anims/Attack up" = SubResource( 51 )
 anims/RESET = SubResource( 52 )
 
+[node name="Item Cooldown" parent="." instance=ExtResource( 3 )]
+
+[connection signal="area_entered" from="PickUpZone" to="PickUpZone" method="_on_PickUpZone_area_entered"]
 [connection signal="body_entered" from="PickUpZone" to="PickUpZone" method="_on_PickUpZone_body_entered"]
 [connection signal="body_exited" from="PickUpZone" to="PickUpZone" method="_on_PickUpZone_body_exited"]
+[connection signal="body_shape_entered" from="PickUpZone" to="PickUpZone" method="_on_PickUpZone_body_shape_entered"]
