@@ -212,62 +212,59 @@ func _process(delta):
 			current_item = null
 
 #		get_node("./Attack Area/Weapon Swipe").look_at(get_global_mouse_position())
-		if (Input.is_action_just_pressed("Special Attack") and not attacking) and current_item == "Magic Wand":
-			if mana > 0 and can_use_fireball:
-				for i in range(5):
-					mana -= 1
-					get_node("../Health N Mana/Bars/Mana").value = mana
-					yield(VisualServer, 'frame_pre_draw')
-				var new_fireball = fireball.instance()
-				get_tree().get_root().add_child(new_fireball)
-				new_fireball.attack(position)
-				can_regen_mana = false
-				can_use_fireball = false
-				mana_regen_cooldown.start(5)
-				fireball_cooldown.start(1)
-				$"Item Cooldown".show_cooldown(1)
+		if Input.is_action_just_pressed("Special Attack"):
+			if current_item == "Magic Wand":
+				if mana > 0 and can_use_fireball:
+					for i in range(5):
+						mana -= 1
+						get_node("../Health N Mana/Bars/Mana").value = mana
+						yield(VisualServer, 'frame_pre_draw')
+					var new_fireball = fireball.instance()
+					get_tree().get_root().add_child(new_fireball)
+					new_fireball.attack(position)
+					can_regen_mana = false
+					can_use_fireball = false
+					mana_regen_cooldown.start(5)
+					fireball_cooldown.start(1)
+					$"Item Cooldown".show_cooldown(1)
 		
-		if Input.is_action_just_pressed("Special Attack") and current_item == "Health Potion":
-			if health != 100:
-				for _i in range(JsonData.item_data["Health Potion"]["AddHealth"]):
-					if health < 100:
-						health += 1
-					yield(VisualServer, 'frame_pre_draw')
-					get_node("../Health N Mana/Bars/Health").value = health
+			elif current_item == "Health Potion":
+				if health != 100:
+					for _i in range(JsonData.item_data["Health Potion"]["AddHealth"]):
+						if health < 100:
+							health += 1
+						yield(VisualServer, 'frame_pre_draw')
+						get_node("../Health N Mana/Bars/Health").value = health
 
-				if PlayerInventory.hotbar[PlayerInventory.active_item_slot][1] == 1: # broken
-					# PlayerInventory.hotbar.erase(PlayerInventory.active_item_slot)
-					PlayerInventory.hotbar[PlayerInventory.active_item_slot][1] = 0
-					
-					# PlayerHotbar.slots[PlayerInventory.active_item_slot] = null
-					
+					if PlayerInventory.hotbar[PlayerInventory.active_item_slot][1] == 1:
+						PlayerInventory.hotbar[PlayerInventory.active_item_slot][1] = 0
+						
+						
 
-				elif PlayerInventory.hotbar[PlayerInventory.active_item_slot][1] > 1:
-					PlayerInventory.hotbar[PlayerInventory.active_item_slot][1] -= 1
-					# PlayerHotbar.slots[PlayerInventory.active_item_slot].get_item().decrease_item_quantity(1)
+					elif PlayerInventory.hotbar[PlayerInventory.active_item_slot][1] > 1:
+						PlayerInventory.hotbar[PlayerInventory.active_item_slot][1] -= 1
 
-			print(health)
+		if Input.is_action_just_pressed("Attack"):
+			if current_item == "Iron Sword":
+				get_node("Sword/Sword Collision/Sword Shape").disabled = false
+				attacking = true
+				var d = get_animation_direction(last_direction)
 
-		if (Input.is_action_just_pressed("Attack") and not attacking) and current_item == "Iron Sword":
-			get_node("Sword/Sword Collision/Sword Shape").disabled = false
-			attacking = true
-			var d = get_animation_direction(last_direction)
+				get_node("Sword Swipe").current_animation = "Attack " + d	
 
-			get_node("Sword Swipe").current_animation = "Attack " + d	
+				$player.play("attack_"+d)
 
-			$player.play("attack_"+d)
+				var a = AudioStreamPlayer2D.new()
+				a.bus = "Sound Effects"
+				add_child(a)
+				a.stop()
+				a.stream = load("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
+				a.play()
+				yield(a, "finished")
 
-			var a = AudioStreamPlayer2D.new()
-			a.bus = "Sound Effects"
-			add_child(a)
-			a.stop()
-			a.stream = load("res://Sounds/Effects/swish-"+str(randi() % 3+1)+".wav")
-			a.play()
-			yield(a, "finished")
-
-			yield($player, "animation_finished")
-			get_node("Sword/Sword Collision/Sword Shape").disabled = true
-			attacking = false
+				yield($player, "animation_finished")
+				get_node("Sword/Sword Collision/Sword Shape").disabled = true
+				attacking = false
 			
 		
 		if Global.auto_pickup:
