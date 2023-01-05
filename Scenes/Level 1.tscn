@@ -309,7 +309,7 @@ shape = SubResource( 28 )
 position = Vector2( -160, 297 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 29 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Light2D" type="Light2D" parent="Fountain"]

@@ -215,18 +215,27 @@ func _process(delta):
 		if Input.is_action_just_pressed("Special Attack"):
 			if current_item == "Magic Wand":
 				if mana > 0 and can_use_fireball:
+					can_use_fireball = false
+					mana -= 5
 					for i in range(5):
-						mana -= 1
-						get_node("../Health N Mana/Bars/Mana").value = mana
+						# mana -= 1
+						get_node("../Health N Mana/Bars/Mana").value -= 1
 						yield(VisualServer, 'frame_pre_draw')
 					var new_fireball = fireball.instance()
 					get_tree().get_root().add_child(new_fireball)
 					new_fireball.attack(position)
+					var a = AudioStreamPlayer2D.new()
+					a.bus = "Sound Effects"
+					add_child(a)
+					a.stop()
+					a.stream = load("res://Sounds/Effects/fireball-"+str(randi() % 2+1)+".wav")
+					a.play()
+					
 					can_regen_mana = false
-					can_use_fireball = false
 					mana_regen_cooldown.start(5)
-					fireball_cooldown.start(1)
 					$"Item Cooldown".show_cooldown(1)
+					fireball_cooldown.start(1)
+					yield(a, "finished")
 		
 			elif current_item == "Health Potion":
 				if health != 100:
