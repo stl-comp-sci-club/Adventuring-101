@@ -113,13 +113,17 @@ func set_sound():
 # "start" re-enables the NPC
 
 # Avoid using floats cause it like breaks it
-var NPC_paths = {"Elijah": [Vector2(0,0), 1, Vector2(-906, 713), 3, Vector2(0,0), 3, Vector2(-35, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-35, -60)]], "Mom": [Vector2(272,80)], "Elijah2": [Vector2(-200,0), 1, Vector2(-906, 800), 3, Vector2(-200,0), 3, Vector2(-210, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-210, -60)]], "Elijah3": [Vector2(-400,0), 1, Vector2(-906, 900), 3, Vector2(-400,0), 3, Vector2(-387, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-387, -60)]], "Elijah4": [Vector2(-500,0), 1, Vector2(-906, 1000), 3, Vector2(-500,0), 3, Vector2(-560, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-560, -60)]]}
+var NPC_paths = {
+"Elijah": [Vector2(150, 0), 1, Vector2(-906, 713), 3, Vector2(150, 0), 3, Vector2(140, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(140, -60)]], "Mom": [Vector2(272,80)], 
+"Elijah2": [Vector2(-200, 0), 1, Vector2(-906, 800), 3, Vector2(-200,0), 3, Vector2(-210, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-210, -60)]], 
+"Elijah3": [Vector2(-550,0), 1, Vector2(-906, 900), 3, Vector2(-550,0), 3, Vector2(-560, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-560, -60)]]
+}
 
 
 # true means npc is inside their house
 # false means npc is not inside their house
 
-var NPC_houses = {"Elijah": false, "Elijah2": false, "Elijah3": false, "Elijah4": false}
+var NPC_houses = {"Elijah": false, "Elijah2": false, "Elijah3": false}
 var NPC_house_positions = {"Elijah": Vector2(400, -1801), "Blacksmith": Vector2()}
 
 var main_quests = []
@@ -148,7 +152,8 @@ func _ready():
 	var load_status = load_game()
 	if load_status == "Error" or data == null or data.has("Hour") == false or data.has("Minute") == false:
 		print_debug("Corrupted save file!!")
-		OS.move_to_trash(ProjectSettings.globalize_path("user://save.dat"))
+		var dir = Directory.new()
+		dir.remove("user://save.dat")
 		print_debug("Please restart game to create new save file")
 		get_tree().quit()
 		return

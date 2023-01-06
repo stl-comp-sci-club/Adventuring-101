@@ -62,6 +62,10 @@ radius = 30.0041
 atlas = ExtResource( 28 )
 region = Rect2( 23, 0, 23, 60 )
 
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 180, 23, 60 )
+
 [sub_resource type="AtlasTexture" id=53]
 atlas = ExtResource( 28 )
 region = Rect2( 23, 120, 23, 60 )
@@ -69,26 +73,6 @@ region = Rect2( 23, 120, 23, 60 )
 [sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 28 )
 region = Rect2( 23, 60, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=43]
-atlas = ExtResource( 28 )
-region = Rect2( 23, 180, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 28 )
-region = Rect2( 0, 0, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 28 )
-region = Rect2( 23, 0, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=47]
-atlas = ExtResource( 28 )
-region = Rect2( 46, 0, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=48]
-atlas = ExtResource( 28 )
-region = Rect2( 69, 0, 23, 60 )
 
 [sub_resource type="AtlasTexture" id=54]
 atlas = ExtResource( 28 )
@@ -106,22 +90,6 @@ region = Rect2( 46, 120, 23, 60 )
 atlas = ExtResource( 28 )
 region = Rect2( 69, 120, 23, 60 )
 
-[sub_resource type="AtlasTexture" id=49]
-atlas = ExtResource( 28 )
-region = Rect2( 0, 60, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=50]
-atlas = ExtResource( 28 )
-region = Rect2( 23, 60, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=51]
-atlas = ExtResource( 28 )
-region = Rect2( 46, 60, 23, 60 )
-
-[sub_resource type="AtlasTexture" id=52]
-atlas = ExtResource( 28 )
-region = Rect2( 69, 60, 23, 60 )
-
 [sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 28 )
 region = Rect2( 0, 180, 23, 60 )
@@ -138,11 +106,48 @@ region = Rect2( 46, 180, 23, 60 )
 atlas = ExtResource( 28 )
 region = Rect2( 69, 180, 23, 60 )
 
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 28 )
+region = Rect2( 0, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 28 )
+region = Rect2( 46, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 28 )
+region = Rect2( 69, 60, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 28 )
+region = Rect2( 0, 0, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 28 )
+region = Rect2( 23, 0, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 28 )
+region = Rect2( 46, 0, 23, 60 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 28 )
+region = Rect2( 69, 0, 23, 60 )
+
 [sub_resource type="SpriteFrames" id=58]
 animations = [ {
 "frames": [ SubResource( 44 ) ],
 "loop": true,
 "name": "down_resting",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 43 ) ],
+"loop": true,
+"name": "up_resting",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 53 ) ],
@@ -155,19 +160,14 @@ animations = [ {
 "name": "right_resting",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 43 ) ],
-"loop": true,
-"name": "up_resting",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
-"loop": true,
-"name": "walk_down",
-"speed": 7.0
-}, {
 "frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
 "loop": true,
 "name": "walk_left",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"loop": true,
+"name": "walk_up",
 "speed": 7.0
 }, {
 "frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
@@ -175,9 +175,9 @@ animations = [ {
 "name": "walk_right",
 "speed": 7.0
 }, {
-"frames": [ SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
 "loop": true,
-"name": "walk_up",
+"name": "walk_down",
 "speed": 7.0
 } ]
 
@@ -370,7 +370,7 @@ __meta__ = {
 }
 
 [node name="Elijah" type="StaticBody2D" parent="."]
-position = Vector2( 0, -13 )
+position = Vector2( 150, -10 )
 script = ExtResource( 29 )
 editor_speed = 100
 
@@ -424,7 +424,7 @@ position = Vector2( 0, 11 )
 occluder = SubResource( 69 )
 
 [node name="Elijah3" type="StaticBody2D" parent="."]
-position = Vector2( -360, -10 )
+position = Vector2( -550, -10 )
 script = ExtResource( 29 )
 editor_speed = 100
 
@@ -446,33 +446,6 @@ position = Vector2( -0.5, 19 )
 shape = SubResource( 59 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Elijah3"]
-show_behind_parent = true
-position = Vector2( 0, 11 )
-occluder = SubResource( 69 )
-
-[node name="Elijah4" type="StaticBody2D" parent="."]
-position = Vector2( -530, -10 )
-script = ExtResource( 29 )
-editor_speed = 100
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Elijah4"]
-frames = SubResource( 58 )
-animation = "down_resting"
-
-[node name="Line2D" type="Line2D" parent="Elijah4"]
-width = 0.0
-
-[node name="Area2D" type="Area2D" parent="Elijah4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Elijah4/Area2D"]
-position = Vector2( -0.5, 19 )
-shape = SubResource( 61 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Elijah4"]
-position = Vector2( -0.5, 19 )
-shape = SubResource( 59 )
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Elijah4"]
 show_behind_parent = true
 position = Vector2( 0, 11 )
 occluder = SubResource( 69 )
@@ -698,8 +671,6 @@ layer = 0
 [connection signal="body_exited" from="Elijah2/Area2D" to="Elijah2" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Elijah3/Area2D" to="Elijah3" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Elijah3/Area2D" to="Elijah3" method="_on_Area2D_body_exited"]
-[connection signal="body_entered" from="Elijah4/Area2D" to="Elijah4" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Elijah4/Area2D" to="Elijah4" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Elijah House/Door" to="Elijah House/Door" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Player Downstairs House/Up Stairs" to="Player Downstairs House/Up Stairs" method="_on_stairs_collide"]
 [connection signal="body_entered" from="Player Downstairs House/Exit Door" to="Player Downstairs House/Exit Door" method="_on_Exit_Door_body_entered"]
