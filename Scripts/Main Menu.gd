@@ -15,7 +15,7 @@ func _on_quit_button_up():
 	get_tree().quit()
 
 func _on_customize_button_up():
-	get_tree().change_scene("res://Scenes/Customize_menu.tscn")
+	get_tree().change_scene("res://Scenes/CustomizationMenu.tscn")
 
 
 func _on_Settings_button_up():

@@ -17,6 +17,30 @@ var master_volume = 100
 var full_screen = false
 var auto_pickup = true
 
+onready var body_spritesheet = {
+	0 : load("res://Player/caywalksheet.png")
+}
+
+onready var shirt_spritesheet = {
+	0 : load("res://Assets/CayClothes/Shirts/shirt-maroon.png"),
+	1 : load("res://Assets/CayClothes/Shirts/shirt-blue.png"),
+	2 : load("res://Assets/CayClothes/Shirts/shirt-steelblue.png"),
+	3 : load("res://Assets/CayClothes/Shirts/shirt-teal.png"),
+	4 : load("res://Assets/CayClothes/Shirts/shirt-lime.png"),
+	5 : load("res://Assets/CayClothes/Shirts/shirt-lightgreen.png"),
+	6 : load("res://Assets/CayClothes/Shirts/shirt-green.png"),
+	7 : load("res://Assets/CayClothes/Shirts/shirt-peach.png"),
+	8 : load("res://Assets/CayClothes/Shirts/shirt-orange.png"),
+	9 : load("res://Assets/CayClothes/Shirts/shirt-white.png"),
+	10 : load("res://Assets/CayClothes/Shirts/shirt-yellow.png"),
+	11 : load("res://Assets/CayClothes/Shirts/shirt-pink.png"),
+	12 : load("res://Assets/CayClothes/Shirts/shirt-purple.png"),
+	13 : load("res://Assets/CayClothes/Shirts/shirt-maroon.png"),
+	14 : load("res://Assets/CayClothes/Shirts/shirt-brown.png")
+}
+
+var shirt_color: int = 0
+
 onready var master_bus = AudioServer.get_bus_index("Master")
 onready var music_bus = AudioServer.get_bus_index("Music")
 onready var sound_effect_bus = AudioServer.get_bus_index("Sound Effects")
@@ -26,6 +50,7 @@ var data = { # Empty for now, future data can be added
 	"Hour": 10,
 	"Minute": 0
 }
+
 
 var save_password = "b5^E%2fZJkX%ho&d&^"
 
@@ -44,6 +69,7 @@ func save_game():
 	save_file.store_line(str(master_volume))
 	save_file.store_line(str(full_screen))
 	save_file.store_line(str(auto_pickup))
+	save_file.store_line(str(shirt_color))
 	save_file.store_var(data)
 	save_file.close()
 	return "Saved"
@@ -61,13 +87,14 @@ func load_game():
 		print_debug("Save file failed to load")
 		return "Error"
 		
-	
+
 	camera_zoom = float(save_file.get_line())
 	sound_effect_volume = int(save_file.get_line())
 	music_volume = int(save_file.get_line())
 	master_volume = int(save_file.get_line())
 	full_screen = true if save_file.get_line() == "True" else false
 	auto_pickup = true if save_file.get_line() == "True" else false
+	shirt_color = int(save_file.get_line())
 	data = save_file.get_var()
 	
 	
@@ -148,7 +175,8 @@ func _ready():
 	var load_status = load_game()
 	if load_status == "Error" or data == null or data.has("Hour") == false or data.has("Minute") == false:
 		print_debug("Corrupted save file!!")
-		OS.move_to_trash(ProjectSettings.globalize_path("user://save.dat"))
+		var dir = Directory.new()
+		dir.remove("user://save.dat")
 		print_debug("Please restart game to create new save file")
 		get_tree().quit()
 		return
