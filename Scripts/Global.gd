@@ -22,7 +22,7 @@ onready var body_spritesheet = {
 }
 
 onready var shirt_spritesheet = {
-	0 : load("res://Assets/CayClothes/Shirts/shirt-maroon.png"),
+	0 : load("res://Assets/CayClothes/Shirts/shirt-default.png"),
 	1 : load("res://Assets/CayClothes/Shirts/shirt-blue.png"),
 	2 : load("res://Assets/CayClothes/Shirts/shirt-steelblue.png"),
 	3 : load("res://Assets/CayClothes/Shirts/shirt-teal.png"),
