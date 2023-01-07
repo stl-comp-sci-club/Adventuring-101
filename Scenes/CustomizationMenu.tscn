@@ -18,7 +18,7 @@ vframes = 4
 frame = 1
 
 [node name="Shirt" type="Sprite" parent="CompositeSprites"]
-position = Vector2( 321, 256 )
+position = Vector2( 319, 176 )
 scale = Vector2( 4.217, 4.217 )
 texture = ExtResource( 3 )
 hframes = 4
