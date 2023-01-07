@@ -51,7 +51,6 @@ var data = { # Empty for now, future data can be added
 	"Minute": 0
 }
 
-
 var save_password = "b5^E%2fZJkX%ho&d&^"
 
 func map(val, in_min, in_max, out_min, out_max):
@@ -87,7 +86,7 @@ func load_game():
 		print_debug("Save file failed to load")
 		return "Error"
 		
-
+	
 	camera_zoom = float(save_file.get_line())
 	sound_effect_volume = int(save_file.get_line())
 	music_volume = int(save_file.get_line())
@@ -140,13 +139,17 @@ func set_sound():
 # "start" re-enables the NPC
 
 # Avoid using floats cause it like breaks it
-var NPC_paths = {"Elijah": [Vector2(0,0), 1, Vector2(-906, 713), 3, Vector2(0,0), 3, Vector2(-35, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-35, -60)]], "Mom": [Vector2(272,80)], "Elijah2": [Vector2(-200,0), 1, Vector2(-906, 800), 3, Vector2(-200,0), 3, Vector2(-210, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-210, -60)]], "Elijah3": [Vector2(-400,0), 1, Vector2(-906, 900), 3, Vector2(-400,0), 3, Vector2(-387, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-387, -60)]], "Elijah4": [Vector2(-500,0), 1, Vector2(-906, 1000), 3, Vector2(-500,0), 3, Vector2(-560, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-560, -60)]]}
+var NPC_paths = {
+"Elijah": [Vector2(150, 0), 1, Vector2(-906, 713), 3, Vector2(150, 0), 3, Vector2(140, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(140, -60)]], "Mom": [Vector2(272,80)], 
+"Elijah2": [Vector2(-200, 0), 1, Vector2(-906, 800), 3, Vector2(-200,0), 3, Vector2(-210, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-210, -60)]], 
+"Elijah3": [Vector2(-550,0), 1, Vector2(-906, 900), 3, Vector2(-550,0), 3, Vector2(-560, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-560, -60)]]
+}
 
 
 # true means npc is inside their house
 # false means npc is not inside their house
 
-var NPC_houses = {"Elijah": false, "Elijah2": false, "Elijah3": false, "Elijah4": false}
+var NPC_houses = {"Elijah": false, "Elijah2": false, "Elijah3": false}
 var NPC_house_positions = {"Elijah": Vector2(400, -1801), "Blacksmith": Vector2()}
 
 var main_quests = []

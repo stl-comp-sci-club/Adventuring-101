@@ -5,8 +5,8 @@
 [ext_resource path="res://Scenes/Item Cooldown.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/PickUpZone.gd" type="Script" id=4]
 [ext_resource path="res://Player/cayattacksheet.png" type="Texture" id=5]
-[ext_resource path="res://Assets/CayClothes/Shirts/shirt-brown.png" type="Texture" id=6]
-[ext_resource path="res://Scenes/Player-Shirt.gd" type="Script" id=7]
+[ext_resource path="res://Assets/CayClothes/Shirts/shirt-blue.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Player-Shirt.gd" type="Script" id=7]
 
 [sub_resource type="AtlasTexture" id=45]
 atlas = ExtResource( 5 )
@@ -333,8 +333,8 @@ speed = 25
 
 [node name="player" type="AnimatedSprite" parent="."]
 frames = SubResource( 27 )
-animation = "walk_right"
-frame = 2
+animation = "attack_right"
+frame = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -348,7 +348,6 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -0.5, 17.5 )
 shape = SubResource( 28 )
 
@@ -369,7 +368,6 @@ margin_bottom = 32579.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="PickUpZone" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 4
 script = ExtResource( 4 )
@@ -382,7 +380,6 @@ __meta__ = {
 shape = SubResource( 29 )
 
 [node name="Sword" type="Sprite" parent="."]
-visible = false
 rotation = -1.5708
 
 [node name="Sword Collision" type="Area2D" parent="Sword"]
@@ -408,7 +405,7 @@ anims/RESET = SubResource( 52 )
 texture = ExtResource( 6 )
 hframes = 4
 vframes = 4
-frame = 6
+frame = 1
 script = ExtResource( 7 )
 
 [connection signal="area_entered" from="PickUpZone" to="PickUpZone" method="_on_PickUpZone_area_entered"]

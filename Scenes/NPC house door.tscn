@@ -3,21 +3,23 @@
 [ext_resource path="res://Scripts/NPC house door.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=32]
-extents = Vector2( 18, 21 )
+extents = Vector2( 12, 27.5 )
 
 [sub_resource type="RectangleShape2D" id=33]
-extents = Vector2( 26, 28.5 )
+extents = Vector2( 15, 31.25 )
 
 [node name="NPC house door" type="StaticBody2D"]
 position = Vector2( 140, -20 )
 script = ExtResource( 1 )
 
 [node name="Door" type="CollisionShape2D" parent="."]
+position = Vector2( -11, 2.5 )
 shape = SubResource( 32 )
 
 [node name="Interact Area" type="Area2D" parent="."]
 
 [node name="Area Shape" type="CollisionShape2D" parent="Interact Area"]
+position = Vector2( -11, 2.75 )
 shape = SubResource( 33 )
 
 [connection signal="body_entered" from="Interact Area" to="." method="_on_Interact_Area_body_entered"]

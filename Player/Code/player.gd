@@ -26,9 +26,8 @@ var input_allowed = true
 var attacking = false
 var stunned = false
 
-
 func _ready():
-
+	
 	var regen_timer = Timer.new()
 	add_child(regen_timer)
 	regen_timer.connect("timeout", self, "health_mana_regen")

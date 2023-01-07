@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scenes/CustomizationMenu.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/CustomizationMenu.gd" type="Script" id=1]
 [ext_resource path="res://Player/caywalksheet.png" type="Texture" id=2]
 [ext_resource path="res://Assets/CayClothes/Shirts/shirt-blue.png" type="Texture" id=3]
 [ext_resource path="res://Assets/StyleTextures/Main Menu Font.tres" type="DynamicFont" id=4]
