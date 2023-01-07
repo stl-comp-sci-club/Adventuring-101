@@ -17,6 +17,30 @@ var master_volume = 100
 var full_screen = false
 var auto_pickup = true
 
+onready var body_spritesheet = {
+	0 : load("res://Player/caywalksheet.png")
+}
+
+onready var shirt_spritesheet = {
+	0 : load("res://Assets/CayClothes/Shirts/shirt-maroon.png"),
+	1 : load("res://Assets/CayClothes/Shirts/shirt-blue.png"),
+	2 : load("res://Assets/CayClothes/Shirts/shirt-steelblue.png"),
+	3 : load("res://Assets/CayClothes/Shirts/shirt-teal.png"),
+	4 : load("res://Assets/CayClothes/Shirts/shirt-lime.png"),
+	5 : load("res://Assets/CayClothes/Shirts/shirt-lightgreen.png"),
+	6 : load("res://Assets/CayClothes/Shirts/shirt-green.png"),
+	7 : load("res://Assets/CayClothes/Shirts/shirt-peach.png"),
+	8 : load("res://Assets/CayClothes/Shirts/shirt-orange.png"),
+	9 : load("res://Assets/CayClothes/Shirts/shirt-white.png"),
+	10 : load("res://Assets/CayClothes/Shirts/shirt-yellow.png"),
+	11 : load("res://Assets/CayClothes/Shirts/shirt-pink.png"),
+	12 : load("res://Assets/CayClothes/Shirts/shirt-purple.png"),
+	13 : load("res://Assets/CayClothes/Shirts/shirt-maroon.png"),
+	14 : load("res://Assets/CayClothes/Shirts/shirt-brown.png")
+}
+
+var shirt_color: int = 0
+
 onready var master_bus = AudioServer.get_bus_index("Master")
 onready var music_bus = AudioServer.get_bus_index("Music")
 onready var sound_effect_bus = AudioServer.get_bus_index("Sound Effects")
@@ -44,6 +68,7 @@ func save_game():
 	save_file.store_line(str(master_volume))
 	save_file.store_line(str(full_screen))
 	save_file.store_line(str(auto_pickup))
+	save_file.store_line(str(shirt_color))
 	save_file.store_var(data)
 	save_file.close()
 	return "Saved"
@@ -68,6 +93,7 @@ func load_game():
 	master_volume = int(save_file.get_line())
 	full_screen = true if save_file.get_line() == "True" else false
 	auto_pickup = true if save_file.get_line() == "True" else false
+	shirt_color = int(save_file.get_line())
 	data = save_file.get_var()
 	
 	
