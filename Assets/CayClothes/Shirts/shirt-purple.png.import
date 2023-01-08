@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blue.png-5666d44c62988a1ab7025044639a49b4.stex"
+path="res://.import/shirt-purple.png-3fe4cde6774c96b1a5ef0a9bf45c9dab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Clothes/shitr/blue.png"
-dest_files=[ "res://.import/blue.png-5666d44c62988a1ab7025044639a49b4.stex" ]
+source_file="res://Assets/CayClothes/Shirts/shirt-purple.png"
+dest_files=[ "res://.import/shirt-purple.png-3fe4cde6774c96b1a5ef0a9bf45c9dab.stex" ]
 
 [params]
 

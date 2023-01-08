@@ -17,6 +17,46 @@ var master_volume = 100
 var full_screen = false
 var auto_pickup = true
 
+onready var body_spritesheet = {
+	0 : load("res://Player/caywalksheet.png")
+}
+
+onready var shirt_spritesheet = {
+	0 : load("res://Assets/CayClothes/Shirts/shirt-default.png"),
+	1 : load("res://Assets/CayClothes/Shirts/shirt-blue.png"),
+	2 : load("res://Assets/CayClothes/Shirts/shirt-steelblue.png"),
+	3 : load("res://Assets/CayClothes/Shirts/shirt-teal.png"),
+	4 : load("res://Assets/CayClothes/Shirts/shirt-lime.png"),
+	5 : load("res://Assets/CayClothes/Shirts/shirt-green.png"),
+	6 : load("res://Assets/CayClothes/Shirts/shirt-peach.png"),
+	7 : load("res://Assets/CayClothes/Shirts/shirt-orange.png"),
+	8 : load("res://Assets/CayClothes/Shirts/shirt-white.png"),
+	9 : load("res://Assets/CayClothes/Shirts/shirt-pink.png"),
+	10 : load("res://Assets/CayClothes/Shirts/shirt-yellow.png"),
+	11 : load("res://Assets/CayClothes/Shirts/shirt-purple.png"),
+	12 : load("res://Assets/CayClothes/Shirts/shirt-maroon.png"),
+	13 : load("res://Assets/CayClothes/Shirts/shirt-brown.png")
+}
+
+onready var attack_shirt_spritesheet = {
+	0 : load("res://Assets/CayClothes/Attacks/attack-default.png"),
+	1 : load("res://Assets/CayClothes/Attacks/attack-blue.png"),
+	2 : load("res://Assets/CayClothes/Attacks/attack-steelblue.png"),
+	3 : load("res://Assets/CayClothes/Attacks/attack-teal.png"),
+	4 : load("res://Assets/CayClothes/Attacks/attack-lime.png"),
+	5 : load("res://Assets/CayClothes/Attacks/attack-green.png"),
+	6 : load("res://Assets/CayClothes/Attacks/attack-peach.png"),
+	7 : load("res://Assets/CayClothes/Attacks/attack-orange.png"),
+	8 : load("res://Assets/CayClothes/Attacks/attack-white.png"),
+	9 : load("res://Assets/CayClothes/Attacks/attack-pink.png"),
+	10 : load("res://Assets/CayClothes/Attacks/attack-yellow.png"),
+	11 : load("res://Assets/CayClothes/Attacks/attack-purple.png"),
+	12 : load("res://Assets/CayClothes/Attacks/attack-maroon.png"),
+	13 : load("res://Assets/CayClothes/Attacks/attack-brown.png")
+}
+
+var shirt_color: int = 0
+
 onready var master_bus = AudioServer.get_bus_index("Master")
 onready var music_bus = AudioServer.get_bus_index("Music")
 onready var sound_effect_bus = AudioServer.get_bus_index("Sound Effects")
@@ -44,6 +84,7 @@ func save_game():
 	save_file.store_line(str(master_volume))
 	save_file.store_line(str(full_screen))
 	save_file.store_line(str(auto_pickup))
+	save_file.store_line(str(shirt_color))
 	save_file.store_var(data)
 	save_file.close()
 	return "Saved"
@@ -68,6 +109,7 @@ func load_game():
 	master_volume = int(save_file.get_line())
 	full_screen = true if save_file.get_line() == "True" else false
 	auto_pickup = true if save_file.get_line() == "True" else false
+	shirt_color = int(save_file.get_line())
 	data = save_file.get_var()
 	
 	
@@ -113,13 +155,17 @@ func set_sound():
 # "start" re-enables the NPC
 
 # Avoid using floats cause it like breaks it
-var NPC_paths = {"Elijah": [Vector2(0,0), 1, Vector2(-906, 713), 3, Vector2(0,0), 3, Vector2(-35, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-35, -60)]], "Mom": [Vector2(272,80)], "Elijah2": [Vector2(-200,0), 1, Vector2(-906, 800), 3, Vector2(-200,0), 3, Vector2(-210, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-210, -60)]], "Elijah3": [Vector2(-400,0), 1, Vector2(-906, 900), 3, Vector2(-400,0), 3, Vector2(-387, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-387, -60)]], "Elijah4": [Vector2(-500,0), 1, Vector2(-906, 1000), 3, Vector2(-500,0), 3, Vector2(-560, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-560, -60)]]}
+var NPC_paths = {
+"Elijah": [Vector2(150, 0), 1, Vector2(-906, 713), 3, Vector2(150, 0), 3, Vector2(140, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(140, -60)]], "Mom": [Vector2(272,80)], 
+"Elijah2": [Vector2(-200, 0), 1, Vector2(-906, 800), 3, Vector2(-200,0), 3, Vector2(-210, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-210, -60)]], 
+"Elijah3": [Vector2(-550,0), 1, Vector2(-906, 900), 3, Vector2(-550,0), 3, Vector2(-560, -60), "enter_house", [Vector2(495, -1828)], "stop", 30, "start", Vector2(401, -1789), [Vector2(-560, -60)]]
+}
 
 
 # true means npc is inside their house
 # false means npc is not inside their house
 
-var NPC_houses = {"Elijah": false, "Elijah2": false, "Elijah3": false, "Elijah4": false}
+var NPC_houses = {"Elijah": false, "Elijah2": false, "Elijah3": false}
 var NPC_house_positions = {"Elijah": Vector2(400, -1801), "Blacksmith": Vector2()}
 
 var main_quests = []
@@ -148,7 +194,8 @@ func _ready():
 	var load_status = load_game()
 	if load_status == "Error" or data == null or data.has("Hour") == false or data.has("Minute") == false:
 		print_debug("Corrupted save file!!")
-		OS.move_to_trash(ProjectSettings.globalize_path("user://save.dat"))
+		var dir = Directory.new()
+		dir.remove("user://save.dat")
 		print_debug("Please restart game to create new save file")
 		get_tree().quit()
 		return
