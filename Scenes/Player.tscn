@@ -1,11 +1,10 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Player/Code/player.gd" type="Script" id=1]
 [ext_resource path="res://Player/caywalksheet.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Item Cooldown.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/PickUpZone.gd" type="Script" id=4]
 [ext_resource path="res://Player/cayattacksheet.png" type="Texture" id=5]
-[ext_resource path="res://Assets/CayClothes/Shirts/shirt-blue.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/Player-Shirt.gd" type="Script" id=7]
 [ext_resource path="res://Assets/CayClothes/Attacks/attack-blue.png" type="Texture" id=8]
 
@@ -334,7 +333,7 @@ speed = 25
 
 [node name="player" type="AnimatedSprite" parent="."]
 frames = SubResource( 27 )
-animation = "attack_right"
+animation = "down_resting"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -402,13 +401,13 @@ anims/RESET = SubResource( 52 )
 [node name="Item Cooldown" parent="." instance=ExtResource( 3 )]
 
 [node name="Attack Shirt" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 8 )
 hframes = 5
 vframes = 4
 frame = 5
 
 [node name="Shirt" type="Sprite" parent="."]
-texture = ExtResource( 6 )
 hframes = 4
 vframes = 4
 frame = 1
