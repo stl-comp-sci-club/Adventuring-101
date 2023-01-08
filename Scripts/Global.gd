@@ -39,6 +39,24 @@ onready var shirt_spritesheet = {
 	14 : load("res://Assets/CayClothes/Shirts/shirt-brown.png")
 }
 
+onready var attack_shirt_spritesheet = {
+	0 : load("res://Assets/CayClothes/Attacks/attack-default.png"),
+	1 : load("res://Assets/CayClothes/Attacks/attack-blue.png"),
+	2 : load("res://Assets/CayClothes/Attacks/attack-steelblue.png"),
+	3 : load("res://Assets/CayClothes/Attacks/attack-teal.png"),
+	4 : load("res://Assets/CayClothes/Attacks/attack-lime.png"),
+	5 : load("res://Assets/CayClothes/Attacks/attack-lightgreen.png"),
+	6 : load("res://Assets/CayClothes/Attacks/attack-green.png"),
+	7 : load("res://Assets/CayClothes/Attacks/attack-peach.png"),
+	8 : load("res://Assets/CayClothes/Attacks/attack-orange.png"),
+	9 : load("res://Assets/CayClothes/Attacks/attack-white.png"),
+	10 : load("res://Assets/CayClothes/Attacks/attack-yellow.png"),
+	11 : load("res://Assets/CayClothes/Attacks/attack-pink.png"),
+	12 : load("res://Assets/CayClothes/Attacks/attack-purple.png"),
+	13 : load("res://Assets/CayClothes/Attacks/attack-maroon.png"),
+	14 : load("res://Assets/CayClothes/Attacks/attack-brown.png")
+}
+
 var shirt_color: int = 0
 
 onready var master_bus = AudioServer.get_bus_index("Master")
