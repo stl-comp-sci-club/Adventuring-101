@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Fonts/PlaymegamesReguler-2OOee.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Quest_popup.gd" type="Script" id=2]
 [ext_resource path="res://Assets/StyleTextures/Main Menu Button Pressed.tres" type="StyleBox" id=3]
 [ext_resource path="res://Assets/StyleTextures/Main Menu Button.tres" type="StyleBox" id=4]
 [ext_resource path="res://Assets/StyleTextures/Main Menu Font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Assets/GUI/questmenu.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -40,12 +41,19 @@ margin_bottom = 359.0
 mouse_filter = 2
 script = ExtResource( 2 )
 
+[node name="Questmenu" type="Sprite" parent="Popup"]
+position = Vector2( 523, 189 )
+scale = Vector2( 2.68, 2.68 )
+texture = ExtResource( 6 )
+
 [node name="ColorRect" type="ColorRect" parent="Popup"]
-margin_left = 417.0
-margin_top = 92.0
-margin_right = 630.0
-margin_bottom = 351.0
+margin_left = 427.0
+margin_top = 110.0
+margin_right = 640.0
+margin_bottom = 369.0
+rect_scale = Vector2( 0.915467, 0.892627 )
 mouse_filter = 1
+color = Color( 0.941176, 0.901961, 0.811765, 1 )
 
 [node name="Title" type="Label" parent="Popup/ColorRect"]
 margin_left = 14.0
