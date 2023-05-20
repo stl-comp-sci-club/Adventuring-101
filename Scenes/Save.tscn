@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Fonts/PlaymegamesReguler-2OOee.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 17
+font_data = SubResource( 1 )
+
+[node name="Save Button" type="Button"]
+margin_right = 150.0
+margin_bottom = 225.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="Save" type="ColorRect" parent="."]
+margin_right = 150.0
+margin_bottom = 225.0
+rect_min_size = Vector2( 20, 20 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+color = Color( 0.121569, 0.121569, 0.160784, 1 )
+
+[node name="Save name" type="Label" parent="Save"]
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 167.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 3 )
+text = "Empty Save"
+
+[node name="Date" type="Label" parent="Save"]
+margin_left = 4.0
+margin_top = 21.0
+margin_right = 167.0
+margin_bottom = 36.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_fonts/font = SubResource( 3 )

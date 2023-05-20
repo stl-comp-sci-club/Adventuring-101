@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Save Manager.gd" type="Script" id=1]
+[ext_resource path="res://Assets/StyleTextures/Main Menu Button Pressed.tres" type="StyleBox" id=2]
+[ext_resource path="res://Assets/StyleTextures/Main Menu Button.tres" type="StyleBox" id=3]
+[ext_resource path="res://Assets/StyleTextures/Main Menu Font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scenes/Save.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Fonts/PlaymegamesReguler-2OOee.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 33
+font_data = SubResource( 1 )
+
+[node name="Load Save" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Popup" type="Popup" parent="."]
+visible = true
+margin_right = 640.0
+margin_bottom = 360.0
+mouse_filter = 1
+popup_exclusive = true
+
+[node name="Background" type="ColorRect" parent="Popup"]
+margin_left = -20.0
+margin_top = -13.0
+margin_right = 660.0
+margin_bottom = 387.0
+rect_pivot_offset = Vector2( 519, 223 )
+color = Color( 0.172549, 0.176471, 0.258824, 1 )
+
+[node name="Settings Label" type="Label" parent="Popup/Background"]
+margin_left = 84.0
+margin_top = 32.0
+margin_right = 247.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 2 )
+text = "Select Save:"
+
+[node name="Back" type="Button" parent="Popup/Background"]
+margin_left = 524.0
+margin_top = 45.0
+margin_right = 607.0
+margin_bottom = 66.0
+rect_pivot_offset = Vector2( 24, 13 )
+focus_mode = 0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/normal = ExtResource( 3 )
+enabled_focus_mode = 0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Scroll background" type="ColorRect" parent="Popup/Background"]
+margin_left = 84.0
+margin_top = 77.0
+margin_right = 596.0
+margin_bottom = 332.0
+rect_min_size = Vector2( 500, 255 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+color = Color( 0.231373, 0.231373, 0.309804, 1 )
+
+[node name="Save" parent="Popup/Background/Scroll background" instance=ExtResource( 5 )]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 165.0
+margin_bottom = 240.0
+focus_mode = 0
+enabled_focus_mode = 0
+
+[node name="Save2" parent="Popup/Background/Scroll background" instance=ExtResource( 5 )]
+margin_left = 181.0
+margin_top = 15.0
+margin_right = 331.0
+margin_bottom = 240.0
+focus_mode = 0
+enabled_focus_mode = 0
+
+[node name="Save3" parent="Popup/Background/Scroll background" instance=ExtResource( 5 )]
+margin_left = 347.0
+margin_top = 15.0
+margin_right = 497.0
+margin_bottom = 240.0
+focus_mode = 0
+enabled_focus_mode = 0
+
+[connection signal="button_up" from="Popup/Background/Back" to="." method="_on_Back_button_up"]
+[connection signal="button_up" from="Popup/Background/Scroll background/Save" to="." method="_Save1_button_up"]
+[connection signal="button_up" from="Popup/Background/Scroll background/Save2" to="." method="_Save2_button_up"]
+[connection signal="button_up" from="Popup/Background/Scroll background/Save3" to="." method="_Save3_button_up"]

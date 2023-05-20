@@ -17,7 +17,6 @@ func _input(event):
 func map(val, in_min, in_max, out_min, out_max):
 	return (val - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
-# Called when the node enters the scene tree for the first time.
 func show():
 	print(Global.camera_zoom)
 	$"Popup/ScrollContainer/Scroll background/Camera Zoom/Zoom Value".text = str(map(Global.camera_zoom, 1.5, 3, 3, 1.5)) + "x"

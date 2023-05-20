@@ -6,6 +6,8 @@ var invOpened = false
 var questMenuOpened = false
 
 var scene = ""
+var selected_save = ""
+var available_saves = []
 
 var paused = false
 var in_dialogue = false
@@ -67,17 +69,51 @@ var data = { # Empty for now, future data can be added
 	"Minute": 0
 }
 
+var HOUR = data["Hour"]
+var MINUTES = data["Minute"]
+
 var save_password = "b5^E%2fZJkX%ho&d&^"
 
 func map(val, in_min, in_max, out_min, out_max):
 	return (val - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
+func second_value_sort(a):
+	return a[1]
+
+
+func get_saves():
+	var save_dir = Directory.new()
+	if not save_dir.dir_exists("user://saves"):
+		save_dir.make_dir("user://saves")
+	save_dir.open("user://saves")
+	var files = []
+	save_dir.list_dir_begin()
+
+	while true:
+		var file = File.new()
+		var file_name = save_dir.get_next()
+		if file_name == "":
+			break
+		elif not file_name.begins_with("."):
+			files.append([file_name, file.get_modified_time("user://saves/" + file_name)])
+			
+	save_dir.list_dir_end()
+
+	files.sort_custom(self, "second_value_sort")
+	
+
+	return files
+
+
 func save_game():
 	var save_file = File.new()
-	var status = save_file.open_encrypted_with_pass("user://save.dat", File.WRITE, save_password)
+	var status = save_file.open_encrypted_with_pass("user://saves/" + selected_save + ".dat", File.WRITE, save_password)
 	if status != OK:
 		print_debug("Save file failed to load")
 		return "Error"
+
+	print(data)
+
 	save_file.store_line(str(camera_zoom))
 	save_file.store_line(str(sound_effect_volume))
 	save_file.store_line(str(music_volume))
@@ -91,17 +127,14 @@ func save_game():
 	
 func load_game():
 	var save_file = File.new()
-	if not save_file.file_exists("user://save.dat"):
-		print_debug("Save file does not exist, creating new file")
-		save_game()
-	if not save_file.file_exists("user://save.dat"):
-		print_debug("Save file still does not existing, aborting")
+	if not save_file.file_exists("user://saves/" + selected_save + ".dat"):
+		print_debug("Save file does not exist")
 		return "Error"
-	var status = save_file.open_encrypted_with_pass("user://save.dat", File.READ, save_password)
+	var status = save_file.open_encrypted_with_pass("user://saves/" + selected_save + ".dat", File.READ, save_password)
 	if status != OK:
 		print_debug("Save file failed to load")
 		return "Error"
-		
+	
 	
 	camera_zoom = float(save_file.get_line())
 	sound_effect_volume = int(save_file.get_line())
@@ -112,7 +145,8 @@ func load_game():
 	shirt_color = int(save_file.get_line())
 	data = save_file.get_var()
 	
-	
+	HOUR = data["Hour"]
+	MINUTES = data["Minute"]
 
 	save_file.close()
 	set_sound()
@@ -137,6 +171,8 @@ func set_sound():
 	else:
 		AudioServer.set_bus_mute(sound_effect_bus, false)
 		AudioServer.set_bus_volume_db(sound_effect_bus, map(sound_effect_volume, 0, 100, -20, 0))
+
+
 # Vectors define the points the NPC should walk to
 # Integers define pauses between the points (in seconds)
 
@@ -174,8 +210,7 @@ var side_quests = []
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var HOUR = 10
-var MINUTES = 0
+
 #var game_seconds = 0
 
 var minute_timer = null
@@ -191,14 +226,15 @@ func _notification(what):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var load_status = load_game()
-	if load_status == "Error" or data == null or data.has("Hour") == false or data.has("Minute") == false:
-		print_debug("Corrupted save file!!")
-		var dir = Directory.new()
-		dir.remove("user://save.dat")
-		print_debug("Please restart game to create new save file")
-		get_tree().quit()
-		return
+	available_saves = get_saves()
+	# var load_status = load_game()
+	# if load_status == "Error" or data == null or data.has("Hour") == false or data.has("Minute") == false:
+	# 	print_debug("Corrupted save file!!")
+	# 	var dir = Directory.new()
+	# 	dir.remove("user://save.dat")
+	# 	print_debug("Please restart game to create new save file")
+	# 	get_tree().quit()
+	# 	return
 		# print("Attempting to reset to default save file")
 		# var status = load_game()
 		# if status == "Error":
@@ -207,8 +243,8 @@ func _ready():
 		# else:
 		# 	print("Reset save file")
 
-	HOUR = data["Hour"]
-	MINUTES = data["Minute"]
+	# self.HOUR = data["Hour"]
+	# self.MINUTES = data["Minute"]
 	if Global.full_screen:
 		OS.window_fullscreen = true
 	else:
@@ -227,26 +263,26 @@ func time_map(val):
 	return float(val) * 99 / 60
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if HOUR >= 13:
-		hours = HOUR - 12
+func _process(_delta):
+	if self.HOUR >= 13:
+		hours = self.HOUR - 12
 	else:
-		hours = HOUR
+		hours = self.HOUR
 	
 	
-	if HOUR > 24: 
-		HOUR = 1
+	if self.HOUR > 24: 
+		self.HOUR = 1
 		
-	if MINUTES > 59:
-		MINUTES = 0
-		HOUR += 1
+	if self.MINUTES > 59:
+		self.MINUTES = 0
+		self.HOUR += 1
 	
 	if self.HOUR < 1:
 		self.HOUR = 1
 		
-	data["Hour"] = HOUR
-	data["Minute"] = MINUTES
+	data["Hour"] = self.HOUR
+	data["Minute"] = self.MINUTES
 	
-	minutes = time_map(MINUTES)/100
+	minutes = time_map(self.MINUTES)/100
 
 	
